@@ -18,6 +18,10 @@ super + Tab
 button8
   xdotool key control+Tab
 
+# Tab Previous
+button9
+  xdotool key shift+control+Tab
+
 #### Start Rofi ####
 # window switcher
 super + s

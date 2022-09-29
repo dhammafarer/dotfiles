@@ -28,11 +28,42 @@ import           XMonad.Util.Run                 (spawnPipe)
 
 
 ------------------------------------------------------------------------
+-- Colors and borders
+--
+blue = "#5294e2"
+midblue = "#383C4A"
+darkblue = "#506d9c"
+fgcolor = "#666666"
+bgcolor = "#2f343f"
+yellow = "#ffbd7a"
+white = "#D3D7CF"
+pink = "#e96a9d"
+tabActive = bgcolor
+tabInactive = bgcolor
+
+myNormalBorderColor  = bgcolor
+myFocusedBorderColor = darkblue
+xmobarTitleColor = white
+xmobarCurrentWorkspaceColor = white
+myBorderWidth = 1
+
+-- Colors for text and backgrounds of each tab when in "Tabbed" layout.
+tabConfig = def {
+    fontName = "xft:Ubuntu:style=Bold:pixelsize=11:antialias=true:hinting=true",
+    activeTextColor = white,
+    inactiveTextColor = fgcolor,
+    activeColor = tabActive,
+    activeBorderColor = tabActive,
+    inactiveColor = tabInactive,
+    inactiveBorderColor = tabInactive
+}
+
+------------------------------------------------------------------------
 -- Terminal and Launcher
 myTerminal = "xfce4-terminal -T 'DEBIAN TERMINAL'"
-myLauncher = "dmenu_run"
+myLauncher = "dmenu_run -i -nb '#2f343f' -sb '#5294e2' -fn 'Ubuntu 11'"
 
--- Location of your xmobar.hs / xmobarrc
+-- location of mobar config
 myXmobarrc = "~/.xmonad/xmobar.hs"
 
 -- Spacing between windows
@@ -82,7 +113,7 @@ myManageHook = composeAll
 
 
 ------------------------------------------------------------------------
--- Layouts
+-- #Layouts
 -- You can specify and transform your layouts by modifying these values.
 -- If you change layout bindings be sure to use 'mod-shift-space' after
 -- restarting (with 'mod-q') to reset your layout state to the new
@@ -120,7 +151,8 @@ gt2t = avoidStruts (
       ||| tabbedBottomAlways shrinkText tabConfig
     )
 
-fsf= noBorders (fullscreenFull Full)
+--fsf= noBorders (fullscreenFull Full) ||| tabbedBottom shrinkText tabConfig
+fsf= noBorders (tabbedBottom shrinkText tabConfig)
 
 myLayout = onWorkspace code gaps_tab_tall
            $ onWorkspace tablet fsf
@@ -130,37 +162,6 @@ myLayout = onWorkspace code gaps_tab_tall
            $ onWorkspace win fsf
            $ onWorkspace web gaps_tab_tall
            l0
-
-------------------------------------------------------------------------
--- Colors and borders
---
-blue = "#5294e2"
-midblue = "#383C4A"
-darkblue = "#506d9c"
-fgcolor = "#666666"
-bgcolor = "#2f343f"
-yellow = "#ffbd7a"
-white = "#D3D7CF"
-pink = "#e96a9d"
-tabActive = bgcolor
-tabInactive = bgcolor
-
-myNormalBorderColor  = bgcolor
-myFocusedBorderColor = darkblue
-xmobarTitleColor = white
-xmobarCurrentWorkspaceColor = white
-myBorderWidth = 1
-
--- Colors for text and backgrounds of each tab when in "Tabbed" layout.
-tabConfig = def {
-    fontName = "xft:Ubuntu:style=Bold:pixelsize=11:antialias=true:hinting=true",
-    activeTextColor = white,
-    inactiveTextColor = fgcolor,
-    activeColor = tabActive,
-    activeBorderColor = tabActive,
-    inactiveColor = tabInactive,
-    inactiveBorderColor = tabInactive
-}
 
 ------------------------------------------------------------------------
 -- Key bindings
@@ -303,11 +304,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- mod-button3, Set the window to floating mode and resize by dragging
      , ((modMask .|. controlMask, button3), (\w -> focus w >> mouseResizeWindow w))
-
-     , ((modMask, button4),  (\w -> windows W.focusUp))
-     , ((modMask, button5),  (\w -> windows W.focusDown))
-     , ((modMask, button1),  (\w -> windows W.focusDown))
-     , ((modMask, button2),  (\w -> toggleWS))
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
   ]
