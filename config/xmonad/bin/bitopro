@@ -1,0 +1,18 @@
+#!/bin/sh
+
+pair=$1
+
+file=/tmp/bitopro-$pair
+
+writeCP () {
+  echo $1 > $file
+}
+url="https://api.bitopro.com/v3/tickers/$pair"
+
+#set current price
+res=`curl -s $url`
+
+price=`echo $res | jq '.data.lastPrice' | bc -l`
+
+printf "%'.4f\n" $price | sed '/\./ s/\.\{0,1\}0\{1,\}$//'
+

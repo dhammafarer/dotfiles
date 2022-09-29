@@ -1,0 +1,27 @@
+#!/bin/sh
+
+pair=$1
+twd=$2
+
+file=/tmp/kraken-$pair
+
+writeCP () {
+  echo $1 > $file
+}
+
+twd=`/home/pawel/.local/bin/usd-twd`
+
+#set current price
+res=`curl -s "https://api.kraken.com/0/public/Ticker?pair=$pair" | jq ".result.$pair"`
+price=`echo $res | jq '.c[0]' | bc -l`
+open=`echo $res | jq '.o' | bc -l`
+
+change=`echo "($price / $open - 1) * 100" | bc -l`
+
+#if [[ $twd ]]; then
+#  price=$price
+#else
+#  price=`echo "$price * $twd" | bc -l`
+#fi
+
+echo `printf "%'.4f\n" $price | sed '/\./ s/\.\{0,1\}0\{1,\}$//'` \(`printf "%'.2f\n" $change | sed '/\./ s/\.\{0,1\}0\{1,\}$//'`%\)

@@ -1,0 +1,34 @@
+# guest terminal
+super + Return
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/Containers/Arch
+
+# browsers
+super + {_,control} + l
+    {firefox, chromium}
+
+# lock screen
+super + Tab
+    xscreensaver-command -l
+
+# Volume Control
+{ XF86AudioLowerVolume,XF86AudioRaiseVolume }
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+
+# Tab Next
+button8
+  xdotool key control+Tab
+
+#### Start Rofi ####
+# window switcher
+super + s
+    /home/pawel/.local/bin/rofi -show window
+
+# calculator
+super + shift + l
+    /home/pawel/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
+
+# pass
+super + shift + y
+    /home/pawel/.local/bin/rofi-pass --root /home/pawel/.password-store
+
+#### End Rofi ####

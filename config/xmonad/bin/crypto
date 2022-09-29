@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pair1=$1
+pair2=$2
+
+separator="::"
+
+p1=$(/home/pawel/.xmonad/bin/kraken $pair1)
+p2=$(/home/pawel/.xmonad/bin/bitopro $pair2)
+
+echo "$p2 $separator $p1"
