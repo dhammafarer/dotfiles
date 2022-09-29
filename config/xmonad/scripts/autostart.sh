@@ -20,4 +20,5 @@ function run {
 #starting utility applications at boot time
 
 #picom -CGb &
-run picom --config $HOME/.xmonad/picom.conf &
+#run picom --config $HOME/.xmonad/picom.conf &
+run picom &

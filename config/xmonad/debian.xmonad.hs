@@ -29,7 +29,7 @@ import           XMonad.Util.Run                 (spawnPipe)
 
 ------------------------------------------------------------------------
 -- Terminal and Launcher
-myTerminal = "xfce4-terminal"
+myTerminal = "xfce4-terminal -T 'DEBIAN TERMINAL'"
 myLauncher = "dmenu_run"
 
 -- Location of your xmobar.hs / xmobarrc
@@ -103,9 +103,9 @@ l0 = avoidStruts (
     )
     ||| noBorders (fullscreenFull Full)
 
-gft = avoidStruts (
+gaps_tab_tall = avoidStruts (
       gaps [(U,160),(R,530),(L,530),(D,160)] $
-      Full
+      tabbedBottomAlways shrinkText tabConfig
       ||| Tall 1 (3/100) (1/2)
     )
 
@@ -114,32 +114,36 @@ ft = avoidStruts (
       ||| Tall 1 (3/100) (1/2)
     )
 
-gt2f = avoidStruts (
+gt2t = avoidStruts (
       gaps [(U,160),(R,530),(L,530),(D,160)] $
       Tall 2 (3/100) (1/2)
-      ||| Full
+      ||| tabbedBottomAlways shrinkText tabConfig
     )
 
 fsf= noBorders (fullscreenFull Full)
 
-myLayout = onWorkspace code gft
+myLayout = onWorkspace code gaps_tab_tall
            $ onWorkspace tablet fsf
-           $ onWorkspace comm gt2f
+           $ onWorkspace comm gt2t
            $ onWorkspace media fsf
            $ onWorkspace design ft
            $ onWorkspace win fsf
-           $ onWorkspace web gft
+           $ onWorkspace web gaps_tab_tall
            l0
 
 ------------------------------------------------------------------------
 -- Colors and borders
 --
 blue = "#5294e2"
+midblue = "#383C4A"
 darkblue = "#506d9c"
+fgcolor = "#666666"
 bgcolor = "#2f343f"
 yellow = "#ffbd7a"
 white = "#D3D7CF"
 pink = "#e96a9d"
+tabActive = bgcolor
+tabInactive = bgcolor
 
 myNormalBorderColor  = bgcolor
 myFocusedBorderColor = darkblue
@@ -149,12 +153,13 @@ myBorderWidth = 1
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = def {
-    activeBorderColor = "#2E3436",
-    activeTextColor = "#f3f4f5",
-    activeColor = "#2E3436",
-    inactiveBorderColor = "#2E3436",
-    inactiveTextColor = "#676E7D",
-    inactiveColor = "#2E3436"
+    fontName = "xft:Ubuntu:style=Bold:pixelsize=11:antialias=true:hinting=true",
+    activeTextColor = white,
+    inactiveTextColor = fgcolor,
+    activeColor = tabActive,
+    activeBorderColor = tabActive,
+    inactiveColor = tabInactive,
+    inactiveBorderColor = tabInactive
 }
 
 ------------------------------------------------------------------------
