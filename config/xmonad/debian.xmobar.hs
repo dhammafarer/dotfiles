@@ -7,7 +7,7 @@ Config {
     -- right_padding = 12 * 23 = 276
     -- Example: position = TopP 0 276
     --position = TopP 0 240,
-    position = TopP 0 844,
+    position = TopP 0 854,
     --font = "xft:SFNS Display:size=10,FontAwesome:size=10",
     font = "xft:Ubuntu:style=Medium:size=11,Font Awesome:style=Solid:size=10,Font Awesome 6 Brands:style=Regular:size=10",
     --font = "xft:ubuntu-10",
@@ -29,12 +29,12 @@ Config {
         --Run Date "%a %b %_d   %H:%M" "date" 10,
         Run Date "%b %_d   %H:%M" "date" 10,
         --Run Com "/home/pawel/.xmonad/bin/getMasterVolume" [] "volumelevel" 10,
-        --Run Com "/home/pawel/.xmonad/bin/getMasterVolumePercent" [] "volumelevel" 10,
-        Run Com "/home/pawel/.xmonad/bin/showInboxTasks" [] "inbox" 10,
+        Run Com "/home/pawel/dotfiles/config/xmonad/bin/getMasterVolume" [] "volumelevel" 10,
+        --Run Com "/home/pawel/.xmonad/bin/showInboxTasks" [] "inbox" 10,
         --Run Com "/home/pawel/.xmonad/bin/activeTask" [] "active" 10,
         --Run Com "/home/pawel/.xmonad/bin/now-playing.sh" [] "nowplaying" 10,
-        Run Com "/home/pawel/.xmonad/bin/cmus-playing" [] "nowplaying" 10,
-        Run Com "/home/pawel/.xmonad/bin/pomo.sh" ["clock"] "pomodoro" 10,
+        --Run Com "/home/pawel/.xmonad/bin/cmus-playing" [] "nowplaying" 10,
+        --Run Com "/home/pawel/.xmonad/bin/pomo.sh" ["clock"] "pomodoro" 10,
         --Run CatInt 0 "/home/pawel/.elapsed" ["-L","40","-H","80","-h","#EB484F","-l","#5DE489","-n","#f0c674"] 60,
         Run StdinReader
     ],
@@ -42,6 +42,6 @@ Config {
     alignSep = "}{",
     --template = "%StdinReader% }{ %multicpu%   %memory%   %eth0%    <fc=#b2b2ff>%volumelevel%</fc>   <fc=#FFFFCC>%date%</fc>"
     --template = "*StdinReader* }{ *multicpu*   *memory*   *disku*        <fc=#687C65>$</fc> <fc=#AAA>*usd*</fc>    <fc=#CC8B00></fc> <fc=#AAA>*btc*</fc>    <fc=#7582C6></fc> <fc=#AAA>*eth*</fc>    <fc=#2384A3></fc> <fc=#AAA>*xrp*</fc>     <fc=#D3D7CF>*date*</fc>"
-    template = "*StdinReader* }{          <fc=#D3D7CF>*date*</fc>     *multicpu*   *memory*"
+    template = "*StdinReader* }{          <fc=#D3D7CF>*date*</fc>     *multicpu*   *memory*    <fc=#D3D7CF>*volumelevel*</fc>"
     --template = "*StdinReader* }{ <fc=#AAA>*crypto</fc>  <fc=#AAA>*usd*</fc>         *multicpu*   *memory*   *disku*        <fc=#D3D7CF>*date*</fc>"
 }

@@ -1,0 +1,13 @@
+#### Blender ####
+# use BackSpace to access node menu
+
+# nodes
+Pause; j
+  sleep 0.1; xdotool key BackSpace; sleep 0.01; xdotool type "Join Geometry"; sleep 0.1; xdotool key Return
+
+# curves
+Pause; c; p
+  sleep 0.1; xdotool key BackSpace; sleep 0.01; xdotool type "Curve to points"; sleep 0.1; xdotool key Return
+
+Pause; c; m
+  sleep 0.1; xdotool key BackSpace; sleep 0.01; xdotool type "Curve to mesh"; sleep 0.1; xdotool key Return

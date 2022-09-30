@@ -1,6 +1,5 @@
 #!/bin/sh
 
 stalonetray -c ~/.xmonad/stalonetrayrc &
-volumeicon &
 
 sxhkd &

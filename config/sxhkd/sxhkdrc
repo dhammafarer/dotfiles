@@ -23,10 +23,6 @@ button9
   xdotool key shift+control+Tab
 
 #### Start Rofi ####
-# window switcher
-super + s
-    /home/pawel/.local/bin/rofi -show window
-
 # calculator
 super + shift + l
     /home/pawel/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
@@ -36,3 +32,20 @@ super + shift + y
     /home/pawel/.local/bin/rofi-pass --root /home/pawel/.password-store
 
 #### End Rofi ####
+
+#### super + s ####
+# window switcher
+super + s; s
+    /home/pawel/.local/bin/rofi -show window
+
+# edit sxhkd bindings
+super + s; x
+    $HOME/.dmenu/dmenu-sxhkd.sh
+
+# edit config
+super + s; f
+    $HOME/.dmenu/dmenu-edit-file.sh
+
+# restart process
+super + s; r
+    $HOME/.dmenu/dmenu-restart-process.sh

@@ -38,11 +38,13 @@ bgcolor = "#2f343f"
 yellow = "#ffbd7a"
 white = "#D3D7CF"
 pink = "#e96a9d"
+green1 = "#5de489"
+green2 = "#83e6a3"
 tabActive = bgcolor
 tabInactive = bgcolor
 
 myNormalBorderColor  = bgcolor
-myFocusedBorderColor = darkblue
+myFocusedBorderColor = blue
 xmobarTitleColor = white
 xmobarCurrentWorkspaceColor = white
 myBorderWidth = 1
@@ -61,7 +63,7 @@ tabConfig = def {
 ------------------------------------------------------------------------
 -- Terminal and Launcher
 myTerminal = "xfce4-terminal -T 'DEBIAN TERMINAL'"
-myLauncher = "dmenu_run -i -nb '#2f343f' -sb '#5294e2' -fn 'Ubuntu 11'"
+myLauncher = "dmenu_run -i -nb '" ++ bgcolor ++ "' -sb '" ++ green2 ++ "' -sf '" ++ bgcolor ++ "' -fn 'Ubuntu 11'"
 
 -- location of mobar config
 myXmobarrc = "~/.xmonad/xmobar.hs"
@@ -339,6 +341,7 @@ main = do
   xmonad $ ewmh . docks $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
+          --, ppTitle = const ""
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
