@@ -1,0 +1,12 @@
+#!/bin/sh
+
+blue="#5294e2"
+midblue="#383C4A"
+darkblue="#506d9c"
+fgcolor="#666666"
+bgcolor="#2f343f"
+yellow="#ffbd7a"
+white="#D3D7CF"
+pink="#e96a9d"
+
+dmenu -nb $bgcolor -nf $white -sb $blue -sf $bgcolor -fn "Ubuntu 11" "$@"
