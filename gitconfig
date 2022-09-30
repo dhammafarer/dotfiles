@@ -1,0 +1,10 @@
+[user]
+	email = pawel.lisewski@tuta.io
+	name = Pawel Lisewski
+[core]
+	editor = /usr/sbin/vim
+	excludesfile = /home/pawel/.gitignore
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

@@ -59,7 +59,7 @@ myLauncher = "rofi -show run"
 mySwitcher = "rofi -show window -me-select-entry '' -me-accept-entry 'MousePrimary'"
 
 -- Location of your xmobar.hs / xmobarrc
-myXmobarrc = "~/.xmonad/xmobar-single.hs"
+myXmobarrc = "~/.xmonad/xmobar.hs"
 
 -- Extra mouse button config
 button6     =  6 :: Button
@@ -439,7 +439,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- By default, do nothing.
 -- myStartupHook = return ()
 myStartupHook = do
-    spawn "$HOME/.xmonad/scripts/autostart.sh"
+    spawn "$HOME/.xmonad/autostart.sh"
     setWMName "LG3D"
 
 ------------------------------------------------------------------------

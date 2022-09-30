@@ -1,0 +1,16 @@
+# pomodoro timer based on timetrap and thyme gems
+timer() {
+  t sheet $1
+  t in $2
+  thyme -d
+}
+
+timerstop() {
+  thyme --stop
+}
+
+## rails
+# echo gem into Gemfile
+egem() {
+  echo 'gem "$1"' >> Gemfile
+}
