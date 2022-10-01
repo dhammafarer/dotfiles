@@ -1,0 +1,52 @@
+# guest terminal
+super + Return
+    terminal
+
+# browsers
+super + {_,control} + l
+    {firefox, chromium}
+
+# Volume Control
+{ XF86AudioLowerVolume,XF86AudioRaiseVolume }
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+#
+# Volume Control
+{ button7,button6 }
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+
+# Tab Next
+button8
+  xdotool key control+Tab
+
+# Tab Previous
+button9
+  xdotool key shift+control+Tab
+
+#### Start Rofi ####
+# calculator
+super + shift + l
+    rofi -show calc -modi calc -no-show-match -no-sort
+
+# pass
+super + shift + y
+    rofi-pass --root /home/pawel/.password-store
+
+#### End Rofi ####
+
+#### super + s ####
+# window switcher
+super + s; s
+    rofi -show window
+
+# edit sxhkd bindings
+super + s; x
+    $HOME/.dmenu/dmenu-sxhkd.sh
+
+# edit config
+super + s; d
+    $HOME/.dmenu/dmenu-dotfiles.sh
+
+# restart process
+super + s; r
+    $HOME/.dmenu/dmenu-restart-process.sh
+

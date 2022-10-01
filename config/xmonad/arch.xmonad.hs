@@ -38,12 +38,12 @@ rofiCalc = "rofi -show calc -modi calc -no-show-match -no-sort"
 rofiPass = "rofi-pass"
 
 
-myBrowser = "firefox"
+--myBrowser = "firefox"
 --myBrowserPrivate = "firefox --private-window"
-sndBrowser = "chromium"
+--sndBrowser = "chromium"
 
 -- The command to lock the screen or show the screensaver.
-myScreensaver = "xscreensaver-command -l"
+--myScreensaver = "xscreensaver-command -l"
 
 -- The command to take a selective screenshot, where you select
 myDelayedScreenshot = "maim -d 3 ~/shots/$(date +%Y-%m-%d_%T).png"
@@ -218,34 +218,34 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Start a terminal.  Terminal to start is specified by myTerminal variable.
-  [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
+  [ ((modMask .|. controlMask, xK_Return), spawn $ XMonad.terminal conf)
 
   -- Start a browser
-  , ((modMask, xK_l), spawn myBrowser)
+  --, ((modMask, xK_l), spawn myBrowser)
 
   -- Start a browser in private winow
-  , ((modMask .|. controlMask, xK_l), spawn sndBrowser)
+  --, ((modMask .|. controlMask, xK_l), spawn sndBrowser)
 
   -- Rofi stuff
-  , ((modMask, xK_s), spawn mySwitcher)
+  --, ((modMask, xK_s), spawn mySwitcher)
   , ((modMask, xK_v), spawn myLauncher)
-  , ((modMask .|. shiftMask, xK_l), spawn rofiCalc)
-  , ((modMask .|. shiftMask, xK_y), spawn rofiPass)
+  --, ((modMask .|. shiftMask, xK_l), spawn rofiCalc)
+  --, ((modMask .|. shiftMask, xK_y), spawn rofiPass)
   , ((modMask .|. shiftMask .|. controlMask, xK_l), spawn "rofi -show emoji -modi emoji")
   , ((modMask .|. controlMask, xK_v), spawn "rofi -show file-browser-extended")
 
 
   -- Mute volume.
-  , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle ")
+  --, ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle ")
 
   -- Decrease volume.
-  , ((0, xF86XK_AudioLowerVolume), spawn "pactl -- set-sink-volume 0 -5% && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | tail -1)")
+  --, ((0, xF86XK_AudioLowerVolume), spawn "pactl -- set-sink-volume 0 -5% && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | tail -1)")
 
   -- Increase volume.
-  , ((0, xF86XK_AudioRaiseVolume), spawn "pactl -- set-sink-volume 0 +5% && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)")
+  --, ((0, xF86XK_AudioRaiseVolume), spawn "pactl -- set-sink-volume 0 +5% && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)")
 
   -- Mute volume.
-  , ((modMask .|. controlMask, xK_k), spawn "amixer -q set Master toggle")
+  --, ((modMask .|. controlMask, xK_k), spawn "amixer -q set Master toggle")
 
   -- Decrease volume.
   --, ((modMask .|. controlMask, xK_j), spawn "amixer -q set Master 5%-")
@@ -263,7 +263,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_F2), spawn "/home/pawel/.xmonad/bin/pomo.sh start")
 
   -- Lock the screen using command specified by myScreensaver.
-  , ((modMask, xK_Tab), spawn myScreensaver)
+  --, ((modMask, xK_Tab), spawn myScreensaver)
 
   -- Take a full screenshot using the command specified by myScreenshot.
   , ((modMask, xK_F4), spawn mySelectScreenshot)
