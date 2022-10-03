@@ -1,5 +1,41 @@
 ! SOURCE TERMINAL COLORS !
-#include "/home/pawel/arch-scripts/dotfiles/.xres/themes/arc"
+! special
+*.foreground:   #babdb6
+*.background:   #2f343f
+*.cursorColor:  #babdb6
+
+! black
+*.color0:       #2f343f
+*.color8:       #585c61
+
+! red
+*.color1:       #cc4c55
+*.color9:       #da6371
+
+! green
+*.color2:       #5de489
+*.color10:      #83e6a3
+
+! yellow
+*.color3:       #ffb05f
+*.color11:      #ffbd7a
+
+! blue
+*.color4:       #506d9c
+*.color12:      #5294e2
+
+! magenta
+*.color5:       #ab3b76
+*.color13:      #e96a9d
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #6fccc0
+
+! white
+*.color7:       #b8bdc2
+*.color15:      #e6e6e6
+
 
 !! IBUS
 URxvt.inputMethod: ibus

@@ -49,6 +49,10 @@ super + space; period
 super + s; s
     /home/pawel/.local/bin/rofi -show window
 
+# window switcher
+super + s; b
+    /home/pawel/.dmenu/dmenu-bookmarks.sh
+
 # edit sxhkd bindings
 super + s; x
     $HOME/.dmenu/dmenu-sxhkd.sh
