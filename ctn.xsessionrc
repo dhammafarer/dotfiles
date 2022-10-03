@@ -1,0 +1,17 @@
+#!/bin/bash
+
+xsetroot -cursor_name left_ptr &
+
+feh --bg-fill $HOME/.background-image &
+
+setxkbmap -option compose:caps
+xmodmap ~/.Xmodmap
+
+xinput --set-prop "pointer:Razer Razer Basilisk V3" 'libinput Accel Speed' -0.7
+
+xscreensaver -no-splash &
+
+signal-desktop &
+thunderbird &
+nextcloud &
+goldendict &

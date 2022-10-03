@@ -2,6 +2,7 @@
 
 declare -a options=(
 "sxhkd"
+"picom"
 "xmodmap"
 "xmonad"
 "reboot"
@@ -14,6 +15,10 @@ declare -a options=(
 
 choice=$(echo "$(printf '%s\n' "${options[@]}")" | mydmenu -sb "#da6371" -sf "#2f343f" -p 'Restart process: ')
 case "$choice" in
+	picom)
+	  killall picom
+	  picom
+	;;
 	sxhkd)
 		pkill -USR1 -x sxhkd
 	;;

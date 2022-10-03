@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/Containers/Arch

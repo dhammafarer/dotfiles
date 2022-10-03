@@ -11,12 +11,12 @@ dotfiles=$HOME/.dotfiles
 # create empty .dotfiles
 touch $dotfiles
 
-# read records from file
-cat $conf | while read line; do
+# read records from file, removing comments
+cat $conf | sed -e '/^[ \t]*#/d' | while read line; do
   name=$(echo $line | awk '{print $1}')
-  dir=$(echo $line | awk '{print $2}' | envsubst)
-  file=$(echo $line | awk '{print $3}')
-  src=$(echo $line | awk '{print $4}' | envsubst)
+  file=$(echo $line | awk '{print $2}')
+  src=$(echo $line | awk '{print $3}' | envsubst)
+  dir=$(echo $line | awk '{print $4}' | envsubst)
 
   path="$dir/$file"
 
