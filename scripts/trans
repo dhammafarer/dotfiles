@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# check if user input supplied
+if [ -z "$1" ]
+  then
+    echo "No language selected"
+  elif [ -z "$2" ]
+  then
+    echo "No input supplied"
+else
+
+LANGUAGE=$1
+PHRASE=${@:2}
+
+
+TRANSLATION="$(echo $PHRASE | trans -e google -s $LANGUAGE -t en -show-original y -show-original-phonetics n -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary n -show-alternatives n)"
+
+echo "$TRANSLATION"
+fi

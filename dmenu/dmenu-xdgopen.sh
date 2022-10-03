@@ -1,13 +1,14 @@
 #!/bin/bash
 
-conf=/home/pawel/.config/gtk-3.0/bookmarks
+conf=$1
+prompt=$2
 
 #[[ ! -e "$conf" ]] && echo "ERROR: $conf does not exist"; exit 1;
 
 opts=$(cat $conf)
 
 # Get the file choice
-choice=$(echo "$opts" | awk -F '/' '{print $NF}'| mydmenu -i -sb "#5294e2" -p 'Open bookmark:')
+choice=$(echo "$opts" | awk -F '/' '{print $NF}'| mydmenu -i -sb "#5294e2" -p "$prompt")
 
 # If selection is empty, exit
 [[ -z "$choice" ]] && { exit 1; }

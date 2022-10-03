@@ -163,7 +163,7 @@ nmap <C-u> :Marks<cr>
 "-----------UltiSnips-----------------"
 let g:UltiSnipsEditSplit="vertical"
 
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsSnippetsDir="~/.snippets"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 set completeopt-=preview "Remove preview window

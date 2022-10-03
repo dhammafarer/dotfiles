@@ -37,30 +37,35 @@ super + shift + y
 #### super + space ####
 #######################
 
-# edit host dotfiles
-super + space; period
-    $HOME/.dmenu/dmenu-dotfiles.sh $HOME/.dotfiles
-
 #######################
 ####   super + s   ####
 #######################
+
+# ~/.dotfiles
+super + s; period
+    $HOME/.dmenu/dmenu-dotfiles.sh $HOME/.dotfiles
 
 # window switcher
 super + s; s
     /home/pawel/.local/bin/rofi -show window
 
-# edit Arch dotfiles
+# ~/Containers/Arch/.dotfiles
 super + s; d
     $HOME/.dmenu/dmenu-dotfiles.sh $HOME/Containers/Arch/.dotfiles
 
-# window switcher
-super + s; b
-    /home/pawel/.dmenu/dmenu-bookmarks.sh
+# bookmarks
+super + s; f
+    /home/pawel/.dmenu/dmenu-xdgopen.sh $HOME/.config/gtk-3.0/bookmarks "Open bookmark:"
 
-# edit sxhkd bindings
+# sxhkd bindings
 super + s; x
     $HOME/.dmenu/dmenu-sxhkd.sh
 
-# restart process
+# processes
+super + s; p
+    $HOME/.dmenu/dmenu-process.sh
+
+# repositories
 super + s; r
-    $HOME/.dmenu/dmenu-restart-process.sh
+    $HOME/.dmenu/dmenu-repos.sh $HOME/.repos
+

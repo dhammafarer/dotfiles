@@ -21,6 +21,7 @@ PKGS=(
     'pass'
     'ranger'
     'rsync'
+    'translate-shell'
     'unrar'
     'unzip'
     'usbutils'
