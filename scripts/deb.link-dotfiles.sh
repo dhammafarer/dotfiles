@@ -1,5 +1,5 @@
 #!/bin/bash
 
-file=~/dotfiles/box.arch.files.conf
+file=~/dotfiles/deb.files.conf
 
 $HOME/dotfiles/scripts/link-dotfiles.sh $file

@@ -1,30 +1,18 @@
 #!/bin/bash
 
-declare -a options=(
-"base"
-"blender"
-"houdini"
-)
+dir=~/.config/sxhkd
+opts=$(ls $dir)
 
-# The combination of echo and printf is done to add line breaks to the end of each
-# item in the array before it is piped into dmenu.  Otherwise, all the items are listed
-# as one long line (one item).
+# Get the file choice
+choice=$(echo "$opts" | awk -F "." '{print $1}'| mydmenu -sb "#6fccc0" -i -p 'Keybindings: ')
 
-choice=$(echo "$(printf '%s\n' "${options[@]}")" | mydmenu -sb "#6fccc0" -sf "#2f343f" -p 'sxhkd config: ')
-case "$choice" in
-	base)
-		killall sxhkd
-		sxhkd -c $HOME/.config/sxhkd/sxhkdrc
-	;;
-	houdini)
-		killall sxhkd
-		sxhkd -c $HOME/.config/sxhkd/houdini.sxhkdrc $HOME/.config/sxhkd/sxhkdrc
-	;;
-	blender)
-		killall sxhkd
-		sxhkd -c $HOME/.config/sxhkd/blender.sxhkdrc $HOME/.config/sxhkd/sxhkdrc
-	;;
-	*)
-		exit 1
-	;;
-esac
+# If selection is empty, exit
+[[ -z "$choice" ]] && { exit 1; }
+
+# Extract a path based on the choice
+filename=$(echo "$opts" | awk -F "." -v re="$choice" '$1 == re {print $0}')
+
+path=$dir/$filename
+
+killall sxhkd
+sxhkd -c $path $HOME/.config/sxhkd/sxhkdrc
