@@ -7,7 +7,7 @@ conf=/home/pawel/.config/gtk-3.0/bookmarks
 opts=$(cat $conf)
 
 # Get the file choice
-choice=$(echo "$opts" | awk -F '/' '{print $NF}'| mydmenu -sb "#5294e2" -p 'Open bookmark:')
+choice=$(echo "$opts" | awk -F '/' '{print $NF}'| mydmenu -i -sb "#5294e2" -p 'Open bookmark:')
 
 # If selection is empty, exit
 [[ -z "$choice" ]] && { exit 1; }

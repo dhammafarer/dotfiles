@@ -37,9 +37,9 @@ super + shift + y
 #### super + space ####
 #######################
 
-# edit dotfiles
+# edit host dotfiles
 super + space; period
-    $HOME/.dmenu/dmenu-dotfiles.sh
+    $HOME/.dmenu/dmenu-dotfiles.sh $HOME/.dotfiles
 
 #######################
 ####   super + s   ####
@@ -48,6 +48,10 @@ super + space; period
 # window switcher
 super + s; s
     /home/pawel/.local/bin/rofi -show window
+
+# edit Arch dotfiles
+super + s; d
+    $HOME/.dmenu/dmenu-dotfiles.sh $HOME/Containers/Arch/.dotfiles
 
 # window switcher
 super + s; b
