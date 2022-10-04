@@ -15,7 +15,7 @@ choice=$(echo "$opts" | sort -k 1 -nr | awk '{print $2}'| mydmenu -i -sb "#FFA68
 [[ -z "$choice" ]] && { exit 1; }
 
 case "$choice" in
-	"+")
+  "+")
     label=$(mydmenu -p "Label:")
     url=$(mydmenu -p "URL:")
 
@@ -26,15 +26,15 @@ case "$choice" in
     notify-send "Added bookmark" "Label: $label\nURL: $url"
 
     exit 0;
-	;;
-	".e")
+  ;;
+  ".e")
 	  myedit $conf
 	;;
 	*)
     url=$(echo "$opts" | awk -v re="$choice" '$2 == re {print $3}')
 
     firefox $url
-	;;
+  ;;
 esac
 
 # Extract a path based on the choice
