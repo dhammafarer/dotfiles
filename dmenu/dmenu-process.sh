@@ -2,11 +2,11 @@
 
 declare -a options=(
 "sxhkd"
+"reboot"
+"poweroff"
 "picom"
 "xmodmap"
 "xmonad"
-"reboot"
-"shutdown"
 )
 
 # The combination of echo and printf is done to add line breaks to the end of each
@@ -29,10 +29,14 @@ case "$choice" in
 		xmodmap $HOME/.Xmodmap
 	;;
 	reboot)
-		systemctl reboot
+    confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Reboot?")
+
+    [[ "$confirm" == "yes" ]] && { systemctl reboot; }
 	;;
-	shutdown)
-		systemctl poweroff
+	poweroff)
+    confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Power off?")
+
+    [[ "$confirm" == "yes" ]] && { systemctl poweroff; }
 	;;
 	*)
 		exit 1
