@@ -76,5 +76,5 @@ super + s; r
 
 # mindmaps
 super + s; m
-    $HOME/.dmenu/dmenu-xdgopen.sh $HOME/Nextcloud/Documents/mindmaps
+    $HOME/.dmenu/dmenu-xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
