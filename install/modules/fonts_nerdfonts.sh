@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 sudo mkdir ~/.local/share/fonts
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Link dotfiles from a records in supplied file
 # conf file is the first argument

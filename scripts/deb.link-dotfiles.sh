@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 file=~/dotfiles/deb.files.conf
 

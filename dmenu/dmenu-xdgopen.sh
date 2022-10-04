@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 conf=$1
 prompt=$2

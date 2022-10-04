@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 dir=~/.config/sxhkd
 opts=$(ls $dir)

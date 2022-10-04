@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # check if user input supplied
 if [ -z "$1" ]
