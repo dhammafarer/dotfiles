@@ -23,7 +23,7 @@ case "$choice" in
     url=$(mydmenu -p "URL:")
 
     # Exit if no label or url
-    [[ -z "$label" || -z "$url" ]] && { notify-send "Bookmark Error" "Label or URL are empty."; exit 1; }
+    [[ -z "$label" || -z "$url" ]] && { notify-send -u critical "Bookmark Error" "Label or URL are empty."; exit 1; }
 
     # Get the tags
     tags=$(mydmenu -p "Tags:" | tr " " ":")
