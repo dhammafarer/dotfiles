@@ -44,6 +44,10 @@ case "$choice" in
     tag=$(echo "$opts" | awk '{print $4}'| tr ":" "\n" | sort | uniq | mydmenu -i -sb "#FFA686" -p "Tags:")
 
     tagged=$(echo "$opts" | awk -v re="$tag" 'match($4, re) {print $2}' | mydmenu -i -sb "#FFA686" -p "$tag:")
+
+    url=$(echo "$opts" | awk -v re="$tagged" '$2 == re {print $3}')
+
+    firefox $url
 	;;
 	*)
     url=$(echo "$opts" | awk -v re="$choice" '$2 == re {print $3}')
