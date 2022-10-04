@@ -16,19 +16,34 @@ choice=$(echo "$opts" | sort -k 1 -nr | awk '{print $2}'| mydmenu -i -sb "#FFA68
 
 case "$choice" in
   "+")
+    # Get the label
     label=$(mydmenu -p "Label:")
+
+    # Get the url
     url=$(mydmenu -p "URL:")
 
+    # Exit if no label or url
     [[ -z "$label" || -z "$url" ]] && { notify-send "Bookmark Error" "Label or URL are empty."; exit 1; }
 
-    echo -e "$(date +%s)\t$label\t\t$url" >> $conf
+    # Get the tags
+    tags=$(mydmenu -p "Tags:" | tr " " ":")
+    [[ -z "$tags" ]] && tags="none"
 
+    # append to the conf file
+    echo -e "$(date +%s)\t\t$label\t\t$url\t\t$tags" >> $conf
+
+    # notify of success
     notify-send "Added bookmark" "Label: $label\nURL: $url"
 
     exit 0;
   ;;
   ".e")
 	  myedit $conf
+	;;
+  "#")
+    tag=$(echo "$opts" | awk '{print $4}'| tr ":" "\n" | sort | uniq | mydmenu -i -sb "#FFA686" -p "Tags:")
+
+    tagged=$(echo "$opts" | awk -v re="$tag" 'match($4, re) {print $2}' | mydmenu -i -sb "#FFA686" -p "$tag:")
 	;;
 	*)
     url=$(echo "$opts" | awk -v re="$choice" '$2 == re {print $3}')
