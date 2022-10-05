@@ -48,7 +48,7 @@ case "$choice" in
     # If selection is empty, exit
     [[ -z "$tag" ]] && { exit 1; }
 
-    tagged=$(echo "$opts" | awk -v re="$tag" 'match($4, re) {print $2}' | $launcher -p "$tag")
+    tagged=$(echo "$opts" | awk -v re="$tag" 'match($4, re) {print $2}' | sed 's/%20/ /g' | $launcher -p "$tag" | sed 's/ /%20/g')
 
     url=$(echo "$opts" | awk -v re="$tagged" '$2 == re {print $3}')
 
