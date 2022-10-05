@@ -3,12 +3,15 @@
 # File to source
 conf=$1
 
+#launcher="mydmenu -i -sb #ef8354"
+launcher="$HOME/.local/bin/rofi -dmenu -i"
+
 [[ ! -e "$conf" ]] && touch $1;
 
 opts=$(cat $conf)
 
 # Get the file choice
-choice=$(echo "$opts" | sort -k 1 -nr | awk '{print $2}'| mydmenu -i -sb "#ef8354" -p "Bookmarks:")
+choice=$(echo "$opts" | sort -k 1 -nr | awk '{print $2}' | sed 's/%20/ /g' | $launcher -p "Bookmarks" | sed 's/ /%20/g')
 
 # If selection is empty, exit
 [[ -z "$choice" ]] && { exit 1; }
@@ -16,16 +19,16 @@ choice=$(echo "$opts" | sort -k 1 -nr | awk '{print $2}'| mydmenu -i -sb "#ef835
 case "$choice" in
   "+")
     # Get the label
-    label=$(mydmenu -sb "#ef8354" -p "Label:")
+    label=$($launcher -p "Label" | sed 's/ /%20/g')
 
     # Get the url
-    url=$(mydmenu -sb "#ef8354"  -p "URL:")
+    url=$($launcher  -p "URL")
 
     # Exit if no label or url
     [[ -z "$label" || -z "$url" ]] && { notify-send -u critical "Bookmark Error" "Label or URL are empty."; exit 1; }
 
     # Get the tags
-    tags=$(mydmenu -sb "#ef8354" -p "Tags:" | tr " " ":")
+    tags=$($launcher -p "Tags:" | tr " " ":")
     [[ -z "$tags" ]] && tags="none"
 
     # append to the conf file
@@ -40,11 +43,17 @@ case "$choice" in
 	  myedit $conf
 	;;
   "#")
-    tag=$(echo "$opts" | awk '{print $4}'| tr ":" "\n" | sort | uniq | mydmenu -i -sb "#ef8354" -p "Tags:")
+    tag=$(echo "$opts" | awk '{print $4}'| tr ":" "\n" | sort | uniq | $launcher -p "Tags")
 
-    tagged=$(echo "$opts" | awk -v re="$tag" 'match($4, re) {print $2}' | mydmenu -i -sb "#ef8354" -p "$tag:")
+    # If selection is empty, exit
+    [[ -z "$tag" ]] && { exit 1; }
+
+    tagged=$(echo "$opts" | awk -v re="$tag" 'match($4, re) {print $2}' | $launcher -p "$tag")
 
     url=$(echo "$opts" | awk -v re="$tagged" '$2 == re {print $3}')
+
+    # If selection is empty, exit
+    [[ -z "$url" ]] && { exit 1; }
 
     firefox $url
 	;;

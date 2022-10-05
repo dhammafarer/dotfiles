@@ -55,11 +55,11 @@ super + s; d
 
 # gtk-3.0/bookmarks.ini
 super + s; f
-    /home/pawel/.dmenu/dmenu-dir.sh $HOME/.config/gtk-3.0/bookmarks "Open directory:"
+    /home/pawel/.dmenu/dmenu-dir.sh $HOME/.config/gtk-3.0/bookmarks "Open directory"
 
 # gtk-3.0/bookmarks.ini
 super + s; b
-    /home/pawel/.dmenu/dmenu-bookmarks.sh $HOME/.bookmarks "Bookmarks:"
+    /home/pawel/.dmenu/dmenu-bookmarks.sh $HOME/.bookmarks "Bookmarks"
 
 
 # sxhkd bindings
