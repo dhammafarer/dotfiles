@@ -17,6 +17,8 @@
     # will be ignored.
     follow = none
 
+    word_wrap = yes
+
     ### Geometry ###
 
     # dynamic width from 0 to 300
