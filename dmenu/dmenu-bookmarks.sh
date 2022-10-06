@@ -20,11 +20,9 @@ launcher="$HOME/.local/bin/rofi -dmenu -i"
 get_choice() {
   choice=$(echo -e "$opts" \
     | sort -k 1 -nr \
-    | awk -v re=$1 'match($4,re) {print $6"\t"$2}' \
-    | sed 's/%20/ /g' \
+    | awk -F "\t" -v re=$1 'match($4,re) {print $6"\t"$2}' \
     | sed 's/null/ /g' \
-    | $launcher -p "Bookmarks" \
-    | sed 's/ /%20/g')
+    | $launcher -p "Bookmarks")
 
   echo "$choice"
 }
@@ -37,7 +35,7 @@ choice=$(get_choice)
 match_choice () {
   case "$choice" in
     "+")
-      label=$($launcher -p "Label" | sed 's/ /%20/g')
+      label=$($launcher -p "Label")
       url=$($launcher  -p "URL")
 
       # Exit if no label or url
@@ -88,7 +86,7 @@ match_choice () {
 
       # append to the conf file
       date=$(date +%s)
-      echo -e "$date $label $url $tags $date $icon" >> $conf
+      echo -e "$date\t$label\t$url\t$tags\t$date\t$icon" >> $conf
 
       # notify of success
       notify-send "Added bookmark" "Label: $label\nURL: $url"
@@ -100,7 +98,7 @@ match_choice () {
     ;;
 
     "#")
-      tag=$(echo "$opts" | awk '{print $4}'| tr "," "\n" | sort | uniq | $launcher -p "Tags")
+      tag=$(echo "$opts" | awk -F "\t" '{print $4}'| tr "," "\n" | sort | uniq | $launcher -p "Tags")
 
       # If selection is empty, exit
       [[ -z "$tag" ]] && { exit 1; }
@@ -113,7 +111,7 @@ match_choice () {
 
     *)
       label=$(echo "$choice" | awk -F "\t" '{print $2}')
-      url=$(echo "$opts" | awk -v re="$label" '$2 == re {print $3}')
+      url=$(echo "$opts" | awk -F "\t" -v re="$label" '$2 == re {print $3}')
 
       [[ -z "$url" ]] && { exit 1; }
 
