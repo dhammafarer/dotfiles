@@ -7,9 +7,9 @@ Config {
     -- right_padding = 12 * 23 = 276
     -- Example: position = TopP 0 276
     --position = TopP 0 240,
-    position = TopP 0 854,
+    position = TopP 0 0,
     --font = "xft:SFNS Display:size=10,FontAwesome:size=10",
-    font = "xft:Ubuntu:style=Medium:size=11,Font Awesome:style=Solid:size=10,Font Awesome 6 Brands:style=Regular:size=10",
+    font = "xft:Ubuntu:style=Medium:size=11,Font Awesome 6 Free:style=Solid:size=10,Font Awesome 6 Brands:style=Regular:size=10",
     --font = "xft:ubuntu-10",
     --additionalFonts = [ "xft:FontAwesome:pixelsize=13" ],
     bgColor = "#2F343F",
@@ -42,6 +42,6 @@ Config {
     alignSep = "}{",
     --template = "%StdinReader% }{ %multicpu%   %memory%   %eth0%    <fc=#b2b2ff>%volumelevel%</fc>   <fc=#FFFFCC>%date%</fc>"
     --template = "*StdinReader* }{ *multicpu*   *memory*   *disku*        <fc=#687C65>$</fc> <fc=#AAA>*usd*</fc>    <fc=#CC8B00></fc> <fc=#AAA>*btc*</fc>    <fc=#7582C6></fc> <fc=#AAA>*eth*</fc>    <fc=#2384A3></fc> <fc=#AAA>*xrp*</fc>     <fc=#D3D7CF>*date*</fc>"
-    template = "*StdinReader* }{          <fc=#D3D7CF>*date*</fc>     *multicpu*   *memory*    <fc=#D3D7CF>*volumelevel*</fc>"
+    template = "  *StdinReader* }<fc=#D3D7CF>*date*</fc>{*multicpu*     *memory*      <fc=#506d93>*volumelevel*</fc>  "
     --template = "*StdinReader* }{ <fc=#AAA>*crypto</fc>  <fc=#AAA>*usd*</fc>         *multicpu*   *memory*   *disku*        <fc=#D3D7CF>*date*</fc>"
 }

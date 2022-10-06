@@ -21,6 +21,7 @@ alias chx="chmod +x"
 alias xmp="xmodmap ~/.Xmodmap"
 alias cbi="xclip -selection clipboard -t image/png -o > /tmp/\"$(date +%Y-%m-%d_%T).png\""
 alias gu="gitui"
+alias vim="nvim"
 
 #system
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -36,20 +37,8 @@ alias yays="yay-install"
 alias syays="yay -Ss"
 
 # files
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias aliases="vim ~/.aliases"
-alias xres="vim ~/.Xresources"
-alias zshrc="vim ~/.zshrc"
-alias history="vim ~/.zsh_history"
-alias vimrc="vim ~/.vimrc"
-alias gvimrc="im ~/.gvimrc"
+alias link-dotfiles="sh $HOME/dotfiles/scripts/box.arch.link-dotfiles.sh"
 alias diary='/usr/bin/gvim -geometry 80x10+600+400 -c "VimwikiMakeDiaryNote" + -c "DiaryTime"'
-alias theme="vim ~/.xres/themes/arc"
-alias cptheme="cat ~/arch-scripts/dotfiles/.xres/themes/arc | ctc"
-
-# directories
-alias as="cd ~/arch-scripts"
-alias us="cd ~/.vim/UltiSnips"
 
 # snippets
 alias snh="cd ~/.vim/UltiSnips && vim ./haskell.snippets"

@@ -4,7 +4,7 @@ super + Return
 
 # browsers
 super + {_,control} + l
-    {firefox, chromium}
+    {firefox,chromium}
 
 # lock screen
 super + Tab
@@ -60,7 +60,6 @@ super + s; f
 # gtk-3.0/bookmarks.ini
 super + s; b
     /home/pawel/.dmenu/dmenu-bookmarks.sh $HOME/.bookmarks "Bookmarks"
-
 
 # sxhkd bindings
 super + s; x

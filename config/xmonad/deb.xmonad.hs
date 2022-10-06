@@ -75,9 +75,11 @@ mySpacing = spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-code     = "\xf054"
+--code     = "\xf054"
+code     = "\xf120"
 web      = "\xf268"
-comm     = "\xf27a"
+--comm     = "\xf27a"
+comm     = "\xf4ad"
 design   = "\xf1b2"
 media    = "\xf1fc"
 win      = "\xf17a"

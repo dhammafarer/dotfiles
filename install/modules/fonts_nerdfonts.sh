@@ -3,8 +3,8 @@
 sudo mkdir ~/.local/share/fonts
 
 cd /tmp
-fonts=( 
-"FiraCode" 
+fonts=(
+"FiraCode"
 )
 
 for font in ${fonts[@]}
