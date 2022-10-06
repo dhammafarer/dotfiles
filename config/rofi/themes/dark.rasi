@@ -66,6 +66,8 @@ textbox {
     text-color: @foreground;
 }
 listview {
+    columns:      3;
+    lines:        8;
     fixed-height: 0;
     border:       0px 0px 0px;
     border-color: @border-color;

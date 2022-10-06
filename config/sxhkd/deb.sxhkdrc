@@ -55,7 +55,7 @@ super + s; d
 
 # gtk-3.0/bookmarks.ini
 super + s; f
-    /home/pawel/.dmenu/dmenu-dir.sh $HOME/.config/gtk-3.0/bookmarks "Open directory"
+    /home/pawel/.dmenu/dmenu-dir.sh $HOME/.config/gtk-3.0/bookmarks "Directories"
 
 # gtk-3.0/bookmarks.ini
 super + s; b
