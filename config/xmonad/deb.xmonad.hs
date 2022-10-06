@@ -95,22 +95,22 @@ myWorkspaces = [code,tablet,web,comm,media,design,win]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ resource  =? "desktop_window"     --> doIgnore
-    , className =? "thunderbird"        --> doShift comm
-    , className =? "discord"            --> doShift comm
-    , className =? "Signal"             --> doShift comm
-    , className =? "Gimp"               --> doShift media
-    , className =? "Blender"            --> doShift design
-    , className =? "superProductivity"  --> doShift win
-    , className =? "libreoffice-writer" --> doShift design
-    , resource  =? "gpicview"           --> doFloat
-    , className =? "MPlayer"            --> doFloat
-    , className =? "VirtualBox Manager" --> doShift win
-    , className =? "Qemu-system-x86_64" --> doShift win
-    , className =? "krita"              --> doShift tablet
-    , className =? "Steam"              --> doShift tablet
-    , className =? "tutanota-desktop"   --> doShift tablet
-    , className =? "stalonetray"        --> doIgnore
+    [ resource  =? "desktop_window"      --> doIgnore
+    , className =? "thunderbird-default" --> doShift comm
+    , className =? "discord"             --> doShift comm
+    , className =? "Signal"              --> doShift comm
+    , className =? "Gimp"                --> doShift media
+    , className =? "Blender"             --> doShift design
+    , className =? "superProductivity"   --> doShift win
+    , className =? "libreoffice-writer"  --> doShift design
+    , resource  =? "gpicview"            --> doFloat
+    , className =? "MPlayer"             --> doFloat
+    , className =? "VirtualBox Manager"  --> doShift win
+    , className =? "Qemu-system-x86_64"  --> doShift win
+    , className =? "krita"               --> doShift tablet
+    , className =? "Steam"               --> doShift tablet
+    , className =? "tutanota-desktop"    --> doShift tablet
+    , className =? "stalonetray"         --> doIgnore
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
