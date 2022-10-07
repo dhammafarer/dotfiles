@@ -13,8 +13,9 @@ PKGS=(
     'firefox-esr'
   # misc
     'hardinfo'
-    'kupfer'
+    'mpv'
     'nextcloud-desktop'
+    'rofi'
     'okular'
     'seahorse'
     'signal-desktop'

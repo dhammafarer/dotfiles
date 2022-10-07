@@ -8,7 +8,6 @@ echo
 # ------------------------------------------------------------------------
 
 PKGS=(
-  'fonts-font-awesome'
   'fonts-powerline'
   'fonts-ubuntu'
   'fonts-noto-cjk'
