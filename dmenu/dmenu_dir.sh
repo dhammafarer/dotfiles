@@ -10,7 +10,7 @@ launcher="$HOME/.local/bin/rofi -dmenu -i"
 opts=$(cat $conf)
 
 # Get the file choice
-choice=$(echo "$opts" | awk -F '/' '{print $NF}'| $launcher -p "$prompt")
+choice=$(echo "$(printf '%s\n' "${options[@]}")" | awk -F '/' '{print $NF}'| $launcher -p "$prompt")
 
 # If selection is empty, exit
 [[ -z "$choice" ]] && { exit 1; }

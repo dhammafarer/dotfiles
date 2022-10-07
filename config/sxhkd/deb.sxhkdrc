@@ -37,6 +37,10 @@ super + shift + y
 #### super + space ####
 #######################
 
+# radio
+super + space; r
+    $HOME/.dmenu/dmenu_radio.sh $HOME/.radio
+
 #######################
 ####   super + s   ####
 #######################
