@@ -2,11 +2,13 @@
 
 launcher="rofi -dmenu -i -config $HOME/dotfiles/config/rofi/row.config.rasi"
 
+lock=""
 poweroff=""
 reboot=""
 log_out=""
 
 declare -a options=(
+"$lock"
 "$poweroff"
 "$reboot"
 "$log_out"
@@ -18,6 +20,9 @@ declare -a options=(
 
 choice=$(echo -e "$(printf '%s\n' "${options[@]}")" | $launcher -p 'Restart process: ')
 case "$choice" in
+	"$lock")
+	  xscreensaver-command -l
+	;;
 	"$reboot")
     confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Confirm")
 

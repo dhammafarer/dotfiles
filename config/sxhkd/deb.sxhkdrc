@@ -6,9 +6,9 @@ super + Return
 super + {_,control} + l
     {firefox,chromium}
 
-# lock screen
+# quit menu
 super + Tab
-    xscreensaver-command -l
+    $HOME/.dmenu/dmenu_quit.sh
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
@@ -76,10 +76,6 @@ super + s; r
 # mindmaps
 super + s; m
     $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps ""
-
-# quit
-super + s; z
-    $HOME/.dmenu/dmenu_quit.sh
 
 # scripts
 super + s; e
