@@ -45,6 +45,7 @@ alias yays="yay-install"
 alias syays="yay -Ss"
 
 # files
+alias link-dotfiles="sh $HOME/dotfiles/scripts/deb.link-dotfiles.sh"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias aliases="vim ~/.aliases"
 alias xres="vim ~/.Xresources"

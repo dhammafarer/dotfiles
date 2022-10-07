@@ -84,3 +84,7 @@ super + s; e
 # colors
 super + s; c
     $HOME/.dmenu/dmenu_colors.sh
+
+# install modules
+super + s; i
+    $HOME/.dmenu/dmenu_modules.sh $HOME/dotfiles/install/modules "Modules"
