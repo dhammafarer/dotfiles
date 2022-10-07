@@ -43,37 +43,48 @@ super + shift + y
 
 # ~/.dotfiles
 super + s; period
-    $HOME/.dmenu/dmenu-dotfiles.sh $HOME/.dotfiles
+    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/.dotfiles
 
 # window switcher
 super + s; s
-    /home/pawel/.local/bin/rofi -show window
+    rofi -show window
 
 # ~/Containers/Arch/.dotfiles
 super + s; d
-    $HOME/.dmenu/dmenu-dotfiles.sh $HOME/Containers/Arch/.dotfiles
+    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/Containers/Arch/.dotfiles
 
 # gtk-3.0/bookmarks.ini
 super + s; f
-    /home/pawel/.dmenu/dmenu-dir.sh $HOME/.config/gtk-3.0/bookmarks "Directories"
+    /home/pawel/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
 
 # gtk-3.0/bookmarks.ini
 super + s; b
-    /home/pawel/.dmenu/dmenu-bookmarks.sh $HOME/.bookmarks "Bookmarks"
+    /home/pawel/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
 
 # sxhkd bindings
 super + s; x
-    $HOME/.dmenu/dmenu-sxhkd.sh
+    $HOME/.dmenu/dmenu_sxhkd.sh
 
 # processes
 super + s; p
-    $HOME/.dmenu/dmenu-process.sh
+    $HOME/.dmenu/dmenu_process.sh
 
 # repositories
 super + s; r
-    $HOME/.dmenu/dmenu-repos.sh $HOME/.repos
+    $HOME/.dmenu/dmenu_repos.sh $HOME/.repos
 
 # mindmaps
 super + s; m
-    $HOME/.dmenu/dmenu-xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps ""
 
+# quit
+super + s; z
+    $HOME/.dmenu/dmenu_quit.sh
+
+# scripts
+super + s; e
+    $HOME/.dmenu/dmenu_scripts.sh
+
+# colors
+super + s; c
+    $HOME/.dmenu/dmenu_colors.sh

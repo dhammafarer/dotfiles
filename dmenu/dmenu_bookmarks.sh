@@ -12,7 +12,7 @@ conf=$1
 opts=$(cat $conf)
 
 #launcher="mydmenu -i -sb #ef8354"
-launcher="$HOME/.local/bin/rofi -dmenu -i"
+launcher="rofi -dmenu -i"
 
 [[ ! -e "$conf" ]] && { notify-send -u critical "Bookmark Error" "No bookmark file"; exit 1; }
 
@@ -22,7 +22,7 @@ get_choice() {
     | sort -k 1 -nr \
     | awk -F "\t" -v re=$1 'match($4,re) {print $6"\t"$2}' \
     | sed 's/null/ /g' \
-    | $launcher -p "Bookmarks")
+    | $launcher -p "")
 
   echo "$choice"
 }
@@ -98,7 +98,7 @@ match_choice () {
     ;;
 
     "#")
-      tag=$(echo "$opts" | awk -F "\t" '{print $4}'| tr "," "\n" | sort | uniq | $launcher -p "Tags")
+      tag=$(echo "$opts" | awk -F "\t" '{print $4}'| tr "," "\n" | sort | uniq | $launcher -p "#")
 
       # If selection is empty, exit
       [[ -z "$tag" ]] && { exit 1; }

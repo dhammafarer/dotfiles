@@ -5,6 +5,7 @@ sudo mkdir ~/.local/share/fonts
 cd /tmp
 fonts=(
 "FiraCode"
+"JetBrainsMono"
 )
 
 for font in ${fonts[@]}

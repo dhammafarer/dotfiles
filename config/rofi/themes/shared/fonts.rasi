@@ -1,0 +1,8 @@
+/**
+ * Fonts
+**/
+
+* {
+    font:                        "JetBrains Mono Nerd Font 12";
+    prompt-font:                 "JetBrains Mono Nerd Font Bold 14";
+}
