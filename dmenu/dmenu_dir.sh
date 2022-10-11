@@ -2,7 +2,7 @@
 
 conf=$1
 prompt=$2
-launcher="$HOME/.local/bin/rofi -dmenu -i"
+launcher="rofi -dmenu -i"
 #launcher="mydmenu -i -sb #5294e2"
 
 #[[ ! -e "$conf" ]] && echo "ERROR: $conf does not exist"; exit 1;
@@ -10,7 +10,7 @@ launcher="$HOME/.local/bin/rofi -dmenu -i"
 opts=$(cat $conf)
 
 # Get the file choice
-choice=$(echo "$(printf '%s\n' "${options[@]}")" | awk -F '/' '{print $NF}'| $launcher -p "$prompt")
+choice=$(echo "$opts" | awk -F '/' '{print $NF}'| $launcher -p "$prompt")
 
 # If selection is empty, exit
 [[ -z "$choice" ]] && { exit 1; }
