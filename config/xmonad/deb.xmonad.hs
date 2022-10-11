@@ -73,12 +73,8 @@ mySpacing = spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True
 
 ------------------------------------------------------------------------
 -- Workspaces
--- The default number of workspaces (virtual screens) and their names.
---
---code     = "\xf054"
 code     = "\xf120"
 web      = "\xf268"
---comm     = "\xf27a"
 comm     = "\xf4ad"
 design   = "\xf1b2"
 media    = "\xf1fc"
@@ -278,7 +274,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
-    | (i, k) <- zip (XMonad.workspaces conf) ([xK_w, xK_z, xK_f, xK_b, xK_d, xK_p, xK_a])
+    | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf)) ([xK_w, xK_z, xK_f, xK_b, xK_d, xK_p, xK_a] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
       , (f, m) <- [(W.view, 0), (W.shift, controlMask)]]
 
     where halveHor d i  | d `elem` [L,R] = i - 32

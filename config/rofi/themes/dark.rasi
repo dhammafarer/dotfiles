@@ -34,7 +34,7 @@ mainbox {
 /*****----- Listview -----*****/
 
 listview {
-    columns:      3;
+    columns:      1;
     lines:        8;
     fixed-height: 0;
     border:       0px 0px 0px;
