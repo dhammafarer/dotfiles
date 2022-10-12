@@ -7,7 +7,7 @@ super + {_,control} + l
     {firefox,chromium}
 
 # quit menu
-super + Tab
+super + Delete
     $HOME/.dmenu/dmenu_quit.sh
 
 # Volume Control
@@ -31,19 +31,16 @@ super + shift + l
 super + shift + y
     /home/pawel/.local/bin/rofi-pass --root /home/pawel/.password-store
 
+# print screen selection with maim
+Print
+    maim -s -u | xclip -selection clipboard -t image/png -i
+
 #### End Rofi ####
-
-#######################
-#### super + space ####
-#######################
-
-# radio
-super + space; r
-    $HOME/.dmenu/dmenu_radio.sh $HOME/.radio
 
 #######################
 ####   super + s   ####
 #######################
+
 
 # ~/.dotfiles
 super + s; period
@@ -92,3 +89,24 @@ super + s; c
 # install modules
 super + s; i
     $HOME/.dmenu/dmenu_modules.sh $HOME/dotfiles/install/modules "Modules"
+
+#######################
+#### super + space ####
+#######################
+
+# radio
+super + space; r
+    $HOME/.dmenu/dmenu_radio.sh $HOME/.radio
+
+
+#######################
+### super + Escape ####
+#######################
+
+#######################
+## super + BackSpace ##
+#######################
+
+#######################
+### super + Delete ####
+#######################

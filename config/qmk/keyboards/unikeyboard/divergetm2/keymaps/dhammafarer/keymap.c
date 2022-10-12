@@ -11,24 +11,19 @@
 
 #include QMK_KEYBOARD_H
 
-
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
 //enum layer_names {};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-     KC_DEL,     KC_Z,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,       KC_Q,       KC_BSPC,
+     KC_DEL,     KC_Z,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,       KC_Q,       XXXXXXX,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_BSPC,    KC_A,    LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,           KC_K,   RSFT_T(KC_N), RCTL_T(KC_E), LALT_T(KC_I), KC_O,     KC_QUOT,
+     KC_BSPC,    KC_A,    LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,           KC_M,   RSFT_T(KC_N), RCTL_T(KC_E), LALT_T(KC_I), KC_O,     KC_ENT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_ENT,     LT(1, KC_ESC), KC_X,    KC_C,       KC_D,       KC_V,              KC_M,       KC_H, LT(3,KC_SLSH), LT(4,KC_DOT), LT(5,KC_COMM), KC_ENT,
+     XXXXXXX,    LT(1, KC_ESC), KC_X,    KC_C,       KC_D,       KC_V,              KC_K,       KC_H, LT(3,KC_SLSH), LT(4,KC_DOT), LT(5,KC_COMM), KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_LALT,    KC_ESC,     KC_LALT,    KC_ESC,     LGUI_T(KC_TAB),                LT(2,KC_SPC),           KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT
+     KC_PSCR,    XXXXXXX,    XXXXXXX,    XXXXXXX,    LGUI_T(KC_TAB),                LT(2,KC_SPC),           KC_CAPS,    KC_VOLD,    KC_VOLU,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -38,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      _______,    _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SPC,            _______,    KC_LPRN,    KC_LCBR,    KC_RCBR,    KC_RPRN,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     _______,    _______,    KC_BSPC,    KC_DEL,     KC_ENT,     KC_PGDN,           _______,    _______,    _______,    _______,    _______,    _______,
+     _______,    _______,    KC_COPY,    KC_PSTE,    KC_ENT,     KC_PGDN,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      QK_BOOT,    _______,    _______,    _______,    _______,                       _______,                _______,    _______,   _______,     _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
