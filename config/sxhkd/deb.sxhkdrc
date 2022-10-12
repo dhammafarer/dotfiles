@@ -50,6 +50,18 @@ XF86Tools; s
 XF86Tools; b
     /home/pawel/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
 
+# inbox
+XF86Tools; t; i
+    /home/pawel/.dmenu/dmenu_inbox.sh
+
+# inbox
+XF86Tools; t; d
+    /home/pawel/.dmenu/dmenu_doing.sh
+
+# inbox
+XF86Tools; t; f
+    /home/pawel/.dmenu/dmenu_finished.sh
+
 # gtk-3.0/bookmarks.ini
 XF86Tools; f
     /home/pawel/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
