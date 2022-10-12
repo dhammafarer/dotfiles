@@ -166,7 +166,7 @@ myLayout = onWorkspace code gaps_tab_tall
 ------------------------------------------------------------------------
 -- Key bindings
 --
-myModMask = mod3Mask
+myModMask = mod4Mask
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
