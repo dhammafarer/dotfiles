@@ -116,7 +116,7 @@ myManageHook = composeAll
 -- #Layouts
 -- You can specify and transform your layouts by modifying these values.
 -- If you change layout bindings be sure to use 'mod-shift-space' after
--- restarting (with 'mod-q') to reset your layout state to the new
+-- restarting to reset your layout state to the new
 -- defaults, as xmonad preserves your old layout settings by default.
 --
 -- The available layouts.  Note that each layout is separated by |||,
@@ -176,7 +176,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Start a terminal.
   [ ((modMask .|. controlMask, xK_Return), spawn $ XMonad.terminal conf)
 
-
   -- Start a launcher.
   , ((modMask, xK_v), spawn myLauncher)
 
@@ -185,16 +184,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Close focused window.
-  , ((modMask .|. controlMask, xK_Escape), kill)
+  , ((modMask, xK_x), kill)
 
   -- Cycle through the available layout algorithms.
   , ((modMask, xK_g), sendMessage NextLayout)
-
-  -- Jump to full screen.
-  -- , ((modMask, xK_space), sendMessage $ JumpToLayout "Full")
-
-  -- Jump to ThreeColMid.
-  --, ((modMask, xK_b), sendMessage $ JumpToLayout "Tall")
 
   -- Jump to TwoPane
   , ((modMask, xK_j), sendMessage $ JumpToLayout "TwoPane")
@@ -230,6 +223,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Expand the master area.
   , ((modMask, xK_i), sendMessage Expand)
 
+  -- Push window back into tiling.
+  , ((modMask, xK_c), withFocused $ windows . W.sink)
+
   -- Next Screen.
   --, ((modMask, xK_space), nextScreen)
 
@@ -241,10 +237,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. controlMask, xK_e), sendMessage $ weakModifyGaps doubleVer)  -- double the up and down gaps
   , ((modMask .|. controlMask, xK_h), sendMessage $ setGaps [(U,160),(R,434),(L,434),(D,160)]) -- reset the GapSpec
 
-  -- Push window back into tiling.
-  , ((modMask, xK_c), withFocused $ windows . W.sink)
 
-  -- Move and resizec floating window.
+  -- Move and resize floating window.
   , ((modMask .|. controlMask, xK_x), withFocused (keysResizeWindow (-1440,-810) (0,1)))
 
   -- Increment the number of windows in the master area.
@@ -252,9 +246,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Decrement the number of windows in the master area.
   , ((modMask, xK_period), sendMessage (IncMasterN (-1)))
-
-  -- Toggle the status bar gap.
-  -- TODO: update this binding with avoidStruts, ((modMask, xK_b),
 
   -- Quit xmonad.
   , ((modMask .|. shiftMask, xK_m), io (exitWith ExitSuccess))
