@@ -18,6 +18,7 @@
 #pragma once
 
 // place overrides here
-#define MASTER_LEFT
 //#define PERMISSIVE_HOLD
+#define MASTER_LEFT
 #define TAPPING_TERM 200
+#define IGNORE_MOD_TAP_INTERRUPT
