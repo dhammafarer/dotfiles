@@ -2,7 +2,7 @@
 
 conf=$1
 prompt=$2
-launcher="rofi -dmenu -i"
+launcher="rofi -dmenu -i -columns 2"
 #launcher="mydmenu -i -sb #5294e2"
 
 #[[ ! -e "$conf" ]] && echo "ERROR: $conf does not exist"; exit 1;

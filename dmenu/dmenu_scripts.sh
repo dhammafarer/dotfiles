@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 dir=$HOME/.dmenu
-launcher="rofi -dmenu -i"
+launcher="rofi -dmenu -i -columns 3"
 
 opts=$(ls $dir)
 choice=$(echo "$opts" | awk '{print $1}'| $launcher -p 'Scripts')

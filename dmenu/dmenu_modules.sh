@@ -2,7 +2,7 @@
 
 dir=$1
 prompt=$2
-launcher="rofi -dmenu -i"
+launcher="rofi -dmenu -i -columns 3"
 
 opts=$(ls $dir)
 choice=$(echo "$opts" | awk '{print $1}'| $launcher -p "$2")

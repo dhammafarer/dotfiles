@@ -2,7 +2,7 @@
 
 file=$HOME/dotfiles/config/rofi/themes/shared/colors.base.rasi
 
-launcher="rofi -dmenu -i"
+launcher="rofi -dmenu -i -columns 3"
 
 opts=$(cat $file | sed '/^[\/\*}]/d' | sed '/^$/d')
 

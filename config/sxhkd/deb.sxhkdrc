@@ -42,62 +42,25 @@ Print
 #######################
 
 
-# ~/.dotfiles
-super + s; period
-    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/.dotfiles
-
 # window switcher
-super + s; s
+XF86Tools; s
     rofi -show window
 
-# ~/Containers/Arch/.dotfiles
-super + s; d
-    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/Containers/Arch/.dotfiles
-
-# gtk-3.0/bookmarks.ini
-super + s; f
-    /home/pawel/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
-
-# gtk-3.0/bookmarks.ini
-super + s; b
+# web bookmarks
+XF86Tools; b
     /home/pawel/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
 
+# gtk-3.0/bookmarks.ini
+XF86Tools; f
+    /home/pawel/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
+
 # sxhkd bindings
-super + s; x
+XF86Tools; x
     $HOME/.dmenu/dmenu_sxhkd.sh
 
-# processes
-super + s; p
-    $HOME/.dmenu/dmenu_process.sh
-
-# repositories
-super + s; r
-    $HOME/.dmenu/dmenu_repos.sh $HOME/.repos
-
 # mindmaps
-super + s; m
+XF86Tools; m
     $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps ""
-
-# scripts
-super + s; e
-    $HOME/.dmenu/dmenu_scripts.sh
-
-# colors
-super + s; c
-    $HOME/.dmenu/dmenu_colors.sh
-
-# install modules
-super + s; i
-    $HOME/.dmenu/dmenu_modules.sh $HOME/dotfiles/install/modules "Modules"
-
-#######################
-#### super + space ####
-#######################
-
-# radio
-super + space; r
-    $HOME/.dmenu/dmenu_radio.sh $HOME/.radio
-
 
 #######################
 ### super + Escape ####
@@ -110,3 +73,39 @@ super + space; r
 #######################
 ### super + Delete ####
 #######################
+
+#######################
+#### super + space ####
+#######################
+
+# radio
+#super + space; r
+#    $HOME/.dmenu/dmenu_radio.sh $HOME/.radio
+
+# processes
+super + space; y
+    $HOME/.dmenu/dmenu_process.sh
+
+# repositories
+super + space; r
+    $HOME/.dmenu/dmenu_repos.sh $HOME/.repos
+
+# ~/.dotfiles
+super + space; period
+    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/.dotfiles
+
+# ~/Containers/Arch/.dotfiles
+super + space; d; period
+    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/Containers/Arch/.dotfiles
+
+# colors
+super + space; d; c
+    $HOME/.dmenu/dmenu_colors.sh
+
+# scripts
+super + space; d; e
+    $HOME/.dmenu/dmenu_scripts.sh
+
+# install modules
+super + space; m
+    $HOME/.dmenu/dmenu_modules.sh $HOME/dotfiles/install/modules "Modules"
