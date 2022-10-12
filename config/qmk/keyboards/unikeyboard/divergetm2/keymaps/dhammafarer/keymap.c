@@ -16,26 +16,19 @@
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-enum layer_names {
-    _COLEMAK,
-    NAVIGATION,
-    NUMBERS,
-    PUNCTUATION,
-    SPECIAL,
-    FUNCTIONS
-};
+//enum layer_names {};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-[_COLEMAK] = LAYOUT_ortho_4x12_2x2u(
+[0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-     KC_TAB,     KC_Z,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,       KC_Q,       KC_BSPC,
+     KC_DEL,     KC_Z,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,       KC_Q,       KC_BSPC,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      KC_BSPC,    KC_A,    LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,           KC_K,   RSFT_T(KC_N), RCTL_T(KC_E), LALT_T(KC_I), KC_O,     KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_LSFT,    MO(1),      KC_X,       KC_C,       KC_D,       KC_V,              KC_M,       KC_H,  LT(3,KC_SLSH), LT(4,KC_DOT), LT(5,KC_COMM), KC_ENT,
+     KC_ENT,     LT(1, KC_ESC), KC_X,    KC_C,       KC_D,       KC_V,              KC_M,       KC_H, LT(3,KC_SLSH), LT(4,KC_DOT), LT(5,KC_COMM), KC_ENT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_LALT,    KC_ESC,     KC_LALT,    KC_ESC,     KC_LGUI,                       LT(2,KC_SPC),        KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT
+     KC_LALT,    KC_ESC,     KC_LALT,    KC_ESC,     LGUI_T(KC_TAB),                LT(2,KC_SPC),           KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -98,5 +91,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______,    _______,    _______,    _______,    _______,                       _______,                _______,    _______,   _______,     _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
+};
 
+// SHIFT + BACKSPACE = DELETE
+// Initialize variable holding the binary
+// representation of active modifiers.
+uint8_t mod_state;
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Store the current modifier state in the variable for later reference
+    mod_state = get_mods();
+    switch (keycode) {
+
+    case KC_BSPC:
+        {
+        // Initialize a boolean variable that keeps track
+        // of the delete key status: registered or not?
+        static bool delkey_registered;
+        if (record->event.pressed) {
+            // Detect the activation of either shift keys
+            if (mod_state & MOD_MASK_SHIFT) {
+                // First temporarily canceling both shifts so that
+                // shift isn't applied to the KC_DEL keycode
+                del_mods(MOD_MASK_SHIFT);
+                register_code(KC_DEL);
+                // Update the boolean variable to reflect the status of KC_DEL
+                delkey_registered = true;
+                // Reapplying modifier state so that the held shift key(s)
+                // still work even after having tapped the Backspace/Delete key.
+                set_mods(mod_state);
+                return false;
+            }
+        } else { // on release of KC_BSPC
+            // In case KC_DEL is still being sent even after the release of KC_BSPC
+            if (delkey_registered) {
+                unregister_code(KC_DEL);
+                delkey_registered = false;
+                return false;
+            }
+        }
+        // Let QMK process the KC_BSPC keycode as usual outside of shift
+        return true;
+    }
+
+    }
+    return true;
 };
