@@ -36,7 +36,8 @@
 #define HRM_O RGUI_T(KC_O)
 
 // Layer switching keys
-#define L1_Z LT(1, KC_Z)
+#define L1_Z LT(1,KC_Z)
 #define L3_SLSH LT(3,KC_SLSH)
 #define L4_DOT LT(4,KC_DOT)
 #define L5_COMM LT(5,KC_COMM)
+#define L6_W LT(6,KC_W)
