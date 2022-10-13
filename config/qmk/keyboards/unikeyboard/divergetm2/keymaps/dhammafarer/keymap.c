@@ -257,6 +257,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return true;
 
+    case LT(4,KC_I):
+        if (record->event.pressed) {
+            // Prevent activaction of Layer 2 on jump from n to i
+            if (IS_LAYER_ON(2)) {
+                layer_off(2);
+                tap_code(KC_N);
+                tap_code(KC_I);
+                return false;
+            }
+            // Prevent activaction of Right Control
+            if (get_mods() & MOD_BIT(KC_RCTL)) {
+                unregister_mods(MOD_BIT(KC_RCTL));
+                tap_code(KC_E);
+                tap_code(KC_I);
+                add_mods(MOD_BIT(KC_RCTL));
+                return false;
+            }
+        }
+        return true;
+
     }
     return true;
 };
