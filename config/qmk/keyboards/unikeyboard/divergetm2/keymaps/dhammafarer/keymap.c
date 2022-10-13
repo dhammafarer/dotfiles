@@ -17,13 +17,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-     KC_DEL,     KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,       XXXXXXX,    XXXXXXX,
+     KC_DEL,     KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,       XXXXXXX,    KC_CAPS,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_BSPC,    HRM_A,      HRM_R,      HRM_S,      HRM_T,      KC_G,              KC_K,       HRM_N,      HRM_E,      HRM_I,      HRM_O,      KC_ENT,
+     KC_BSPC,    KC_A,       HRM_R,      HRM_S,      HRM_T,      KC_G,              KC_K,       HRM_N,      HRM_E,      HRM_I,      KC_O,       KC_ENT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      KC_F13,     L1_Z,       KC_X,       KC_C,       KC_D,       KC_V,              KC_M,       KC_H,       L3_SLSH,    L4_DOT,     L5_COMM,    KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_PSCR,    OSL(5),     XXXXXXX,    KC_ESC,     LGUI_T(KC_TAB),                LT(2,KC_SPC),           KC_CAPS,    KC_VOLD,    KC_VOLU,    XXXXXXX
+     KC_PSCR,    OSL(5),     XXXXXXX,    KC_ESC,     LGUI_T(KC_TAB),                LT(2,KC_SPC),           KC_BSPC,    KC_VOLD,    KC_VOLU,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      _______,    _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SPC,            _______,    KC_LPRN,    KC_LCBR,    KC_RCBR,    KC_RPRN,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     _______,    _______,    KC_COPY,    KC_PSTE,    KC_ENT,     KC_PGDN,           _______,    _______,    _______,    _______,    _______,    _______,
+     _______,    _______,    KC_BSPC,    KC_DEL,     KC_ENT,     KC_PGDN,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      QK_BOOT,    _______,    _______,    _______,    _______,                       _______,                _______,    _______,   _______,     _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      _______,    KC_QUES,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     _______,    KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_PLUS,    KC_MINS,           _______,    S(C(KC_TAB)), C(KC_TAB), _______,   _______,    _______,
+     _______,    KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_PLUS,    KC_MINS,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      _______,    _______,    _______,    _______,    _______,                       _______,                _______,    _______,    _______,    _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
@@ -137,30 +137,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-    case RCTL_T(KC_E):
-        if (record->event.pressed && record->tap.count > 0) {
-            if (get_mods() & MOD_BIT(KC_RALT)) {
-                unregister_mods(MOD_BIT(KC_RALT));
-                tap_code(KC_I);
-                tap_code(KC_E);
-                add_mods(MOD_BIT(KC_RALT));
-                return false;
-            }
-        }
-        return true;
-
-    case LCTL_T(KC_S):
-        if (record->event.pressed && record->tap.count > 0) {
-            if (get_mods() & MOD_BIT(KC_LALT)) {
-                unregister_mods(MOD_BIT(KC_LALT));
-                tap_code(KC_R);
-                tap_code(KC_S);
-                add_mods(MOD_BIT(KC_LALT));
-                return false;
-            }
-        }
-        return true;
-
     case RSFT_T(KC_N):
         if (record->event.pressed && record->tap.count > 0) {
             // detect modifier
@@ -185,6 +161,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_S);
                 tap_code(KC_T);
                 add_mods(MOD_BIT(KC_LCTL));
+                return false;
+            }
+        }
+        return true;
+
+    case RCTL_T(KC_E):
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RALT)) {
+                unregister_mods(MOD_BIT(KC_RALT));
+                tap_code(KC_I);
+                tap_code(KC_E);
+                add_mods(MOD_BIT(KC_RALT));
+                return false;
+            }
+        }
+        return true;
+
+    case LCTL_T(KC_S):
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_LALT)) {
+                unregister_mods(MOD_BIT(KC_LALT));
+                tap_code(KC_R);
+                tap_code(KC_S);
+                add_mods(MOD_BIT(KC_LALT));
+                return false;
+            }
+        }
+        return true;
+
+    case KC_O:
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_LALT)) {
+                unregister_mods(MOD_BIT(KC_LALT));
+                tap_code(KC_R);
+                tap_code(KC_S);
+                add_mods(MOD_BIT(KC_LALT));
                 return false;
             }
         }
