@@ -31,6 +31,10 @@ super + shift + l
 super + shift + y
     /home/pawel/.local/bin/rofi-pass --root /home/pawel/.password-store
 
+# window switcher
+super + s
+    rofi -show window
+
 # print screen selection with maim
 Print
     maim -s -u | xclip -selection clipboard -t image/png -i
@@ -38,16 +42,11 @@ Print
 #### End Rofi ####
 
 #######################
-####   super + s   ####
+###  XF86Tools (F13) ##
 #######################
 
-
-# window switcher
-XF86Tools; s
-    rofi -show window
-
 # web bookmarks
-XF86Tools; b
+XF86Tools; s
     /home/pawel/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
 
 # inbox
