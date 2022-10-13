@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
      KC_F13,     L1_Z,       KC_X,       KC_C,       KC_D,       KC_V,              KC_M,       KC_H,       L3_SLSH,    L4_DOT,     L5_COMM,    KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_PSCR,    OSL(5),     XXXXXXX,    KC_TAB,     LGUI_T(KC_ESC),                 LT(2,KC_SPC),           KC_CAPS,    KC_VOLD,    KC_VOLU,    XXXXXXX
+     KC_PSCR,    OSL(5),     XXXXXXX,    KC_ESC,     LGUI_T(KC_TAB),                LT(2,KC_SPC),           KC_CAPS,    KC_VOLD,    KC_VOLU,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -91,43 +91,80 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SHIFT + BACKSPACE = DELETE
 // Initialize variable holding the binary
 // representation of active modifiers.
-uint8_t mod_state;
+//uint8_t mod_state;
+//bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//    // Store the current modifier state in the variable for later reference
+//    mod_state = get_mods();
+//    switch (keycode) {
+//
+//    case KC_BSPC:
+//        {
+//        // Initialize a boolean variable that keeps track
+//        // of the delete key status: registered or not?
+//        static bool delkey_registered;
+//        if (record->event.pressed) {
+//            // Detect the activation of either shift keys
+//            if (mod_state & MOD_MASK_SHIFT) {
+//                // First temporarily canceling both shifts so that
+//                // shift isn't applied to the KC_DEL keycode
+//                del_mods(MOD_MASK_SHIFT);
+//                register_code(KC_DEL);
+//                // Update the boolean variable to reflect the status of KC_DEL
+//                delkey_registered = true;
+//                // Reapplying modifier state so that the held shift key(s)
+//                // still work even after having tapped the Backspace/Delete key.
+//                set_mods(mod_state);
+//                return false;
+//            }
+//        } else { // on release of KC_BSPC
+//            // In case KC_DEL is still being sent even after the release of KC_BSPC
+//            if (delkey_registered) {
+//                unregister_code(KC_DEL);
+//                delkey_registered = false;
+//                return false;
+//            }
+//        }
+//        // Let QMK process the KC_BSPC keycode as usual outside of shift
+//        return true;
+//    }
+//
+//    }
+//    return true;
+//};
+
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // Store the current modifier state in the variable for later reference
-    mod_state = get_mods();
     switch (keycode) {
 
-    case KC_BSPC:
-        {
-        // Initialize a boolean variable that keeps track
-        // of the delete key status: registered or not?
-        static bool delkey_registered;
-        if (record->event.pressed) {
-            // Detect the activation of either shift keys
-            if (mod_state & MOD_MASK_SHIFT) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the KC_DEL keycode
-                del_mods(MOD_MASK_SHIFT);
-                register_code(KC_DEL);
-                // Update the boolean variable to reflect the status of KC_DEL
-                delkey_registered = true;
-                // Reapplying modifier state so that the held shift key(s)
-                // still work even after having tapped the Backspace/Delete key.
-                set_mods(mod_state);
-                return false;
-            }
-        } else { // on release of KC_BSPC
-            // In case KC_DEL is still being sent even after the release of KC_BSPC
-            if (delkey_registered) {
-                unregister_code(KC_DEL);
-                delkey_registered = false;
+    case RSFT_T(KC_N):
+        if (record->event.pressed && record->tap.count > 0) {
+            // detect modifier
+            if (get_mods() & MOD_BIT(KC_RCTL)) {
+                // temporarily disable modifier
+                unregister_mods(MOD_BIT(KC_RCTL));
+                tap_code(KC_E);
+                tap_code(KC_N);
+                // restore the mod state
+                add_mods(MOD_BIT(KC_RCTL));
+                // to prevent QMK from processing the orignal key
                 return false;
             }
         }
-        // Let QMK process the KC_BSPC keycode as usual outside of shift
+         /*else process as usual.*/
         return true;
-    }
 
+    case LSFT_T(KC_T):
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_LCTL)) {
+                unregister_mods(MOD_BIT(KC_LCTL));
+                tap_code(KC_S);
+                tap_code(KC_T);
+                add_mods(MOD_BIT(KC_LCTL));
+                return false;
+            }
+        }
+        return true;
     }
     return true;
 };

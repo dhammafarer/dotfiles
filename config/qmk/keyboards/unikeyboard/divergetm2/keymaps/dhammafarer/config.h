@@ -28,7 +28,7 @@
 #define HRM_A LGUI_T(KC_A)
 #define HRM_R LALT_T(KC_R)
 #define HRM_S LCTL_T(KC_S)
-#define HRM_T RSFT_T(KC_T)
+#define HRM_T LSFT_T(KC_T)
 
 #define HRM_N RSFT_T(KC_N)
 #define HRM_E RCTL_T(KC_E)
