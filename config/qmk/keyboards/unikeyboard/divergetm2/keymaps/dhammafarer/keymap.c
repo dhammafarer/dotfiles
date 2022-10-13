@@ -11,17 +11,28 @@
 
 #include QMK_KEYBOARD_H
 
+enum layer_names {
+  COLEMAK,
+  NAV,     // 1: Navigation
+  NUM,     // 2: Numbers
+  PRG,     // 3: Programming
+  PNC,     // 4: Punctuation
+  FUN,     // 5: Function keys
+  SPC,     // 6: Special characters
+  LHN,     // 7: Left hand navigation
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
      KC_DEL,     KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,       XXXXXXX,    KC_CAPS,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_BSPC,    KC_A,       LT(3,KC_R), HRM_S,     LT(1,KC_T),  KC_G,              KC_K,       LT(2,KC_N), HRM_E,    LT(4,KC_I),   KC_O,       KC_ENT,
+     KC_BSPC,    KC_A,     LT(3,KC_R), LCTL_T(KC_S), LT(1,KC_T), KC_G,              KC_K,     LT(2,KC_N), RCTL_T(KC_E), LT(4,KC_I), KC_O,       KC_ENT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_F13,     LT(7,KC_Z), LALT_T(KC_X), KC_C,       KC_D,       KC_V,            KC_M,       KC_H,       LT(6,KC_SLSH), RALT_T(KC_DOT),  KC_COMM,    KC_QUOT,
+     KC_F13,   LT(7,KC_Z), LALT_T(KC_X), KC_C,       KC_D,       KC_V,              KC_M,       KC_H,  LT(6,KC_SLSH), RALT_T(KC_DOT), KC_COMM,  KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-     KC_PSCR,    OSL(5),     XXXXXXX,    KC_ESC,     LGUI_T(KC_TAB),                LSFT_T(KC_SPC),           KC_BSPC,    KC_VOLD,    KC_VOLU,    XXXXXXX
+     KC_PSCR,    OSL(5),     XXXXXXX,    KC_ESC,     LGUI_T(KC_TAB),                LSFT_T(KC_SPC),         KC_BSPC,    KC_VOLD,    KC_VOLU,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
