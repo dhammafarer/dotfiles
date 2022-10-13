@@ -137,6 +137,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
+    case RCTL_T(KC_E):
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RALT)) {
+                unregister_mods(MOD_BIT(KC_RALT));
+                tap_code(KC_I);
+                tap_code(KC_E);
+                add_mods(MOD_BIT(KC_RALT));
+                return false;
+            }
+        }
+        return true;
+
+    case LCTL_T(KC_S):
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_LALT)) {
+                unregister_mods(MOD_BIT(KC_LALT));
+                tap_code(KC_R);
+                tap_code(KC_S);
+                add_mods(MOD_BIT(KC_LALT));
+                return false;
+            }
+        }
+        return true;
+
     case RSFT_T(KC_N):
         if (record->event.pressed && record->tap.count > 0) {
             // detect modifier
