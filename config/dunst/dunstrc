@@ -31,7 +31,7 @@
 
     # Geometry
     #geometry = "300x5-840+36"
-    geometry = "300x5-1600+36"
+    geometry = "300x5-24+36"
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
