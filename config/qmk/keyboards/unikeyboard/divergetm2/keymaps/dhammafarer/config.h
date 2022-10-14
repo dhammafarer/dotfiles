@@ -18,26 +18,7 @@
 #pragma once
 
 // place overrides here
-//#define PERMISSIVE_HOLD
 #define MASTER_LEFT
 #define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
-
-// home row mod keys
-#define HRM_A LGUI_T(KC_A)
-#define HRM_R LALT_T(KC_R)
-#define HRM_S LCTL_T(KC_S)
-#define HRM_T LSFT_T(KC_T)
-
-#define HRM_N RSFT_T(KC_N)
-#define HRM_E RCTL_T(KC_E)
-#define HRM_I RALT_T(KC_I)
-#define HRM_O RGUI_T(KC_O)
-
-// Layer switching keys
-#define L1_Z LT(1,KC_Z)
-#define L3_SLSH LT(3,KC_SLSH)
-#define L4_DOT LT(4,KC_DOT)
-#define L5_COMM LT(5,KC_COMM)
-#define L6_W LT(6,KC_W)
