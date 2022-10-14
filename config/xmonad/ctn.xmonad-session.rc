@@ -1,5 +1,5 @@
 #!/bin/sh
 
-stalonetray -c ~/.xmonad/stalonetrayrc &
+stalonetray -c ~/.xmonad/stalonetrayrc --icon-size=20 --kludges=force_icons_size &
 
 sxhkd &

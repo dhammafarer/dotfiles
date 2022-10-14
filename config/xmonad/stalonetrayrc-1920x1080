@@ -15,7 +15,7 @@
 # position = display_width - (num_icons * icon_size)
 # position = 3840 - (12 * 23) = 3564
 # Example: geometry 12x1+3564
-geometry 6x1+1800
+geometry 4x1+1840
 icon_size 20
 sticky 1
 window_type dock

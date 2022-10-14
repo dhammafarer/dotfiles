@@ -7,7 +7,7 @@ Config {
     -- right_padding = 12 * 23 = 276
     -- Example: position = TopP 0 276
     --position = TopP 0 240,
-    position = TopP 0 0,
+    position = TopP 0 80,
     --font = "xft:SFNS Display:size=10,FontAwesome:size=10",
     font = "xft:Ubuntu:style=Medium:size=11,Font Awesome 6 Free:style=Solid:size=10,Font Awesome 6 Brands:style=Regular:size=10",
     --font = "xft:ubuntu-10",
