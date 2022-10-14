@@ -36,12 +36,13 @@ Config {
         --Run Com "/home/pawel/.xmonad/bin/cmus-playing" [] "nowplaying" 10,
         --Run Com "/home/pawel/.xmonad/bin/pomo.sh" ["clock"] "pomodoro" 10,
         --Run CatInt 0 "/home/pawel/.elapsed" ["-L","40","-H","80","-h","#EB484F","-l","#5DE489","-n","#f0c674"] 60,
+        Run Locks,
         Run StdinReader
     ],
     sepChar = "*",
     alignSep = "}{",
     --template = "%StdinReader% }{ %multicpu%   %memory%   %eth0%    <fc=#b2b2ff>%volumelevel%</fc>   <fc=#FFFFCC>%date%</fc>"
     --template = "*StdinReader* }{ *multicpu*   *memory*   *disku*        <fc=#687C65>$</fc> <fc=#AAA>*usd*</fc>    <fc=#CC8B00></fc> <fc=#AAA>*btc*</fc>    <fc=#7582C6></fc> <fc=#AAA>*eth*</fc>    <fc=#2384A3></fc> <fc=#AAA>*xrp*</fc>     <fc=#D3D7CF>*date*</fc>"
-    template = "  *StdinReader* }<fc=#D3D7CF>*date*</fc>{*multicpu*     *memory*      <fc=#506d93>*volumelevel*</fc>  "
+    template = "  *StdinReader* }<fc=#D3D7CF>*date*</fc>     <fc=#e96a9d>*locks*</fc>{*multicpu*     *memory*      <fc=#506d93>*volumelevel*</fc>  "
     --template = "*StdinReader* }{ <fc=#AAA>*crypto</fc>  <fc=#AAA>*usd*</fc>         *multicpu*   *memory*   *disku*        <fc=#D3D7CF>*date*</fc>"
 }

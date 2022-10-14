@@ -23,6 +23,11 @@ enum layer_names {
   LHC,     // 8: Left hand only CHARs
 };
 
+// custom key to toggle NUM layer for switch statement
+enum custom_keycodes {
+  T_NUM = SAFE_RANGE
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
@@ -33,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
    LSFT_T(KC_F13), LT(7,KC_Z), LALT_T(KC_X), KC_C,     KC_D,       KC_V,              KC_M,       KC_H,  LT(6,KC_SLSH), RALT_T(KC_DOT), KC_COMM, KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      KC_PSCR,    OSL(5),     XXXXXXX,  LT(8,KC_ESC),    LGUI_T(KC_TAB),                LSFT_T(KC_SPC),      KC_BSPC,    KC_VOLD,    KC_VOLU,    XXXXXXX
+      KC_PSCR,    OSL(5),     T_NUM,  LT(8,KC_ESC),   LGUI_T(KC_TAB),                   LSFT_T(KC_SPC),      KC_BSPC,    KC_VOLD,    KC_VOLU,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -142,6 +147,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 };
 
+void toggle_num_layer(void);
+
+void toggle_num_layer() {
+  if (IS_LAYER_ON(NUM)) {
+    // turn off the layer
+    layer_off(NUM);
+
+    // send f18
+    SEND_STRING(SS_TAP(X_F18));
+  } else {
+    // turn layer on
+    layer_on(NUM);
+
+    // send f17
+    SEND_STRING(SS_TAP(X_F17));
+  }
+}
+
+
 // SHIFT + BACKSPACE = DELETE
 // Initialize variable holding the binary
 // representation of active modifiers.
@@ -149,6 +173,11 @@ uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     mod_state = get_mods();
     switch (keycode) {
+
+      case T_NUM:
+        if (record->event.pressed) toggle_num_layer();
+
+        return false;
 
     case KC_BSPC:
         {

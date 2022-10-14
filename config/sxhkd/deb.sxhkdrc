@@ -124,3 +124,10 @@ super + space; m
 # edit QMK layout modules
 super + space; q
     myedit $HOME/dotfiles/config/qmk/keyboards/unikeyboard/divergetm2/keymaps/dhammafarer/keymap.c
+
+# Notify of layer toggle ON
+XF86Launch8
+    xdotool key Num_Lock
+
+XF86Launch9
+    xdotool key Num_Lock
