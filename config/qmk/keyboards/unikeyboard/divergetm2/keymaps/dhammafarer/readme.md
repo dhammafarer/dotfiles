@@ -1,5 +1,3 @@
-# A default-ish keymap for diverge tm2
+# Colemak-DH with bilateral Home Row Mods
 
-Actually it's a Planck layout, but I needed something for the default. :-D
-
-The 2u spacebars are space when tapped, raise/lower when held.
+Under development
