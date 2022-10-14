@@ -120,3 +120,7 @@ super + space; d; e
 # install modules
 super + space; m
     $HOME/.dmenu/dmenu_modules.sh $HOME/dotfiles/install/modules "Modules"
+
+# edit QMK layout modules
+super + space; q
+    myedit $HOME/dotfiles/config/qmk/keyboards/unikeyboard/divergetm2/keymaps/dhammafarer/keymap.c
