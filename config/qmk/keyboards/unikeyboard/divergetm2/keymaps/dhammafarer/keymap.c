@@ -19,8 +19,8 @@ enum layer_names {
   PNC,     // 4: Punctuation
   FUN,     // 5: Function keys
   SPC,     // 6: Special characters
-  LHN,     // 7: Left hand only navigation
-  LHC,     // 7: Left hand only characters
+  LHN,     // 7: Left hand only NAV
+  LHC,     // 8: Left hand only CHARs
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
