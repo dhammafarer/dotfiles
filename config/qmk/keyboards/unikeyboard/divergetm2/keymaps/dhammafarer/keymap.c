@@ -16,9 +16,9 @@ enum layer_names {
   NAV,     // 1: Navigation
   NUM,     // 2: Numbers
   PRG,     // 3: Programming
-  PNC,     // 4: Punctuation
+  SPC,     // 4: Special characters
   FUN,     // 5: Function keys
-  SPC,     // 6: Special characters
+  PNC,     // 6: Punctuation
   LHN,     // 7: Left hand only NAV
   LHC,     // 8: Left hand only CHARs
 };
@@ -32,13 +32,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-      KC_DEL,      KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,      XXXXXXX,    KC_CAPS,
+      KC_DEL,      KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,              KC_J,       KC_L,       KC_U,       KC_Y,      KC_CAPS,    XXXXXXX,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      KC_BSPC,     KC_A,    LT(3,KC_R), LCTL_T(KC_S), LT(1,KC_T),  KC_G,              KC_K,    LT(2,KC_N), RCTL_T(KC_E), LT(4,KC_I),  KC_O,      KC_ENT,
+      KC_BSPC,     KC_A,    LT(3,KC_R), LCTL_T(KC_S), LT(1,KC_T),  KC_G,              KC_K,    LT(2,KC_N), LT(4,KC_E), LT(6,KC_I),    KC_O,      KC_ENT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      KC_F13,   LT(7,KC_Z), LALT_T(KC_X),  KC_C,   LSFT_T(KC_D),   KC_V,              KC_M,   RSFT_T(KC_H), LT(6,KC_SLSH), RALT_T(KC_DOT), KC_COMM, KC_QUOT,
+      KC_F13,   LT(7,KC_Z), LALT_T(KC_X),  KC_C,   LSFT_T(KC_D),   KC_V,              KC_M,   RSFT_T(KC_H), KC_SLSH, RALT_T(KC_DOT), KC_COMM,    KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      KC_PSCR,    OSL(5),     T_NUM,  LT(8,KC_ESC),   LGUI_T(KC_TAB),                   LSFT_T(KC_SPC),      KC_BSPC,    KC_VOLD,    KC_VOLU,    XXXXXXX
+      KC_PSCR,    OSL(5),     T_NUM,   LT(8,KC_ESC),    LGUI_T(KC_TAB),                 RCTL_T(KC_SPC),      KC_BSPC,    KC_VOLD,    KC_VOLU,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -81,14 +81,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
-// Punctuation
+// Special characters
 [4] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-      _______,    _______,    KC_PIPE,    KC_GRV,     KC_DQUO,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    _______,    KC_DLR,     KC_PERC,    KC_CIRC,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    _______,    KC_SCLN,    KC_QUOT,    KC_COLN,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    KC_QUES,    KC_EXLM,    KC_AT,      KC_HASH,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    _______,    KC_TILD,    KC_BSLS,    KC_COMM,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    KC_PLUS,    KC_AMPR,    KC_ASTR,    KC_MINS,    KC_EQL,            _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
       _______,    _______,    _______,    _______,          _______,                       _______,          _______,    _______,    _______,    _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
@@ -107,14 +107,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
-// Special characters
+// Punctuation
 [6] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-      _______,    _______,    KC_DLR,     KC_PERC,    KC_CIRC,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    _______,    KC_PIPE,    KC_GRV,     KC_DQUO,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    KC_QUES,    KC_EXLM,    KC_AT,      KC_HASH,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    _______,    KC_SCLN,    KC_QUOT,    KC_COLN,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    KC_PLUS,    KC_AMPR,    KC_ASTR,    KC_MINS,    KC_EQL,            _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    _______,    KC_TILD,    KC_BSLS,    KC_COMM,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
       _______,    _______,    _______,    _______,          _______,                       _______,          _______,    _______,    _______,    _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
@@ -210,15 +210,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
     }
 
-    // HOME ROW MOD
-    // Prevent accidental activaction of Right Control
+    // Prevent accidental activation of Layer 6
     case LT(2,KC_N):
-        if (record->event.pressed && record->tap.count > 0) {
-            if (get_mods() & MOD_BIT(KC_RCTL)) {
-                unregister_mods(MOD_BIT(KC_RCTL));
+        if (record->event.pressed) {
+            if (IS_LAYER_ON(4)) {
+                layer_off(4);
                 tap_code(KC_E);
                 tap_code(KC_N);
-                add_mods(MOD_BIT(KC_RCTL));
                 return false;
             }
         }
@@ -257,7 +255,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
 
     // Prevent activation of Layer 2 on outward roll
-    case RCTL_T(KC_E):
+    case LT(4,KC_E):
         if (record->event.pressed) {
             if (IS_LAYER_ON(2)) {
                 layer_off(2);
@@ -267,8 +265,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
 
             // Prevent activaction of Layer 4 on inward roll
-            if (IS_LAYER_ON(4)) {
-                layer_off(4);
+            if (IS_LAYER_ON(6)) {
+                layer_off(6);
                 tap_code(KC_I);
                 tap_code(KC_E);
                 return false;
@@ -291,8 +289,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Prevent activaction of Layer 4 on outward roll
     case KC_O:
         if (record->event.pressed) {
-            if (IS_LAYER_ON(4)) {
-                layer_off(4);
+            if (IS_LAYER_ON(6)) {
+                layer_off(6);
                 tap_code(KC_I);
                 tap_code(KC_O);
                 return false;
@@ -300,7 +298,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return true;
 
-    case LT(4,KC_I):
+    case LT(6,KC_I):
         if (record->event.pressed) {
             // Prevent activaction of Layer 2 on jump from n to i
             if (IS_LAYER_ON(2)) {
@@ -310,11 +308,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             // Prevent activaction of Right Control
-            if (get_mods() & MOD_BIT(KC_RCTL)) {
-                unregister_mods(MOD_BIT(KC_RCTL));
+            if (IS_LAYER_ON(4)) {
+                layer_off(4);
                 tap_code(KC_E);
                 tap_code(KC_I);
-                add_mods(MOD_BIT(KC_RCTL));
                 return false;
             }
         }
