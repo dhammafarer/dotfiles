@@ -224,11 +224,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Prevent accidental activation of Layer 6
     case LT(2,KC_N):
-        if (record->event.pressed) {
-            if (IS_LAYER_ON(4)) {
-                layer_off(4);
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RCTL)) {
+                unregister_mods(MOD_BIT(KC_RCTL));
                 tap_code(KC_E);
                 tap_code(KC_N);
+                add_mods(MOD_BIT(KC_RCTL));
                 return false;
             }
         }
@@ -267,7 +268,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
 
     // Prevent activation of Layer 2 on outward roll
-    case LT(4,KC_E):
+    case RCTL_T(KC_E):
         if (record->event.pressed) {
             if (IS_LAYER_ON(2)) {
                 layer_off(2);
@@ -277,8 +278,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
 
             // Prevent activaction of Layer 4 on inward roll
-            if (IS_LAYER_ON(6)) {
-                layer_off(6);
+            if (IS_LAYER_ON(4)) {
+                layer_off(4);
                 tap_code(KC_I);
                 tap_code(KC_E);
                 return false;
@@ -299,10 +300,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
 
     // Prevent activaction of Layer 4 on outward roll
-    case KC_O:
+    case RSFT_T(KC_O):
         if (record->event.pressed) {
-            if (IS_LAYER_ON(6)) {
-                layer_off(6);
+            if (IS_LAYER_ON(4)) {
+                layer_off(4);
                 tap_code(KC_I);
                 tap_code(KC_O);
                 return false;
@@ -310,7 +311,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return true;
 
-    case LT(6,KC_I):
+    case LT(4,KC_I):
         if (record->event.pressed) {
             // Prevent activaction of Layer 2 on jump from n to i
             if (IS_LAYER_ON(2)) {
@@ -320,10 +321,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             // Prevent activaction of Right Control
-            if (IS_LAYER_ON(4)) {
-                layer_off(4);
+            if (get_mods() & MOD_BIT(KC_RCTL)) {
+                unregister_mods(MOD_BIT(KC_RCTL));
                 tap_code(KC_E);
                 tap_code(KC_I);
+                add_mods(MOD_BIT(KC_RCTL));
                 return false;
             }
         }
