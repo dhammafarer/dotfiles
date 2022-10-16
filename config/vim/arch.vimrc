@@ -121,8 +121,10 @@ set linespace=7
 "---------Settings---END--------------"
 
 "----------------Keys-----------------"
-let mapleader = ","
-let g:mapleader = ","
+"let mapleader = ","
+"let g:mapleader = ","
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
 nmap <leader>w :w!<cr>				"fast saves
 nmap <leader>x :q<cr>				  "fast quit
 nmap <leader>s :saveas		    "save as
