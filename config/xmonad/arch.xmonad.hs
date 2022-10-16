@@ -209,8 +209,7 @@ tabConfig = def {
 ------------------------------------------------------------------------
 -- Key bindings
 --
-myModMask = mod3Mask
---myModMask = mod5Mask
+myModMask = mod4Mask
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
