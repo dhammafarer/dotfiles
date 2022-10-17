@@ -21,6 +21,7 @@ enum layer_names {
   PNC,     // 6: Punctuation
   LHN,     // 7: Left hand only NAV
   LHC,     // 8: Left hand only CHARs
+  AON,     // 9: Always ON top layer in stack
 };
 
 // custom key to toggle NUM layer for switch statement
@@ -29,33 +30,37 @@ enum custom_keycodes {
 };
 
 // mode tap keys
+// RIGHT
 #define HM_A LSFT_T(KC_A)
-#define HM_R LT(3,KC_R)
-#define HM_S LCTL_T(KC_S)
+#define HM_R LT(5,KC_R)
+#define HM_S LT(3,KC_S)
 #define HM_T LT(1,KC_T)
 
 #define HM_Z LT(7,KC_Z)
 #define HM_X LALT_T(KC_X)
+#define HM_D KC_D
 
+// LEFT
 #define HM_N LT(2,KC_N)
-#define HM_E RCTL_T(KC_E)
-#define HM_I LT(4,KC_I)
+#define HM_E LT(4,KC_E)
+#define HM_I LT(6,KC_I)
 #define HM_O RSFT_T(KC_O)
 
-#define HM_U LT(6,KC_U)
+#define HM_F KC_F
+#define HM_U KC_U
 #define HM_DOT RALT_T(KC_DOT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-       KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,      XXXXXXX,           XXXXXXX,     KC_J,       KC_L,       HM_U,       KC_Y,      KC_CAPS,
+       KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,      XXXXXXX,           XXXXXXX,     KC_J,       KC_L,       KC_U,       KC_Y,      KC_CAPS,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        HM_A,       HM_R,       HM_S,       HM_T,       KC_G,      XXXXXXX,           XXXXXXX,     KC_K,       HM_N,       HM_E,       HM_I,       HM_O,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-       HM_Z,       HM_X,       KC_C,       KC_D,       KC_V,      XXXXXXX,           XXXXXXX,     KC_M,       KC_H,      KC_SLSH,    HM_DOT,     KC_COMM,
+       HM_Z,       HM_X,       KC_C,       HM_D,       KC_V,      XXXXXXX,           XXXXXXX,     KC_M,       KC_H,      KC_SLSH,    HM_DOT,     KC_COMM,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      OSL(5),     XXXXXXX,    XXXXXXX,     KC_ESC,       LGUI_T(KC_SPC),               LT(9,KC_SPC),         KC_TAB,     XXXXXXX,    XXXXXXX,    XXXXXXX
+       XXXXXXX,   XXXXXXX,    XXXXXXX, LT(8,KC_ESC),     LGUI_T(KC_BSPC),              RCTL_T(KC_SPC),       KC_ENT,    XXXXXXX,    XXXXXXX,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -64,9 +69,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
       _______,    _______,    _______,    _______,    _______,    _______,           _______,    _______,    KC_HOME,     KC_UP,     KC_END,     _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    _______,    _______,    _______,    _______,    _______,           _______,    KC_VOLU,    KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,
+      _______,    _______,    _______,    _______,    _______,    _______,           _______,    KC_PGUP,    KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    _______,    _______,    _______,    _______,    _______,           _______,    KC_VOLD,    KC_PGUP,    KC_ENT,     KC_PGDN,    _______,
+      _______,    _______,    _______,    _______,    _______,    _______,           _______,    KC_PGDN, S(C(KC_TAB)), C(KC_TAB),   KC_TAB,     _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
       _______,    _______,    _______,    _______,          _______,                       _______,          _______,    _______,    _______,    _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
@@ -114,11 +119,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Function keys
 [5] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-      _______,    KC_F4,      KC_F5,      KC_F6,      KC_F10,    _______,            _______,    _______,    _______,    _______,    _______,    _______,
-// |-----------+-----------+-----------+-----------+----------+--------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    KC_F1,      KC_F2,      KC_F3,      KC_F11,    _______,            _______,    _______,    _______,    _______,    _______,    _______,
-// |-----------+-----------+-----------+-----------+----------+--------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    KC_F7,      KC_F8,      KC_F9,      KC_F12,    _______,            _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    _______,    _______,    _______,    _______,    _______,           _______,    _______,    KC_F4,      KC_F5,      KC_F6,      KC_F10,
+// |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
+      _______,    _______,    _______,    _______,    _______,    _______,           _______,    _______,    KC_F1,      KC_F2,      KC_F3,      KC_F11,
+// |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
+      _______,    _______,    _______,    _______,    _______,    _______,           _______,    _______,    KC_F7,      KC_F8,      KC_F9,      KC_F12,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
       _______,    _______,    _______,    _______,          _______,                       _______,          _______,    _______,    _______,    _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
@@ -133,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
       _______,    KC_TILD,    KC_BSLS,    KC_COMM,    _______,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    _______,    _______,    _______,          _______,                       _______,          _______,    _______,    _______,    _______
+      _______,    _______,    _______,    _______,          KC_VOLD,                      KC_VOLU,          _______,    _______,    _______,    _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -163,13 +168,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // `-----------------------+-----------+-----------+-----------+-----------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
+// Always on keys
 [9] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-      _______,    _______,    KC_COLN,    _______,    _______,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    _______,    KC_COLN,    _______,    _______,    _______,           _______,    _______,    _______,    KC_UP,      _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    _______,    KC_DEL,     KC_ESC,     _______,    _______,           _______,    _______,    KC_ENT,    KC_BSPC,     _______,    _______,
+      _______,    _______,    KC_DEL,     KC_ESC,     _______,    _______,           _______,    _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    _______,    _______,    KC_EXLM,    _______,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
+      _______,    _______,    _______,    KC_EXLM,    _______,    _______,           _______,    _______,    KC_ENT,     _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
       _______,    _______,    _______,    _______,          _______,                       _______,          _______,    _______,    _______,    _______
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
@@ -208,7 +214,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         return false;
 
-    case KC_BSPC:
+    case LGUI_T(KC_BSPC):
         {
         // Initialize a boolean variable that keeps track
         // of the delete key status: registered or not?
@@ -240,32 +246,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     // Prevent accidental activation of Layer 6
-    case LT(2,KC_N):
-        if (record->event.pressed && record->tap.count > 0) {
-            if (get_mods() & MOD_BIT(KC_RCTL)) {
-                unregister_mods(MOD_BIT(KC_RCTL));
+    case HM_N:
+        if (record->event.pressed) {
+            if (IS_LAYER_ON(4)) {
                 tap_code(KC_E);
                 tap_code(KC_N);
-                add_mods(MOD_BIT(KC_RCTL));
                 return false;
             }
         }
         return true;
 
     // Prevent accidenal activation of Left Control
-    case LT(1,KC_T):
-        if (record->event.pressed && record->tap.count > 0) {
-            if (get_mods() & MOD_BIT(KC_LCTL)) {
-                unregister_mods(MOD_BIT(KC_LCTL));
+    case HM_T:
+        if (record->event.pressed) {
+            if (IS_LAYER_ON(3)) {
                 tap_code(KC_S);
                 tap_code(KC_T);
-                add_mods(MOD_BIT(KC_LCTL));
                 return false;
             }
         }
         return true;
 
-    case LCTL_T(KC_S):
+    case HM_S:
         if (record->event.pressed) {
             // Prevent activation of Layer 1 on outward roll
             if (IS_LAYER_ON(1)) {
@@ -275,8 +277,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             // Prevent activaction of Layer 3 on inward roll
-            if (IS_LAYER_ON(3)) {
-                layer_off(3);
+            if (IS_LAYER_ON(5)) {
+                layer_off(5);
                 tap_code(KC_R);
                 tap_code(KC_S);
                 return false;
@@ -285,7 +287,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
 
     // Prevent activation of Layer 2 on outward roll
-    case RCTL_T(KC_E):
+    case HM_E:
         if (record->event.pressed) {
             if (IS_LAYER_ON(2)) {
                 layer_off(2);
@@ -295,8 +297,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
 
             // Prevent activaction of Layer 4 on inward roll
-            if (IS_LAYER_ON(4)) {
-                layer_off(4);
+            if (IS_LAYER_ON(6)) {
+                layer_off(6);
                 tap_code(KC_I);
                 tap_code(KC_E);
                 return false;
@@ -305,10 +307,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
 
     // Prevent activaction of Layer 3 on outward roll
-    case KC_A:
+    case HM_A:
         if (record->event.pressed) {
-            if (IS_LAYER_ON(3)) {
-                layer_off(3);
+            if (IS_LAYER_ON(5)) {
+                layer_off(5);
                 tap_code(KC_R);
                 tap_code(KC_A);
                 return false;
@@ -317,10 +319,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
 
     // Prevent activaction of Layer 4 on outward roll
-    case RSFT_T(KC_O):
+    case HM_O:
         if (record->event.pressed) {
-            if (IS_LAYER_ON(4)) {
-                layer_off(4);
+            if (IS_LAYER_ON(6)) {
+                layer_off(6);
                 tap_code(KC_I);
                 tap_code(KC_O);
                 return false;
@@ -328,7 +330,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return true;
 
-    case LT(4,KC_I):
+    case HM_I:
         if (record->event.pressed) {
             // Prevent activaction of Layer 2 on jump from n to i
             if (IS_LAYER_ON(2)) {
@@ -338,11 +340,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             // Prevent activaction of Right Control
-            if (get_mods() & MOD_BIT(KC_RCTL)) {
-                unregister_mods(MOD_BIT(KC_RCTL));
+            if (IS_LAYER_ON(4)) {
                 tap_code(KC_E);
                 tap_code(KC_I);
-                add_mods(MOD_BIT(KC_RCTL));
                 return false;
             }
         }
