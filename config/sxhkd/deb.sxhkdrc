@@ -32,7 +32,7 @@ super + shift + y
     /home/pawel/.local/bin/rofi-pass --root /home/pawel/.password-store
 
 # window switcher
-super + s
+super + g
     rofi -show window
 
 # print screen selection with maim

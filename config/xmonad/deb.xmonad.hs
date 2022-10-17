@@ -184,10 +184,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Close focused window.
-  , ((modMask, xK_x), kill)
+  , ((modMask, xK_q), kill)
 
   -- Cycle through the available layout algorithms.
-  , ((modMask, xK_g), sendMessage NextLayout)
+  , ((modMask, xK_s), sendMessage NextLayout)
 
   -- Jump to TwoPane
   , ((modMask, xK_j), sendMessage $ JumpToLayout "TwoPane")
@@ -224,7 +224,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_i), sendMessage Expand)
 
   -- Push window back into tiling.
-  , ((modMask, xK_c), withFocused $ windows . W.sink)
+  , ((modMask .|. controlMask, xK_c), withFocused $ windows . W.sink)
 
   -- Next Screen.
   --, ((modMask, xK_space), nextScreen)
@@ -239,7 +239,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 
   -- Move and resize floating window.
-  , ((modMask .|. controlMask, xK_x), withFocused (keysResizeWindow (-1440,-810) (0,1)))
+  --, ((modMask .|. controlMask, xK_x), withFocused (keysResizeWindow (-1440,-810) (0,1)))
 
   -- Increment the number of windows in the master area.
   , ((modMask, xK_comma), sendMessage (IncMasterN 1))
@@ -265,7 +265,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
-    | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf)) ([xK_w, xK_q, xK_f, xK_b, xK_d, xK_p, xK_a] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
+    | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf)) ([xK_w, xK_x, xK_f, xK_c, xK_d, xK_p, xK_a] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
       , (f, m) <- [(W.view, 0), (W.shift, controlMask)]]
 
     where halveHor d i  | d `elem` [L,R] = i - 32

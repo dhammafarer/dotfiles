@@ -28,17 +28,34 @@ enum custom_keycodes {
   T_NUM = SAFE_RANGE
 };
 
+// mode tap keys
+#define HM_A LSFT_T(KC_A)
+#define HM_R LT(3,KC_R)
+#define HM_S LCTL_T(KC_S)
+#define HM_T LT(1,KC_T)
+
+#define HM_Z LT(7,KC_Z)
+#define HM_X LALT_T(KC_X)
+
+#define HM_N LT(2,KC_N)
+#define HM_E RCTL_T(KC_E)
+#define HM_I LT(4,KC_I)
+#define HM_O RSFT_T(KC_O)
+
+#define HM_U LT(6,KC_U)
+#define HM_DOT RALT_T(KC_DOT)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-      KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,       _______,           QK_BOOT,    KC_J,       KC_L,      LT(6,KC_U),  KC_Y,      KC_CAPS,
+       KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,      XXXXXXX,           QK_BOOT,    KC_J,       KC_L,       HM_U,       KC_Y,      KC_CAPS,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      LSFT_T(KC_A), LT(3,KC_R), LCTL_T(KC_S), LT(1,KC_T), KC_G,   _______,           _______,    KC_K,    LT(2,KC_N), RCTL_T(KC_E), LT(4,KC_I), RSFT_T(KC_O),
+       HM_A,       HM_R,       HM_S,       HM_T,       KC_G,      T_NUM,             XXXXXXX,    KC_K,       HM_N,      HM_E,         HM_I,       HM_O,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-    LT(7,KC_Z), LALT_T(KC_X),  KC_C,       KC_D,       KC_V,      _______,           _______,    KC_M,       KC_H,     KC_SLSH,  RALT_T(KC_DOT), XXXXXXX,
+       HM_Z,       HM_X,       KC_C,       KC_D,       KC_V,      XXXXXXX,           XXXXXXX,    KC_M,       KC_H,     KC_SLSH,      HM_DOT,     KC_COMM,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      _______,    OSL(5),     T_NUM,    LGUI_T(KC_ESC),     KC_SPC,                         KC_SPC,       LT(9,KC_TAB),  XXXXXXX,    XXXXXXX,    XXXXXXX
+      OSL(5),     XXXXXXX,    XXXXXXX,  LGUI_T(KC_ESC),     KC_SPC,                       KC_SPC,        LT(9,KC_TAB),   XXXXXXX,    XXXXXXX,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
