@@ -49,13 +49,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-       KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,      XXXXXXX,           QK_BOOT,    KC_J,       KC_L,       HM_U,       KC_Y,      KC_CAPS,
+       KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,      XXXXXXX,           XXXXXXX,     KC_J,       KC_L,       HM_U,       KC_Y,      KC_CAPS,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-       HM_A,       HM_R,       HM_S,       HM_T,       KC_G,      T_NUM,             XXXXXXX,    KC_K,       HM_N,      HM_E,         HM_I,       HM_O,
+       HM_A,       HM_R,       HM_S,       HM_T,       KC_G,      XXXXXXX,           XXXXXXX,     KC_K,       HM_N,       HM_E,       HM_I,       HM_O,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-       HM_Z,       HM_X,       KC_C,       KC_D,       KC_V,      XXXXXXX,           XXXXXXX,    KC_M,       KC_H,     KC_SLSH,      HM_DOT,     KC_COMM,
+       HM_Z,       HM_X,       KC_C,       KC_D,       KC_V,      XXXXXXX,           XXXXXXX,     KC_M,       KC_H,      KC_SLSH,    HM_DOT,     KC_COMM,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      OSL(5),     XXXXXXX,    XXXXXXX,  LGUI_T(KC_ESC),     KC_SPC,                       KC_SPC,        LT(9,KC_TAB),   XXXXXXX,    XXXXXXX,    XXXXXXX
+      OSL(5),     XXXXXXX,    XXXXXXX,     KC_ESC,       LGUI_T(KC_SPC),               LT(9,KC_SPC),         KC_TAB,     XXXXXXX,    XXXXXXX,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
