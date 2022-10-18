@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        HM_Z,       KC_X,       KC_C,       KC_D,       KC_V,      XXXXXXX,           XXXXXXX,     KC_M,       KC_H,      KC_COMM,    KC_DOT,     KC_SLSH,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      XXXXXXX,  XXXXXXX, LT(LHC,KC_ESC), LT(NAV,KC_SPC), LT(MOU,KC_TAB),             LT(SYM,KC_ENT),  LT(NUM,KC_BSPC),LT(FUN,KC_DEL), XXXXXXX,  XXXXXXX
+      XXXXXXX,  XXXXXXX, LT(LHC,KC_TAB), LT(MOU,KC_ESC), LT(NAV,KC_SPC),               LT(NUM,KC_BSPC),  LT(SYM,KC_ENT),LT(FUN,KC_DEL), XXXXXXX,  XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -226,10 +226,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Prevent accidental activation of Layer 6
     case HM_N:
-        if (record->event.pressed) {
-            if (IS_LAYER_ON(4)) {
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RCTL)) {
+                unregister_mods(MOD_BIT(KC_RCTL));
                 tap_code(KC_E);
                 tap_code(KC_N);
+                add_mods(MOD_BIT(KC_RCTL));
                 return false;
             }
         }
@@ -237,29 +239,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Prevent accidenal activation of Left Control
     case HM_T:
-        if (record->event.pressed) {
-            if (IS_LAYER_ON(3)) {
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_LCTL)) {
+                unregister_mods(MOD_BIT(KC_LCTL));
                 tap_code(KC_S);
                 tap_code(KC_T);
+                add_mods(MOD_BIT(KC_LCTL));
                 return false;
             }
         }
         return true;
 
     case HM_S:
-        if (record->event.pressed) {
-            // Prevent activation of Layer 1 on outward roll
-            if (IS_LAYER_ON(1)) {
-                layer_off(1);
-                tap_code(KC_T);
-                tap_code(KC_S);
-                return false;
-            }
-            // Prevent activaction of Layer 3 on inward roll
-            if (IS_LAYER_ON(5)) {
-                layer_off(5);
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_LALT)) {
+                unregister_mods(MOD_BIT(KC_LALT));
                 tap_code(KC_R);
                 tap_code(KC_S);
+                add_mods(MOD_BIT(KC_LALT));
                 return false;
             }
         }
@@ -267,19 +264,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Prevent activation of Layer 2 on outward roll
     case HM_E:
-        if (record->event.pressed) {
-            if (IS_LAYER_ON(2)) {
-                layer_off(2);
-                tap_code(KC_N);
-                tap_code(KC_E);
-                return false;
-            }
-
-            // Prevent activaction of Layer 4 on inward roll
-            if (IS_LAYER_ON(6)) {
-                layer_off(6);
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RSFT)) {
+                unregister_mods(MOD_BIT(KC_RSFT));
                 tap_code(KC_I);
                 tap_code(KC_E);
+                add_mods(MOD_BIT(KC_RSFT));
                 return false;
             }
         }
@@ -310,18 +300,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
 
     case HM_I:
-        if (record->event.pressed) {
-            // Prevent activaction of Layer 2 on jump from n to i
-            if (IS_LAYER_ON(2)) {
-                layer_off(2);
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RGUI)) {
+                unregister_mods(MOD_BIT(KC_RGUI));
                 tap_code(KC_N);
                 tap_code(KC_I);
+                add_mods(MOD_BIT(KC_RGUI));
                 return false;
             }
-            // Prevent activaction of Right Control
-            if (IS_LAYER_ON(4)) {
-                tap_code(KC_E);
+            if (get_mods() & MOD_BIT(KC_RALT)) {
+                unregister_mods(MOD_BIT(KC_RALT));
+                tap_code(KC_O);
                 tap_code(KC_I);
+                add_mods(MOD_BIT(KC_RALT));
                 return false;
             }
         }
