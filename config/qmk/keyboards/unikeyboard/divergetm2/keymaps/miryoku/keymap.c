@@ -193,7 +193,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         return false;
 
-    case LGUI_T(KC_BSPC):
+    case LT(NUM,KC_BSPC):
         {
         // Initialize a boolean variable that keeps track
         // of the delete key status: registered or not?
