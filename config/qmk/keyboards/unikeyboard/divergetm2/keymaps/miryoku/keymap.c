@@ -44,7 +44,7 @@ enum custom_keycodes {
 #define HM_O RALT_T(KC_O)
 
 // Thumb keys
-#define TK_LI RGUI_T(KC_ESC)
+#define TK_LI RGUI_T(KC_TAB)
 #define TK_LC LT(MOU, KC_ESC)
 #define TK_LO LT(NAV, KC_SPC)
 
@@ -56,13 +56,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [COLEMAK] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-       KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,      XXXXXXX,           XXXXXXX,     KC_J,       KC_L,       KC_U,       KC_Y,      XXXXXXX,
+       KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,      XXXXXXX,           XXXXXXX,     KC_J,       KC_L,       KC_U,       KC_Y,      KC_QUOT,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        HM_A,       HM_R,       HM_S,       HM_T,       KC_G,      XXXXXXX,           XXXXXXX,     KC_K,       HM_N,       HM_E,       HM_I,       HM_O,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        HM_Z,       KC_X,       KC_C,       KC_D,       KC_V,      XXXXXXX,           XXXXXXX,     KC_M,       KC_H,      KC_COMM,    KC_DOT,     KC_SLSH,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      XXXXXXX,    XXXXXXX,     TK_LI,      TK_LC,            TK_LO,                         TK_RO,            TK_RC,      TK_RI,     XXXXXXX,    XXXXXXX
+       KC_Q,      XXXXXXX,     TK_LI,      TK_LC,            TK_LO,                         TK_RO,            TK_RC,      TK_RI,     XXXXXXX,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
