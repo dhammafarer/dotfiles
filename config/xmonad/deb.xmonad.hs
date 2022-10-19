@@ -200,9 +200,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Move focus to the next window.
   , ((modMask, xK_t), windows W.focusDown)
+  , ((modMask, xK_n), windows W.focusUp)
 
   -- Move focus to the previous window.
   , ((modMask, xK_r), windows W.focusUp  )
+  , ((modMask, xK_i), windows W.focusDown)
 
   -- Move focus to the master window.
   , ((modMask, xK_k), windows W.focusMaster  )
@@ -217,10 +219,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. controlMask, xK_r), windows W.swapUp    )
 
   -- Shrink the master area.
-  , ((modMask, xK_n), sendMessage Shrink)
+  , ((modMask .|. shiftMask, xK_n), sendMessage Shrink)
 
   -- Expand the master area.
-  , ((modMask, xK_i), sendMessage Expand)
+  , ((modMask .|. shiftMask, xK_i), sendMessage Expand)
 
   -- Push window back into tiling.
   , ((modMask .|. controlMask, xK_c), withFocused $ windows . W.sink)
@@ -230,11 +232,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Gaps bindings
   , ((modMask, xK_z), sendMessage $ ToggleGaps)               -- toggle all gaps
-  , ((modMask .|. controlMask, xK_i), sendMessage $ weakModifyGaps halveHor)  -- halve the left and right-hand gaps
-  , ((modMask .|. controlMask, xK_n), sendMessage $ weakModifyGaps doubleHor)  -- double the left and right-hand gaps
-  , ((modMask .|. controlMask, xK_u), sendMessage $ weakModifyGaps halveVer)  -- halve the up and down gaps
-  , ((modMask .|. controlMask, xK_e), sendMessage $ weakModifyGaps doubleVer)  -- double the up and down gaps
-  , ((modMask .|. controlMask, xK_h), sendMessage $ setGaps [(U,160),(R,434),(L,434),(D,160)]) -- reset the GapSpec
+  , ((modMask .|. controlMask .|. shiftMask, xK_i), sendMessage $ weakModifyGaps halveHor)  -- halve the left and right-hand gaps
+  , ((modMask .|. controlMask .|. shiftMask, xK_n), sendMessage $ weakModifyGaps doubleHor)  -- double the left and right-hand gaps
+  , ((modMask .|. controlMask .|. shiftMask, xK_u), sendMessage $ weakModifyGaps halveVer)  -- halve the up and down gaps
+  , ((modMask .|. controlMask .|. shiftMask, xK_e), sendMessage $ weakModifyGaps doubleVer)  -- double the up and down gaps
+  , ((modMask .|. controlMask .|. shiftMask, xK_h), sendMessage $ setGaps [(U,160),(R,434),(L,434),(D,160)]) -- reset the GapSpec
 
 
   -- Move and resize floating window.
