@@ -26,3 +26,5 @@
 #define PERMISSIVE_HOLD
 
 #define COMBO_COUNT 1
+
+//#define NO_AUTO_SHIFT_ALPHA
