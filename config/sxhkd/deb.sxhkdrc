@@ -24,11 +24,11 @@ button9
 
 #### Start Rofi ####
 # calculator
-super + shift + l
+super + Escape; c
     /home/pawel/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
 # pass
-super + shift + y
+super + Escape; p
     /home/pawel/.local/bin/rofi-pass --root /home/pawel/.password-store
 
 # window switcher

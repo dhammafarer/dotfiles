@@ -11,3 +11,6 @@ Pause; c; p
 
 Pause; c; m
   sleep 0.1; xdotool key BackSpace; sleep 0.01; xdotool type "Curve to mesh"; sleep 0.1; xdotool key Return
+
+alt + space; c; c
+  sleep 0.1; xdotool key BackSpace; sleep 0.01; xdotool type "Curve to mesh"; sleep 0.1; xdotool key Return

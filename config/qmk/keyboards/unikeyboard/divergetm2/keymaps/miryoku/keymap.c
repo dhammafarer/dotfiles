@@ -242,6 +242,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Prevent accidental activation of Layer 6
     case HM_N:
         if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RSFT)) {
+                unregister_mods(MOD_BIT(KC_RSFT));
+                tap_code(KC_N);
+                add_mods(MOD_BIT(KC_RSFT));
+                return false;
+            }
             if (get_mods() & MOD_BIT(KC_RCTL)) {
                 unregister_mods(MOD_BIT(KC_RCTL));
                 tap_code(KC_E);
