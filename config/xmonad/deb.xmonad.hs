@@ -190,8 +190,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_s), sendMessage NextLayout)
 
   -- Jump to TwoPane
-  , ((modMask, xK_j), sendMessage $ JumpToLayout "TwoPane")
-
+  --, ((modMask, xK_j), sendMessage $ JumpToLayout "TwoPane")
 
   --  Reset the layouts on the current workspace to default.
   , ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
@@ -308,7 +307,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 --
 -- > logHook = dynamicLogDzen
 --
-
 
 ------------------------------------------------------------------------
 -- Startup hook

@@ -40,37 +40,40 @@ Print
     maim -s -u | xclip -selection clipboard -t image/png -i
 
 #### End Rofi ####
-
 #######################
-###  XF86Tools (F13) ##
+###  Left Hand Only ###
 #######################
 
 # web bookmarks
-XF86Tools; s
+super + space; s
     /home/pawel/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
 
+# sxhkd bindings
+super + space; x
+    $HOME/.dmenu/dmenu_sxhkd.sh
+
+# gtk-3.0/bookmarks.ini
+super + space; f
+    /home/pawel/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
+
+# repositories
+super + space; r
+    $HOME/.dmenu/dmenu_repos.sh $HOME/.repos
+
 # inbox
-XF86Tools; t; i
+super + space; t; i
     /home/pawel/.dmenu/dmenu_inbox.sh
 
 # inbox
-XF86Tools; t; d
+super + space; t; d
     /home/pawel/.dmenu/dmenu_doing.sh
 
 # inbox
-XF86Tools; t; f
+super + space; t; f
     /home/pawel/.dmenu/dmenu_finished.sh
 
-# gtk-3.0/bookmarks.ini
-XF86Tools; f
-    /home/pawel/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
-
-# sxhkd bindings
-XF86Tools; x
-    $HOME/.dmenu/dmenu_sxhkd.sh
-
 # mindmaps
-XF86Tools; m
+super + space; m
     $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps ""
 
 #######################
@@ -97,10 +100,6 @@ XF86Tools; m
 super + space; y
     $HOME/.dmenu/dmenu_process.sh
 
-# repositories
-super + space; r
-    $HOME/.dmenu/dmenu_repos.sh $HOME/.repos
-
 # ~/.dotfiles
 super + space; period
     $HOME/.dmenu/dmenu_dotfiles.sh $HOME/.dotfiles
@@ -118,7 +117,7 @@ super + space; d; e
     $HOME/.dmenu/dmenu_scripts.sh
 
 # install modules
-super + space; m
+super + space; d; m
     $HOME/.dmenu/dmenu_modules.sh $HOME/dotfiles/install/modules "Modules"
 
 # edit QMK layout modules
