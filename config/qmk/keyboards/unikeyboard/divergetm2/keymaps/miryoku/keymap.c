@@ -43,6 +43,15 @@ enum custom_keycodes {
 #define HM_I RSFT_T(KC_I)
 #define HM_O RALT_T(KC_O)
 
+// Thumb keys
+#define TK_LI RGUI_T(KC_ESC)
+#define TK_LC LT(MOU, KC_ESC)
+#define TK_LO LT(NAV, KC_SPC)
+
+#define TK_RO LT(NUM,KC_BSPC)
+#define TK_RC LT(SYM,KC_ENT)
+#define TK_RI LT(FUN, KC_DEL)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [COLEMAK] = LAYOUT_ortho_4x12_2x2u(
@@ -53,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        HM_Z,       KC_X,       KC_C,       KC_D,       KC_V,      XXXXXXX,           XXXXXXX,     KC_M,       KC_H,      KC_COMM,    KC_DOT,     KC_SLSH,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-      XXXXXXX,  XXXXXXX, LT(LHC,KC_TAB), LT(MOU,KC_ESC), LT(NAV,KC_SPC),               LT(NUM,KC_BSPC),  LT(SYM,KC_ENT),LT(FUN,KC_DEL), XXXXXXX,  XXXXXXX
+      XXXXXXX,    XXXXXXX,     TK_LI,      TK_LC,            TK_LO,                         TK_RO,            TK_RC,      TK_RI,     XXXXXXX,    XXXXXXX
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
@@ -264,6 +273,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Prevent activation of Layer 2 on outward roll
     case HM_E:
+        //if (record->event.pressed && record->tap.count > 0) {
         if (record->event.pressed && record->tap.count > 0) {
             if (get_mods() & MOD_BIT(KC_RSFT)) {
                 unregister_mods(MOD_BIT(KC_RSFT));
@@ -289,11 +299,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // Prevent activaction of Layer 4 on outward roll
     case HM_O:
-        if (record->event.pressed) {
-            if (IS_LAYER_ON(6)) {
-                layer_off(6);
+        if (record->event.pressed && record->tap.count > 0) {
+            if (get_mods() & MOD_BIT(KC_RSFT)) {
+                unregister_mods(MOD_BIT(KC_RSFT));
                 tap_code(KC_I);
                 tap_code(KC_O);
+                add_mods(MOD_BIT(KC_RSFT));
                 return false;
             }
         }

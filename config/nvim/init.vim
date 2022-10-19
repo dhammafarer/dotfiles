@@ -19,7 +19,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'vimwiki/vimwiki'
+"Plugin 'vimwiki/vimwiki'
 Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 Plugin 'vim-scripts/loremipsum'
 Plugin 'danro/rename.vim'

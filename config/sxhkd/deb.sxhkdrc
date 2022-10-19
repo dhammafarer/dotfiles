@@ -123,7 +123,7 @@ super + space; m
 
 # edit QMK layout modules
 super + space; q
-    myedit $HOME/dotfiles/config/qmk/keyboards/unikeyboard/divergetm2/keymaps/dhammafarer/keymap.c
+    myedit $HOME/dotfiles/config/qmk/keyboards/unikeyboard/divergetm2/keymaps/miryoku/keymap.c
 
 # Notify of layer toggle ON
 XF86Launch8
