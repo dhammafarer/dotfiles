@@ -1,6 +1,6 @@
 # guest terminal
 super + Return
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/Containers/Arch
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
 
 # browsers
 super + {_,control} + l
@@ -106,7 +106,7 @@ super + space; period
 
 # ~/Containers/Arch/.dotfiles
 super + space; d; period
-    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/Containers/Arch/.dotfiles
+    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/box/arch/.dotfiles
 
 # colors
 super + space; d; c
@@ -122,8 +122,7 @@ super + space; d; m
 
 # edit QMK layout modules
 super + space; q
-    myedit $HOME/dotfiles/config/qmk/keyboards/unikeyboard/divergetm2/keymaps/miryoku/keymap.c
-
+    myedit $HOME/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/miryoku/keymap.c
 # Notify of layer toggle ON
 XF86Launch8
     xdotool key Num_Lock

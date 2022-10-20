@@ -1,5 +1,6 @@
 # path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+export LC_ALL="en_US.UTF-8"
 
 # disable CTRL-s flow control
 stty -ixon
