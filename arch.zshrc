@@ -277,3 +277,5 @@ gpgconf --launch gpg-agent
 export EDITOR=vim
 
 export FZF_DEFAULT_COMMAND='fd --type f'
+
+neofetch

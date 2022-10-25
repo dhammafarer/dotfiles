@@ -1,10 +1,11 @@
 #!/usr/bin/bash
 
 dotfile=$1
+launcher="mydmenu -sb #ffb05f -i -b"
 
 opts=$(cat $dotfile)
 # Get the file choice
-choice=$(echo "$opts" | awk '{print $1}'| mydmenu -sb "#ffb05f" -i -p 'Edit config file: ')
+choice=$(echo "$opts" | awk '{print $1}'| $launcher -p 'Edit config file: ')
 
 # If selection is empty, exit
 [[ -z "$choice" ]] && { exit 1; }

@@ -30,11 +30,11 @@ alias restart="sudo shutdown -r now"
 alias sn="~/arch-scripts/scripts/shutdown-sequence.sh"
 
 #packages
-alias pacs="pacman-install"
-alias spacs="pacman -Ss"
+alias spacs="pacman-install"
+alias pacs="pacman -Ss"
 alias syu="sudo pacman -Syu"
-alias yays="yay-install"
-alias syays="yay -Ss"
+alias syays="yay-install"
+alias yays="yay -Ss"
 
 # files
 alias link-dotfiles="sh $HOME/dotfiles/scripts/box.arch.link-dotfiles.sh"

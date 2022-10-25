@@ -1,6 +1,9 @@
-# guest terminal
+# guest terminals
 super + Return
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
+
+super + shift + Return
+    xfce4-terminal -e "distrobox enter rocky" --default-working-directory=/home/pawel/box/rocky
 
 # browsers
 super + {_,control} + l
@@ -9,6 +12,14 @@ super + {_,control} + l
 # quit menu
 super + Delete
     $HOME/.dmenu/dmenu_quit.sh
+
+# lock screen
+super + shift + Escape
+    xscreensaver-command -l
+
+# blank screen
+super + control + Escape
+    xscreensaver-command -a
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
@@ -74,7 +85,11 @@ super + space; t; f
 
 # mindmaps
 super + space; m
-    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps ""
+    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+
+# PureRef
+super + space; p
+    QT_SCALE_FACTOR=1.12 PureRef
 
 #######################
 ### super + Escape ####
