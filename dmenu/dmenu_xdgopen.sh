@@ -5,7 +5,7 @@ prompt=$2
 launcher="/$HOME/.local/bin/rofi -dmenu -i"
 #launcher="mydmenu -i -sb #5294e2"
 
-opts=$(ls $1)
+opts=$(ls -t $1)
 
 # Get the file choice
 choice=$(echo "$opts" | awk -F '.' '{print $1}'| $launcher -p "$prompt")

@@ -2,6 +2,9 @@
 super + Return
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
 
+super + BackSpace
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
+
 super + shift + Return
     xfce4-terminal -e "distrobox enter rocky" --default-working-directory=/home/pawel/box/rocky
 
@@ -19,6 +22,10 @@ super + shift + Escape
 
 # blank screen
 super + control + Escape
+    xscreensaver-command -a
+
+# blank screen
+XF86Launch6
     xscreensaver-command -a
 
 # Volume Control
