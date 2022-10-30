@@ -1,12 +1,12 @@
 # guest terminals
 super + Return
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=~/box/arch
 
 super + BackSpace
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=~/box/arch
 
 super + shift + Return
-    xfce4-terminal -e "distrobox enter rocky" --default-working-directory=/home/pawel/box/rocky
+    xfce4-terminal -e "distrobox enter rocky" --default-working-directory=~/box/rocky
 
 # browsers
 super + {_,control} + l
@@ -32,6 +32,9 @@ XF86Launch6
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
+{ button7,button6 }
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+
 # Tab Next
 button8
   xdotool key control+Tab
@@ -43,11 +46,11 @@ button9
 #### Start Rofi ####
 # calculator
 super + Escape; c
-    /home/pawel/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
+    ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
 # pass
 super + Escape; p
-    /home/pawel/.local/bin/rofi-pass --root /home/pawel/.password-store
+    ~/.local/bin/rofi-pass --root ~/.password-store
 
 # window switcher
 super + g
@@ -124,7 +127,7 @@ super + space; y
 
 # ~/.dotfiles
 super + space; period
-    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/.dotfiles
+    ~/.dmenu/dmenu_dotfiles.sh ~/.dotfiles
 
 # ~/Containers/Arch/.dotfiles
 super + space; d; period

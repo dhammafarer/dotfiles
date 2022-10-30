@@ -2,7 +2,7 @@
 
 dir=$1
 prompt=$2
-launcher="/$HOME/.local/bin/rofi -dmenu -i"
+launcher="rofi -dmenu -i"
 #launcher="mydmenu -i -sb #5294e2"
 
 opts=$(ls -t $1)
