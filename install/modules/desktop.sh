@@ -14,15 +14,15 @@ PKGS=(
   # misc
     'hardinfo'
     'mpv'
+    'vlc'
     'nextcloud-desktop'
     'rofi'
     'okular'
     'seahorse'
-    'signal-desktop'
     'xscreensaver'
 )
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    sudo pacman -S "$PKG" --noconfirm --needed
+    sudo apt install -y "$PKG"
 done

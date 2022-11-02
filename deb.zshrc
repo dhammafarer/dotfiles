@@ -67,7 +67,7 @@ plugins=(zsh-autosuggestions zsh-syntax-highlighting git pass autojump)
 
 # User configuration
 
-export PATH="/home/pa/bin:/home/pa/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/pa/.local/bin/:/home/pa/.npm-global/bin/:/home/pa/.xmonad/bin"
+export PATH="/home/pl/bin:/home/pl/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/pl/.local/bin/:/home/pl/.npm-global/bin/:/home/pl/.xmonad/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

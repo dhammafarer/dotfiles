@@ -15,6 +15,9 @@ PKGS=(
     'libghc-xmonad-contrib-dev'
     'feh'
     'dmenu'
+    'rofi'
+    'picom'
+    'sxhkd'
     'xfce4-terminal'
 )
 

@@ -1,18 +1,13 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-sudo mkdir ~/.local/share/fonts
+[[ ! -d ~/.local/share/fonts ]] && mkdir -p ~/.local/share/fonts
 
 cd /tmp
-fonts=(
-"FiraCode"
-"JetBrainsMono"
-)
 
-for font in ${fonts[@]}
-do
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/$font.zip
-    sudo unzip $font.zip -d $HOME/.local/share/fonts/$font/
-    rm $font.zip
-done
+font=fontawesome-free-6.2.0-web
+
+wget https://github.com/FortAwesome/Font-Awesome/releases/download/6.2.0/$font.zip 
+unzip $font.zip -d $HOME/.local/share/fonts/$font/
+rm $font.zip
 
 fc-cache

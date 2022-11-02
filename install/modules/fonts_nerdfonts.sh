@@ -1,6 +1,6 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-sudo mkdir ~/.local/share/fonts
+[[ ! -d ~/.local/share/fonts ]] && mkdir -p ~/.local/share/fonts
 
 cd /tmp
 fonts=(

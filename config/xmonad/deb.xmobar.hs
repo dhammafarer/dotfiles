@@ -28,7 +28,7 @@ Config {
         --Run Network "eth0" ["-t","Net: <rx>, <tx>","-H","200","-L","10","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
         --Run Date "%a %b %_d   %H:%M" "date" 10,
         Run Date "%b %_d   %H:%M" "date" 10,
-        Run Com "/home/pa/dotfiles/config/xmonad/bin/getMasterVolume" [] "volumelevel" 10,
+        Run Com "/home/pl/dotfiles/config/xmonad/bin/getMasterVolume" [] "volumelevel" 10,
         Run Locks,
         Run StdinReader
     ],
