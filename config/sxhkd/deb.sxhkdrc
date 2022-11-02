@@ -1,6 +1,6 @@
 # guest terminals
 super + Return
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
 
 super + BackSpace
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=~/box/arch
@@ -67,7 +67,7 @@ Print
 
 # web bookmarks
 super + space; s
-    /home/pawel/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
+    /home/pl/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
 
 # sxhkd bindings
 super + space; x
@@ -75,7 +75,7 @@ super + space; x
 
 # gtk-3.0/bookmarks.ini
 super + space; f
-    /home/pawel/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
+    /home/pl/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
 
 # repositories
 super + space; r
@@ -83,15 +83,15 @@ super + space; r
 
 # inbox
 super + space; t; i
-    /home/pawel/.dmenu/dmenu_inbox.sh
+    /home/pl/.dmenu/dmenu_inbox.sh
 
 # inbox
 super + space; t; d
-    /home/pawel/.dmenu/dmenu_doing.sh
+    /home/pl/.dmenu/dmenu_doing.sh
 
 # inbox
 super + space; t; f
-    /home/pawel/.dmenu/dmenu_finished.sh
+    /home/pl/.dmenu/dmenu_finished.sh
 
 # mindmaps
 super + space; m

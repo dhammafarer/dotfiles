@@ -19,6 +19,7 @@ PKGS=(
     'ntp'
     'paperkey'
     'pass'
+    'podman'
     'ranger'
     'rsync'
     'unrar'
