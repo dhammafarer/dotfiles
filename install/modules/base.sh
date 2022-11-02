@@ -9,10 +9,10 @@ echo
 
 PKGS=(
     'atool'
+    'autojump'
     'bat'
     'curl'
     'exa'
-    'feh'
     'htop'
     'neofetch'
     'ntfs-3g'
@@ -21,11 +21,8 @@ PKGS=(
     'pass'
     'ranger'
     'rsync'
-    'translate-shell'
     'unrar'
-    'unzip'
     'usbutils'
-    'usbmount'
     'wget'
     'zip'
 )
@@ -35,3 +32,7 @@ for PKG in "${PKGS[@]}"; do
     sudo apt install -y "$PKG"
 done
 
+# ------------------------------------------------------------------------
+
+[[-e ~/.local/bin ]] && mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
