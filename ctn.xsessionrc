@@ -12,6 +12,6 @@ xinput --set-prop "pointer:Razer Razer Basilisk V3" 'libinput Accel Speed' -0.7
 xscreensaver -no-splash &
 
 signal-desktop &
-thunderbird &
 nextcloud &
 goldendict &
+thunderbird &

@@ -1,6 +1,6 @@
 # guest terminals
 super + Return
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=~/box/arch
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pawel/box/arch
 
 super + BackSpace
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=~/box/arch
