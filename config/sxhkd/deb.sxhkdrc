@@ -147,7 +147,7 @@ super + space; d; m
 
 # edit QMK layout modules
 super + space; q
-    myedit $HOME/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/miryoku/keymap.c
+    myedit $HOME/box/arch/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/miryoku/keymap.c
 # Notify of layer toggle ON
 XF86Launch8
     xdotool key Num_Lock

@@ -69,7 +69,7 @@ plugins=(zsh-autosuggestions git pass autojump)
 # User configuration
 
 #export PATH=":/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/pawel/.rvm/bin:/home/pawel/.rvm/bin:/home/pawel/.composer/vendor/bin:/home/pawel/.local/bin/:/home/pawel/.npm-global/bin/:/home/pawel/.xmonad/bin"
-export PATH="/home/pawel/bin:/home/pawel/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/pawel/.local/bin/:/home/pawel/.npm-global/bin/:/home/pawel/.xmonad/bin"
+export PATH="/home/pl/box/arch/bin:/home/pl/box/arch/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/pl/box/arch/.local/bin/:/home/pl/box/arch/.npm-global/bin/:/home/pl/box/arch/.xmonad/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
