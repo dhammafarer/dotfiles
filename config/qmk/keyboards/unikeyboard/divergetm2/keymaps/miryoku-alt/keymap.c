@@ -31,6 +31,7 @@ enum custom_keycodes {
 // mode tap keys
 // LEFT
 #define HM_A LALT_T(KC_A)
+#define HM_Q LALT_T(KC_Q)
 #define HM_R LSFT_T(KC_R)
 #define HM_S LCTL_T(KC_S)
 #define HM_T LGUI_T(KC_T)
@@ -43,6 +44,7 @@ enum custom_keycodes {
 #define HM_E RCTL_T(KC_E)
 #define HM_I RSFT_T(KC_I)
 #define HM_O RALT_T(KC_O)
+#define HM_QUOT RALT_T(KC_QUOT)
 
 #define HM_H LT(SYM,KC_H)
 #define HM_DOT LT(LHN,KC_DOT)
@@ -69,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        KC_VOLD,    HM_M,       HM_H,       KC_COMM,    HM_DOT,    KC_SLSH,            HM_Z,      KC_X,       KC_C,       HM_D,       KC_V,       KC_F14,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-       TK_RO,     TK_RC,      TK_RI,      XXXXXXX,            KC_QUOT,                       KC_Q,            XXXXXXX,    TK_LI,      TK_LC,      TK_LO
+       TK_RO,     TK_RC,      TK_RI,      XXXXXXX,            HM_QUOT,                       HM_Q,            XXXXXXX,    TK_LI,      TK_LC,      TK_LO
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
