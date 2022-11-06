@@ -8,9 +8,9 @@ reboot=""
 log_out=""
 
 declare -a options=(
-"$lock"
 "$poweroff"
 "$reboot"
+"$lock"
 "$log_out"
 )
 
