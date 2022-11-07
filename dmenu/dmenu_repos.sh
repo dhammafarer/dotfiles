@@ -15,4 +15,4 @@ choice=$(echo "$opts" | awk -F '/' '{print $NF}'| mydmenu -i -sb "#e96a9d" -p "O
 # Extract a path based on the choice
 path=$(echo "$opts" | sed 's/file:\/\///'  |awk -F '/' -v re="$choice" '$NF == re {print $0}')
 
-xfce4-terminal -e "distrobox enter arch" --default-working-directory=$path
+xfce4-terminal -e "distrobox enter arch -e 'gitui'" --default-working-directory=$path
