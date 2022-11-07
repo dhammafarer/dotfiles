@@ -3,10 +3,7 @@ super + Return
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
 
 super + BackSpace
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=~/box/arch
-
-super + shift + Return
-    xfce4-terminal -e "distrobox enter rocky" --default-working-directory=~/box/rocky
+    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch 
 
 # browsers
 super + {_,control} + l
