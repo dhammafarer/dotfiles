@@ -161,7 +161,7 @@ alias gatcc="rm -rf .cache"
 alias cpost="curl-post-json"
 
 #ssh
-alias klaasje="ssh -p '437' 'ubuntu@klaasje.ddns.net'"
+alias klaasje="ssh klaasje"
 
 #install
 alias install-vundle="git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
