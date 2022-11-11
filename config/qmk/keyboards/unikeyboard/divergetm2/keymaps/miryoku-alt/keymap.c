@@ -1,4 +1,5 @@
-// Unikeybord / Diverge TM2
+// Unikeybord / Diverge TM2 but flipped around
+// Right Hand                                                                     Left hand
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
 //    _______,    _______,    _______,    _______,    _______,    _______,           _______,    _______,    _______,    _______,    _______,    _______,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
@@ -21,11 +22,6 @@ enum layer_names {
   FUN,     // Function keys
   LHC,     // Left hand only CHARs
   LHN,     // Left hand only NAV
-};
-
-// custom key to toggle NUM layer for switch statement
-enum custom_keycodes {
-  T_NUM = SAFE_RANGE
 };
 
 // mode tap keys
@@ -179,68 +175,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-void toggle_num_layer(void);
-
-void toggle_num_layer() {
-  if (IS_LAYER_ON(NUM)) {
-    // turn off the layer
-    layer_off(NUM);
-
-    // send f18
-    SEND_STRING(SS_TAP(X_F18));
-  } else {
-    // turn layer on
-    layer_on(NUM);
-
-    // send f17
-    SEND_STRING(SS_TAP(X_F17));
-  }
-}
-
-
-// SHIFT + BACKSPACE = DELETE
-// Initialize variable holding the binary
-// representation of active modifiers.
-uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    mod_state = get_mods();
     switch (keycode) {
-
-      case T_NUM:
-        if (record->event.pressed) toggle_num_layer();
-
-        return false;
-
-    case LT(NUM,KC_BSPC):
-        {
-        // Initialize a boolean variable that keeps track
-        // of the delete key status: registered or not?
-        static bool delkey_registered;
-        if (record->event.pressed) {
-            // Detect the activation of either shift keys
-            if (mod_state & MOD_MASK_SHIFT) {
-                // First temporarily canceling both shifts so that
-                // shift isn't applied to the KC_DEL keycode
-                del_mods(MOD_MASK_SHIFT);
-                register_code(KC_DEL);
-                // Update the boolean variable to reflect the status of KC_DEL
-                delkey_registered = true;
-                // Reapplying modifier state so that the held shift key(s)
-                // still work even after having tapped the Backspace/Delete key.
-                set_mods(mod_state);
-                return false;
-            }
-        } else { // on release of KC_BSPC
-            // In case KC_DEL is still being sent even after the release of KC_BSPC
-            if (delkey_registered) {
-                unregister_code(KC_DEL);
-                delkey_registered = false;
-                return false;
-            }
-        }
-        // Let QMK process the KC_BSPC keycode as usual outside of shift
-        return true;
-    }
 
     // Prevent accidental activation of Layer 6
     case HM_N:
@@ -347,13 +283,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 };
-
-bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-  if(IS_RETRO(keycode)) return true;
-  return false;
-}
-
-//const uint16_t PROGMEM test_combo1[] = {KC_A, KC_B, COMBO_END};
-//combo_t key_combos[COMBO_COUNT] = {
-//    COMBO(test_combo1, KC_ESC),
-//};
