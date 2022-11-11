@@ -52,7 +52,7 @@ enum custom_keycodes {
 
 // Thumb Keys
 // (RGUI | Tab), (MOU | Escape), (NAV | Space)
-#define TK_LI RGUI_T(KC_ESC)
+#define TK_LI LT(LHC, KC_ESC)
 #define TK_LC LT(NAV, KC_SPC)
 #define TK_LO LT(MOU, KC_TAB)
 
@@ -165,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 // Left hand only: mirror of right hand characters
-[MED] = LAYOUT_ortho_4x12_2x2u(
+[LHC] = LAYOUT_ortho_4x12_2x2u(
 // ,-----------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
       _______,    _______,    _______,    _______,    _______,    _______,        _______,     KC_Y,       KC_U,       KC_L,       KC_J,      _______,
 // |------------+-----------+-----------+-----------+-----------+-----------|    |----------+-----------+-----------+-----------+-----------+-----------|
