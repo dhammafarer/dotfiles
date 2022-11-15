@@ -5,6 +5,10 @@ super + Return
 super + BackSpace
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
 
+# ssh rocky8
+super + shift + Return
+    xfce4-terminal -e "ssh rocky8"
+
 # browsers
 super + {_,control} + l
     {firefox,chromium}
