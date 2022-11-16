@@ -1,13 +1,14 @@
 # guest terminals
-super + Return
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
-
 super + BackSpace
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
 
-# ssh rocky8
-super + shift + Return
-    xfce4-terminal -e "ssh rocky8"
+# ssh to server1
+super + shift + BackSpace; 1
+    xfce4-terminal -e "ssh server1" --default-working-directory=/home/pl/vagrant/rocky8
+
+# ssh to server2
+super + shift + BackSpace; 2
+    xfce4-terminal -e "ssh server2" --default-working-directory=/home/pl/vagrant/rocky8
 
 # browsers
 super + {_,control} + l

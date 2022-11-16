@@ -174,7 +174,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Start a terminal.
-  [ ((modMask .|. controlMask, xK_Return), spawn $ XMonad.terminal conf)
+  [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
 
   -- Start a launcher.
   , ((modMask, xK_v), spawn myLauncher)
