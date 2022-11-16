@@ -4,11 +4,11 @@ super + BackSpace
 
 # ssh to server1
 super + shift + BackSpace; 1
-    xfce4-terminal -e "ssh server1" --default-working-directory=/home/pl/vagrant/rocky8
+    xfce4-terminal -e "vagrant ssh server1" --default-working-directory=/home/pl/vagrant/rocky8
 
 # ssh to server2
 super + shift + BackSpace; 2
-    xfce4-terminal -e "ssh server2" --default-working-directory=/home/pl/vagrant/rocky8
+    xfce4-terminal -e "vagrant ssh server2" --default-working-directory=/home/pl/vagrant/rocky8
 
 # browsers
 super + {_,control} + l
