@@ -6,6 +6,10 @@ super + BackSpace
 super + shift + BackSpace; {0,1,2}
     xfce4-terminal -e "vagrant ssh server{0,1,2}" --default-working-directory=/home/pl/vagrant/rocky8
 
+# ssh to klaasje
+super + shift + BackSpace; k
+    xfce4-terminal -e "ssh klaasje"
+
 # browsers
 super + {_,control} + l
     {firefox,chromium}
