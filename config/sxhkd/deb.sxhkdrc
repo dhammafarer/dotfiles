@@ -3,12 +3,8 @@ super + BackSpace
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
 
 # ssh to server1
-super + shift + BackSpace; 1
-    xfce4-terminal -e "vagrant ssh server1" --default-working-directory=/home/pl/vagrant/rocky8
-
-# ssh to server2
-super + shift + BackSpace; 2
-    xfce4-terminal -e "vagrant ssh server2" --default-working-directory=/home/pl/vagrant/rocky8
+super + shift + BackSpace; {0,1,2}
+    xfce4-terminal -e "vagrant ssh server{0,1,2}" --default-working-directory=/home/pl/vagrant/rocky8
 
 # browsers
 super + {_,control} + l
@@ -96,7 +92,7 @@ super + space; t; f
     /home/pl/.dmenu/dmenu_finished.sh
 
 # mindmaps
-super + space; k
+super + space; m
     $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
 # PureRef
