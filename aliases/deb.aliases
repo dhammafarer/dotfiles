@@ -278,3 +278,4 @@ alias ct="cargo test"
 #debian
 alias as="apt search --names-only"
 alias sas="sudo apt install"
+alias suu="sudo apt update && sudo apt upgrade -y"
