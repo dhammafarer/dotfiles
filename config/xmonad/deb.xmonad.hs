@@ -62,7 +62,7 @@ tabConfig = def {
 
 ------------------------------------------------------------------------
 -- Terminal and Launcher
-myTerminal = "xfce4-terminal -T 'DEBIAN TERMINAL'"
+myTerminal = "xfce4-terminal -T 'HOST TERMINAL'"
 myLauncher = "dmenu_run -i -nb '" ++ bgcolor ++ "' -sb '" ++ green2 ++ "' -sf '" ++ bgcolor ++ "' -fn 'Ubuntu 11'"
 
 -- location of mobar config

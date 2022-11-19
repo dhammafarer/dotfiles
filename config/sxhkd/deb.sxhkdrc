@@ -58,6 +58,10 @@ super + Escape; p
 super + g
     rofi -show window
 
+# ssh launcher
+super + shift + Return
+    rofi -show ssh
+
 # print screen selection with maim
 Print
     maim -s -u | xclip -selection clipboard -t image/png -i

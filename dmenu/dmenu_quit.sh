@@ -29,9 +29,9 @@ case "$choice" in
     [[ "$confirm" == "yes" ]] && { systemctl reboot; }
 	;;
 	"$poweroff")
-    confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Conifrm")
-
-    [[ "$confirm" == "yes" ]] && { systemctl poweroff; }
+    #confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Conifrm")
+    #[[ "$confirm" == "yes" ]] && { systemctl poweroff; }
+    systemctl poweroff;
 	;;
 	"$log_out")
     confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Confirm")
