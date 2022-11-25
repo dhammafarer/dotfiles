@@ -2,7 +2,7 @@
 	email = pawel.lisewski@tuta.io
 	name = Pawel Lisewski
 [core]
-	editor = /usr/sbin/vim
+	editor = /usr/sbin/nvim
 	excludesfile = /home/pawel/.gitignore
 [pull]
 	rebase = false
