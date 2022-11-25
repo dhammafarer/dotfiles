@@ -228,7 +228,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_i), sendMessage Expand)
 
   -- Push window back into tiling.
-  , ((modMask .|. controlMask, xK_c), withFocused $ windows . W.sink)
+  , ((modMask .|. controlMask, xK_z), withFocused $ windows . W.sink)
 
   -- Next Screen.
   --, ((modMask, xK_space), nextScreen)
