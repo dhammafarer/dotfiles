@@ -30,6 +30,14 @@ super + control + Escape
 XF86Launch6
     xscreensaver-command -a
 
+# rofi-calc
+XF86Launch5
+    ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
+
+# rofi-pass
+XF86Tools
+    ~/.local/bin/rofi-pass --root ~/.password-store
+
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
