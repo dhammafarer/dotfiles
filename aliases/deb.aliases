@@ -145,8 +145,10 @@ alias gpom="git push -u origin main"
 alias gpul="git pull origin main"
 alias gpod="git push -u origin dev"
 alias gcr="git-create-repo"
+alias gpa="git remote | xargs -L1 git push --all"
 
 # Pass
+alias pgpa="pass git remote | xargs -L1 pass git push --all"
 alias pgpom="pass git push -u origin master"
 alias pgpul="pass git pull origin master"
 alias pgen="pgpul && pass generate -c"
@@ -279,3 +281,7 @@ alias ct="cargo test"
 alias as="apt search --names-only"
 alias sas="sudo apt install"
 alias suu="sudo apt update && sudo apt upgrade -y"
+
+# systemd
+alias sc="systemctl status"
+alias scu="systemctl status --user"
