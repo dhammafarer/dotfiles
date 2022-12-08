@@ -30,6 +30,10 @@ super + control + Escape
 XF86Launch6
     xscreensaver-command -a
 
+# blank screen
+XF86Launch7
+    xscreensaver-command -a
+
 # rofi-calc
 XF86Launch5
     ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort

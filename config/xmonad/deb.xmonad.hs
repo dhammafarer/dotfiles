@@ -81,7 +81,7 @@ media    = "\xf1fc"
 win      = "\xf17a"
 tablet   = "\xf26c"
 
-myWorkspaces = [code,tablet,web,comm,media,design,win]
+myWorkspaces = [code,win,web,comm,media,design,tablet]
 
 
 ------------------------------------------------------------------------
@@ -105,6 +105,7 @@ myManageHook = composeAll
     , className =? "MPlayer"             --> doFloat
     , className =? "VirtualBox Manager"  --> doShift win
     , className =? "Qemu-system-x86_64"  --> doShift win
+    , className =? "Virt-viewer"         --> doShift win
     , className =? "krita"               --> doShift tablet
     , className =? "Steam"               --> doShift tablet
     , className =? "tutanota-desktop"    --> doShift tablet
@@ -153,13 +154,14 @@ gt2t = avoidStruts (
 
 --fsf= noBorders (fullscreenFull Full) ||| tabbedBottom shrinkText tabConfig
 fsf= noBorders (tabbedBottom shrinkText tabConfig)
+fs= noBorders (fullscreenFull Full)
 
 myLayout = onWorkspace code gaps_tab_tall
            $ onWorkspace tablet fsf
            $ onWorkspace comm gt2t
            $ onWorkspace media fsf
            $ onWorkspace design ft
-           $ onWorkspace win fsf
+           $ onWorkspace win fs
            $ onWorkspace web gaps_tab_tall
            l0
 

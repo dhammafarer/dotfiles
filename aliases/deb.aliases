@@ -1,21 +1,5 @@
 #!/bin/sh
 
-yay-install () {
-  yay -Syu $@ && xmonad --recompile
-}
-
-pacman-install () {
-  sudo pacman -Syu $@
-}
-
-shutdown-sequence () {
-  shutdown now
-}
-
-reboot-sequence () {
-  systemctl reboot
-}
-
 # commands=
 alias cat="bat"
 alias l="exa --group-directories-first"
@@ -26,62 +10,15 @@ alias ll="exa -l --group-directories-first"
 alias llt="exa -l -T -L 3 --group-directories-first"
 alias lll="exa -la --group-directories-first"
 alias chx="chmod +x"
-alias xmp="xmodmap ~/.Xmodmap"
 alias cbi="xclip -selection clipboard -t image/png -o > /tmp/\"$(date +%Y-%m-%d_%T).png\""
-alias gu="gitui"
-alias restart-sxhkd="pkill -USR1 -x sxhkd"
-
-#system
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias ukr="sudo pacman -S archlinux-keyring"
-alias sn="shutdown-sequence"
-alias reboot="reboot-sequence"
-
-#packages
-alias pacs="pacman-install"
-alias spacs="pacman -Ss"
-alias syu="sudo pacman -Syu && xmonad --recompile"
-alias yays="yay-install"
-alias syays="yay -Ss"
 
 # files
 alias link-dotfiles="sh $HOME/dotfiles/scripts/deb.link-dotfiles.sh"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias aliases="vim ~/.aliases"
-alias xres="vim ~/.Xresources"
-alias zshrc="vim ~/.zshrc"
-alias history="vim ~/.zsh_history"
-alias vimrc="vim ~/.vimrc"
-alias gvimrc="im ~/.gvimrc"
-alias diary='/usr/bin/gvim -geometry 80x10+600+400 -c "VimwikiMakeDiaryNote" + -c "DiaryTime"'
-alias xmrc="vim ~/.xmonad/xmonad.hs"
-alias xmbrc="vim ~/.xmonad/xmobar.hs"
-alias xsession="vim ~/.xsessionrc"
-alias xmsession="vim ~/.xmonad/xmonad-session-rc"
-alias xmautostart="vim ~/.xmonad/autostart.sh"
-alias theme="vim ~/.xres/themes/arc"
-alias cptheme="cat ~/arch-scripts/dotfiles/.xres/themes/arc | ctc"
-alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc"
-
-# directories
-alias as="cd ~/arch-scripts"
-alias us="cd ~/.vim/UltiSnips"
-
-# snippets
-alias snh="cd ~/.vim/UltiSnips && vim ./haskell.snippets"
-alias snr="cd ~/.vim/UltiSnips && vim ./rust.snippets"
-alias snt="cd ~/.vim/UltiSnips && vim ./typescript.snippets"
 
 #vagrant
 alias vu="vagrant up"
 alias vh="vagrant halt"
 alias vs="vagrant ssh"
-
-# Navigation
-alias code="cd ~/Code"
-alias docs="cd ~/Documents"
-alias down="cd ~/Downloads"
-alias xd="xo ."
 
 # Git Stuff
 git-clone-repo() {
@@ -149,18 +86,14 @@ alias gpa="git remote | xargs -L1 git push --all"
 
 # Pass
 alias pgpa="pass git remote | xargs -L1 pass git push --all"
+alias pgpula="pass git remote | xargs -L1 pass git pull"
 alias pgpom="pass git push -u origin master"
 alias pgpul="pass git pull origin master"
 alias pgen="pgpul && pass generate -c"
 
-# working files and directories
-alias snip="us && vim ."
-
 #applications
 alias vi="vim"
 alias rgr="ranger"
-alias pomo="/home/pawel/.xmonad/bin/pomo.sh"
-alias rsf="pkill -USR1 redshift"
 alias xo="xdg-open"
 alias pc="pass -c"
 alias tmpw="cd /tmp; wget "
@@ -171,35 +104,14 @@ alias cdc="pwd | xclip"
 alias gi="grep -i"
 alias vpi="vim +PluginInstall +qall"
 
-# ~/Apps
-alias bike-weather="curl 'wttr.in/{Neihu,Dazhi,Beitou}?1'"
-
 #samba
 alias mnas="sudo mount -t cifs //192.168.7.30/市場行銷部/pawel /mnt/nas -o username=pawel,password=abcd1234,workgroup=workgroup,iocharset=utf8,uid=pawel,gid=users"
 alias unas="sudo umount /mnt/nas"
 
-##development
-#js
-alias ni="npm init -y"
-alias ns="npmInstallSave"
-alias nsd="npmInstallSaveDev"
-alias nrd="npm run develop"
-
-#gatsby
-alias gatcc="rm -rf .cache"
-
-#curl
-alias cpost="curl-post-json"
-
-#ssh
-alias klaasje="ssh -p '437' 'ubuntu@klaasje.ddns.net'"
-
-#install
-alias install-vundle="git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
-
 #Huion
 alias h0off="xrandr --output HDMI-0 --off"
 alias dp5h0="xrandr --output DP-5 --auto --primary --output HDMI-0 --auto --below DP-5"
+
 huion () {
  ~/arch-scripts/dotfiles/$HUION
 }
@@ -208,58 +120,8 @@ huion () {
 alias dp5="xrandr --output DP-5 --auto --primary --output HDMI-0 --off"
 alias hdmi0="xrandr --output DP-5 --off --output HDMI-0 --auto --primary"
 
-#xmonad
-alias xmr="xmonad --recompile"
-alias xmrr="xmonad --recompile && xmonad --restart"
-
-#utilities
-alias gen-pass="pwgen -ysBv 20 1 | ctc"
-alias gen-login="pwgen -sBv 15 1 | ctc"
-
-#radio
-alias radio="pyradio -s stations -p 1 -d"
-alias soma="pyradio -s soma -p 2 -d"
-alias sds="pyradio -s soma -p 1 -d"
-alias neoradio="pyradio -p 6 -d"
-alias jazz="pyradio -s jazz -p 1 -d"
-alias chilli="pyradio -s jazz -p 2 -d"
-
-#luks
-sdblack-mount () {
-  sudo cryptsetup luksOpen /dev/disk/by-uuid/e12eabad-b491-456e-a720-90a91700aa76 sdblack
-  sudo mount /dev/mapper/sdblack /mnt/sdblack
-}
-
-sdblack-umount () {
-  sudo umount /mnt/sdblack
-  sudo cryptsetup luksClose sdblack
-}
-
-sd-mount () {
-  name=$1
-  uuid=$2
-
-  sudo cryptsetup luksOpen /dev/disk/by-uuid/$uuid $name
-  sudo mount /dev/mapper/$name /mnt/$name
-}
-
-sd-umount () {
-  name=$1
-  sudo umount /mnt/$name
-  sudo cryptsetup luksClose $name
-}
-
-alias mount-sdwhite="sd-mount sdwhite 15e629c1-87d8-4380-a49e-f7e52145da79"
-alias umount-sdwhite="sd-umount sdwhite"
-
-alias mkeys="sdblack-mount"
-alias umkeys="sdblack-umount"
-
 alias mtmedia="sshfs ubuntu@klaasje.ddns.net:/mnt/external/media ~/mnt/media -C -p 437"
 alias mtphotos="sshfs ubuntu@klaasje.ddns.net:/mnt/external/data/photos ~/mnt/photos -C -p 437"
-
-alias slo="ykman otp calculate -T 1 | ctc"
-alias sdr="sudo systemctl daemon-reload"
 
 restart-pcscd () {
   sudo systemctl stop pcscd.socket
@@ -267,21 +129,15 @@ restart-pcscd () {
   gpg-connect-agent updatestartuptty /bye > /dev/null
 }
 
-getjson () {
-  curl -s $1 | jq $2
-}
-
-#cargo
-alias cr="cargo run"
-alias crw="cargo watch -x run"
-alias cb="cargo build"
-alias ct="cargo test"
-
 #debian
 alias as="apt search --names-only"
 alias sas="sudo apt install"
 alias suu="sudo apt update && sudo apt upgrade -y"
 
 # systemd
-alias sc="systemctl status"
-alias scu="systemctl status --user"
+alias sc="systemctl"
+alias scu="systemctl --user"
+alias scs="sudo systemctl start"
+alias scr="sudo systemctl restart"
+alias scst="sudo systemctl stop"
+alias scdr="sudo systemctl daemon-reload"
