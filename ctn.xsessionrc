@@ -4,6 +4,8 @@ xsetroot -cursor_name left_ptr &
 
 feh --bg-fill $HOME/.background-image &
 
+#export PATH="/home/pl/bin:/home/pl/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/pl/.local/bin/:/home/pl/.npm-global/bin/:/home/pl/.xmonad/bin"
+
 #setxkbmap -option compose:caps
 #xmodmap ~/.Xmodmap
 
