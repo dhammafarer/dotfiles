@@ -1,6 +1,28 @@
 #!/bin/sh
 
-# commands=
+########################
+#         apt          #
+########################
+
+alias as="apt search --names-only"
+alias sas="sudo apt install"
+alias suu="sudo apt update && sudo apt upgrade -y"
+
+########################
+#        apps          #
+########################
+
+alias vi="vim"
+alias rgr="ranger"
+alias xo="xdg-open"
+alias pc="pass -c"
+alias tmpw="cd /tmp; wget "
+alias ctc="xclip -selection clipboard"
+alias cx="xclip"
+alias vx="xclip -o"
+alias cdc="pwd | xclip"
+alias gi="grep -i"
+alias vpi="vim +PluginInstall +qall"
 alias cat="bat"
 alias l="exa --group-directories-first"
 alias lt="exa -T -L 3 --group-directories-first"
@@ -15,12 +37,10 @@ alias cbi="xclip -selection clipboard -t image/png -o > /tmp/\"$(date +%Y-%m-%d_
 # files
 alias link-dotfiles="sh $HOME/dotfiles/scripts/deb.link-dotfiles.sh"
 
-#vagrant
-alias vu="vagrant up"
-alias vh="vagrant halt"
-alias vs="vagrant ssh"
+#######################
+#         git          #
+########################
 
-# Git Stuff
 git-clone-repo() {
   git clone https://github.com/$1
 }
@@ -84,44 +104,43 @@ alias gpod="git push -u origin dev"
 alias gcr="git-create-repo"
 alias gpa="git remote | xargs -L1 git push --all"
 
-# Pass
+########################
+#        pass          #
+########################
+
 alias pgpa="pass git remote | xargs -L1 pass git push --all"
 alias pgpula="pass git remote | xargs -L1 pass git pull"
 alias pgpom="pass git push -u origin master"
 alias pgpul="pass git pull origin master"
 alias pgen="pgpul && pass generate -c"
 
-#applications
-alias vi="vim"
-alias rgr="ranger"
-alias xo="xdg-open"
-alias pc="pass -c"
-alias tmpw="cd /tmp; wget "
-alias ctc="xclip -selection clipboard"
-alias cx="xclip"
-alias vx="xclip -o"
-alias cdc="pwd | xclip"
-alias gi="grep -i"
-alias vpi="vim +PluginInstall +qall"
+########################
+#       mounts         #
+########################
 
 #samba
 alias mnas="sudo mount -t cifs //192.168.7.30/市場行銷部/pawel /mnt/nas -o username=pawel,password=abcd1234,workgroup=workgroup,iocharset=utf8,uid=pawel,gid=users"
 alias unas="sudo umount /mnt/nas"
 
+#sshfs
+alias mtmedia="sshfs ubuntu@klaasje.ddns.net:/mnt/external/media ~/mnt/media -C -p 437"
+alias mtphotos="sshfs ubuntu@klaasje.ddns.net:/mnt/external/data/photos ~/mnt/photos -C -p 437"
+
+########################
+#       xrandr         #
+########################
+
+alias dp5="xrandr --output DP-5 --auto --primary --output HDMI-0 --off"
+alias hdmi0="xrandr --output DP-5 --off --output HDMI-0 --auto --primary"
+
 #Huion
 alias h0off="xrandr --output HDMI-0 --off"
 alias dp5h0="xrandr --output DP-5 --auto --primary --output HDMI-0 --auto --below DP-5"
 
-huion () {
- ~/arch-scripts/dotfiles/$HUION
-}
 
-#xrandr
-alias dp5="xrandr --output DP-5 --auto --primary --output HDMI-0 --off"
-alias hdmi0="xrandr --output DP-5 --off --output HDMI-0 --auto --primary"
-
-alias mtmedia="sshfs ubuntu@klaasje.ddns.net:/mnt/external/media ~/mnt/media -C -p 437"
-alias mtphotos="sshfs ubuntu@klaasje.ddns.net:/mnt/external/data/photos ~/mnt/photos -C -p 437"
+########################
+#      systemctl       #
+########################
 
 restart-pcscd () {
   sudo systemctl stop pcscd.socket
@@ -129,12 +148,6 @@ restart-pcscd () {
   gpg-connect-agent updatestartuptty /bye > /dev/null
 }
 
-#debian
-alias as="apt search --names-only"
-alias sas="sudo apt install"
-alias suu="sudo apt update && sudo apt upgrade -y"
-
-# systemd
 alias sc="systemctl"
 alias scu="systemctl --user"
 alias scs="sudo systemctl start"

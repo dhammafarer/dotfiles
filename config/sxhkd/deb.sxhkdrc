@@ -70,7 +70,7 @@ super + Escape; p
 super + n
     rofi -show window
 
-super + alt + Tab
+super + alt + space
     rofi -show window
 
 # ssh launcher
