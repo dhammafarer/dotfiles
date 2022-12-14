@@ -179,7 +179,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
 
   -- Start a launcher.
-  , ((modMask, xK_v), spawn myLauncher)
+  , ((modMask, xK_t), spawn myLauncher)
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
@@ -201,15 +201,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_y), refresh)
 
   -- Previous workspace
-  , ((modMask, xK_Tab), toggleWS)
+  , ((modMask, xK_i), toggleWS)
 
   -- Move focus to the next window.
-  , ((modMask, xK_t), windows W.focusDown)
-  , ((modMask, xK_n), windows W.focusUp)
+  , ((modMask .|. controlMask, xK_Tab), windows W.focusUp)
 
   -- Move focus to the previous window.
-  , ((modMask, xK_r), windows W.focusUp  )
-  , ((modMask, xK_i), windows W.focusDown)
+  , ((modMask, xK_Tab), windows W.focusDown)
 
   -- Move focus to the master window.
   , ((modMask, xK_k), windows W.focusMaster  )
@@ -218,10 +216,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_v), windows W.swapMaster)
 
   -- Swap the focused window with the next window.
-  , ((modMask .|. controlMask, xK_t), windows W.swapDown  )
+  , ((modMask .|. shiftMask, xK_Tab), windows W.swapDown)
 
   -- Swap the focused window with the previous window.
-  , ((modMask .|. controlMask, xK_r), windows W.swapUp    )
+  , ((modMask .|. shiftMask .|. controlMask, xK_Tab), windows W.swapUp)
 
   -- Shrink the master area.
   , ((modMask .|. shiftMask, xK_n), sendMessage Shrink)
@@ -271,7 +269,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
-    | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf)) ([xK_w, xK_x, xK_f, xK_a, xK_d, xK_p, xK_c] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
+    | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf)) ([xK_w, xK_x, xK_f, xK_a, xK_d, xK_r, xK_c] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
       , (f, m) <- [(W.view, 0), (W.shift, controlMask)]]
 
     where halveHor d i  | d `elem` [L,R] = i - 32

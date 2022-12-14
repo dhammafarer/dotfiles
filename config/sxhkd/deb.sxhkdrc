@@ -60,14 +60,14 @@ button9
 #### Start Rofi ####
 # calculator
 super + Escape; c
-    ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
+    rofi -show drun -modi drun
 
 # pass
 super + Escape; p
     ~/.local/bin/rofi-pass --root ~/.password-store
 
 # window switcher
-super + g
+super + n
     rofi -show window
 
 # ssh launcher
