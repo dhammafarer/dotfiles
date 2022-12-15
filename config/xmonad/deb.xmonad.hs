@@ -82,7 +82,7 @@ media    = "\xf1fc"
 win      = "\xf17a"
 tablet   = "\xf26c"
 
-myWorkspaces = [code,win,web,comm,media,design,tablet]
+myWorkspaces = [code,tablet,web,comm,media,design,win]
 
 
 ------------------------------------------------------------------------
@@ -100,7 +100,6 @@ myManageHook = composeAll
     , className =? "Signal"              --> doShift comm
     , className =? "Gimp"                --> doShift media
     , className =? "Blender"             --> doShift design
-    , className =? "superProductivity"   --> doShift win
     , className =? "libreoffice-writer"  --> doShift design
     , resource  =? "gpicview"            --> doFloat
     , className =? "MPlayer"             --> doFloat
@@ -109,7 +108,6 @@ myManageHook = composeAll
     , className =? "Virt-viewer"         --> doShift win
     , className =? "krita"               --> doShift tablet
     , className =? "Steam"               --> doShift tablet
-    , className =? "tutanota-desktop"    --> doShift tablet
     , className =? "stalonetray"         --> doIgnore
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
@@ -158,11 +156,11 @@ fsf= noBorders (tabbedBottom shrinkText tabConfig)
 fs= noBorders (fullscreenFull Full)
 
 myLayout = onWorkspace code gaps_tab_tall
-           $ onWorkspace tablet fsf
+           $ onWorkspace win fsf
            $ onWorkspace comm gt2t
            $ onWorkspace media fsf
            $ onWorkspace design ft
-           $ onWorkspace win fs
+           $ onWorkspace tablet fs
            $ onWorkspace web gaps_tab_tall
            l0
 
@@ -270,12 +268,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
-    | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf)) ([xK_w, xK_x, xK_f, xK_a, xK_d, xK_r, xK_c] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
-      , (f, m) <- [
-                    (viewOnScreen 0, 0),
-                    (W.shift, controlMask),
-                    (W.greedyView, controlMask .|. shiftMask)
-                  ]
+    | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf))
+                    ([xK_w, xK_d, xK_f, xK_a, xK_x, xK_r, xK_c] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
+    , (f, m) <- [
+                  (viewOnScreen 0, 0),
+                  (W.shift, controlMask),
+                  (W.greedyView, controlMask .|. shiftMask)
+                ]
   ]
 
     where halveHor d i  | d `elem` [L,R] = i - 32

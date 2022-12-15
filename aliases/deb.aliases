@@ -130,6 +130,7 @@ alias mtphotos="sshfs ubuntu@klaasje.ddns.net:/mnt/external/data/photos ~/mnt/ph
 #       xrandr         #
 ########################
 
+# ctn
 alias dp5="xrandr --output DP-5 --auto --primary --output HDMI-0 --off"
 alias hdmi0="xrandr --output DP-5 --off --output HDMI-0 --auto --primary"
 

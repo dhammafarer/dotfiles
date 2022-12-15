@@ -91,7 +91,7 @@ super + space; s
     /home/pl/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
 
 # sxhkd bindings
-super + space; x
+super + space; z
     $HOME/.dmenu/dmenu_sxhkd.sh
 
 # gtk-3.0/bookmarks.ini
@@ -161,6 +161,10 @@ super + space; d; c
 # scripts
 super + space; d; e
     $HOME/.dmenu/dmenu_scripts.sh
+
+# install modules
+super + space; x
+    $HOME/.dmenu/dmenu_xrandr.sh
 
 # install modules
 super + space; d; m
