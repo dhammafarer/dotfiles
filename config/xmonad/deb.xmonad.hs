@@ -4,6 +4,7 @@ import           Graphics.X11.ExtraTypes.XF86
 import           System.Exit
 import           System.IO
 import           XMonad                          hiding ((|||))
+import           XMonad.Actions.OnScreen
 import           XMonad.Actions.CycleWS
 import           XMonad.Actions.FloatKeys
 import           XMonad.Actions.PhysicalScreens
@@ -270,7 +271,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
     | (i, k) <- zip ((XMonad.workspaces conf) ++ (XMonad.workspaces conf)) ([xK_w, xK_x, xK_f, xK_a, xK_d, xK_r, xK_c] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
-      , (f, m) <- [(W.view, 0), (W.shift, controlMask)]]
+      , (f, m) <- [
+                    (viewOnScreen 0, 0),
+                    (W.shift, controlMask),
+                    (W.greedyView, controlMask .|. shiftMask)
+                  ]
+  ]
 
     where halveHor d i  | d `elem` [L,R] = i - 32
                         | otherwise       = i
