@@ -260,7 +260,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ++
 
   [((modMask .|. mask, key), f sc)
-    | (key, sc) <- zip [xK_u, xK_e] [0..]
+    | (key, sc) <- zip [xK_Up, xK_Down] [0..]
     , (f, mask) <- [(viewScreen def, 0), (sendToScreen def, shiftMask)]]
 
   ++
@@ -272,7 +272,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
                     ([xK_w, xK_d, xK_f, xK_a, xK_x, xK_r, xK_c] ++ [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7])
     , (f, m) <- [
                   (viewOnScreen 0, 0),
-                  (W.shift, controlMask),
+                  (W.shift, shiftMask),
                   (W.greedyView, controlMask .|. shiftMask)
                 ]
   ]
