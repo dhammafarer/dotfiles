@@ -2,6 +2,8 @@
 
 xsetroot -cursor_name left_ptr &
 
+xrandr --output HDMI-A-1 --auto --primary --output HDMI-A-0 --off --output DisplayPort-0 --off
+
 feh --bg-fill $HOME/.background-image &
 
 #setxkbmap -option compose:caps

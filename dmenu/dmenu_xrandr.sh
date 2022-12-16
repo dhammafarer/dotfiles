@@ -52,7 +52,7 @@ case "$choice" in
       --output $nuc_huion --off \
       --output $nuc_tv --auto --right-of $nuc_asus
 	;;
-	*
+	*)
 		exit 1
 	;;
 esac

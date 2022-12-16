@@ -123,21 +123,8 @@ alias mnas="sudo mount -t cifs //192.168.7.30/市場行銷部/pawel /mnt/nas -o 
 alias unas="sudo umount /mnt/nas"
 
 #sshfs
-alias mtmedia="sshfs ubuntu@klaasje.ddns.net:/mnt/external/media ~/mnt/media -C -p 437"
-alias mtphotos="sshfs ubuntu@klaasje.ddns.net:/mnt/external/data/photos ~/mnt/photos -C -p 437"
-
-########################
-#       xrandr         #
-########################
-
-# ctn
-alias dp5="xrandr --output DP-5 --auto --primary --output HDMI-0 --off"
-alias hdmi0="xrandr --output DP-5 --off --output HDMI-0 --auto --primary"
-
-#Huion
-alias h0off="xrandr --output HDMI-0 --off"
-alias dp5h0="xrandr --output DP-5 --auto --primary --output HDMI-0 --auto --below DP-5"
-
+alias mtmedia="sshfs brix:/srv/data/media ~/mnt/media -C"
+alias mtphotos="sshfs brix:/srv/data/data/photos ~/mnt/photos -C"
 
 ########################
 #      systemctl       #
