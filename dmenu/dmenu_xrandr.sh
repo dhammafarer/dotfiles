@@ -50,7 +50,7 @@ case "$choice" in
 	nuc:tv)
     xrandr --output $nuc_asus --auto --primary \
       --output $nuc_huion --off \
-      --output $nuc_tv --auto --right-of $nuc_asus
+      --output $nuc_tv --mode 1360x768 --right-of $nuc_asus
 	;;
 	*)
 		exit 1
