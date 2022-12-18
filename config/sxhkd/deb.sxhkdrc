@@ -26,21 +26,24 @@ super + shift + Escape
 super + control + Escape
     xscreensaver-command -a
 
-# blank screen
-XF86Launch6
-    xscreensaver-command -a
+# rofi-pass
+XF86Tools
+    ~/.local/bin/rofi-pass --root ~/.password-store
 
 # blank screen
-XF86Launch7
+XF86Launch6
     xscreensaver-command -a
 
 # rofi-calc
 XF86Launch5
     ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
-# rofi-pass
-XF86Tools
-    ~/.local/bin/rofi-pass --root ~/.password-store
+# blank screen
+XF86Launch7; m
+    /usr/bin/virt-manager
+
+XF86Launch8; t
+    notify-send 'l8'
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
@@ -48,14 +51,6 @@ XF86Tools
 
 { button7,button6 }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
-
-# Tab Next
-button8
-  xdotool key control+Tab
-
-# Tab Previous
-button9
-  xdotool key shift+control+Tab
 
 #### Start Rofi ####
 # calculator
@@ -173,9 +168,3 @@ super + space; d; m
 # edit QMK layout modules
 super + space; q
     myedit $HOME/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/dhammafarer/keymap.c
-# Notify of layer toggle ON
-XF86Launch8
-    xdotool key Num_Lock
-
-XF86Launch9
-    xdotool key Num_Lock

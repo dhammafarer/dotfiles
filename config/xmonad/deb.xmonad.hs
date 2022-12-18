@@ -200,7 +200,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_y), refresh)
 
   -- Previous workspace
-  , ((modMask, xK_i), toggleWS)
+  , ((modMask, xK_z), toggleWS)
 
   -- Move focus to the next window.
   , ((modMask .|. controlMask, xK_Tab), windows W.focusUp)
@@ -227,13 +227,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_i), sendMessage Expand)
 
   -- Push window back into tiling.
-  , ((modMask .|. controlMask, xK_z), withFocused $ windows . W.sink)
+  , ((modMask .|. shiftMask, xK_z), withFocused $ windows . W.sink)
 
   -- Next Screen.
   --, ((modMask, xK_space), nextScreen)
 
   -- Gaps bindings
-  , ((modMask, xK_z), sendMessage $ ToggleGaps)               -- toggle all gaps
+  , ((modMask .|. controlMask, xK_z), sendMessage $ ToggleGaps)               -- toggle all gaps
   , ((modMask .|. controlMask .|. shiftMask, xK_i), sendMessage $ weakModifyGaps halveHor)  -- halve the left and right-hand gaps
   , ((modMask .|. controlMask .|. shiftMask, xK_n), sendMessage $ weakModifyGaps doubleHor)  -- double the left and right-hand gaps
   , ((modMask .|. controlMask .|. shiftMask, xK_u), sendMessage $ weakModifyGaps halveVer)  -- halve the up and down gaps
