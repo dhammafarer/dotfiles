@@ -109,9 +109,8 @@ alias gpa="git remote | xargs -L1 git push --all"
 ########################
 
 alias pgpa="pass git remote | xargs -L1 pass git push --all"
-alias pgpula="pass git remote | xargs -L1 pass git pull"
 alias pgpom="pass git push -u origin master"
-alias pgpul="pass git pull origin master"
+alias pgpul="pass git pull klaasje master"
 alias pgen="pgpul && pass generate -c"
 
 ########################

@@ -1,4 +1,5 @@
 # guest terminals
+
 super + BackSpace
     xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
 
@@ -38,9 +39,24 @@ XF86Launch6
 XF86Launch5
     ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
-# blank screen
+##########################
+#          LEFT          #
+#       XF86Launch7      #
+##########################
+
 XF86Launch7; m
     /usr/bin/virt-manager
+
+XF86Launch7; t
+    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+
+XF86Launch7; period
+    ~/.dmenu/dmenu_dotfiles.sh ~/.dotfiles
+
+##########################
+#          RIGHT         #
+#       XF86Launch8      #
+##########################
 
 XF86Launch8; t
     notify-send 'l8'
