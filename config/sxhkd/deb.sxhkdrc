@@ -44,12 +44,15 @@ XF86Launch5
 #       XF86Launch7      #
 ##########################
 
+# virtual machine manager
 XF86Launch7; m
     /usr/bin/virt-manager
 
+# edit mindmaps
 XF86Launch7; t
     $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
+# edit dotfiles
 XF86Launch7; period
     ~/.dmenu/dmenu_dotfiles.sh ~/.dotfiles
 
@@ -58,8 +61,13 @@ XF86Launch7; period
 #       XF86Launch8      #
 ##########################
 
+# send notification
 XF86Launch8; t
     notify-send 'l8'
+
+# pyradio
+XF86Launch8; r
+    xfce4-terminal -e "distrobox enter arch -e 'pyradio -s soma -p 1 -d'"
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
