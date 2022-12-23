@@ -40,6 +40,15 @@ XF86Launch5
     ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
 ##########################
+#         SUPER          #
+#         SPACE          #
+##########################
+
+# mindmaps
+super + space; n
+    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+
+##########################
 #          LEFT          #
 #       XF86Launch7      #
 ##########################
@@ -77,19 +86,15 @@ XF86Launch8; r
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
 #### Start Rofi ####
-# calculator
-super + Escape; c
+# desktop entries
+super + space; d
     rofi -show drun -modi drun
-
-# pass
-super + Escape; p
-    ~/.local/bin/rofi-pass --root ~/.password-store
 
 # window switcher
 super + n
     rofi -show window
 
-super + alt + space
+super + space; w
     rofi -show window
 
 # ssh launcher
