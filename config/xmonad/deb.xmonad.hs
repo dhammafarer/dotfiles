@@ -308,9 +308,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     --
-     , ((modMask, button4), (\w -> toggleWS))
+     , ((modMask, button3), (\w -> toggleWS))
 
     --
+     , ((modMask, button4), (\w -> windows W.focusUp))
      , ((modMask, button5), (\w -> windows W.focusDown))
   ]
 
