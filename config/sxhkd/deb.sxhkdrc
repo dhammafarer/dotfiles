@@ -5,11 +5,11 @@ super + BackSpace
 
 # ssh to server1
 super + shift + BackSpace; {0,1,2}
-    xfce4-terminal -e "vagrant ssh server{0,1,2}" --default-working-directory=/home/pl/vagrant/rocky8
+    xfce4-terminal -e "vagrant ssh server{0,1,2}" --default-working-directory=/home/pl/vagrant/rocky9
 
 # ssh to klaasje
-super + shift + BackSpace; k
-    xfce4-terminal -e "ssh klaasje"
+super + shift + BackSpace; c
+    xfce4-terminal -e "ssh baple"
 
 # browsers
 super + {_,control} + l
@@ -49,7 +49,20 @@ super + space; n
     $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
 ##########################
-#          LEFT          #
+#       LEFT PINKY       #
+#       XF86Launch9      #
+##########################
+
+# virtual machine manager
+XF86Launch9; m
+    /usr/bin/virt-manager
+
+# mindmaps
+XF86Launch9; t
+    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+
+##########################
+#       LEFT THUMB       #
 #       XF86Launch7      #
 ##########################
 
@@ -66,7 +79,7 @@ XF86Launch7; period
     ~/.dmenu/dmenu_dotfiles.sh ~/.dotfiles
 
 ##########################
-#          RIGHT         #
+#       RIGHT THUMB      #
 #       XF86Launch8      #
 ##########################
 
@@ -76,7 +89,7 @@ XF86Launch8; t
 
 # pyradio
 XF86Launch8; r
-    xfce4-terminal -e "distrobox enter arch -e 'pyradio -s soma -p 1 -d'"
+    xdotool key Super_L+c; xfce4-terminal -e "distrobox enter arch -e 'pyradio -s soma -p 1 -d'"; xdotool key Super_L+z
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
@@ -112,7 +125,7 @@ Print
 
 # web bookmarks
 super + space; s
-    /home/pl/.dmenu/dmenu_bookmarks.sh $HOME/.bookmarks
+    rofi -show window -filter "Xfce4-terminal" -no-show-match
 
 # sxhkd bindings
 super + space; z
