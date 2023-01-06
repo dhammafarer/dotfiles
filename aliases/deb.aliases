@@ -23,7 +23,8 @@ alias vx="xclip -o"
 alias cdc="pwd | xclip"
 alias gi="grep -i"
 alias vpi="vim +PluginInstall +qall"
-alias cat="bat"
+alias cat="bat -p"
+alias pcat="bat"
 alias l="exa --group-directories-first"
 alias lt="exa -T -L 3 --group-directories-first"
 alias ltt="exa -l -T -L 2 --group-directories-first"
@@ -141,3 +142,11 @@ alias scs="sudo systemctl start"
 alias scr="sudo systemctl restart"
 alias scst="sudo systemctl stop"
 alias scdr="sudo systemctl daemon-reload"
+
+########################
+#       vagrant        #
+########################
+alias vau="vagrant up"
+alias vah="vagrant halt"
+alias vas="vagrant ssh"
+alias vad="vagrant destroy -f"

@@ -6,6 +6,7 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 " Base plugins
+Plugin 'pearofducks/ansible-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'VundleVim/Vundle.vim'
