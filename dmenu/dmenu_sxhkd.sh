@@ -2,9 +2,8 @@
 
 dir=~/.config/sxhkd
 opts=$(ls $dir)
-
-# Get the file choice
-choice=$(echo "$opts" | awk -F "." '{print $1}'| mydmenu -sb "#6fccc0" -i -p 'Keybindings: ')
+ Get the file choice
+choice=$(echo "$opts" | awk -F "." '{print $1}'| mydmenu -sb "#6fccc0" -i -b -p 'Keybindings: ')
 
 # If selection is empty, exit
 [[ -z "$choice" ]] && { exit 1; }

@@ -99,12 +99,8 @@ XF86Launch8; r
 
 #### Start Rofi ####
 # desktop entries
-super + space; g
-    rofi -show drun -modi drun
-
-# window switcher
 super + n
-    rofi -show window
+    rofi -show drun -modi drun
 
 super + space; w
     rofi -show window
