@@ -6,6 +6,15 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 " Base plugins
+
+" start lsp
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'hrsh7th/cmp-nvim-lsp'
+Plugin 'hrsh7th/cmp-buffer'
+Plugin 'hrsh7th/nvim-cmp'
+Plugin 'onsails/lspkind.nvim'
+" end lsp
+
 Plugin 'pearofducks/ansible-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -466,3 +475,50 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=8
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 hi link markdownError NONE
+
+lua require'lspconfig'.tsserver.setup{}
+
+lua <<EOF
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
+  local lspkind = require'lspkind'
+
+cmp.setup {
+   -- As currently, i am not using any snippet manager, thus disabled it.
+      -- snippet = {
+         --   expand = function(args)
+            --     require("luasnip").lsp_expand(args.body)
+            --   end,
+         -- },
+
+      mapping = {
+         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+         ["<C-e>"] = cmp.mapping.close(),
+         ['<C-Space>'] = cmp.mapping.complete(),
+         ["<c-y>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+         },
+      },
+      formatting = {
+         format = lspkind.cmp_format {
+            with_text = true,
+            menu = {
+               buffer   = "[buf]",
+               nvim_lsp = "[LSP]",
+               path     = "[path]",
+            },
+         },
+      },
+
+      sources = {
+         { name = "nvim_lsp"},
+         { name = "path" },
+         { name = "buffer" , keyword_length = 5},
+      },
+      experimental = {
+         ghost_text = true
+      }
+}
+EOF
