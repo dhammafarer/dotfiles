@@ -56,6 +56,8 @@ Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'jparise/vim-graphql'
 
+Plugin 'wuelnerdotexe/vim-astro'
+
 " haskell
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'Shougo/vimproc.vim'
@@ -555,3 +557,5 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=8
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 hi link markdownError NONE
+
+let g:astro_typescript = 'enable'
