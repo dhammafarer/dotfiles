@@ -18,6 +18,10 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'rcarriga/nvim-notify'            -- Notifications manager
   use {
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+}
+  use {
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
