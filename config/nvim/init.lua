@@ -2,10 +2,10 @@ require('mappings')
 require('settings')
 require('colors')
 
-require('plugins')
-require('nvim-tree-config')
-
-require('lsp-config.language-servers')
-require('lsp-config.nvim-cmp')
-
-require('lualine-config')
+require('config-packer')
+require('config-nvim-tree')
+require('config-lsp.language-servers')
+require('config-lsp.nvim-cmp')
+require('config-lualine')
+require('config-telescope')
+require('config-barbar')

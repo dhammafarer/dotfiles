@@ -22,6 +22,11 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
   use 'nvim-lualine/lualine.nvim'
+  use 'romgrk/barbar.nvim'
+  use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   --> LSP plugins
   use 'neovim/nvim-lspconfig'           -- Collection of configurations for built-in LSP client
