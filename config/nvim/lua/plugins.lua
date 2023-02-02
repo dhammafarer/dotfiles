@@ -16,6 +16,14 @@ return require('packer').startup(function(use)
   use 'EdenEast/nightfox.nvim'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
+  use 'rcarriga/nvim-notify'            -- Notifications manager
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+  use 'nvim-lualine/lualine.nvim'
+
+  --> LSP plugins
   use 'neovim/nvim-lspconfig'           -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp'                -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp'            -- LSP source for nvim-cmp
