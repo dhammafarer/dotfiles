@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   use 'EdenEast/nightfox.nvim'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
-  use 'rcarriga/nvim-notify'            -- Notifications manager
+  --use 'rcarriga/nvim-notify'            -- Notifications manager
   use {
   'phaazon/hop.nvim',
   branch = 'v2', -- optional but strongly recommended
@@ -44,6 +44,8 @@ return require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'        -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip'                -- Snippets plugin
   use 'onsails/lspkind.nvim'            -- Pictograms for lsp
+  use('jose-elias-alvarez/null-ls.nvim')-- Prettier
+  use('MunifTanjim/prettier.nvim')      -- Prettier
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

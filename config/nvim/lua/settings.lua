@@ -1,11 +1,11 @@
 local set = vim.opt
 
-vim.notify = require("notify")
+--vim.notify = require("notify")
 
 set.expandtab = true
 set.smarttab = true
-set.shiftwidth = 4
-set.tabstop = 4
+set.shiftwidth = 2
+set.tabstop = 2
 
 set.hlsearch = true
 set.incsearch = true
