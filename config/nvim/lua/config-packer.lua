@@ -46,6 +46,7 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind.nvim'            -- Pictograms for lsp
   use('jose-elias-alvarez/null-ls.nvim')-- Prettier
   use('MunifTanjim/prettier.nvim')      -- Prettier
+  use('mg979/vim-visual-multi')         -- Multiple cursors
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
