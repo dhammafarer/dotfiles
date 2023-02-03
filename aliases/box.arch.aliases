@@ -22,6 +22,7 @@ alias xmp="xmodmap ~/.Xmodmap"
 alias cbi="xclip -selection clipboard -t image/png -o > /tmp/\"$(date +%Y-%m-%d_%T).png\""
 alias gu="gitui"
 alias vim="nvim"
+alias v="nvim"
 
 #system
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
