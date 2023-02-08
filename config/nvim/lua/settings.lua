@@ -24,3 +24,5 @@ set.cursorline = false
 
 set.hidden = true
 set.completeopt = 'menuone,noselect'
+
+vim.api.nvim_set_option("clipboard","unnamed")
