@@ -126,8 +126,14 @@ alt + space; i; p
 #         INPUT          #
 ##########################
 
+alt + space; d; a
+  ~/.local/bin/blender-cmd "attribute"
+
 alt + space; d; p
   ~/.local/bin/blender-cmd "position"
+
+alt + space; d; b
+  ~/.local/bin/blender-cmd "boolean"
 
 alt + space; d; n
   ~/.local/bin/blender-cmd "normal"
