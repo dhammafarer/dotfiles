@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OnlyOffice
+GenericName=Document editor
+Keywords=painting;
+Exec=/home/pl/Apps/onlyoffice %f
+Icon=onlyoffice
+Terminal=false
+Type=Application

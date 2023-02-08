@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Home Assistant
+GenericName=Automation
+Keywords=automation;
+Exec=/home/pl/Apps/homeassistant %f
+Icon=homeassistant
+Terminal=false
+Type=Application

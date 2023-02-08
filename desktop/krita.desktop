@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Krita
+GenericName=Digital painting
+Keywords=painting;
+Exec=/home/pl/Apps/krita %f
+Icon=krita
+Terminal=false
+Type=Application
