@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
   use('jose-elias-alvarez/null-ls.nvim')-- Prettier
   use('MunifTanjim/prettier.nvim')      -- Prettier
   use('mg979/vim-visual-multi')         -- Multiple cursors
+  use('HiPhish/jinja.vim')              -- jinja syntax highlighting
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
