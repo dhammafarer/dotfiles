@@ -53,7 +53,7 @@ super + space; n
 ##########################
 
 # virtual machine manager
-XF86Launch9; m
+XF86Launch9; s
     /usr/bin/virt-manager
 
 # mindmaps

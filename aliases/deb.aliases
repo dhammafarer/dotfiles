@@ -13,6 +13,7 @@ alias suu="sudo apt update && sudo apt upgrade -y"
 ########################
 
 alias vi="vim"
+alias v="vim"
 alias rgr="ranger"
 alias xo="xdg-open"
 alias pc="pass -c"
