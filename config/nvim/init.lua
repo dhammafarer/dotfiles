@@ -2,6 +2,8 @@ require('mappings')
 require('settings')
 require('colors')
 
+require('config-notify')
+
 require('config-barbar')
 require('config-lsp.language-servers')
 require('config-lsp.nvim-cmp')
@@ -12,4 +14,3 @@ require('config-telescope')
 require('config-treesitter')
 require('config-hop')
 require('config-prettier')
---require('config-notify')

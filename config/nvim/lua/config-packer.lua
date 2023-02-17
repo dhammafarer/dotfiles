@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   use 'EdenEast/nightfox.nvim'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
-  --use 'rcarriga/nvim-notify'            -- Notifications manager
+  use 'rcarriga/nvim-notify'            -- Notifications manager
   use {
   'phaazon/hop.nvim',
   branch = 'v2', -- optional but strongly recommended
