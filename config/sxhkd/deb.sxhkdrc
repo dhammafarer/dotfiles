@@ -28,7 +28,7 @@ super + control + Escape
 
 # rofi-pass
 XF86Tools
-    ~/.local/bin/rofi-pass --root ~/.password-store
+    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
 
 # blank screen
 XF86Launch6
@@ -88,7 +88,7 @@ XF86Launch8; t
 
 # pyradio
 XF86Launch8; r
-    xdotool key Super_L+c; xfce4-terminal -e "distrobox enter arch -e 'pyradio -s soma -p 1 -d'"; xdotool key Super_L+z
+  xdotool key Super_L+c; xfce4-terminal -e "distrobox enter arch -e 'pyradio -s soma -p 1 -d'"; xdotool key Super_L+z
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
@@ -100,7 +100,7 @@ XF86Launch8; r
 #### Start Rofi ####
 # desktop entries
 super + n
-    rofi -show drun -modi drun
+    QT_STYLE_OVERRIDE=kvantum rofi -show drun -modi drun
 
 super + space; w
     rofi -show window

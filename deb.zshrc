@@ -1,3 +1,5 @@
+export LC_ALL="en_US.UTF-8"
+
 # path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -102,13 +104,18 @@ source $ZSH/oh-my-zsh.sh
 
 . ~/.shrc
 
-# ssh authentication with gpg
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+# check if login is local or remote (ssh)
+# if local login, overwrite $SSH_AUTH_SOCK (gpg with yubikey)
+# otherwise, allow accepting forwarded agents
+if [[ -z $SSH_CONNECTION ]]; then
+  export GPG_TTY="$(tty)"
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  gpgconf --launch gpg-agent
+fi
 
 export EDITOR=vim
 
 export FZF_DEFAULT_COMMAND='fd --type f'
+export QT_STYLE_OVERRIDE=kvantum
 
 neofetch

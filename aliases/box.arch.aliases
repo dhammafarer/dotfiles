@@ -8,8 +8,40 @@ pacman-install () {
   sudo pacman -Syu $@
 }
 
+########################
+#      host-exec       #
+#     ###########      #
+#       vagrant        #
+########################
+alias vu="vagrant up"
+alias vst="vagrant status"
+alias vgst="vagrant global-status"
+alias vssh="vagrant ssh"
+alias vsshc="vagrant ssh-config"
+alias vh="vagrant halt"
+alias vdf="vagrant destroy -f"
+alias vrr="vagrant destroy -f && vagrant up"  # reset and restart
+
+########################
+#       molecule       #
+########################
+alias molc="molecule converge"
+alias mold="molecule destroy"
+alias molir="molecule init role"
+alias molis="molecule init scenario"
+alias moll="molecule login"
+alias molt="molecule test"
+alias molv="molecule verify"
+
+
+# ansible
+alias ansi="ansible-inventory"
+alias ansp="ansible-playbook"
+alias ans="ansible"
+alias ansd="ansible-doc"
+
 # commands=
-alias cat="bat"
+alias cat="bat -p"
 alias l="exa --group-directories-first"
 alias lt="exa -T -L 3 --group-directories-first"
 alias ltt="exa -l -T -L 2 --group-directories-first"
@@ -88,6 +120,7 @@ git-create-init-repo() {
   git-add-remote
 }
 
+alias grr="rm -rf .git && git init"
 alias ga="git add"
 alias gaa="git add ."
 alias gc="git commit -m"
