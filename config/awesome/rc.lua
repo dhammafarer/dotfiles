@@ -51,7 +51,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/pl/.config/awesome/theme.lua")
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "default")
+beautiful.init(theme_path)
 
 -- Global Variables
 terminal = "xfce4-terminal"
@@ -132,7 +133,25 @@ local tasklist_buttons = gears.table.join(
   end)
 )
 
+local function set_wallpaper(s)
+    -- Wallpaper
+    if beautiful.wallpaper then
+        local wallpaper = beautiful.wallpaper
+        -- If wallpaper is a function, call it with the screen
+        if type(wallpaper) == "function" then
+            wallpaper = wallpaper(s)
+        end
+        gears.wallpaper.maximized(wallpaper, s, true)
+    end
+end
+
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+screen.connect_signal("property::geometry", set_wallpaper)
+
 awful.screen.connect_for_each_screen(function(s)
+  --set_wallpaper(s)
+  gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+
   -- Workspaces
   awful.tag.add("dev", {
     index = 1,

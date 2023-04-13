@@ -1,6 +1,6 @@
 # guest terminals
 super + BackSpace
-    xfce4-terminal -e "distrobox enter arch" --default-working-directory=/home/pl/box/arch
+    xfce4-terminal -e "distrobox enter arch1" --default-working-directory=/home/pl/box/arch1
 
 # ssh to server1
 super + shift + BackSpace; {0,1,2}

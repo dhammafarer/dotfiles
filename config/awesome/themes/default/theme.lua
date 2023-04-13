@@ -9,7 +9,11 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
+local theme_path = string.format("%s/.config/awesome/themes/%s/", os.getenv("HOME"), "default")
+
 local theme = {}
+
+theme.wallpaper = string.format("%s/.config/awesome/themes/%s/wallpaper.png", os.getenv("HOME"), "default")
 
 local colors = {}
 
@@ -74,8 +78,6 @@ theme.menu_width  = dpi(100)
 -- you wish and access them by using
 -- beautiful.variable in your rc.lua
 --theme.bg_widget = "#cc0000"
-
-theme.wallpaper = "/home/pl/.background-image"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
