@@ -424,7 +424,7 @@ awful.rules.rules = {
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
    { rule = { class = "Signal" },
-     properties = { screen = 1, tag = "4" } },
+     properties = { screen = 1, tag = "com" } },
 }
 -- }}}
 
@@ -467,3 +467,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart applications
 awful.spawn.with_shell("picom -b --config $HOME/.config/picom/picom.conf")
 awful.spawn.with_shell("sxhkd")
+awful.spawn.with_shell("flatpak run org.signal.Signal")
