@@ -37,4 +37,6 @@ TabActivityColor=#d787af
 FontName=FiraCode NFM 14
 TitleMode=TERMINAL_TITLE_REPLACE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+BackgroundDarkness=0.980000
 
