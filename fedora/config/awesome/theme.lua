@@ -13,7 +13,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/", os.getenv("HOM
 
 local theme = {}
 
-theme.wallpaper = string.format("%s/.config/awesome/themes/%s/wallpaper.png", os.getenv("HOME"), "default")
+theme.wallpaper = string.format("%s/wallpaper.png", os.getenv("HOME"), "default")
 
 local colors = {}
 
