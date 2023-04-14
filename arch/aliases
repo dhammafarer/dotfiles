@@ -33,7 +33,7 @@ alias vssh3="vagrant ssh machine3"
 ########################
 run_molecule () {
   if ! type "molecule" > /dev/null; then
-    source ~/Code/ansible/venv/molecule-venv-arch/bin/activate
+    source ~/code/venv/ansible/bin/activate
   fi
   export SCNR=${scenario:='default'}
   molecule "$@"

@@ -68,7 +68,7 @@ XF86Launch8; t
 
 # pyradio
 XF86Launch8; r
-  xdotool key Super_L+c; xfce4-terminal -e "distrobox enter dev -e 'pyradio -p 1'"; xdotool key Super_L+z
+  xdotool key Super_L+b; xfce4-terminal -e "distrobox enter dev -e 'pyradio -p 1'"; xdotool key Super_L+z
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
