@@ -73,10 +73,6 @@ XF86Launch7; m
 XF86Launch7; t
     $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
-# edit dotfiles
-XF86Launch7; period
-    ~/.dmenu/dmenu_dotfiles.sh ~/.dotfiles
-
 ##########################
 #       RIGHT THUMB      #
 #       XF86Launch8      #
@@ -170,38 +166,27 @@ super + space; p
 #### super + space ####
 #######################
 
-# radio
-#super + space; r
-#    $HOME/.dmenu/dmenu_radio.sh $HOME/.radio
-
 # processes
 super + space; y
-    $HOME/.dmenu/dmenu_process.sh
+    ~/dotfiles/fedora/dmenu/dmenu_process.sh
 
 # ~/.dotfiles
 super + space; period
-    ~/.dmenu/dmenu_dotfiles.sh ~/.dotfiles
-
-# ~/Containers/Arch/.dotfiles
-super + space; d; period
-    $HOME/.dmenu/dmenu_dotfiles.sh $HOME/box/arch/.dotfiles
+    ~/dotfiles/fedora/dmenu/dmenu_dotfiles.sh
 
 # colors
 super + space; d; c
-    $HOME/.dmenu/dmenu_colors.sh
+    ~/dotfiles/fedora/dmenu/dmenu_colors.sh
 
 # scripts
 super + space; d; e
-    $HOME/.dmenu/dmenu_scripts.sh
+    ~/dotfiles/fedora/dmenu/dmenu_scripts.sh
 
 # install modules
 super + space; x
-    $HOME/.dmenu/dmenu_xrandr.sh
+    ~/dotfiles/fedora/dmenu/dmenu_xrandr.sh
 
-# install modules
-super + space; d; m
-    $HOME/.dmenu/dmenu_modules.sh $HOME/dotfiles/install/modules "Modules"
-
+# TODO
 # edit QMK layout modules
 super + space; q
     myedit $HOME/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/dhammafarer/keymap.c
