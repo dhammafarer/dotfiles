@@ -1,0 +1,9 @@
+[Scheme]
+Name=Arc
+ColorForeground=#babdb6
+ColorBackground=#192330
+ColorCursor=#babdb6
+TabActivityColor=#d787af
+ColorPalette=#2f343f;#cc4c55;#5de489;#ffb05f;#506d9c;#ab3b76;#5e8d87;#b8bdc2;#585c61;#da6371;#83e6a3;#ffbd7a;#5294e2;#e96a9d;#6fccc0;#e6e6e6;
+ColorBold=#5fafd7
+ColorBoldUseDefault=FALSE

@@ -1,0 +1,286 @@
+#!/bin/sh
+
+########################
+#        source        #
+########################
+
+alias sal="source ~/.aliases"  
+alias szsh="source ~/.aliases"  
+
+########################
+#       vagrant        #
+########################
+
+alias vu="vagrant up"
+alias vpr="vagrant provision"
+alias vst="vagrant status"
+alias vgst="vagrant global-status"
+alias vh="vagrant halt"
+alias vdf="vagrant destroy -f"
+alias vrr="vagrant destroy -f && vagrant up"  # reset and restart
+alias vbl="vagrant box list"
+
+alias vsshc="vagrant ssh-config"
+alias vssh="vagrant ssh"
+
+alias vssh1="vagrant ssh machine1"
+alias vssh2="vagrant ssh machine2"
+alias vssh3="vagrant ssh machine3"
+
+
+########################
+#       molecule       #
+########################
+run_molecule () {
+  if ! type "molecule" > /dev/null; then
+    source ~/Code/ansible/venv/molecule-venv-arch/bin/activate
+  fi
+  export SCNR=${scenario:='default'}
+  molecule "$@"
+}
+
+alias molc="run_molecule converge -s '${SCNR}'"
+alias mold="run_molecule destroy -s '${SCNR}'"
+alias moll="run_molecule login -s '${SCNR}'"
+alias molir="run_molecule init role"
+alias molis="run_molecule init scenario"
+alias molt="run_molecule test"
+alias molvy="run_molecule verify"
+alias molrr="mold && molc"
+
+########################
+#       ansible        #
+########################
+
+alias ansi="ansible-inventory"
+alias ansp="ansible-playbook"
+alias ans="ansible"
+alias ansd="ansible-doc"
+alias angci="ansible-galaxy collection install"
+
+# commands=
+alias cat="bat -p"
+alias l="exa --group-directories-first"
+alias lt="exa -T -L 3 --group-directories-first"
+alias ltt="exa -l -T -L 2 --group-directories-first"
+alias ls="exa --group-directories-first"
+alias ll="exa -l --group-directories-first"
+alias llt="exa -l -T -L 3 --group-directories-first"
+alias lll="exa -la --group-directories-first"
+alias chx="chmod +x"
+alias xmp="xmodmap ~/.Xmodmap"
+alias cbi="xclip -selection clipboard -t image/png -o > /tmp/\"$(date +%Y-%m-%d_%T).png\""
+alias gu="gitui"
+alias vim="nvim"
+alias v="nvim"
+
+########################
+#        pacman        #
+########################
+
+alias spacs="pacman-install"
+alias pacs="pacman -Ss"
+alias syu="sudo pacman -Syu"
+
+# files
+alias link-dotfiles="sh $HOME/dotfiles/scripts/box.arch.link-dotfiles.sh"
+alias diary='/usr/bin/gvim -geometry 80x10+600+400 -c "VimwikiMakeDiaryNote" + -c "DiaryTime"'
+
+# snippets
+alias snh="cd ~/.vim/UltiSnips && vim ./haskell.snippets"
+alias snr="cd ~/.vim/UltiSnips && vim ./rust.snippets"
+alias snt="cd ~/.vim/UltiSnips && vim ./typescript.snippets"
+
+#vagrant
+alias vu="vagrant up"
+alias vh="vagrant halt"
+alias vs="vagrant ssh"
+
+# Navigation
+alias code="cd ~/Code"
+alias docs="cd ~/Documents"
+alias down="cd ~/Downloads"
+alias xd="xo ."
+
+# Git Stuff
+git-clone-repo() {
+  git clone https://github.com/$1
+}
+
+git-clone-repo-dhammafarer() {
+  git clone git@github.com:dhammafarer/$1.git $2
+}
+
+git-create-repo() {
+  gh repo create $1 --public --source=. --remote=upstream --push
+}
+
+git-set-remote() {
+  NAME=${1:-`basename $PWD`}
+  git remote set-url origin git@github.com:dhammafarer/$NAME.git
+  git remote -v
+}
+
+git-add-remote() {
+  NAME=${1:-`basename $PWD`}
+  git remote add origin git@github.com:dhammafarer/$NAME.git
+  git remote -v
+}
+
+git-create-init-repo() {
+  git-create-repo &&
+  git init &&
+  git-add-remote
+}
+
+alias grr="rm -rf .git && git init"
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gac="git add . && git commit -m"
+alias gca="git commit --amend"
+alias gch="git checkout"
+alias gchb="git checkout -b"
+alias gm="git merge"
+alias gmd="git merge dev"
+alias gcmd="git checkout master && git merge dev"
+alias grbm="git rebase master"
+alias gp="git push"
+alias gd="git diff"
+alias gpgh="git push github"
+alias gst="git status"
+alias gsr="git-set-remote"
+alias gar="git-add-remote"
+alias glog="git log"
+alias gcl="git-clone-repo"
+alias gcld="git-clone-repo-dhammafarer"
+alias nah="git reset --hard; git clean -dif;"
+alias gic="git init && gaa && gc 'initial commit'"
+alias gcir="git-create-init-repo"
+alias gchm="git checkout master"
+alias gchd="git checkout dev"
+alias gpo="git push -u origin"
+alias gpod="git push -u origin dev"
+alias gpom="git push -u origin main"
+alias gpul="git pull origin main"
+alias gpod="git push -u origin dev"
+alias gcr="git-create-repo"
+
+# Pass
+alias pgpom="pass git push -u origin master"
+alias pgpul="pass git pull origin master"
+alias pgen="pgpul && pass generate -c"
+
+# working files and directories
+alias snip="us && vim ."
+
+#applications
+alias vi="vim"
+alias rgr="ranger"
+alias xo="xdg-open"
+alias pc="pass -c"
+alias tmpw="cd /tmp; wget "
+alias ctc="xclip -selection clipboard"
+alias cx="xclip"
+alias vx="xclip -o"
+alias cdc="pwd | xclip"
+alias gi="grep -i"
+alias vpi="vim +PluginInstall +qall"
+
+# ~/Apps
+alias bike-weather="curl 'wttr.in/{Neihu,Dazhi,Beitou}?1'"
+
+#samba
+alias mnas="sudo mount -t cifs //192.168.7.30/市場行銷部/pawel /mnt/nas -o username=pawel,password=abcd1234,workgroup=workgroup,iocharset=utf8,uid=pawel,gid=users"
+alias unas="sudo umount /mnt/nas"
+
+##development
+#js
+alias ni="npm init -y"
+alias ns="npmInstallSave"
+alias nsd="npmInstallSaveDev"
+alias nrd="npm run develop"
+
+#gatsby
+alias gatcc="rm -rf .cache"
+
+#curl
+alias cpost="curl-post-json"
+
+#ssh
+alias klaasje="ssh klaasje"
+
+#install
+alias install-vundle="git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
+
+#Huion
+alias h0off="xrandr --output HDMI-0 --off"
+alias dp5h0="xrandr --output DP-5 --auto --primary --output HDMI-0 --auto --below DP-5"
+huion () {
+ ~/arch-scripts/dotfiles/$HUION
+}
+
+#xrandr
+alias dp5="xrandr --output DP-5 --auto --primary --output HDMI-0 --off"
+alias hdmi0="xrandr --output DP-5 --off --output HDMI-0 --auto --primary"
+
+#utilities
+alias gen-pass="pwgen -ysBv 20 1 | ctc"
+alias gen-login="pwgen -sBv 15 1 | ctc"
+
+#radio
+alias radio="pyradio -s stations -p 1 -d"
+alias soma="pyradio -s soma -p 2 -d"
+alias sds="pyradio -s soma -p 1 -d"
+alias neoradio="pyradio -p 6 -d"
+alias jazz="pyradio -s jazz -p 1 -d"
+alias chilli="pyradio -s jazz -p 2 -d"
+
+#luks
+sdblack-mount () {
+  sudo cryptsetup luksOpen /dev/disk/by-uuid/e12eabad-b491-456e-a720-90a91700aa76 sdblack
+  sudo mount /dev/mapper/sdblack /mnt/sdblack
+}
+
+sdblack-umount () {
+  sudo umount /mnt/sdblack
+  sudo cryptsetup luksClose sdblack
+}
+
+sd-mount () {
+  name=$1
+  uuid=$2
+
+  sudo cryptsetup luksOpen /dev/disk/by-uuid/$uuid $name
+  sudo mount /dev/mapper/$name /mnt/$name
+}
+
+sd-umount () {
+  name=$1
+  sudo umount /mnt/$name
+  sudo cryptsetup luksClose $name
+}
+
+alias mount-sdwhite="sd-mount sdwhite 15e629c1-87d8-4380-a49e-f7e52145da79"
+alias umount-sdwhite="sd-umount sdwhite"
+
+alias mkeys="sdblack-mount"
+alias umkeys="sdblack-umount"
+
+alias mtmedia="sshfs ubuntu@klaasje.ddns.net:/mnt/external/media ~/mnt/media -C -p 437"
+alias mtphotos="sshfs ubuntu@klaasje.ddns.net:/mnt/external/data/photos ~/mnt/photos -C -p 437"
+
+restart-pcscd () {
+  sudo systemctl stop pcscd.socket
+  sudo systemctl start pcscd.socket
+}
+
+getjson () {
+  curl -s $1 | jq $2
+}
+
+#cargo
+alias cr="cargo run"
+alias crw="cargo watch -x run"
+alias cb="cargo build"
+alias ct="cargo test"

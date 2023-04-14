@@ -1,0 +1,10 @@
+[user]
+	email = contact@palekiwi.com
+	name = Pale Kiwi
+[core]
+	editor = /usr/sbin/nvim
+	excludesfile = ~/.gitignore
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

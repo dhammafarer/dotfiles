@@ -1,0 +1,76 @@
+/************************************************
+ * ROFI Color theme
+ * User: pawel
+ * Copyright: 2022 pawel
+ ***********************************************/
+
+/*****----- Global Properties -----*****/
+@import                          "./shared/colors.rasi"
+@import                          "./shared/fonts.rasi"
+
+* {
+  prompt-color:                  var(blue2);
+}
+
+/*****----- Main Window -----*****/
+
+window {
+    background-color:            var(background);
+    border:                      1;
+    padding:                     0;
+    border-radius:               8;
+    border-color:                var(border-color);
+    width:                       440px;
+}
+
+/*****----- Main Box -----*****/
+
+mainbox {
+    border:                      0;
+    padding:                     0;
+    background-color:            var(background);
+    children:                    [listview];
+}
+
+/*****----- Listview -----*****/
+
+listview {
+    columns:                     4;
+    lines:                       1;
+    fixed-height:                0;
+    border:                      0px 0px 0px;
+    border-color:                var(border-color);
+    spacing:                     4px;
+    scrollbar:                   false;
+    padding:                     16px;
+}
+
+/*****----- Elements -----*****/
+element {
+    border:                      1;
+    border-color:                var(background);
+    border-radius:               24;
+    padding:                     24px 32px;
+    font:                        "JetBrains Mono Nerd Font 24";
+    vertical-align:              0.5;
+    horizontal-align:            0.25;
+}
+element-text {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+element.normal.normal {
+    background-color:            var(background);
+    text-color:                  var(normal-foreground);
+}
+element.selected.normal {
+    background-color:            var(selected-normal-background);
+    text-color:                  var(blue2);
+    border-color:                var(blue);
+}
+element.alternate.normal {
+    background-color:            var(alternate-normal-background);
+    text-color:                  var(alternate-normal-foreground);
+}
