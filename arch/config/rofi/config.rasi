@@ -1,1 +1,1 @@
-@theme "~/code/repos/dotfiles/config/rofi/themes/dark.rasi"
+@theme "./themes/dark.rasi"
