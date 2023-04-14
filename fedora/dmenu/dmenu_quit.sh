@@ -1,42 +1,27 @@
 #!/usr/bin/bash
 
-launcher="rofi -dmenu -i -config $HOME/.config/rofi/row.config.rasi"
-
-lock=""
-poweroff=""
-reboot="R"
-log_out="L"
+launcher='dmenu -b -i -nb #192330 -nf #D3D7CF -sb #da6371 -sf #192330 -fn 11'
 
 declare -a options=(
-"$poweroff"
-"$reboot"
-"$lock"
-"$log_out"
+"poweroff"
+"reboot"
 )
 
 # The combination of echo and printf is done to add line breaks to the end of each
 # item in the array before it is piped into dmenu.  Otherwise, all the items are listed
 # as one long line (one item).
 
-choice=$(echo -e "$(printf '%s\n' "${options[@]}")" | $launcher -p 'Restart process: ')
+choice=$(echo "$(printf '%s\n' "${options[@]}")" | $launcher -p 'Quit: ')
 case "$choice" in
-	"$lock")
-	  xscreensaver-command -l
+	poweroff)
+    confirm=$(echo -e "yes\nno" | $launcher -p "Power off?")
+
+    [[ "$confirm" == "yes" ]] && { systemctl poweroff; }
 	;;
-	"$reboot")
-    confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Confirm")
+	reboot)
+    confirm=$(echo -e "yes\nno" | $launcher -p "Reboot?")
 
     [[ "$confirm" == "yes" ]] && { systemctl reboot; }
-	;;
-	"$poweroff")
-    #confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Conifrm")
-    #[[ "$confirm" == "yes" ]] && { systemctl poweroff; }
-    systemctl poweroff;
-	;;
-	"$log_out")
-    confirm=$(echo -e "yes\nno" | mydmenu -sb "#da6371" -sf "#2f343f" -p "Confirm")
-
-	  sleep 0.1; xdotool key super+shift+m
 	;;
 	*)
 		exit 1

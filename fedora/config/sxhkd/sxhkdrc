@@ -2,21 +2,9 @@
 super + BackSpace
     xfce4-terminal -e "distrobox enter dev" --default-working-directory=/home/pl/box/dev
 
-# ssh to server1
-super + shift + BackSpace; {0,1,2}
-    xfce4-terminal -e "distrobox enter c{0,1,2}" --default-working-directory=/home/pl/box/c{0,1,2}
-
-# ssh to klaasje
-super + shift + BackSpace; c
-    xfce4-terminal -e "ssh baple"
-
 # browsers
 super + {_,control} + l
     {firefox,chromium}
-
-# quit menu
-super + Delete
-    $HOME/.dmenu/dmenu_quit.sh
 
 # lock screen
 super + shift + Escape
@@ -38,14 +26,13 @@ XF86Launch6
 XF86Launch5
     ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
-##########################
-#         SUPER          #
-#         SPACE          #
-##########################
-
 # mindmaps
 super + space; n
-    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+
+# mindmaps alt
+XF86Launch9; t
+    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
 ##########################
 #       LEFT PINKY       #
@@ -56,9 +43,6 @@ super + space; n
 XF86Launch9; s
     /usr/bin/virt-manager
 
-# mindmaps
-XF86Launch9; t
-    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
 ##########################
 #       LEFT THUMB       #
@@ -101,10 +85,6 @@ super + n
 super + space; w
     rofi -show window
 
-# ssh launcher
-super + shift + Return
-    rofi -show ssh
-
 # print screen selection with maim
 Print
     maim -s -u | xclip -selection clipboard -t image/png -i
@@ -120,47 +100,20 @@ super + space; s
 
 # sxhkd bindings
 super + space; z
-    $HOME/.dmenu/dmenu_sxhkd.sh
+    $HOME/dotfiles/fedora/dmenu/dmenu_sxhkd.sh
 
 # gtk-3.0/bookmarks.ini
 super + space; f
-    /home/pl/.dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
+    $HOME/dotfiles/fedora/dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
 
+# TODO
 # repositories
 super + space; r
     $HOME/.dmenu/dmenu_repos.sh $HOME/.repos
 
-# inbox
-super + space; t; i
-    /home/pl/.dmenu/dmenu_inbox.sh
-
-# inbox
-super + space; t; d
-    /home/pl/.dmenu/dmenu_doing.sh
-
-# inbox
-super + space; t; f
-    /home/pl/.dmenu/dmenu_finished.sh
-
-# mindmaps
-super + space; m
-    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
-
 # PureRef
 super + space; p
     QT_SCALE_FACTOR=1.12 PureRef
-
-#######################
-### super + Escape ####
-#######################
-
-#######################
-## super + BackSpace ##
-#######################
-
-#######################
-### super + Delete ####
-#######################
 
 #######################
 #### super + space ####
@@ -170,19 +123,26 @@ super + space; p
 super + space; y
     ~/dotfiles/fedora/dmenu/dmenu_process.sh
 
+# quit
+super + Delete
+    ~/dotfiles/fedora/dmenu/dmenu_quit.sh
+
 # ~/.dotfiles
 super + space; period
     ~/dotfiles/fedora/dmenu/dmenu_dotfiles.sh
 
+# TODO
 # colors
 super + space; d; c
     ~/dotfiles/fedora/dmenu/dmenu_colors.sh
 
+# TODO
 # scripts
 super + space; d; e
     ~/dotfiles/fedora/dmenu/dmenu_scripts.sh
 
-# install modules
+# TODO
+# xrandr
 super + space; x
     ~/dotfiles/fedora/dmenu/dmenu_xrandr.sh
 

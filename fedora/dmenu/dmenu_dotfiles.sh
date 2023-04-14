@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 file=~/.dotfiles
-launcher="mydmenu -sb #ffb05f -i -b"
+launcher='dmenu -b -i -nb #192330 -nf #D3D7CF -sb #5294e2 -sf #192330 -fn 11'
 
 opts=$(cat $file)
 # Get the file choice
