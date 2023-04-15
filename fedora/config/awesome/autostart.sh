@@ -16,6 +16,7 @@ function run_flatpak {
 
 run picom -b --config $HOME/.config/picom/picom.conf
 run sxhkd
+run ibus-daemon -drxR
 
 run_flatpak com.nextcloud.desktopclient.nextcloud
 run_flatpak org.signal.Signal

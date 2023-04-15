@@ -13,7 +13,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/", os.getenv("HOM
 
 local theme = {}
 
-theme.wallpaper = string.format("%s/wallpaper.png", os.getenv("HOME"), "default")
+theme.wallpaper = string.format("%s/.wallpaper.png", os.getenv("HOME"), "default")
 
 local colors = {}
 
@@ -35,10 +35,10 @@ theme.fg_focus      = colors.white
 theme.fg_urgent     = colors.white
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
+theme.useless_gap   = dpi(8)
+theme.border_width  = dpi(2)
 theme.border_normal = colors.bg
-theme.border_focus  = "#5294e2"
+theme.border_focus  = colors.blue
 theme.border_marked = "#91231c"
 
 theme.gap_single_client  = false

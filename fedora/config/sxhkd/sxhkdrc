@@ -4,7 +4,7 @@ super + BackSpace
 
 # browsers
 super + {_,control} + l
-    {firefox,chromium}
+    {flatpak run org.mozilla.firefox,chromium}
 
 # lock screen
 super + shift + Escape
@@ -109,7 +109,7 @@ super + space; f
 # TODO
 # repositories
 super + space; r
-    $HOME/.dmenu/dmenu_repos.sh $HOME/.repos
+    $HOME/dotfiles/fedora/dmenu/dmenu_repos.sh
 
 # PureRef
 super + space; p

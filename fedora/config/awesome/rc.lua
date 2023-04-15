@@ -90,7 +90,9 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.layout.margin(wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"),4,4,0,0)
+
+mysystray = wibox.layout.margin(wibox.widget.systray(),3,3,3,3)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -157,7 +159,6 @@ awful.screen.connect_for_each_screen(function(s)
     index = 1,
     layout = awful.layout.suit.tile,
     selected = true,
-    gap = 4,
     screen = s
   })
 
@@ -253,9 +254,8 @@ awful.screen.connect_for_each_screen(function(s)
       s.mytasklist, -- Middle widget
       { -- Right widgets
           layout = wibox.layout.fixed.horizontal,
-          mykeyboardlayout,
-          wibox.widget.systray(),
           mytextclock,
+          mysystray,
       },
   }
 end)

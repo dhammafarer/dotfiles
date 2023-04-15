@@ -31,3 +31,17 @@ if [[ -z $SSH_CONNECTION ]]; then
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
 fi
+
+# ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+# aliases
+ansp () {
+  if ! type "ansible-playbook" > /dev/null; then
+    source ~/.venv/ansible/bin/activate
+  fi
+  ansible-playbook "$@"
+}
+
