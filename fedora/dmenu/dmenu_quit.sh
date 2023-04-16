@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-launcher='dmenu -b -i -nb #192330 -nf #D3D7CF -sb #da6371 -sf #192330 -fn 11'
+launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #da6371 -sf #192330 -fn 11'
 
 declare -a options=(
 "poweroff"
