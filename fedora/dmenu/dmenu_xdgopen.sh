@@ -14,6 +14,6 @@ choice=$(echo "$opts" | awk -F '.' '{print $1}'| $launcher -p "$prompt")
 filename=$(echo "$opts" | awk -F '.' -v re="$choice" '$1 == re {print $0}')
 
 if [[ "$filename" ]]; then
-  xdg-open $dir/$filename
+  /var/home/pl/.local/bin/freeplane $dir/$filename
 fi
 

@@ -22,3 +22,5 @@ run_flatpak com.nextcloud.desktopclient.nextcloud
 run_flatpak org.signal.Signal
 
 xmodmap ~/.xmodmap
+
+run xscreensaver -no-splash

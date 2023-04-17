@@ -177,7 +177,6 @@ awful.screen.connect_for_each_screen(function(s)
   awful.tag.add("com", {
     index = 4,
     layout = awful.layout.suit.tile,
-    gap = 20,
     screen = s
   })
 
@@ -404,6 +403,7 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "Signal",
+          "thunderbird-default",
           "veromix",
           "xtightvncviewer"},
 

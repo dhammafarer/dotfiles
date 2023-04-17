@@ -4,7 +4,7 @@ super + BackSpace
 
 # browsers
 super + {_,control} + l
-    {flatpak run org.mozilla.firefox,chromium}
+    flatpak run {org.mozilla.firefox,com.google.Chrome}
 
 # lock screen
 super + shift + Escape
