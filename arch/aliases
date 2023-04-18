@@ -56,7 +56,9 @@ alias ansi="ansible-inventory"
 alias ansp="ansible-playbook"
 alias ans="ansible"
 alias ansd="ansible-doc"
+alias ansg="ansible-galaxy" 
 alias angci="ansible-galaxy collection install"
+alias ansv="ansible-vault"
 
 # commands=
 alias cat="bat -p"
@@ -167,6 +169,7 @@ alias gpod="git push -u origin dev"
 alias gcr="git-create-repo"
 
 # Pass
+alias pgpa="pass git remote | xargs -L1 pass git push --all"
 alias pgpom="pass git push -u origin master"
 alias pgpul="pass git pull origin master"
 alias pgen="pgpul && pass generate -c"
