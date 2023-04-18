@@ -150,59 +150,11 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+require("tags")
+
 awful.screen.connect_for_each_screen(function(s)
   --set_wallpaper(s)
   gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-
-  -- Workspaces
-  awful.tag.add("dev", {
-    index = 1,
-    layout = awful.layout.suit.tile,
-    selected = true,
-    screen = s
-  })
-
-  awful.tag.add("run", {
-    index = 2,
-    layout = awful.layout.suit.tile,
-    screen = s
-  })
-
-  awful.tag.add("web", {
-    index = 3,
-    layout = awful.layout.suit.tile,
-    screen = s
-  })
-
-  awful.tag.add("com", {
-    index = 4,
-    layout = awful.layout.suit.tile,
-    screen = s
-  })
-
-  awful.tag.add("gui", {
-    index = 5,
-    layout = awful.layout.suit.tile,
-    screen = s
-  })
-
-  awful.tag.add("art", {
-    index = 6,
-    layout = awful.layout.suit.tile,
-    screen = s
-  })
-
-  awful.tag.add("vm", {
-    index = 7,
-    layout = awful.layout.suit.tile,
-    screen = s
-  })
-
-  awful.tag.add("med", {
-    index = 8,
-    layout = awful.layout.suit.tile,
-    screen = s
-  })
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
