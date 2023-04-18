@@ -54,11 +54,7 @@ end
 local theme_path = string.format("%s/.config/awesome/theme.lua", os.getenv("HOME"))
 beautiful.init(theme_path)
 
--- Global Variables
-terminal = "xfce4-terminal"
-editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. editor
-modkey = "Mod4"
+require("globals")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -257,19 +253,7 @@ globalkeys = gears.table.join(
   awful.key({ modkey }, "s", function () awful.layout.inc(1) end, {description = "select next", group = "layout"})
 )
 
-clientkeys = gears.table.join(
-  -- Next Layout
-  awful.key({ modkey, "Control" }, "s",
-    function (c) c.fullscreen = not c.fullscreen; c:raise() end,
-    {description = "toggle fullscreen", group = "client"}
-  ),
-
-  -- Close Client
-  awful.key({ modkey }, "q", function (c) c:kill() end, {description = "close", group = "client"}),
-
-  -- Toggle floating
-  awful.key({ modkey, "Control" }, "z",  awful.client.floating.toggle , {description = "toggle floating", group = "client"})
-)
+clientkeys = require("clientkeys")
 
 -- Workspace bindings
 local tag_keys = { "w", "r", "f", "a", "x", "b", "c", "p" }
