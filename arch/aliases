@@ -1,6 +1,11 @@
 #!/bin/sh
 
 ########################
+#      playbooks       #
+########################
+alias syu="cd ~/tailnet && ansible-playbook playbooks/dev/update.yml"
+
+########################
 #        source        #
 ########################
 
@@ -82,7 +87,6 @@ alias v="nvim"
 
 alias spacs="pacman-install"
 alias pacs="pacman -Ss"
-alias syu="sudo pacman -Syu"
 
 # files
 alias link-dotfiles="sh $HOME/dotfiles/scripts/box.arch.link-dotfiles.sh"

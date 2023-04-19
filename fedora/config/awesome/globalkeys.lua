@@ -38,7 +38,16 @@ globalkeys = gears.table.join(
 )
 
 -- Workspace bindings
-local tag_keys = { "w", "r", "f", "a", "x", "b", "c", "p" }
+local tag_keys = {
+  "w", -- dev
+  "r", -- run
+  "f", -- web
+  "a", -- com
+  "x", -- gui
+  "p", -- art
+  "c", -- vm
+  "b"  -- med
+}
 
 for i,v in ipairs(tag_keys) do
   globalkeys = gears.table.join(globalkeys,

@@ -56,27 +56,6 @@ beautiful.init(theme_path)
 
 require("globals")
 
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
-    awful.layout.suit.max,
-    -- awful.layout.suit.tile,
-    -- awful.layout.suit.fair,
-    -- awful.layout.suit.tile.left,
-    -- awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.floating,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
-}
--- }}}
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
@@ -246,11 +225,12 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 screen.connect_signal("arrange", function (s)
-    local max = s.selected_tag.layout.name == "max"
+    local name = s.selected_tag.layout.name
+    local noborder = name == "max" or name == "fullscreen"
     local only_one = #s.tiled_clients == 1 -- use tiled_clients so that other floating windows don't affect the count
     -- but iterate over clients instead of tiled_clients as tiled_clients doesn't include maximized windows
     for _, c in pairs(s.clients) do
-        if (max or only_one) and not c.floating or c.maximized then
+        if (noborder or only_one) and not c.floating or c.maximized then
             c.border_width = 0
         else
             c.border_width = beautiful.border_width
