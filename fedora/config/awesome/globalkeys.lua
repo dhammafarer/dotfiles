@@ -8,17 +8,17 @@ globalkeys = gears.table.join(
   awful.key({ modkey }, "Tab",
     function () awful.client.focus.byidx( 1) end, {description = "focus next by index", group = "client"}
   ),
-  awful.key({ modkey, "Shift" }, "Tab",
+  awful.key({ modkey, "Control" }, "Tab",
     function () awful.client.focus.byidx(-1) end, {description = "focus previous by index", group = "client"}
   ),
 
   -- Swap with next
-  awful.key({ modkey, "Control" }, "Tab",
+  awful.key({ modkey, "Shift" }, "Tab",
     function () awful.client.swap.byidx(1) end, {description = "swap with next client by index", group = "client"}
   ),
 
   -- Swap with previous
-  awful.key({ modkey, "Control", "Shift" }, "Tab",
+  awful.key({ modkey, "Shift", "Control" }, "Tab",
     function () awful.client.swap.byidx(-1) end, {description = "swap with previous client by index", group = "client"}
   ),
 

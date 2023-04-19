@@ -16,10 +16,10 @@ clientkeys = gears.table.join(
       awful.client.floating.toggle(c)
       awful.placement.centered(c, nil)
 
-      c.width = c.screen.geometry.width*3/5
+      c.width = c.screen.geometry.width*0.6
       c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
-      c.height = c.screen.geometry.height * 0.6
-      c.y = c.screen.geometry.y+(c.screen.geometry.height/5)
+      c.height = c.screen.geometry.height * 0.7
+      c.y = c.screen.geometry.height*0.15
 
       c:raise()
     end,
