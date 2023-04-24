@@ -37,6 +37,10 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
+
+    { rule = { class = "firefox" },
+      properties = { maximized = false } },
+
     -- Assign clients to tags
     { rule = { class = "Signal" }, properties = { screen = 1, tag = "com" } },
     { rule = { class = "thunderbird-default" }, properties = { screen = 1, tag = "com" } },
