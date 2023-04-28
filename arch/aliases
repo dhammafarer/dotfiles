@@ -183,7 +183,7 @@ alias snip="us && vim ."
 
 #applications
 alias vi="vim"
-alias rgr="ranger"
+alias rr="ranger"
 alias xo="xdg-open"
 alias pc="pass -c"
 alias tmpw="cd /tmp; wget "

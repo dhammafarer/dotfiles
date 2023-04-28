@@ -26,10 +26,6 @@ XF86Launch6
 XF86Launch5
     ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
-# mindmaps
-super + space; n
-    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
-
 # mindmaps alt
 XF86Launch9; t
     ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
@@ -79,7 +75,7 @@ XF86Launch8; r
 
 #### Start Rofi ####
 # desktop entries
-super + n
+super + space; n
     QT_STYLE_OVERRIDE=kvantum rofi -show drun -modi drun
 
 super + space; w

@@ -12,7 +12,8 @@ awful.rules.rules = {
          keys = clientkeys,
          buttons = clientbuttons,
          screen = awful.screen.preferred,
-         placement = awful.placement.centered+awful.placement.no_overlap+awful.placement.no_offscreen
+         -- placement = awful.placement.centered+awful.placement.no_overlap+awful.placement.no_offscreen
+         placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
 
@@ -22,13 +23,13 @@ awful.rules.rules = {
           "pinentry",
         },
         class = {
-          "Signal",
+          -- "Signal",
         },
         name = {
           "Event Tester",  -- xev.
         },
         role = {
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+          -- "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
 
@@ -37,11 +38,11 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
-
     { rule = { class = "firefox" },
       properties = { maximized = false } },
 
     -- Assign clients to tags
     { rule = { class = "Signal" }, properties = { screen = 1, tag = "com" } },
+    { rule = { class = "Google-chrome" }, properties = { screen = 1, tag = "com" } },
     { rule = { class = "thunderbird-default" }, properties = { screen = 1, tag = "com" } },
 }
