@@ -14,6 +14,9 @@ super + shift + Escape
 super + control + Escape
     xscreensaver-command -a
 
+{XF86AudioPlay,XF86AudioPause}
+    cmus-remote -{u,u}
+
 # rofi-pass
 XF86Tools
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
@@ -64,11 +67,14 @@ XF86Launch8; t
 
 # pyradio
 XF86Launch8; r
-  xdotool key Super_L+b; xfce4-terminal -e "distrobox enter dev -e 'pyradio -p 1'"; xdotool key Super_L+z
+  xdotool key Super_L+b; xfce4-terminal -e "distrobox enter dev -e 'cmus'"; xdotool key Super_L+z
 
 # Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+
+shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
+   cmus-remote -v {-,+}10 
 
 { button7,button6 }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
