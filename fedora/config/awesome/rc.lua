@@ -4,8 +4,6 @@ pcall(require, "luarocks.loader")
 
 -- widgets
 local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 local cmus_widget = require('awesome-wm-widgets.cmus-widget.cmus')
 
 -- Standard awesome library
