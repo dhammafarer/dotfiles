@@ -15,7 +15,7 @@ super + control + Escape
     xscreensaver-command -a
 
 {XF86AudioPlay,XF86AudioPause}
-    cmus-remote -{u,u}
+    cplay
 
 # rofi-pass
 XF86Tools
@@ -65,19 +65,28 @@ XF86Launch7; t
 XF86Launch8; t
     notify-send 'l8'
 
-# pyradio
-XF86Launch8; r
-  xdotool key Super_L+b; xfce4-terminal -e "distrobox enter dev -e 'cmus'"; xdotool key Super_L+z
+##################
+# Volume Control #
+##################
 
-# Volume Control
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
-shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
-   cmus-remote -v {-,+}10 
-
 { button7,button6 }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+
+shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
+   cmus-remote -v {-,+}5
+
+alt + shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
+   cmus-remote -v {75,100} 
+
+alt + shift + control XF86AudioRaiseVolume
+   bluetoothctl connect 41:42:5B:66:E5:77
+
+######################
+# Volume Control End #
+######################
 
 #### Start Rofi ####
 # desktop entries

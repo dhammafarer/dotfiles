@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! pgrep -x cmus ; then
+  xfce4-terminal -e cmus
+else
+  cmus-remote -u
+fi

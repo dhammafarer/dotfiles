@@ -1,7 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
 
-local margins = { left=18, bottom=18 }
+local margins = { left=18, bottom=18, right=18 }
 
 clientkeys = gears.table.join(
   -- Next Layout
@@ -20,6 +20,7 @@ clientkeys = gears.table.join(
 
       if c.floating then
         c.floating = false
+        c.opacity = 1
         return
       end
 
@@ -78,11 +79,22 @@ clientkeys = gears.table.join(
       c.height = c.screen.geometry.height * 0.25
 
       c.sticky = true
+      c.opacity = 0.3
 
-      awful.placement.bottom_left(c,nil)
+      awful.placement.bottom_left(c,{margins=margins})
 
     end,
     {description = "set mini corner", group = "client"}
+  ),
+
+  awful.key({ modkey, "Control" }, "e", function(c)
+      if c.opacity == 1 then
+        c.opacity = 0.3
+      else
+        c.opacity = 1
+      end
+    end,
+    {description = "toggle opacity", group = "client"}
   ),
 
   -- Toggle floating

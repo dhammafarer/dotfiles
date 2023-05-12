@@ -2,6 +2,12 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- widgets
+local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+local cmus_widget = require('awesome-wm-widgets.cmus-widget.cmus')
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -66,6 +72,8 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.layout.margin(wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"),4,4,0,0)
+
+myvolume = wibox.layout.margin(volume_widget{ widget_type = "vertical_bar" },0,0,4,4)
 
 mysystray = wibox.layout.margin(wibox.widget.systray(),3,3,3,3)
 
@@ -180,6 +188,9 @@ awful.screen.connect_for_each_screen(function(s)
       s.mytasklist, -- Middle widget
       { -- Right widgets
           layout = wibox.layout.fixed.horizontal,
+          cmus_widget{
+          },
+          myvolume,
           mytextclock,
           mysystray,
       },
