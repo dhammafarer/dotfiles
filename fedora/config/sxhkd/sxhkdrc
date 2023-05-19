@@ -84,6 +84,9 @@ alt + shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
 alt + shift + control XF86AudioRaiseVolume
    bluetoothctl connect 41:42:5B:66:E5:77
 
+alt + XF86AudioRaiseVolume
+   cplay
+
 ######################
 # Volume Control End #
 ######################
