@@ -71,7 +71,7 @@ clientkeys = gears.table.join(
   ),
   
 
-  awful.key({ modkey }, "e", function(c)
+  awful.key({ modkey, "Shift" }, "e", function(c)
       c.ontop = true
       c.floating = true
 
@@ -108,7 +108,66 @@ clientkeys = gears.table.join(
       awful.placement.bottom_left(c, {margins=margins})
     end,
     {description = "set placement to bottom_left", group = "client"}
-  )
+  ),
+  awful.key({ modkey }, "Up",
+    function ()
+        local c = awful.client.restore()
+        -- Focus restored client
+        if c then
+          c:raise()
+          client.focus = c
+        end
+    end,
+    {description = "restore minimized", group = "client"}),
+  awful.key({ modkey }, "m",
+    function (c)
+      if c.floating then
+        c.floating = false
+        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
+          c.opacity = 1
+        end
+      else
+        c.floating = true
+
+        c.width = c.screen.geometry.width*0.6
+        c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
+        c.height = c.screen.geometry.height * 0.7
+        c.y = c.screen.geometry.height*0.15
+
+        awful.placement.centered(c, nil)
+
+        c:raise()
+
+        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
+          if client.focus ~= c then
+            c.opacity = 0.3
+          end
+        end
+      end
+    end ,
+    {description = "toggle modal", group = "client"}),
+  awful.key({ modkey }, "e",
+    function (c)
+      for _, c in ipairs(mouse.screen.selected_tag:clients()) do
+        c.opacity = 1
+      end
+      if c.floating then
+        c.minimized = true
+      else
+        local c = awful.client.restore()
+        -- Focus restored client
+        if c then
+          c:raise()
+          client.focus = c
+          for _, c in ipairs(mouse.screen.selected_tag:clients()) do
+            if client.focus ~= c then
+              c.opacity = 0.3
+            end
+          end
+        end
+      end
+    end ,
+    {description = "toggle modal visibility", group = "client"})
 )
 
 return clientkeys
