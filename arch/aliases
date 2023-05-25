@@ -181,9 +181,24 @@ alias pgen="pgpul && pass generate -c"
 # working files and directories
 alias snip="us && vim ."
 
+########################
+#          cd          #
+########################
+alias cdd="cd ~/Downloads"
+alias cdn="cd ~/Nextcloud"
+alias cdc="cd ~/ctn"
+
+########################
+#        ranger        #
+########################
+alias rr="ranger"
+alias rrd="rr ~/Downloads"
+alias rrn="rr ~/Nextcloud"
+alias rrc="rr ~/ctn"
+
+
 #applications
 alias vi="vim"
-alias rr="ranger"
 alias xo="xdg-open"
 alias pc="pass -c"
 alias tmpw="cd /tmp; wget "
