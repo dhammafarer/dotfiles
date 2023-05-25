@@ -247,8 +247,23 @@ screen.connect_signal("arrange", function (s)
     end
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c)
+  c.border_color = beautiful.border_focus
+
+  -- ensure client comes in focus with full opacity
+  c.opacity = 1
+
+  -- if focus returns to a tiling client, restore opacity on all clients
+  if not c.floating then
+    for _, c in ipairs(mouse.screen.selected_tag:clients()) do
+      c.opacity = 1
+    end
+  end
+end)
+
+client.connect_signal("unfocus", function(c)
+  c.border_color = beautiful.border_normal
+end)
 -- }}}
 
 awesome.spawn(gears.filesystem.get_configuration_dir() .. "autostart.sh")

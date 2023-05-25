@@ -21,6 +21,13 @@ clientkeys = gears.table.join(
       if c.floating then
         c.floating = false
         c.opacity = 1
+
+        -- restore opacity on tiling clients
+        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
+          if not c.floating then
+            c.opacity = 1
+          end
+        end
         return
       end
 
@@ -34,6 +41,7 @@ clientkeys = gears.table.join(
       awful.placement.centered(c, nil)
 
       c:raise()
+
     end,
     {description = "toggle floating", group = "client"}
   ),
@@ -136,8 +144,13 @@ clientkeys = gears.table.join(
 
         awful.placement.centered(c, nil)
 
+
         c:raise()
 
+        -- set layout to tile, because background windows will have opacity lowered
+        awful.layout.set(awful.layout.suit.tile)
+
+        -- set opacity of background windows
         for _, c in ipairs(mouse.screen.selected_tag:clients()) do
           if client.focus ~= c then
             c.opacity = 0.3
@@ -159,6 +172,11 @@ clientkeys = gears.table.join(
         if c then
           c:raise()
           client.focus = c
+
+          -- set layout to tiled, so that clients with lowered opacity don't overlap
+          awful.layout.set(awful.layout.suit.tile)
+
+          -- lower opacity on background clients
           for _, c in ipairs(mouse.screen.selected_tag:clients()) do
             if client.focus ~= c then
               c.opacity = 0.3
