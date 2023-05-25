@@ -1,7 +1,4 @@
 # path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
-export LC_ALL="en_US.UTF-8"
-
 # disable CTRL-s flow control
 stty -ixon
 
@@ -13,12 +10,8 @@ compinit
 
 plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd)
 
-export PATH=":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games/:$HOME/.npm-global/bin/:$HOME/.local/bin/:$HOME/.cargo/bin"
-
 source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
-
-export EDITOR=nvim
 
 eval "$(fasd --init auto)"

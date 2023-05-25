@@ -117,16 +117,6 @@ clientkeys = gears.table.join(
     end,
     {description = "set placement to bottom_left", group = "client"}
   ),
-  awful.key({ modkey }, "Up",
-    function ()
-        local c = awful.client.restore()
-        -- Focus restored client
-        if c then
-          c:raise()
-          client.focus = c
-        end
-    end,
-    {description = "restore minimized", group = "client"}),
   awful.key({ modkey }, "m",
     function (c)
       if c.floating then

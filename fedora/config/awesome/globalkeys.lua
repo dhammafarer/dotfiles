@@ -21,6 +21,16 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Shift", "Control" }, "Tab",
     function () awful.client.swap.byidx(-1) end, {description = "swap with previous client by index", group = "client"}
   ),
+  awful.key({ modkey }, "Up",
+    function ()
+        local c = awful.client.restore()
+        -- Focus restored client
+        if c then
+          c:raise()
+          client.focus = c
+        end
+    end,
+    {description = "restore minimized", group = "client"}),
 
   -- Standard program
   awful.key({ modkey }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "launcher"}),
