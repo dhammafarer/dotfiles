@@ -96,11 +96,33 @@ clientkeys = gears.table.join(
   ),
 
   awful.key({ modkey, "Control" }, "e", function(c)
-      if c.opacity == 1 then
-        c.opacity = 0.3
-      else
+      if c.opacity < 0.3 then
         c.opacity = 1
+      else
+        c.opacity = c.opacity - 0.1
       end
+    end,
+    {description = "toggle opacity", group = "client"}
+  ),
+
+  awful.key({ modkey, "Control" }, "i", function(c)
+      if (c.opacity + 0.1) > 1 then
+        c.opacity = 1
+      else
+        c.opacity = c.opacity + 0.1
+      end
+    end,
+    {description = "toggle opacity", group = "client"}
+  ),
+
+  awful.key({ modkey, "Control", "Shift" }, "i", function(c)
+      c.opacity = 1
+    end,
+    {description = "toggle opacity", group = "client"}
+  ),
+
+  awful.key({ modkey, "Control", "Shift" }, "e", function(c)
+      c.opacity = 0.3
     end,
     {description = "toggle opacity", group = "client"}
   ),

@@ -258,9 +258,11 @@ client.connect_signal("property::backdrop", function(c)
 
     c.floating = true
 
-    c.width = c.screen.geometry.width*0.6
+    c.width = c.screen.geometry.width*0.7
+    --c.width = 1344
     c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
     c.height = c.screen.geometry.height * 0.7
+    --c.height = 756
     c.y = c.screen.geometry.height*0.15
 
     awful.placement.centered(c, nil)
