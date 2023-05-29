@@ -119,41 +119,13 @@ clientkeys = gears.table.join(
   ),
   awful.key({ modkey }, "m",
     function (c)
-      if c.backdrop then
-        c.backdrop = false
-        c.floating = false
-      else
-        for _, x in ipairs(c.first_tag:clients()) do
-          x.backdrop = false
-          x.minimized = false
-          x.floating = false
-        end
-
-        c.floating = true
-        c.backdrop = true
-
-        c.width = c.screen.geometry.width*0.6
-        c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
-        c.height = c.screen.geometry.height * 0.7
-        c.y = c.screen.geometry.height*0.15
-
-        awful.placement.centered(c, nil)
-
-
-        c:raise()
-
-        -- set layout to tile, because background windows will have opacity lowered
-        awful.layout.set(awful.layout.suit.tile)
-      end
+      c.backdrop = not c.backdrop
     end ,
-    {description = "toggle modal", group = "client"}),
+    {description = "toggle backdrop", group = "client"}),
 
   awful.key({ modkey }, "e",
     function (c)
-      for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-        c.opacity = 1
-      end
-      if c.floating then
+      if c.backdrop then
         c.minimized = true
       else
         local c = awful.client.restore()
@@ -161,13 +133,10 @@ clientkeys = gears.table.join(
         if c then
           c:raise()
           client.focus = c
-
-          -- set layout to tiled, so that clients with lowered opacity don't overlap
-          awful.layout.set(awful.layout.suit.tile)
         end
       end
     end ,
-    {description = "toggle modal visibility", group = "client"})
+    {description = "toggle minimize backdrop", group = "client"})
 )
 
 return clientkeys

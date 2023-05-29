@@ -251,12 +251,28 @@ client.connect_signal("property::backdrop", function(c)
   -- client gets backdrop,
   if c.backdrop then
     for _, x in ipairs(c.first_tag:clients()) do
-      if not x.backdrop then
+      if c ~= x then
         x.opacity = 0.3
       end
     end
+
+    c.floating = true
+
+    c.width = c.screen.geometry.width*0.6
+    c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
+    c.height = c.screen.geometry.height * 0.7
+    c.y = c.screen.geometry.height*0.15
+
+    awful.placement.centered(c, nil)
+
+    c:raise()
+
+    -- set layout to tile, because background windows will have opacity lowered
+    awful.layout.set(awful.layout.suit.tile)
+
   -- client loses backdrop
   else
+    c.floating = false
     for _, x in ipairs(c.first_tag:clients()) do
       x.opacity = 1
     end
@@ -268,9 +284,12 @@ client.connect_signal("focus", function(c)
 
   -- client in focus has backdrop
   if c.backdrop then
+    awful.layout.set(awful.layout.suit.tile)
     for _, x in ipairs(c.first_tag:clients()) do
       if c ~= x then
         x.opacity = 0.3
+      else
+        x.opacity = 1
       end
     end
   end
