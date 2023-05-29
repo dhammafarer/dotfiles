@@ -254,9 +254,9 @@ client.connect_signal("focus", function(c)
   c.opacity = 1
 
   -- if focus returns to a tiling client, restore opacity on all clients
-  if not c.floating then
-    for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-      c.opacity = 1
+  if not c.backdrop then
+    for _, x in ipairs(c.first_tag:clients()) do
+      x.opacity = 1
     end
   end
 end)
