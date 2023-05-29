@@ -122,10 +122,13 @@ clientkeys = gears.table.join(
       if c.backdrop then
         c.backdrop = false
         c.floating = false
-        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-          c.opacity = 1
-        end
       else
+        for _, x in ipairs(c.first_tag:clients()) do
+          x.backdrop = false
+          x.minimized = false
+          x.floating = false
+        end
+
         c.floating = true
         c.backdrop = true
 
@@ -141,13 +144,6 @@ clientkeys = gears.table.join(
 
         -- set layout to tile, because background windows will have opacity lowered
         awful.layout.set(awful.layout.suit.tile)
-
-        -- set opacity of background windows
-        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-          if client.focus ~= c then
-            c.opacity = 0.3
-          end
-        end
       end
     end ,
     {description = "toggle modal", group = "client"}),

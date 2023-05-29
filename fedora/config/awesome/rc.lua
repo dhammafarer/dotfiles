@@ -247,6 +247,23 @@ screen.connect_signal("arrange", function (s)
     end
 end)
 
+client.connect_signal("property::backdrop", function(c)
+  -- when client is given backdrop,
+  -- lower opacity of all clients without backdrop 
+  if c.backdrop then
+    for _, x in ipairs(c.first_tag:clients()) do
+      if not x.backdrop then
+        x.opacity = 0.3
+      end
+    end
+  -- if client loses backdrop, restore opacity of all clients
+  else
+    for _, x in ipairs(c.first_tag:clients()) do
+      x.opacity = 1
+    end
+  end
+end)
+
 client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
 
