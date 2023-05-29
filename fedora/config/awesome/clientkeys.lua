@@ -119,13 +119,15 @@ clientkeys = gears.table.join(
   ),
   awful.key({ modkey }, "m",
     function (c)
-      if c.floating then
+      if c.backdrop then
+        c.backdrop = false
         c.floating = false
         for _, c in ipairs(mouse.screen.selected_tag:clients()) do
           c.opacity = 1
         end
       else
         c.floating = true
+        c.backdrop = true
 
         c.width = c.screen.geometry.width*0.6
         c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
@@ -149,6 +151,7 @@ clientkeys = gears.table.join(
       end
     end ,
     {description = "toggle modal", group = "client"}),
+
   awful.key({ modkey }, "e",
     function (c)
       for _, c in ipairs(mouse.screen.selected_tag:clients()) do

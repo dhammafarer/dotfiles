@@ -263,6 +263,9 @@ end)
 
 client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
+  if c.backdrop then
+    c.minimized = true
+  end
 end)
 -- }}}
 
