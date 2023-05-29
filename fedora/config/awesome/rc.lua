@@ -248,15 +248,14 @@ screen.connect_signal("arrange", function (s)
 end)
 
 client.connect_signal("property::backdrop", function(c)
-  -- when client is given backdrop,
-  -- lower opacity of all clients without backdrop 
+  -- client gets backdrop,
   if c.backdrop then
     for _, x in ipairs(c.first_tag:clients()) do
       if not x.backdrop then
         x.opacity = 0.3
       end
     end
-  -- if client loses backdrop, restore opacity of all clients
+  -- client loses backdrop
   else
     for _, x in ipairs(c.first_tag:clients()) do
       x.opacity = 1
@@ -267,10 +266,16 @@ end)
 client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
 
-  -- ensure client comes in focus with full opacity
-  c.opacity = 1
+  -- client in focus has backdrop
+  if c.backdrop then
+    for _, x in ipairs(c.first_tag:clients()) do
+      if c ~= x then
+        x.opacity = 0.3
+      end
+    end
+  end
 
-  -- if focus returns to a tiling client, restore opacity on all clients
+  -- client in focus doesn't have backdrop
   if not c.backdrop then
     for _, x in ipairs(c.first_tag:clients()) do
       x.opacity = 1
@@ -280,6 +285,8 @@ end)
 
 client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
+
+  -- client has backdrop
   if c.backdrop then
     c.minimized = true
   end

@@ -164,13 +164,6 @@ clientkeys = gears.table.join(
 
           -- set layout to tiled, so that clients with lowered opacity don't overlap
           awful.layout.set(awful.layout.suit.tile)
-
-          -- lower opacity on background clients
-          for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-            if client.focus ~= c then
-              c.opacity = 0.3
-            end
-          end
         end
       end
     end ,
