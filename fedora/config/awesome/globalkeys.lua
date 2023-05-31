@@ -6,7 +6,19 @@ globalkeys = gears.table.join(
   awful.key({ modkey }, "z", awful.tag.history.restore, {description = "go back", group = "tag"}),
   -- Focus
   awful.key({ modkey }, "Tab",
-    function () awful.client.focus.byidx( 1) end, {description = "focus next by index", group = "client"}
+    function ()
+      local screen = awful.screen.focused()
+
+      if #screen.tiled_clients == 1 then
+        local c = awful.client.restore()
+        -- Focus restored client
+        if c then
+          c:raise()
+        end
+      end
+      awful.client.focus.byidx( 1)
+
+    end, {description = "focus next by index", group = "client"}
   ),
   awful.key({ modkey, "Control" }, "Tab",
     function () awful.client.focus.byidx(-1) end, {description = "focus previous by index", group = "client"}
@@ -19,7 +31,9 @@ globalkeys = gears.table.join(
 
   -- Swap with previous
   awful.key({ modkey, "Shift", "Control" }, "Tab",
-    function () awful.client.swap.byidx(-1) end, {description = "swap with previous client by index", group = "client"}
+    function ()
+      awful.client.swap.byidx(-1)
+    end, {description = "swap with previous client by index", group = "client"}
   ),
   awful.key({ modkey }, "Up",
     function ()
