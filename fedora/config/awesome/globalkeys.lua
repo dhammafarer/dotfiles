@@ -1,6 +1,8 @@
 local gears = require("gears")
 local awful = require("awful")
 
+local lain = require("lain")
+
 globalkeys = gears.table.join(
   -- Restore last tag
   awful.key({ modkey }, "z", awful.tag.history.restore, {description = "go back", group = "tag"}),
@@ -9,7 +11,7 @@ globalkeys = gears.table.join(
     function ()
       local screen = awful.screen.focused()
 
-      if #screen.tiled_clients == 1 then
+      if #screen.tiled_clients < 2 then
         local c = awful.client.restore()
         -- Focus restored client
         if c then
@@ -17,12 +19,22 @@ globalkeys = gears.table.join(
         end
       end
       awful.client.focus.byidx( 1)
-
     end, {description = "focus next by index", group = "client"}
   ),
+
   awful.key({ modkey, "Control" }, "Tab",
     function () awful.client.focus.byidx(-1) end, {description = "focus previous by index", group = "client"}
   ),
+
+  awful.key({ modkey, "Control" }, "u", function ()
+    local ln = awful.layout.getname()
+
+    if ln == "centerwork" then
+      awful.layout.set(awful.layout.suit.tile)
+    else
+      awful.layout.set(lain.layout.centerwork)
+    end
+  end, {description = "Toggle centerwork/tile", group = "client"}),
 
   -- Swap with next
   awful.key({ modkey, "Shift" }, "Tab",
@@ -35,16 +47,6 @@ globalkeys = gears.table.join(
       awful.client.swap.byidx(-1)
     end, {description = "swap with previous client by index", group = "client"}
   ),
-  awful.key({ modkey }, "Up",
-    function ()
-        local c = awful.client.restore()
-        -- Focus restored client
-        if c then
-          c:raise()
-          client.focus = c
-        end
-    end,
-    {description = "restore minimized", group = "client"}),
 
   -- Standard program
   awful.key({ modkey }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "launcher"}),
@@ -57,8 +59,25 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Shift" }, "o", function () awful.tag.incmwfact( 0.05) end, {description = "increase master width factor", group = "layout"}),
   awful.key({ modkey, "Shift" }, "n", function () awful.tag.incmwfact(-0.05) end, {description = "decrease master width factor", group = "layout"}),
 
+  -- Increase number of columns
+  awful.key({ modkey }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+    {description = "increase the number of columns", group = "layout"}),
+
+  -- Decrease number of columns
+  awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol(-1, nil, true)    end,
+    {description = "decrease the number of columns", group = "layout"}),
+
   -- Next Layout
-  awful.key({ modkey }, "s", function () awful.layout.inc(1) end, {description = "select next", group = "layout"})
+  awful.key({ modkey }, "s", function ()
+    --awful.layout.inc(1)
+    local ln = awful.layout.getname()
+    if ln == "max" then
+      awful.layout.set(awful.layout.suit.tile)
+    else
+      awful.layout.set(awful.layout.suit.max)
+    end
+
+  end, {description = "select next", group = "layout"})
 )
 
 -- Workspace bindings
