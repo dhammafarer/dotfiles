@@ -116,53 +116,17 @@ clientkeys = gears.table.join(
   ),
 
   -- place window in lower left corner
-  awful.key({ modkey }, "Left", function(c)
+  awful.key({ modkey, "Shift" }, "Left", function(c)
       set_align("bottom_left", c)
     end,
     {description = "set placement to bottom_left", group = "client"}
   ),
 
   -- place window in lower right corner
-  awful.key({ modkey }, "Right", function(c)
+  awful.key({ modkey, "Shift" }, "Right", function(c)
       set_align("bottom_right", c)
     end,
     {description = "set placement to bottom_right", group = "client"}
-  ),
-
-  -- increase client size
-  awful.key({ modkey }, "Up", function(c)
-      c.floating = true
-
-      if c.height == 360 then
-        c.height = 480
-        c.width = 854
-      elseif c.height == 480 then
-        c.width = 1280
-        c.height = 720
-      else
-        c.width = 1280
-        c.height = 720
-      end
-    end,
-    {description = "cycle client size forward", group = "client"}
-  ),
-  
-  -- decrease client size
-  awful.key({ modkey }, "Down", function(c)
-      c.floating = true
-
-      if c.height == 720 then
-        c.height = 480
-        c.width = 854
-      elseif c.height == 480 then
-        c.height = 360
-        c.width = 640
-      else
-        c.height = 360
-        c.width = 640
-      end
-    end,
-    {description = "cycle client size", group = "client"}
   ),
 
   -- toggle backdrop on client

@@ -6,6 +6,7 @@
 alias tplay="cd ~/tailnet && ansible-playbook"
 alias syu="tplay playbooks/dev/update.yml"
 alias setup-dotfiles="tplay playbooks/workstation/dotfiles.yml"
+alias sync_repos="tplay playbooks/workstation/sync_repos.yml"
 
 ########################
 #        source        #

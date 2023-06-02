@@ -26,6 +26,29 @@ globalkeys = gears.table.join(
     function () awful.client.focus.byidx(-1) end, {description = "focus previous by index", group = "client"}
   ),
 
+  -- navigation with arrows
+  awful.key({ modkey }, "Down",
+    function()
+      awful.client.focus.bydirection("down")
+      if client.focus then client.focus:raise() end
+    end),
+  awful.key({ modkey }, "Up",
+    function()
+      awful.client.focus.bydirection("up")
+      if client.focus then client.focus:raise() end
+    end),
+  awful.key({ modkey }, "Left",
+    function()
+      awful.client.focus.bydirection("left")
+      if client.focus then client.focus:raise() end
+    end),
+  awful.key({ modkey }, "Right",
+    function()
+      awful.client.focus.bydirection("right")
+      if client.focus then client.focus:raise() end
+    end
+  ),
+
   awful.key({ modkey, "Control" }, "u", function ()
     local ln = awful.layout.getname()
 
