@@ -119,6 +119,10 @@ git-clone-repo-dhammafarer() {
   git clone git@github.com:dhammafarer/$1.git $2
 }
 
+git-clone-role-dhammafarer() {
+  cd ~/code/roles/ && git clone git@github.com:dhammafarer/ansible-role-$1.git $1
+}
+
 git-create-repo() {
   gh repo create $1 --public --source=. --remote=upstream --push
 }
@@ -162,6 +166,7 @@ alias gar="git-add-remote"
 alias glog="git log"
 alias gcl="git-clone-repo"
 alias gcld="git-clone-repo-dhammafarer"
+alias gclr="git-clone-role-dhammafarer"
 alias nah="git reset --hard; git clean -dif;"
 alias gic="git init && gaa && gc 'initial commit'"
 alias gcir="git-create-init-repo"
