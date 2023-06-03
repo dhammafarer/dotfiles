@@ -1,7 +1,12 @@
 local gears = require("gears")
 local awful = require("awful")
 
-local margins = { left=18, bottom=18, right=18 }
+local margins = { left=18, bottom=18, right=18, top=18 }
+
+local function set_align(position, c)
+  awful.placement.align(c, {position=position, margins=margins})
+  c.align = position
+end
 
 clientkeys = gears.table.join(
   -- Next Layout
@@ -33,10 +38,8 @@ clientkeys = gears.table.join(
 
       c.floating = true
 
-      c.width = c.screen.geometry.width*0.6
-      c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
-      c.height = c.screen.geometry.height * 0.7
-      c.y = c.screen.geometry.height*0.15
+      c.width = 1280
+      c.height = 720
 
       awful.placement.centered(c, nil)
 
@@ -46,14 +49,14 @@ clientkeys = gears.table.join(
     {description = "toggle floating", group = "client"}
   ),
 
-  -- Toggle floating
+  -- Resize to 360p, place in the corner
   awful.key({ modkey }, "u", function(c)
       c.ontop = true
       c.floating = true
       c.sticky = false
 
-      c.width = c.screen.geometry.width*0.4
-      c.height = c.screen.geometry.height * 0.4
+      c.width = 640
+      c.height = 360
 
       awful.placement.bottom_left(c, {margins=margins})
 
@@ -66,95 +69,83 @@ clientkeys = gears.table.join(
       c.ontop = false
       c.sticky = false
 
-      awful.placement.centered(c, nil)
-
       c.width = c.screen.geometry.width*0.6
-      c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
       c.height = c.screen.geometry.height * 0.7
-      c.y = c.screen.geometry.height*0.15
+
+      awful.placement.centered(c, nil)
 
       c:raise()
     end,
     {description = "toggle floating", group = "client"}
   ),
   
-
-  awful.key({ modkey, "Shift" }, "e", function(c)
-      c.ontop = true
-      c.floating = true
-
-      c.width = c.screen.geometry.width*0.25
-      c.height = c.screen.geometry.height * 0.25
-
-      c.sticky = true
-      c.opacity = 0.3
-
-      awful.placement.bottom_left(c,{margins=margins})
-
-    end,
-    {description = "set mini corner", group = "client"}
-  ),
-
+  -- decrement opacity
   awful.key({ modkey, "Control" }, "e", function(c)
-      if c.opacity == 1 then
-        c.opacity = 0.3
-      else
+      if c.opacity < backdrop_opacity then
         c.opacity = 1
+      else
+        c.opacity = c.opacity - 0.1
       end
     end,
     {description = "toggle opacity", group = "client"}
   ),
 
-  -- Toggle floating
-  awful.key({ modkey }, "o", function(c)
-      awful.placement.bottom_right(c, {margins=margins})
+  -- increment opacity
+  awful.key({ modkey, "Control" }, "i", function(c)
+      if (c.opacity + 0.1) > 1 then
+        c.opacity = 1
+      else
+        c.opacity = c.opacity + 0.1
+      end
+    end,
+    {description = "toggle opacity", group = "client"}
+  ),
+
+  -- reset opacity to 1
+  awful.key({ modkey, "Control", "Shift" }, "i", function(c)
+      c.opacity = 1
+    end,
+    {description = "toggle opacity", group = "client"}
+  ),
+
+  -- reset opacity to lowest
+  awful.key({ modkey, "Control", "Shift" }, "e", function(c)
+      c.opacity = backdrop_opacity
+    end,
+    {description = "toggle opacity", group = "client"}
+  ),
+
+  -- place window in lower left corner
+  awful.key({ modkey, "Shift" }, "Left", function(c)
+      set_align("bottom_left", c)
+    end,
+    {description = "set placement to bottom_left", group = "client"}
+  ),
+
+  -- place window in lower right corner
+  awful.key({ modkey, "Shift" }, "Right", function(c)
+      set_align("bottom_right", c)
     end,
     {description = "set placement to bottom_right", group = "client"}
   ),
 
-  awful.key({ modkey }, "n", function(c)
-      awful.placement.bottom_left(c, {margins=margins})
-    end,
-    {description = "set placement to bottom_left", group = "client"}
-  ),
+  -- toggle backdrop on client
   awful.key({ modkey }, "m",
     function (c)
-      if c.floating then
-        c.floating = false
-        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-          c.opacity = 1
-        end
-      else
-        c.floating = true
-
-        c.width = c.screen.geometry.width*0.6
-        c.x = c.screen.geometry.x+(c.screen.geometry.width/5)
-        c.height = c.screen.geometry.height * 0.7
-        c.y = c.screen.geometry.height*0.15
-
-        awful.placement.centered(c, nil)
-
-
-        c:raise()
-
-        -- set layout to tile, because background windows will have opacity lowered
-        awful.layout.set(awful.layout.suit.tile)
-
-        -- set opacity of background windows
-        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-          if client.focus ~= c then
-            c.opacity = 0.3
-          end
-        end
-      end
+      c.backdrop = not c.backdrop
     end ,
-    {description = "toggle modal", group = "client"}),
+    {description = "toggle backdrop", group = "client"}),
+
+  awful.key({ modkey }, "y",
+    function (c)
+      c.ontop = not c.ontop
+    end ,
+    {description = "toggle ontop", group = "client"}),
+
+  -- toggle visibility of backdrop client
   awful.key({ modkey }, "e",
     function (c)
-      for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-        c.opacity = 1
-      end
-      if c.floating then
+      if c.backdrop then
         c.minimized = true
       else
         local c = awful.client.restore()
@@ -162,20 +153,45 @@ clientkeys = gears.table.join(
         if c then
           c:raise()
           client.focus = c
-
-          -- set layout to tiled, so that clients with lowered opacity don't overlap
-          awful.layout.set(awful.layout.suit.tile)
-
-          -- lower opacity on background clients
-          for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-            if client.focus ~= c then
-              c.opacity = 0.3
-            end
-          end
         end
       end
     end ,
-    {description = "toggle modal visibility", group = "client"})
+    {description = "toggle minimize backdrop", group = "client"})
 )
+
+local function position_floating(idx, c)
+  local margins = { left=18, bottom=18, right=18, top=18 }
+  local pos = c.align or "centered"
+  
+  c.floating = true
+
+  local variants = {
+    [1] = function (c)
+        c.width = 640
+        c.height = 360
+        awful.placement.align(c, {position=pos, margins=margins})
+      end,
+    [2] = function (c)
+        c.width = 854
+        c.height = 480
+        awful.placement.align(c, {position=pos, margins=margins})
+      end
+  }
+
+  if variants[idx] then
+    variants[idx](c)
+  end
+end
+
+for i = 1, 9 do
+  clientkeys = gears.table.join(clientkeys,
+    awful.key({ modkey }, "#" .. i + 9,
+      function (c)
+        position_floating(i, c)
+      end,
+      {description = "set floating with position #"..i, group = "client"}
+    )
+  )
+end
 
 return clientkeys

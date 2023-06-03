@@ -247,22 +247,63 @@ screen.connect_signal("arrange", function (s)
     end
 end)
 
+client.connect_signal("property::backdrop", function(c)
+  -- client gets backdrop,
+  if c.backdrop then
+    for _, x in ipairs(c.first_tag:clients()) do
+      if c ~= x then
+        x.opacity = backdrop_opacity
+      end
+    end
+
+    c.floating = true
+
+    c.width = 1280
+    c.height = 720
+
+    awful.placement.centered(c, nil)
+
+    c:raise()
+
+  -- client loses backdrop
+  else
+    c.floating = false
+    for _, x in ipairs(c.first_tag:clients()) do
+      x.opacity = 1
+    end
+  end
+end)
+
 client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
 
-  -- ensure client comes in focus with full opacity
-  c.opacity = 1
+  c.border_width = beautiful.border_width
+  -- client in focus has backdrop
+  if c.backdrop then
+    for _, x in ipairs(c.first_tag:clients()) do
+      if c ~= x then
+        x.opacity = backdrop_opacity
+      else
+        x.opacity = 1
+      end
+    end
+  end
 
-  -- if focus returns to a tiling client, restore opacity on all clients
-  if not c.floating then
-    for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-      c.opacity = 1
+  -- client in focus doesn't have backdrop
+  if not c.backdrop then
+    for _, x in ipairs(c.first_tag:clients()) do
+      x.opacity = 1
     end
   end
 end)
 
 client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
+
+  -- client has backdrop
+  if c.backdrop then
+    c.minimized = true
+  end
 end)
 -- }}}
 

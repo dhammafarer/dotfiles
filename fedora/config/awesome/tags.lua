@@ -1,5 +1,7 @@
 local awful = require("awful")
 
+local lain = require("lain")
+
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.max,
@@ -23,7 +25,7 @@ awful.layout.layouts = {
 
 awful.tag.add("dev", {
   index = 1,
-  layout = awful.layout.suit.tile,
+  layout = lain.layout.centerwork,
   selected = true,
   screen = s
 })
