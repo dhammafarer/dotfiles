@@ -64,21 +64,6 @@ clientkeys = gears.table.join(
     {description = "toggle bottom_left", group = "client"}
   ),
 
-  awful.key({ modkey }, "i", function(c)
-      c.floating = true
-      c.ontop = false
-      c.sticky = false
-
-      c.width = c.screen.geometry.width*0.6
-      c.height = c.screen.geometry.height * 0.7
-
-      awful.placement.centered(c, nil)
-
-      c:raise()
-    end,
-    {description = "toggle floating", group = "client"}
-  ),
-  
   -- decrement opacity
   awful.key({ modkey, "Control" }, "e", function(c)
       if c.opacity < backdrop_opacity then
@@ -129,6 +114,17 @@ clientkeys = gears.table.join(
     {description = "set placement to bottom_right", group = "client"}
   ),
 
+  awful.key({ modkey, "Shift" }, "Up", function(c)
+      set_align("centered", c)
+
+      c.floating = true
+      c.ontop = false
+      c.sticky = false
+    end,
+    {description = "toggle floating", group = "client"}
+  ),
+  
+
   -- toggle backdrop on client
   awful.key({ modkey }, "m",
     function (c)
@@ -175,7 +171,17 @@ local function position_floating(idx, c)
         c.width = 854
         c.height = 480
         awful.placement.align(c, {position=pos, margins=margins})
-      end
+      end,
+    [3] = function (c)
+        c.width = 1280
+        c.height = 720
+        awful.placement.align(c, {position=pos, margins=margins})
+      end,
+    [4] = function (c)
+        c.width = 474
+        c.height = 266
+        awful.placement.align(c, {position=pos, margins=margins})
+      end,
   }
 
   if variants[idx] then
