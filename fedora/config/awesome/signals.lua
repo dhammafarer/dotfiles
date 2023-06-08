@@ -76,16 +76,18 @@ client.connect_signal("focus",
 
     c.border_width = beautiful.border_width
     -- client in focus has backdrop
-    if c.backdrop then
       for _, x in ipairs(c.first_tag:clients()) do
         if c ~= x then
-          x.opacity = backdrop_opacity
+          if c.backdrop then
+            x.opacity = backdrop_opacity
+          else
+            x.opacity = inactive_opacity
+          end
         else
           c.opacity = 1
           c.ontop = true
         end
       end
-    end
 
     -- client in focus doesn't have backdrop
     if not c.backdrop then

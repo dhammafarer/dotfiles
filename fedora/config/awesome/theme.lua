@@ -21,6 +21,7 @@ local colors = {}
 
 colors.bg = "#192330"
 colors.blue = "#5294e2"
+colors.border = "#213448"
 colors.grey = "#999999"
 colors.white = "#eeeeee"
 
@@ -40,7 +41,7 @@ theme.fg_minimize   = "#ffffff"
 theme.useless_gap   = dpi(4)
 theme.border_width  = dpi(1)
 theme.border_normal = colors.bg
-theme.border_focus  = colors.blue
+theme.border_focus  = colors.border
 theme.border_marked = "#91231c"
 
 theme.gap_single_client  = false
