@@ -1,7 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
 
-local margins = { left=18, bottom=18, right=18, top=18 }
+require("globals")
 
 local function set_align(position, c)
   awful.placement.align(c, {position=position, margins=margins})
@@ -49,19 +49,11 @@ clientkeys = gears.table.join(
     {description = "toggle floating", group = "client"}
   ),
 
-  -- Resize to 360p, place in the corner
-  awful.key({ modkey }, "u", function(c)
-      c.ontop = true
-      c.floating = true
-      c.sticky = false
-
-      c.width = 640
-      c.height = 360
-
-      awful.placement.bottom_left(c, {margins=margins})
-
+  awful.key({ modkey }, "Insert",
+    function (c)
+      c:swap(awful.client.getmaster())
     end,
-    {description = "toggle bottom_left", group = "client"}
+  {description = "move to master", group = "client"}
   ),
 
   -- decrement opacity
@@ -107,6 +99,22 @@ clientkeys = gears.table.join(
     {description = "set placement to bottom_left", group = "client"}
   ),
 
+  awful.key({ modkey, "Shift", "Control" }, "Left", function(c)
+      c.floating = true
+      floating_sizes[4](c)
+      set_align("bottom_left", c)
+    end,
+    {description = "set placement to bottom_left", group = "client"}
+  ),
+
+  awful.key({ modkey, "Shift", "Control" }, "Right", function(c)
+      c.floating = true
+      floating_sizes[4](c)
+      set_align("bottom_right", c)
+    end,
+    {description = "set placement to bottom_right", group = "client"}
+  ),
+
   -- place window in lower right corner
   awful.key({ modkey, "Shift" }, "Right", function(c)
       set_align("bottom_right", c)
@@ -142,12 +150,14 @@ clientkeys = gears.table.join(
   awful.key({ modkey }, "e",
     function (c)
       if c.backdrop then
+        c.ontop = false
         c.minimized = true
       else
         local c = awful.client.restore()
         -- Focus restored client
         if c then
           c:raise()
+          c.ontop = true
           client.focus = c
         end
       end
@@ -156,36 +166,13 @@ clientkeys = gears.table.join(
 )
 
 local function position_floating(idx, c)
-  local margins = { left=18, bottom=18, right=18, top=18 }
   local pos = c.align or "centered"
   
   c.floating = true
 
-  local variants = {
-    [1] = function (c)
-        c.width = 640
-        c.height = 360
-        awful.placement.align(c, {position=pos, margins=margins})
-      end,
-    [2] = function (c)
-        c.width = 854
-        c.height = 480
-        awful.placement.align(c, {position=pos, margins=margins})
-      end,
-    [3] = function (c)
-        c.width = 1280
-        c.height = 720
-        awful.placement.align(c, {position=pos, margins=margins})
-      end,
-    [4] = function (c)
-        c.width = 474
-        c.height = 266
-        awful.placement.align(c, {position=pos, margins=margins})
-      end,
-  }
-
-  if variants[idx] then
-    variants[idx](c)
+  if floating_sizes[idx] then
+    floating_sizes[idx](c)
+    awful.placement.align(c, {position=pos, margins=margins})
   end
 end
 

@@ -31,7 +31,7 @@ XF86Launch5
 
 # mindmaps alt
 XF86Launch9; t
-    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
+    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps" 3
 
 ##########################
 #       LEFT PINKY       #
@@ -51,10 +51,6 @@ XF86Launch9; s
 # virtual machine manager
 XF86Launch7; m
     /usr/bin/virt-manager
-
-# edit mindmaps
-XF86Launch7; t
-    $HOME/.dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps"
 
 ##########################
 #       RIGHT THUMB      #
