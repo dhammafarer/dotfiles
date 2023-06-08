@@ -146,6 +146,18 @@ clientkeys = gears.table.join(
     end ,
     {description = "toggle ontop", group = "client"}),
 
+  awful.key({ modkey, "Control" }, "m",                         
+    function(c)
+      for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+        if x ~= c then
+          x.opacity = backdrop_opacity
+        end
+      end
+      c.opacity = 1
+    end,
+    {description = "toggle opacity", group = "client"}          
+  ),
+
   -- toggle visibility of backdrop client
   awful.key({ modkey }, "e",
     function (c)

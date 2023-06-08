@@ -15,6 +15,8 @@ local theme = {}
 
 theme.wallpaper = string.format("%s/.wallpaper.png", os.getenv("HOME"), "default")
 
+theme.master_width_factor = 0.6
+
 local colors = {}
 
 colors.bg = "#192330"
