@@ -78,25 +78,17 @@ client.connect_signal("focus",
     -- client in focus has backdrop
       for _, x in ipairs(c.first_tag:clients()) do
         if c ~= x then
-          if c.backdrop then
+          if x.ontop then
+            x.opacity = x.opacity
+          elseif c.backdrop then
             x.opacity = backdrop_opacity
           else
             x.opacity = inactive_opacity
           end
         else
           c.opacity = 1
-          c.ontop = true
         end
       end
-
-    -- client in focus doesn't have backdrop
-    if not c.backdrop then
-      for _, x in ipairs(c.first_tag:clients()) do
-        if not x.ontop then
-          x.opacity = 1
-        end
-      end
-    end
   end
 )
 
