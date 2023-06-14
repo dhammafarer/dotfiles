@@ -52,7 +52,7 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Control" }, "u", function ()
     local ln = awful.layout.getname()
 
-    if ln == "centerwork" then
+    if ln ~= "tile" then
       awful.layout.set(awful.layout.suit.tile)
     else
       awful.layout.set(lain.layout.centerwork)
@@ -95,7 +95,7 @@ globalkeys = gears.table.join(
     --awful.layout.inc(1)
     local ln = awful.layout.getname()
     if ln == "max" then
-      awful.layout.set(awful.layout.suit.tile)
+      awful.layout.set(lain.layout.centerwork)
     else
       awful.layout.set(awful.layout.suit.max)
     end

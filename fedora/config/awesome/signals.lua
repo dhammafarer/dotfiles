@@ -74,7 +74,6 @@ client.connect_signal("focus",
   function(c)
     c.border_color = beautiful.border_focus
 
-    c.border_width = beautiful.border_width
     -- client in focus has backdrop
       for _, x in ipairs(c.first_tag:clients()) do
         if c ~= x then

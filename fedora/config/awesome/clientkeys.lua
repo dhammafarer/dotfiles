@@ -132,19 +132,20 @@ clientkeys = gears.table.join(
     {description = "toggle floating", group = "client"}
   ),
   
-
   -- toggle backdrop on client
   awful.key({ modkey }, "m",
     function (c)
       c.backdrop = not c.backdrop
     end ,
-    {description = "toggle backdrop", group = "client"}),
+    {description = "toggle backdrop", group = "client"}
+  ),
 
   awful.key({ modkey }, "y",
     function (c)
       c.ontop = not c.ontop
     end ,
-    {description = "toggle ontop", group = "client"}),
+    {description = "toggle ontop", group = "client"}
+  ),
 
   awful.key({ modkey, "Control" }, "m",                         
     function(c)
@@ -156,6 +157,13 @@ clientkeys = gears.table.join(
       c.opacity = 1
     end,
     {description = "toggle opacity", group = "client"}          
+  ),
+
+  awful.key({ modkey }, "u",                         
+    function(c)
+      c.maximized_vertical = not c.maximized_vertical
+    end,
+    {description = "toggle maximize vertically", group = "client"}          
   ),
 
   -- toggle visibility of backdrop client

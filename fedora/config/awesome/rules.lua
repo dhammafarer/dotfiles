@@ -41,6 +41,12 @@ awful.rules.rules = {
     { rule = { class = "firefox" },
       properties = { maximized = false } },
 
+    { rule = { class = "Gcr-prompter" },
+      properties = { 
+        placement = awful.placement.centered+awful.placement.no_overlap+awful.placement.no_offscreen
+      }
+    },
+
     -- Assign clients to tags
     { rule = { class = "Signal" }, properties = { screen = 1, tag = "com" } },
     { rule = { class = "Google-chrome" }, properties = { screen = 1, tag = "com" } },
