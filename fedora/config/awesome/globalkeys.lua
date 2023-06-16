@@ -59,6 +59,18 @@ globalkeys = gears.table.join(
     end
   end, {description = "Toggle centerwork/tile", group = "client"}),
 
+  awful.key({ modkey  }, ",",
+    function ()
+      awful.tag.incnmaster( 1, nil, true)
+    end, {description = "increase the number of master clients", group = "layout"}
+  ),
+
+  awful.key({ modkey  }, ".",
+    function ()
+      awful.tag.incnmaster(-1, nil, true)
+    end, {description = "increase the number of master clients", group = "layout"}
+  ),
+
   -- Swap with next
   awful.key({ modkey, "Shift" }, "Tab",
     function () awful.client.swap.byidx(1) end, {description = "swap with next client by index", group = "client"}

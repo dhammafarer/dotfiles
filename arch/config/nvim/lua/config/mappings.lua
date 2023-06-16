@@ -7,6 +7,7 @@ map('n', '<leader>n', ':NvimTreeToggle<CR>', opts)
 
 map('n', '<leader>w', ':write<CR>', opts)
 map('n', '<leader>x', ':quit<CR>', opts)
+map('n', '<leader>c', ':e Cargo.toml<CR>', opts)
 
 -- barbar mappings
 local map = vim.api.nvim_set_keymap

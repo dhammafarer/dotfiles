@@ -51,7 +51,15 @@ clientkeys = gears.table.join(
 
   awful.key({ modkey }, "Insert",
     function (c)
-      c:swap(awful.client.getmaster())
+      local master = awful.client.getmaster()
+
+      if c == master then
+        awful.client.swap.byidx(1)
+        c:swap(master)
+        awful.client.focus.byidx(-1)
+      else
+        c:swap(master)
+      end
     end,
   {description = "move to master", group = "client"}
   ),
