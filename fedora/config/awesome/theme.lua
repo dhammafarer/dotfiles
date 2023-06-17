@@ -13,7 +13,7 @@ local theme_path = string.format("%s/.config/awesome/themes/%s/", os.getenv("HOM
 
 local theme = {}
 
-theme.wallpaper = string.format("%s/.wallpaper.png", os.getenv("HOME"), "default")
+--theme.wallpaper = string.format("%s/.wallpaper.png", os.getenv("HOME"), "default")
 
 theme.master_width_factor = 0.6
 
