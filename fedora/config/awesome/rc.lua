@@ -125,6 +125,8 @@ local function set_wallpaper(s)
             wallpaper = wallpaper(s)
         end
         gears.wallpaper.maximized(wallpaper, s, true)
+    else
+      gears.wallpaper.set(beautiful.bg_normal)
     end
 end
 
@@ -135,7 +137,7 @@ require("tags")
 
 awful.screen.connect_for_each_screen(function(s)
   --set_wallpaper(s)
-  gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+  set_wallpaper(s)
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
