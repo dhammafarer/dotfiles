@@ -175,7 +175,8 @@ clientkeys = gears.table.join(
 
   awful.key({ modkey, "Control" }, "u",                         
     function(c)
-      c.maximized_vertical = not c.maximized_vertical
+      fct = mouse.screen.selected_tag.master_width_factor
+      awful.spawn("notify-send "..fct)
     end,
     {description = "toggle maximize vertically", group = "client"}          
   ),

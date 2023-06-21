@@ -91,8 +91,40 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Shift" }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
 
   -- Master size
-  awful.key({ modkey, "Shift" }, "n", function () awful.tag.incmwfact( 0.05) end, {description = "increase master width factor", group = "layout"}),
-  awful.key({ modkey, "Shift" }, "o", function () awful.tag.incmwfact(-0.05) end, {description = "decrease master width factor", group = "layout"}),
+  awful.key({ modkey, "Shift" }, "n",
+    function ()
+      awful.tag.incmwfact(0.05)
+
+      if awful.layout.getname() == "tileleft" then
+        local fct = mouse.screen.selected_tag.master_width_factor
+
+        if fct > 0.70 then
+          awful.layout.set(lain.layout.centerwork)
+          awful.tag.incmwfact(-0.25)
+        end
+      end
+
+      --awful.spawn("notify-send "..mouse.screen.selected_tag.master_width_factor)
+    end,
+    {description = "increase master width factor", group = "layout"}
+  ),
+
+  awful.key({ modkey, "Shift" }, "o",
+    function ()
+      awful.tag.incmwfact(-0.05)
+
+      if awful.layout.getname() == "centerwork" then
+        local fct = mouse.screen.selected_tag.master_width_factor
+        if fct < 0.50 then
+          awful.layout.set(awful.layout.suit.tile.left)
+          awful.tag.incmwfact(0.25)
+        end
+      end
+
+      --awful.spawn("notify-send "..mouse.screen.selected_tag.master_width_factor)
+    end,
+    {description = "decrease master width factor", group = "layout"}
+  ),
 
   -- Increase number of columns
   awful.key({ modkey }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
