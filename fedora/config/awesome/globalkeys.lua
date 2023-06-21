@@ -49,11 +49,11 @@ globalkeys = gears.table.join(
     end
   ),
 
-  awful.key({ modkey, "Control" }, "u", function ()
+  awful.key({ modkey }, "u", function ()
     local ln = awful.layout.getname()
 
-    if ln ~= "tile" then
-      awful.layout.set(awful.layout.suit.tile)
+    if ln ~= "tileleft" then
+      awful.layout.set(awful.layout.suit.tile.left)
     else
       awful.layout.set(lain.layout.centerwork)
     end

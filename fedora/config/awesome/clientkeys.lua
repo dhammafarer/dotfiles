@@ -157,9 +157,15 @@ clientkeys = gears.table.join(
 
   awful.key({ modkey, "Control" }, "m",                         
     function(c)
+      if inactive_opacity == backdrop_opacity then
+        inactive_opacity = default_inactive_opacity
+      else
+        inactive_opacity = backdrop_opacity
+      end
+
       for _, x in ipairs(mouse.screen.selected_tag:clients()) do
         if x ~= c then
-          x.opacity = backdrop_opacity
+          x.opacity = inactive_opacity
         end
       end
       c.opacity = 1
@@ -167,7 +173,7 @@ clientkeys = gears.table.join(
     {description = "toggle opacity", group = "client"}          
   ),
 
-  awful.key({ modkey }, "u",                         
+  awful.key({ modkey, "Control" }, "u",                         
     function(c)
       c.maximized_vertical = not c.maximized_vertical
     end,

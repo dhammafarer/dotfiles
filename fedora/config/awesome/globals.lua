@@ -7,8 +7,11 @@ editor_cmd = terminal .. " -e " .. editor
 
 modkey = "Mod4"
 
+default_inactive_opacity = 0.8
+
 backdrop_opacity = 0.1
-inactive_opacity = 0.7
+
+inactive_opacity = default_inactive_opacity
 
 margins = { left=0, bottom=0, right=0, top=0 }
 
