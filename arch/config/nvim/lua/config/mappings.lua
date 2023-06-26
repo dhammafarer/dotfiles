@@ -58,3 +58,6 @@ map('n', '<leader>a', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
 
 map('n', '<F5>', ':w<CR>:!gcc % -o /tmp/out && /tmp/out<CR>', opts)
+
+-- ChatGPT
+map('n', '<leader>v', '<Cmd>ChatGPTEditWithInstructions<CR>', opts)

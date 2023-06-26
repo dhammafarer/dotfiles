@@ -155,7 +155,7 @@ clientkeys = gears.table.join(
     {description = "toggle ontop", group = "client"}
   ),
 
-  awful.key({ modkey, "Control" }, "m",                         
+  awful.key({ modkey, "Control" }, "u",                         
     function(c)
       if inactive_opacity == backdrop_opacity then
         inactive_opacity = default_inactive_opacity
@@ -173,7 +173,7 @@ clientkeys = gears.table.join(
     {description = "toggle opacity", group = "client"}          
   ),
 
-  awful.key({ modkey, "Control" }, "u",                         
+  awful.key({ modkey, "Control" }, "m",                         
     function(c)
       fct = mouse.screen.selected_tag.master_width_factor
       awful.spawn("notify-send "..fct)
