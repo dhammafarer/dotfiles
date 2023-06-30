@@ -7,3 +7,5 @@ export EDITOR=nvim
 export PATH=":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games/:$HOME/.npm-global/bin/:$HOME/.local/bin/:$HOME/.cargo/bin"
 
 export LD_LIBRARY_PATH=/usr/local/lib
+
+export SHELL=/bin/zsh

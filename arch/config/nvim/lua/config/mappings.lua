@@ -9,10 +9,6 @@ map('n', '<leader>w', ':write<CR>', opts)
 map('n', '<leader>x', ':quit<CR>', opts)
 map('n', '<leader>c', ':e Cargo.toml<CR>', opts)
 
--- barbar mappings
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
 -- Move to previous/next
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
@@ -66,3 +62,9 @@ map('n', '<leader>v', '<Cmd>ChatGPTEditWithInstructions<CR>', opts)
 map('n', '<leader>dt', '<Cmd>DapToggleBreakpoint<CR>', opts)
 map('n', '<leader>dx', '<Cmd>DapTerminate<CR>', opts)
 map('n', '<leader>ds', '<Cmd>DapStepOver<CR>', opts)
+
+-- FloatTerm
+map('n', "<leader>ft", "<Cmd>FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 zsh<CR>", opts)
+map('n', "<leader>fg", "<Cmd>FloatermNew --name=gitui --height=0.8 --width=0.7 --autoclose=2 gitui<CR>", opts)
+map('n', "t", "<Cmd>FloatermToggle myfloat<CR>", opts)
+map('t', "<Esc>", "<C-\\><C-n>:q<CR>", opts)
