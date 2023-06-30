@@ -1,5 +1,6 @@
 local gears = require("gears")
 local awful = require("awful")
+local lain = require("lain")
 
 require("globals")
 
@@ -155,7 +156,7 @@ clientkeys = gears.table.join(
     {description = "toggle ontop", group = "client"}
   ),
 
-  awful.key({ modkey, "Control" }, "u",                         
+  awful.key({ modkey, "Control" }, "m",                         
     function(c)
       if inactive_opacity == backdrop_opacity then
         inactive_opacity = default_inactive_opacity
@@ -170,16 +171,27 @@ clientkeys = gears.table.join(
       end
       c.opacity = 1
     end,
-    {description = "toggle opacity", group = "client"}          
+    {description = "toggle reading mode", group = "client"}          
   ),
 
-  awful.key({ modkey, "Control" }, "m",                         
+  awful.key({ modkey, "Control" }, "u",                         
     function(c)
-      fct = mouse.screen.selected_tag.master_width_factor
-      awful.spawn("notify-send "..fct)
+      awful.layout.set(lain.layout.centerwork)
+
+      master  = awful.client.getmaster()
+      master:raise()
+      client.focus = master
+      master.opacity = 1
+
+      for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+        if x ~= master then
+          x.opacity = backdrop_opacity
+        end
+      end
     end,
-    {description = "toggle maximize vertically", group = "client"}          
+    {description = "set master to reading mode", group = "client"}          
   ),
+
 
   -- toggle visibility of backdrop client
   awful.key({ modkey }, "e",

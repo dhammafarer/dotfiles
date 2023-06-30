@@ -9,7 +9,7 @@ modkey = "Mod4"
 
 default_inactive_opacity = 0.8
 
-backdrop_opacity = 0.1
+backdrop_opacity = 0.05
 
 inactive_opacity = default_inactive_opacity
 

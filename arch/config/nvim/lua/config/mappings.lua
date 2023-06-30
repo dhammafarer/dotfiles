@@ -61,3 +61,8 @@ map('n', '<F5>', ':w<CR>:!gcc % -o /tmp/out && /tmp/out<CR>', opts)
 
 -- ChatGPT
 map('n', '<leader>v', '<Cmd>ChatGPTEditWithInstructions<CR>', opts)
+
+-- Dap
+map('n', '<leader>dt', '<Cmd>DapToggleBreakpoint<CR>', opts)
+map('n', '<leader>dx', '<Cmd>DapTerminate<CR>', opts)
+map('n', '<leader>ds', '<Cmd>DapStepOver<CR>', opts)

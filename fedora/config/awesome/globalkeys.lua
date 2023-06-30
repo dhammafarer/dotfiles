@@ -49,15 +49,17 @@ globalkeys = gears.table.join(
     end
   ),
 
-  awful.key({ modkey }, "u", function ()
-    local ln = awful.layout.getname()
+  awful.key({ modkey }, "u",
+    function ()
+      local ln = awful.layout.getname()
 
-    if ln ~= "tileleft" then
-      awful.layout.set(awful.layout.suit.tile.left)
-    else
-      awful.layout.set(lain.layout.centerwork)
-    end
-  end, {description = "Toggle centerwork/tile", group = "client"}),
+      if ln ~= "tileleft" then
+        awful.layout.set(awful.layout.suit.tile.left)
+      else
+        awful.layout.set(lain.layout.centerwork)
+      end
+    end, {description = "Toggle centerwork/tile", group = "client"}
+  ),
 
   awful.key({ modkey  }, ",",
     function ()
