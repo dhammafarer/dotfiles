@@ -7,7 +7,7 @@ editor_cmd = terminal .. " -e " .. editor
 
 modkey = "Mod4"
 
-default_inactive_opacity = 0.8
+default_inactive_opacity = 0.9
 
 backdrop_opacity = 0.05
 

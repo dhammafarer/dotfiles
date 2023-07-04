@@ -68,3 +68,4 @@ map('n', "<leader>ft", "<Cmd>FloatermNew --name=myfloat --height=0.8 --width=0.7
 map('n', "<leader>fg", "<Cmd>FloatermNew --name=gitui --height=0.8 --width=0.7 --autoclose=2 gitui<CR>", opts)
 map('n', "t", "<Cmd>FloatermToggle myfloat<CR>", opts)
 map('t', "<Esc>", "<C-\\><C-n>:q<CR>", opts)
+map('n', "<leader>gg", "<Cmd>FloatermNew --autoclose=0 gcc % -o %< && ./%<<CR>", opts)
