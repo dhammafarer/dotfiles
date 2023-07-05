@@ -1,21 +1,19 @@
 -- Global Variables
-terminal = "xfce4-terminal"
+TERMINAL = "xfce4-terminal"
 
-editor = os.getenv("EDITOR") or "editor"
+EDITOR = os.getenv("EDITOR") or "editor"
 
-editor_cmd = terminal .. " -e " .. editor
+MODKEY = "Mod4"
 
-modkey = "Mod4"
+DEFAULT_INACTIVE_OPACITY = 0.9
 
-default_inactive_opacity = 0.9
+BACKDROP_OPACITY = 0.05
 
-backdrop_opacity = 0.05
+Inactive_opacity = DEFAULT_INACTIVE_OPACITY
 
-inactive_opacity = default_inactive_opacity
+MARGINS = { left=0, bottom=0, right=0, top=0 }
 
-margins = { left=0, bottom=0, right=0, top=0 }
-
-floating_sizes = {
+FLOATING_SIZES = {
   [1] = function (c)
       c.width = 640
       c.height = 360

@@ -3,11 +3,11 @@ local awful = require("awful")
 
 local lain = require("lain")
 
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
   -- Restore last tag
-  awful.key({ modkey }, "z", awful.tag.history.restore, {description = "go back", group = "tag"}),
+  awful.key({ MODKEY }, "z", awful.tag.history.restore, {description = "go back", group = "tag"}),
   -- Focus
-  awful.key({ modkey }, "Tab",
+  awful.key({ MODKEY }, "Tab",
     function ()
       local screen = awful.screen.focused()
 
@@ -22,34 +22,34 @@ globalkeys = gears.table.join(
     end, {description = "focus next by index", group = "client"}
   ),
 
-  awful.key({ modkey, "Control" }, "Tab",
+  awful.key({ MODKEY, "Control" }, "Tab",
     function () awful.client.focus.byidx(-1) end, {description = "focus previous by index", group = "client"}
   ),
 
   -- navigation with arrows
-  awful.key({ modkey }, "Down",
+  awful.key({ MODKEY }, "Down",
     function()
       awful.client.focus.bydirection("down")
       if client.focus then client.focus:raise() end
     end),
-  awful.key({ modkey }, "Up",
+  awful.key({ MODKEY }, "Up",
     function()
       awful.client.focus.bydirection("up")
       if client.focus then client.focus:raise() end
     end),
-  awful.key({ modkey }, "Left",
+  awful.key({ MODKEY }, "Left",
     function()
       awful.client.focus.bydirection("left")
       if client.focus then client.focus:raise() end
     end),
-  awful.key({ modkey }, "Right",
+  awful.key({ MODKEY }, "Right",
     function()
       awful.client.focus.bydirection("right")
       if client.focus then client.focus:raise() end
     end
   ),
 
-  awful.key({ modkey }, "u",
+  awful.key({ MODKEY }, "u",
     function ()
       local ln = awful.layout.getname()
 
@@ -61,39 +61,39 @@ globalkeys = gears.table.join(
     end, {description = "Toggle centerwork/tile", group = "client"}
   ),
 
-  awful.key({ modkey  }, ",",
+  awful.key({ MODKEY  }, ",",
     function ()
       awful.tag.incnmaster( 1, nil, true)
     end, {description = "increase the number of master clients", group = "layout"}
   ),
 
-  awful.key({ modkey  }, ".",
+  awful.key({ MODKEY  }, ".",
     function ()
       awful.tag.incnmaster(-1, nil, true)
     end, {description = "increase the number of master clients", group = "layout"}
   ),
 
   -- Swap with next
-  awful.key({ modkey, "Shift" }, "Tab",
+  awful.key({ MODKEY, "Shift" }, "Tab",
     function () awful.client.swap.byidx(1) end, {description = "swap with next client by index", group = "client"}
   ),
 
   -- Swap with previous
-  awful.key({ modkey, "Shift", "Control" }, "Tab",
+  awful.key({ MODKEY, "Shift", "Control" }, "Tab",
     function ()
       awful.client.swap.byidx(-1)
     end, {description = "swap with previous client by index", group = "client"}
   ),
 
   -- Standard program
-  awful.key({ modkey }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "launcher"}),
+  awful.key({ MODKEY }, "Return", function () awful.spawn(TERMINAL) end, {description = "open a terminal", group = "launcher"}),
 
   -- Reload/Quit
-  awful.key({ modkey, "Control" }, "q", awesome.restart, {description = "reload awesome", group = "awesome"}),
-  awful.key({ modkey, "Shift" }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
+  awful.key({ MODKEY, "Control" }, "q", awesome.restart, {description = "reload awesome", group = "awesome"}),
+  awful.key({ MODKEY, "Shift" }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
 
   -- Master size
-  awful.key({ modkey, "Shift" }, "n",
+  awful.key({ MODKEY, "Shift" }, "n",
     function ()
       awful.tag.incmwfact(0.05)
 
@@ -111,7 +111,7 @@ globalkeys = gears.table.join(
     {description = "increase master width factor", group = "layout"}
   ),
 
-  awful.key({ modkey, "Shift" }, "o",
+  awful.key({ MODKEY, "Shift" }, "o",
     function ()
       awful.tag.incmwfact(-0.05)
 
@@ -129,15 +129,15 @@ globalkeys = gears.table.join(
   ),
 
   -- Increase number of columns
-  awful.key({ modkey }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+  awful.key({ MODKEY }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
     {description = "increase the number of columns", group = "layout"}),
 
   -- Decrease number of columns
-  awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol(-1, nil, true)    end,
+  awful.key({ MODKEY, "Control" }, "h",     function () awful.tag.incncol(-1, nil, true)    end,
     {description = "decrease the number of columns", group = "layout"}),
 
   -- Next Layout
-  awful.key({ modkey }, "s", function ()
+  awful.key({ MODKEY }, "s", function ()
     --awful.layout.inc(1)
     local ln = awful.layout.getname()
     if ln == "max" then
@@ -164,7 +164,7 @@ local tag_keys = {
 for i,v in ipairs(tag_keys) do
   globalkeys = gears.table.join(globalkeys,
     -- View tag only.
-    awful.key({ modkey }, v,
+    awful.key({ MODKEY }, v,
       function ()
         local screen = awful.screen.focused()
         local tag = screen.tags[i]
@@ -176,7 +176,7 @@ for i,v in ipairs(tag_keys) do
     ),
 
     -- Move client to tag.
-    awful.key({ modkey, "Shift" }, v,
+    awful.key({ MODKEY, "Shift" }, v,
       function ()
         if client.focus then
           local tag = client.focus.screen.tags[i]

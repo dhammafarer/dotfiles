@@ -5,22 +5,22 @@ local lain = require("lain")
 require("globals")
 
 local function set_align(position, c)
-  awful.placement.align(c, {position=position, margins=margins})
+  awful.placement.align(c, {position=position, margins=MARGINS})
   c.align = position
 end
 
-clientkeys = gears.table.join(
+local clientkeys = gears.table.join(
   -- Next Layout
-  awful.key({ modkey, "Control" }, "s",
+  awful.key({ MODKEY, "Control" }, "s",
     function (c) c.fullscreen = not c.fullscreen; c:raise() end,
     {description = "toggle fullscreen", group = "client"}
   ),
 
   -- Close Client
-  awful.key({ modkey }, "q", function (c) c:kill() end, {description = "close", group = "client"}),
+  awful.key({ MODKEY }, "q", function (c) c:kill() end, {description = "close", group = "client"}),
 
   -- Toggle floating
-  awful.key({ modkey, "Control" }, "z", function(c)
+  awful.key({ MODKEY, "Control" }, "z", function(c)
       c.sticky = false
       c.ontop = false
 
@@ -29,9 +29,9 @@ clientkeys = gears.table.join(
         c.opacity = 1
 
         -- restore opacity on tiling clients
-        for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-          if not c.floating then
-            c.opacity = 1
+        for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+          if not x.floating then
+            x.opacity = 1
           end
         end
         return
@@ -50,7 +50,7 @@ clientkeys = gears.table.join(
     {description = "toggle floating", group = "client"}
   ),
 
-  awful.key({ modkey }, "Insert",
+  awful.key({ MODKEY }, "Insert",
     function (c)
       local master = awful.client.getmaster()
 
@@ -66,8 +66,8 @@ clientkeys = gears.table.join(
   ),
 
   -- decrement opacity
-  awful.key({ modkey, "Control" }, "e", function(c)
-      if c.opacity < backdrop_opacity then
+  awful.key({ MODKEY, "Control" }, "e", function(c)
+      if c.opacity < BACKDROP_OPACITY then
         c.opacity = 1
       else
         c.opacity = c.opacity - 0.1
@@ -77,7 +77,7 @@ clientkeys = gears.table.join(
   ),
 
   -- increment opacity
-  awful.key({ modkey, "Control" }, "i", function(c)
+  awful.key({ MODKEY, "Control" }, "i", function(c)
       if (c.opacity + 0.1) > 1 then
         c.opacity = 1
       else
@@ -88,50 +88,50 @@ clientkeys = gears.table.join(
   ),
 
   -- reset opacity to 1
-  awful.key({ modkey, "Control", "Shift" }, "i", function(c)
+  awful.key({ MODKEY, "Control", "Shift" }, "i", function(c)
       c.opacity = 1
     end,
     {description = "toggle opacity", group = "client"}
   ),
 
   -- reset opacity to lowest
-  awful.key({ modkey, "Control", "Shift" }, "e", function(c)
-      c.opacity = backdrop_opacity
+  awful.key({ MODKEY, "Control", "Shift" }, "e", function(c)
+      c.opacity = BACKDROP_OPACITY
     end,
     {description = "toggle opacity", group = "client"}
   ),
 
   -- place window in lower left corner
-  awful.key({ modkey, "Shift" }, "Left", function(c)
+  awful.key({ MODKEY, "Shift" }, "Left", function(c)
       set_align("bottom_left", c)
     end,
     {description = "set placement to bottom_left", group = "client"}
   ),
 
-  awful.key({ modkey, "Shift", "Control" }, "Left", function(c)
+  awful.key({ MODKEY, "Shift", "Control" }, "Left", function(c)
       c.floating = true
-      floating_sizes[4](c)
+      FLOATING_SIZES[4](c)
       set_align("bottom_left", c)
     end,
     {description = "set placement to bottom_left", group = "client"}
   ),
 
-  awful.key({ modkey, "Shift", "Control" }, "Right", function(c)
+  awful.key({ MODKEY, "Shift", "Control" }, "Right", function(c)
       c.floating = true
-      floating_sizes[4](c)
+      FLOATING_SIZES[4](c)
       set_align("bottom_right", c)
     end,
     {description = "set placement to bottom_right", group = "client"}
   ),
 
   -- place window in lower right corner
-  awful.key({ modkey, "Shift" }, "Right", function(c)
+  awful.key({ MODKEY, "Shift" }, "Right", function(c)
       set_align("bottom_right", c)
     end,
     {description = "set placement to bottom_right", group = "client"}
   ),
 
-  awful.key({ modkey, "Shift" }, "Up", function(c)
+  awful.key({ MODKEY, "Shift" }, "Up", function(c)
       set_align("centered", c)
 
       c.floating = true
@@ -140,72 +140,71 @@ clientkeys = gears.table.join(
     end,
     {description = "toggle floating", group = "client"}
   ),
-  
+
   -- toggle backdrop on client
-  awful.key({ modkey }, "m",
+  awful.key({ MODKEY }, "m",
     function (c)
       c.backdrop = not c.backdrop
     end ,
     {description = "toggle backdrop", group = "client"}
   ),
 
-  awful.key({ modkey }, "y",
+  awful.key({ MODKEY }, "y",
     function (c)
       c.ontop = not c.ontop
     end ,
     {description = "toggle ontop", group = "client"}
   ),
 
-  awful.key({ modkey, "Control" }, "m",                         
+  awful.key({ MODKEY, "Control" }, "m",
     function(c)
-      if inactive_opacity == backdrop_opacity then
-        inactive_opacity = default_inactive_opacity
+      if Inactive_opacity == BACKDROP_OPACITY then
+        Inactive_opacity = DEFAULT_INACTIVE_OPACITY
       else
-        inactive_opacity = backdrop_opacity
+        Inactive_opacity = BACKDROP_OPACITY
       end
 
       for _, x in ipairs(mouse.screen.selected_tag:clients()) do
         if x ~= c then
-          x.opacity = inactive_opacity
+          x.opacity = Inactive_opacity
         end
       end
       c.opacity = 1
     end,
-    {description = "toggle reading mode", group = "client"}          
+    {description = "toggle reading mode", group = "client"}
   ),
 
-  awful.key({ modkey, "Control" }, "u",                         
-    function(c)
+  awful.key({ MODKEY, "Control" }, "u",
+    function()
       awful.layout.set(lain.layout.centerwork)
 
-      master  = awful.client.getmaster()
+      local master = awful.client.getmaster()
       master:raise()
       client.focus = master
       master.opacity = 1
 
       for _, x in ipairs(mouse.screen.selected_tag:clients()) do
         if x ~= master then
-          x.opacity = backdrop_opacity
+          x.opacity = BACKDROP_OPACITY
         end
       end
     end,
-    {description = "set master to reading mode", group = "client"}          
+    {description = "set master to reading mode", group = "client"}
   ),
 
-
   -- toggle visibility of backdrop client
-  awful.key({ modkey }, "e",
+  awful.key({ MODKEY }, "e",
     function (c)
       if c.backdrop then
         c.ontop = false
         c.minimized = true
       else
-        local c = awful.client.restore()
+        local cr = awful.client.restore()
         -- Focus restored client
-        if c then
-          c:raise()
-          c.ontop = true
-          client.focus = c
+        if cr then
+          cr:raise()
+          cr.ontop = true
+          client.focus = cr
         end
       end
     end ,
@@ -214,18 +213,18 @@ clientkeys = gears.table.join(
 
 local function position_floating(idx, c)
   local pos = c.align or "centered"
-  
+
   c.floating = true
 
-  if floating_sizes[idx] then
-    floating_sizes[idx](c)
-    awful.placement.align(c, {position=pos, margins=margins})
+  if FLOATING_SIZES[idx] then
+    FLOATING_SIZES[idx](c)
+    awful.placement.align(c, {position=pos, margins=MARGINS})
   end
 end
 
 for i = 1, 9 do
   clientkeys = gears.table.join(clientkeys,
-    awful.key({ modkey }, "#" .. i + 9,
+    awful.key({ MODKEY }, "#" .. i + 9,
       function (c)
         position_floating(i, c)
       end,

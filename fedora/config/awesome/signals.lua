@@ -46,7 +46,7 @@ client.connect_signal("property::backdrop",
   if c.backdrop then
     for _, x in ipairs(c.first_tag:clients()) do
       if c ~= x then
-        x.opacity = backdrop_opacity
+        x.opacity = BACKDROP_OPACITY
       end
     end
 
@@ -80,9 +80,9 @@ client.connect_signal("focus",
           if x.ontop then
             x.opacity = x.opacity
           elseif c.backdrop then
-            x.opacity = backdrop_opacity
+            x.opacity = BACKDROP_OPACITY
           else
-            x.opacity = inactive_opacity
+            x.opacity = Inactive_opacity
           end
         else
           c.opacity = 1
