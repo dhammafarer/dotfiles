@@ -20,7 +20,6 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -64,16 +63,13 @@ require("globals")
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.layout.margin(wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"),4,4,0,0)
+local mytextclock = wibox.layout.margin(wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"),4,4,0,0)
 
-myvolume = wibox.layout.margin(volume_widget{ widget_type = "vertical_bar" },0,0,4,4)
+local myvolume = wibox.layout.margin(volume_widget{ widget_type = "vertical_bar" },0,0,4,4)
 
-mysystray = wibox.layout.margin(wibox.widget.systray(),3,3,3,3)
+local mysystray = wibox.layout.margin(wibox.widget.systray(),3,3,3,3)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -200,22 +196,18 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-  awful.button({ }, 3, function () mymainmenu:toggle() end),
   awful.button({ }, 4, awful.tag.viewnext),
   awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
--- {{{ Key bindings
-
-globalkeys = require("globalkeys")
-clientkeys = require("clientkeys")
-clientbuttons = require("clientbuttons")
+local globalkeys = require("globalkeys")
+require("clientkeys")
+require("clientbuttons")
 
 root.keys(globalkeys)
 
-local rules = require("rules")
-
+require("rules")
 require("signals")
 
 awesome.spawn(gears.filesystem.get_configuration_dir() .. "autostart.sh")
