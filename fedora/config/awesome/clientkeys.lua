@@ -196,11 +196,11 @@ local clientkeys = gears.table.join(
     function(c)
       local master = awful.client.getmaster()
 
+      if c == master then
+        awful.client.focus.byidx(-1)
+      end
       if awful.layout.getname() == "centerwork" then
         awful.layout.set(awful.layout.suit.tile.left)
-        if c == master then
-          awful.client.focus.byidx(-1)
-        end
       end
       master.opacity = 1
     end,
