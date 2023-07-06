@@ -20,7 +20,7 @@
 // place overrides here
 #define MASTER_LEFT
 #define TAPPING_TERM 175
-#define IGNORE_MOD_TAP_INTERRUPT
+//#define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
 #define PERMISSIVE_HOLD
 
