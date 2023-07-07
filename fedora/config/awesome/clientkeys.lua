@@ -174,7 +174,7 @@ local clientkeys = gears.table.join(
     {description = "toggle reading mode", group = "client"}
   ),
 
-  awful.key({ MODKEY, "Control" }, "u",
+  awful.key({ MODKEY }, "e",
     function()
       awful.layout.set(lain.layout.centerwork)
 
@@ -192,12 +192,12 @@ local clientkeys = gears.table.join(
     {description = "toggle reading mode on", group = "client"}
   ),
 
-  awful.key({ MODKEY, "Shift" }, "u",
+  awful.key({ MODKEY }, "n",
     function(c)
       local master = awful.client.getmaster()
 
       if c == master then
-        awful.client.focus.byidx(-1)
+        awful.client.focus.byidx(1)
       end
       if awful.layout.getname() == "centerwork" then
         awful.layout.set(awful.layout.suit.tile.left)

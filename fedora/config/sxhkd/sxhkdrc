@@ -33,6 +33,10 @@ XF86Launch5
 XF86Launch9; t
     ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps" 3
 
+# Logseq
+XF86Launch9; l
+    ~/apps/Logseq
+
 ##########################
 #       LEFT PINKY       #
 #       XF86Launch9      #
@@ -163,4 +167,4 @@ super + space; x
 # TODO
 # edit QMK layout modules
 super + space; q
-    myedit $HOME/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/dhammafarer/keymap.c
+    myedit $HOME/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/miryoku-alt/keymap.c

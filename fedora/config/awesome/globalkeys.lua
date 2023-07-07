@@ -6,7 +6,15 @@ local lain = require("lain")
 local globalkeys = gears.table.join(
   -- Restore last tag
   awful.key({ MODKEY }, "z", awful.tag.history.restore, {description = "go back", group = "tag"}),
+
   -- Focus
+  awful.key({ MODKEY }, "i",
+    function ()
+      client.focus = awful.client.getmaster()
+    end,
+    {description = "focus master", group = "client"}
+  ),
+
   awful.key({ MODKEY }, "Tab",
     function ()
       local screen = awful.screen.focused()
