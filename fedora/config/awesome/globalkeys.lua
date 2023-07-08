@@ -10,7 +10,9 @@ local globalkeys = gears.table.join(
   -- Focus
   awful.key({ MODKEY }, "i",
     function ()
-      client.focus = awful.client.getmaster()
+      local master = awful.client.getmaster()
+      client.focus = master
+      master:raise()
     end,
     {description = "focus master", group = "client"}
   ),
