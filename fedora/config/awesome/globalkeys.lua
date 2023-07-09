@@ -12,7 +12,7 @@ local globalkeys = gears.table.join(
     function ()
       local master = awful.client.getmaster()
       client.focus = master
-      master:raise()
+      if client.focus then client.focus:raise() end
     end,
     {description = "focus master", group = "client"}
   ),
@@ -42,22 +42,51 @@ local globalkeys = gears.table.join(
       awful.client.focus.bydirection("down")
       if client.focus then client.focus:raise() end
     end),
+
+  awful.key({ MODKEY, "Shift" }, "Down",
+    function()
+      awful.client.swap.bydirection("down")
+    end),
+
+  awful.key({ MODKEY }, "Down",
+    function()
+      awful.client.focus.bydirection("down")
+      if client.focus then client.focus:raise() end
+    end),
+
   awful.key({ MODKEY }, "Up",
     function()
       awful.client.focus.bydirection("up")
       if client.focus then client.focus:raise() end
     end),
+
+  awful.key({ MODKEY, "Shift" }, "Up",
+    function()
+      awful.client.swap.bydirection("up")
+    end),
+
   awful.key({ MODKEY }, "Left",
     function()
       awful.client.focus.bydirection("left")
       if client.focus then client.focus:raise() end
     end),
+
+  awful.key({ MODKEY, "Shift" }, "Left",
+    function()
+      awful.client.swap.bydirection("left")
+    end),
+
   awful.key({ MODKEY }, "Right",
     function()
       awful.client.focus.bydirection("right")
       if client.focus then client.focus:raise() end
     end
   ),
+
+  awful.key({ MODKEY, "Shift" }, "Right",
+    function()
+      awful.client.swap.bydirection("right")
+    end),
 
   awful.key({ MODKEY }, "u",
     function ()
@@ -137,14 +166,6 @@ local globalkeys = gears.table.join(
     end,
     {description = "decrease master width factor", group = "layout"}
   ),
-
-  -- Increase number of columns
-  awful.key({ MODKEY }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-    {description = "increase the number of columns", group = "layout"}),
-
-  -- Decrease number of columns
-  awful.key({ MODKEY, "Control" }, "h",     function () awful.tag.incncol(-1, nil, true)    end,
-    {description = "decrease the number of columns", group = "layout"}),
 
   -- Next Layout
   awful.key({ MODKEY }, "s", function ()
