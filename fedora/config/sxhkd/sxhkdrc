@@ -1,6 +1,7 @@
 # guest terminals
 super + BackSpace
-    xfce4-terminal -e "distrobox enter dev" --default-working-directory=/home/pl/box/dev
+    xfce4-terminal -e "distrobox enter dev" \
+    --default-working-directory=/home/pl/box/dev
 
 # browsers
 super + {_,control} + l
@@ -31,7 +32,8 @@ XF86Launch5
 
 # mindmaps alt
 XF86Launch9; t
-    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh $HOME/Nextcloud/Documents/mindmaps "Mindmaps" 3
+    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh \
+    $HOME/Nextcloud/Documents/mindmaps "Mindmaps" 3
 
 # Logseq
 XF86Launch9; l
@@ -163,8 +165,3 @@ super + space; d; e
 # xrandr
 super + space; x
     ~/dotfiles/fedora/dmenu/dmenu_xrandr.sh
-
-# TODO
-# edit QMK layout modules
-super + space; q
-    myedit $HOME/qmk_firmware/keyboards/unikeyboard/divergetm2/keymaps/miryoku-alt/keymap.c
