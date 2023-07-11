@@ -14,6 +14,13 @@ function run_flatpak {
   fi
 }
 
+function run_app {
+  if ! pgrep $1;
+  then
+    ~/apps/$@&
+  fi
+}
+
 run picom -b --config $HOME/.config/picom/picom.conf
 run sxhkd
 run ibus-daemon -drxR
@@ -23,5 +30,7 @@ run_flatpak org.signal.Signal
 run_flatpak org.mozilla.Thunderbird
 
 xmodmap ~/.xmodmap
+
+run_app Logseq
 
 run xscreensaver -no-splash
