@@ -3,11 +3,16 @@ vim.g.mapleader = ','
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+-- vim.diagnostic
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<leader>E', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
 map('n', '<leader>n', ':NvimTreeToggle<CR>', opts)
 
 map('n', '<leader>w', ':write<CR>', opts)
 map('n', '<leader>x', ':quit<CR>', opts)
-map('n', '<leader>c', ':e Cargo.toml<CR>', opts)
 
 -- Move to previous/next
 map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
@@ -46,15 +51,6 @@ map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
 map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
--- Other:
--- :BarbarEnable - enables barbar (enabled by default)
--- :BarbarDisable - very bad command, should never be used
-
-map('n', '<leader>a', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-
-
-map('n', '<F5>', ':w<CR>:!gcc % -o /tmp/out && /tmp/out<CR>', opts)
-
 -- ChatGPT
 map('n', '<leader>v', '<Cmd>ChatGPTEditWithInstructions<CR>', opts)
 
@@ -68,4 +64,9 @@ map('n', "<leader>ft", "<Cmd>FloatermNew --name=myfloat --height=0.8 --width=0.7
 map('n', "<leader>fg", "<Cmd>FloatermNew --name=gitui --height=0.8 --width=0.7 --autoclose=2 gitui<CR>", opts)
 map('n', "t", "<Cmd>FloatermToggle myfloat<CR>", opts)
 map('t', "<Esc>", "<C-\\><C-n>:q<CR>", opts)
-map('n', "<leader>gg", "<Cmd>FloatermNew --autoclose=0 gcc % -o %< && ./%<<CR>", opts)
+
+-- HopLine
+map('n', 'l', ':HopLine<CR>', opts)
+
+-- HopLineStart
+map('n', '<S-l>', ':HopLineStart<CR>', opts)

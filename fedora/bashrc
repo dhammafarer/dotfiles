@@ -44,4 +44,3 @@ ansp () {
   fi
   ansible-playbook "$@"
 }
-
