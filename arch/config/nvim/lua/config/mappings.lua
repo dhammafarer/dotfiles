@@ -70,3 +70,6 @@ map('n', 'l', ':HopLine<CR>', opts)
 
 -- HopLineStart
 map('n', '<S-l>', ':HopLineStart<CR>', opts)
+
+-- overwrite switching from SELECT to VISUAL mode during snippet expansion
+map('s', 's', 's', opts)
