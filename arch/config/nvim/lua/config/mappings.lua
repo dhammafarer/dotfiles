@@ -73,3 +73,6 @@ map('n', '<S-l>', ':HopLineStart<CR>', opts)
 
 -- overwrite switching from SELECT to VISUAL mode during snippet expansion
 map('s', 's', 's', opts)
+
+-- open man page for word under cursor
+map("n", "<leader>m", "<Cmd>Man \"<cword>\"<CR>", opts)
