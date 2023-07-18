@@ -106,5 +106,5 @@ client.connect_signal("unfocus",
 )
 
 client.connect_signal("property::urgent", function(c)
-  Urgent_Client = c
+  table.insert(Urgent_Clients, c)
 end)

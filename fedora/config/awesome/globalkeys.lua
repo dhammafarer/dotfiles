@@ -8,14 +8,18 @@ require("globals")
 
 local globalkeys = gears.table.join(
 -- Restore last tag
-  awful.key({ MODKEY }, "z",awful.tag.history.restore, { description = "go back", group = "tag" }),
+  awful.key({ MODKEY }, "z", function()
+    local c = table.remove(Urgent_Clients)
+    if c then
+      c:jump_to()
+      naughty.destroy_all_notifications()
+    else
+      awful.tag.history.restore()
+    end
+  end,
+  { description = "go back", group = "tag" }),
 
   awful.key({ MODKEY, "Control" }, "y", function()
-    naughty.destroy_all_notifications()
-    if Urgent_Client then
-      Urgent_Client:jump_to()
-      Urgent_Client = nil
-    end
   end, { description = "Destroy notifications", group = "hotkeys" }),
 
   -- Focus

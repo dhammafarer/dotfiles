@@ -32,4 +32,4 @@ FLOATING_SIZES = {
     end,
 }
 
-Urgent_Client = nil
+Urgent_Clients = {}
