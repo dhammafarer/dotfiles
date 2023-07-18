@@ -24,6 +24,8 @@ colors.blue = "#5294e2"
 colors.border = "#213448"
 colors.grey = "#999999"
 colors.white = "#eeeeee"
+colors.dark = "#09111c"
+colors.light = "#2f343f"
 
 theme.font          = "sans 8"
 
@@ -48,7 +50,7 @@ theme.gap_single_client  = false
 
 theme.tasklist_disable_icon = true
 
-theme.taglist_fg_focus = bg
+theme.taglist_fg_focus = colors.fg
 theme.taglist_font = "Fira Code Bold 8"
 
 -- There are other variable sets
@@ -65,10 +67,11 @@ theme.taglist_font = "Fira Code Bold 8"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
+theme.notification_font = "Fira Code 12"
+theme.notification_bg = colors.light
+theme.notification_fg = colors.white
+theme.notification_border_color = colors.border
+theme.notification_width = dpi(330)
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]

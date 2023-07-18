@@ -1,6 +1,8 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 
+require("globals")
+
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage",
   function (c)
@@ -102,3 +104,7 @@ client.connect_signal("unfocus",
     end
   end
 )
+
+client.connect_signal("property::urgent", function(c)
+  Urgent_Client = c
+end)

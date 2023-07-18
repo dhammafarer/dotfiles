@@ -31,3 +31,5 @@ FLOATING_SIZES = {
       c.height = 266
     end,
 }
+
+Urgent_Client = nil
