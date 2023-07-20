@@ -72,6 +72,7 @@ theme.notification_bg = colors.light
 theme.notification_fg = colors.white
 theme.notification_border_color = colors.border
 theme.notification_width = dpi(330)
+theme.notification_icon_size = dpi(48)
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]

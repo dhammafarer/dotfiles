@@ -6,31 +6,65 @@ local lain = require("lain")
 
 require("globals")
 
+local function dim_clients_except(m)
+  for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+    if x ~= m then
+      x.opacity = BACKDROP_OPACITY
+    end
+  end
+end
+
+
 local globalkeys = gears.table.join(
 -- Restore last tag
-  awful.key({ MODKEY }, "z", function()
-    local c = table.remove(Urgent_Clients)
-    if c then
-      c:jump_to()
-      naughty.destroy_all_notifications()
-    else
-      awful.tag.history.restore()
-    end
-  end,
-  { description = "go back", group = "tag" }),
+  awful.key({ MODKEY }, "z",
+    function()
+      if next(Urgent_Clients) then
+        local c = table.remove(Urgent_Clients)
+        c:jump_to()
+        awful.client.focus.history.delete(c)
+        naughty.destroy_all_notifications()
+      else
+        awful.tag.history.restore()
+      end
+    end,
+    { description = "go back", group = "tag" }),
 
-  awful.key({ MODKEY, "Control" }, "y", function()
-  end, { description = "Destroy notifications", group = "hotkeys" }),
+  -- Focus 2nd Client
+  awful.key({ MODKEY }, "n",
+    function()
+      local master = awful.client.getmaster()
+      awful.client.focus.byidx(1, master)
 
-  -- Focus
-  awful.key({ MODKEY }, "i",
+      if awful.layout.getname() == "centerwork" then
+        awful.layout.set(awful.layout.suit.tile.left)
+      end
+      master.opacity = 1
+    end,
+    {description = "toggle reading mode off", group = "client"}
+  ),
+  --
+  -- Focus Master
+  awful.key({ MODKEY }, "e",
     function()
       local master = awful.client.getmaster()
       client.focus = master
       if client.focus then client.focus:raise() end
     end,
-    { description = "focus master", group = "client" }
-  ),
+    { description = "focus master", group = "client" }),
+
+  -- Focus 3rd Client
+  awful.key({ MODKEY }, "i",
+    function()
+      local master = awful.client.getmaster()
+      awful.client.focus.byidx(-1, master)
+
+      if awful.layout.getname() == "centerwork" then
+        awful.layout.set(awful.layout.suit.tile.left)
+      end
+      master.opacity = 1
+    end,
+    { description = "focus master", group = "client" }),
 
   awful.key({ MODKEY }, "Tab",
     function()
@@ -44,19 +78,21 @@ local globalkeys = gears.table.join(
         end
       end
       awful.client.focus.byidx(1)
-    end, { description = "focus next by index", group = "client" }
-  ),
+    end, { description = "focus next by index", group = "client" }),
 
   awful.key({ MODKEY, "Control" }, "Tab",
-    function() awful.client.focus.byidx(-1) end, { description = "focus previous by index", group = "client" }
-  ),
+    function()
+      awful.client.focus.byidx(-1)
+    end,
+    { description = "focus previous by index", group = "client" }),
 
   -- navigation with arrows
   awful.key({ MODKEY }, "Down",
     function()
       awful.client.focus.bydirection("down")
       if client.focus then client.focus:raise() end
-    end),
+    end,
+    { description = "focus down", group = "client" }),
 
   awful.key({ MODKEY, "Shift" }, "Down",
     function()
@@ -104,6 +140,20 @@ local globalkeys = gears.table.join(
     end),
 
   awful.key({ MODKEY }, "u",
+    function()
+      awful.layout.set(lain.layout.centerwork)
+
+      local master = awful.client.getmaster()
+      master:raise()
+      client.focus = master
+      master.opacity = 1
+
+      dim_clients_except(master)
+    end,
+    {description = "toggle reading mode on", group = "client"}
+  ),
+
+  awful.key({ MODKEY }, "o",
     function()
       local ln = awful.layout.getname()
 

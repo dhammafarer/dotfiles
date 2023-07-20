@@ -189,21 +189,6 @@ local clientkeys = gears.table.join(
     {description = "toggle reading mode on", group = "client"}
   ),
 
-  awful.key({ MODKEY }, "n",
-    function(c)
-      local master = awful.client.getmaster()
-
-      if c == master then
-        awful.client.focus.byidx(1)
-      end
-      if awful.layout.getname() == "centerwork" then
-        awful.layout.set(awful.layout.suit.tile.left)
-      end
-      master.opacity = 1
-    end,
-    {description = "toggle reading mode off", group = "client"}
-  ),
-
   -- toggle backdrop on client
   awful.key({ MODKEY, "Control" }, "h",
     function (c)
