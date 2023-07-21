@@ -14,6 +14,20 @@ local function dim_clients_except(m)
   end
 end
 
+local function toggle_layout()
+  if awful.layout.getname() == "tileleft" then
+    awful.layout.set(lain.layout.centerwork)
+  else
+    awful.layout.set(awful.layout.suit.tile.left)
+  end
+end
+
+local function focus_by_master_offset(x)
+  local master = awful.client.getmaster()
+  awful.client.focus.byidx(x, master)
+  master.opacity = 1
+end
+
 
 local globalkeys = gears.table.join(
 -- Restore last tag
@@ -33,38 +47,46 @@ local globalkeys = gears.table.join(
   -- Focus 2nd Client
   awful.key({ MODKEY }, "n",
     function()
-      local master = awful.client.getmaster()
-      awful.client.focus.byidx(1, master)
-
-      if awful.layout.getname() == "centerwork" then
-        awful.layout.set(awful.layout.suit.tile.left)
-      end
-      master.opacity = 1
+      focus_by_master_offset(1)
     end,
-    {description = "toggle reading mode off", group = "client"}
+    { description = "Focus 2nd Client", group = "client" }
   ),
-  --
+
+  awful.key({ MODKEY, "Control" }, "n",
+    function()
+      focus_by_master_offset(1)
+      toggle_layout()
+    end,
+    { description = "toggle reading mode off", group = "client" }
+  ),
+
   -- Focus Master
   awful.key({ MODKEY }, "e",
     function()
-      local master = awful.client.getmaster()
-      client.focus = master
-      if client.focus then client.focus:raise() end
+      focus_by_master_offset(0)
+    end,
+    { description = "focus master", group = "client" }),
+
+  awful.key({ MODKEY, "Control" }, "e",
+    function()
+      focus_by_master_offset(0)
+      toggle_layout()
     end,
     { description = "focus master", group = "client" }),
 
   -- Focus 3rd Client
   awful.key({ MODKEY }, "i",
     function()
-      local master = awful.client.getmaster()
-      awful.client.focus.byidx(-1, master)
-
-      if awful.layout.getname() == "centerwork" then
-        awful.layout.set(awful.layout.suit.tile.left)
-      end
-      master.opacity = 1
+      focus_by_master_offset(-1)
     end,
-    { description = "focus master", group = "client" }),
+    { description = "Focus 3rd client", group = "client" }),
+
+  awful.key({ MODKEY, "Control" }, "i",
+    function()
+      focus_by_master_offset(-1)
+      toggle_layout()
+    end,
+    { description = "Focus 3rd client", group = "client" }),
 
   awful.key({ MODKEY }, "Tab",
     function()
@@ -139,21 +161,22 @@ local globalkeys = gears.table.join(
       awful.client.swap.bydirection("right")
     end),
 
-  awful.key({ MODKEY }, "u",
-    function()
+  awful.key({ MODKEY }, "u", function()
       awful.layout.set(lain.layout.centerwork)
 
       local master = awful.client.getmaster()
-      master:raise()
-      client.focus = master
-      master.opacity = 1
+      if master then
+        master:raise()
+        client.focus = master
+        master.opacity = 1
 
-      dim_clients_except(master)
+        dim_clients_except(master)
+      end
     end,
-    {description = "toggle reading mode on", group = "client"}
+    { description = "toggle reading mode on", group = "client" }
   ),
 
-  awful.key({ MODKEY }, "o",
+  awful.key({ MODKEY }, "/",
     function()
       local ln = awful.layout.getname()
 
@@ -165,13 +188,13 @@ local globalkeys = gears.table.join(
     end, { description = "Toggle centerwork/tile", group = "client" }
   ),
 
-  awful.key({ MODKEY }, ",",
+  awful.key({ MODKEY, "Control" }, ",",
     function()
       awful.tag.incnmaster(1, nil, true)
     end, { description = "increase the number of master clients", group = "layout" }
   ),
 
-  awful.key({ MODKEY }, ".",
+  awful.key({ MODKEY, "Control" }, ".",
     function()
       awful.tag.incnmaster(-1, nil, true)
     end, { description = "increase the number of master clients", group = "layout" }

@@ -73,7 +73,7 @@ local clientkeys = gears.table.join(
   {description = "move to master", group = "client"}
   ),
 
-  awful.key({ MODKEY, "Control" }, "e",
+  awful.key({ MODKEY, "Control" }, "u",
     function (c)
       local m = awful.client.getmaster()
       if c == m then
@@ -173,20 +173,6 @@ local clientkeys = gears.table.join(
       c.opacity = 1
     end,
     {description = "toggle reading mode", group = "client"}
-  ),
-
-  awful.key({ MODKEY }, "e",
-    function()
-      awful.layout.set(lain.layout.centerwork)
-
-      local master = awful.client.getmaster()
-      master:raise()
-      client.focus = master
-      master.opacity = 1
-
-      dim_clients_except(master)
-    end,
-    {description = "toggle reading mode on", group = "client"}
   ),
 
   -- toggle backdrop on client

@@ -8,6 +8,7 @@ alias syu="tplay playbooks/dev/update.yml"
 alias setup-dotfiles="tplay playbooks/workstation/dotfiles.yml"
 alias sync_repos="tplay playbooks/workstation/sync_repos.yml"
 alias setup-neovim="tplay playbooks/dev/neovim.yml"
+alias update-roles="cd ~/code/ansible-roles && git submodule update --remote"
 
 ########################
 #        source        #
@@ -81,9 +82,19 @@ alias lll="exa -la --group-directories-first"
 alias chx="chmod +x"
 alias xmp="xmodmap ~/.Xmodmap"
 alias cbi="xclip -selection clipboard -t image/png -o > /tmp/\"$(date +%Y-%m-%d_%T).png\""
-alias gu="gitui"
 alias vim="nvim"
 alias v="nvim"
+
+gu() {
+  if [ -z "$1" ]; then
+    gitui
+  else
+    gitui -d $1
+  fi
+}
+
+alias gud="gu ~/dotfiles"
+alias gut="gu ~/tailnet"
 
 ########################
 #        pacman        #
