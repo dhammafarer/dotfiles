@@ -27,7 +27,8 @@ XF86Launch6
     xscreensaver-command -a
 
 # rofi-calc
-XF86Launch5
+#XF86Launch5
+control + XF86Tools
     ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
 # mindmaps alt
