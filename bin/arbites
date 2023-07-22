@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cd $HOME/Nextcloud/AppData/Arbites
-
-mono ./ArbitesEto2.Gtk2.exe

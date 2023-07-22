@@ -19,8 +19,8 @@ eval "$(fasd --init auto)"
 # zsh-notify
 zstyle ':notify:*' error-title "Command failed (in #{time_elapsed})"
 zstyle ':notify:*' success-title "Command finished (in #{time_elapsed})"
-zstyle ':notify:*' success-icon "/home/pl/dotfiles/img/notify_icon_success.png"
-zstyle ':notify:*' error-icon "/home/pl/dotfiles/img/notify_icon_error.png"
+zstyle ':notify:*' success-icon "/home/pl/dotfiles/arch/img/notify_icon_success.png"
+zstyle ':notify:*' error-icon "/home/pl/dotfiles/arch/img/notify_icon_error.png"
 zstyle ':notify:*' command-complete-timeout 10
 # zstyle ':notify:*' expire-time 30000
 zstyle ':notify:*' app-name sh
