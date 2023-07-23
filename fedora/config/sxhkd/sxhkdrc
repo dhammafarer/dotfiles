@@ -75,6 +75,9 @@ XF86Launch8; t
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
+control + XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ 50%
+
 { button7,button6 }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
@@ -87,7 +90,7 @@ alt + shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
 alt + shift + control XF86AudioRaiseVolume
    bluetoothctl connect 41:42:5B:66:E5:77
 
-alt + XF86AudioRaiseVolume
+alt + XF86Tools
    cplay
 
 ######################
