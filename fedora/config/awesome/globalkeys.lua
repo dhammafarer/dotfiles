@@ -31,9 +31,9 @@ local globalkeys = gears.table.join(
 -- Restore last tag
   awful.key({ MODKEY }, "z",
     function()
-      if next(Urgent_Clients) then
-        local c = table.remove(Urgent_Clients)
-        c:jump_to()
+      if Urgent then
+        Urgent:jump_to()
+        Urgent = nil
         naughty.destroy_all_notifications()
       else
         awful.tag.history.restore()

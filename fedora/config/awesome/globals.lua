@@ -35,7 +35,7 @@ FLOATING_SIZES = {
     end,
 }
 
-Urgent_Clients = {}
+Urgent = nil
 
 LAYOUT_CENTER = lain.layout.centerwork
 LAYOUT_CENTER_NAME = "centerwork"
