@@ -53,7 +53,6 @@ local clientkeys = gears.table.join(
       awful.placement.centered(c, nil)
 
       c:raise()
-
     end,
     {description = "toggle floating", group = "client"}
   ),
@@ -83,34 +82,12 @@ local clientkeys = gears.table.join(
       else
         c:swap(m)
       end
-      awful.layout.set(lain.layout.centerwork)
+      awful.layout.set(LAYOUT_CENTER)
       m = awful.client.getmaster()
       dim_clients_except(m)
     end,
-  {description = "move to master", group = "client"}
+  {description = "swap with master centered", group = "client"}
   ),
-
-  -- decrement opacity
-  --awful.key({ MODKEY, "Control" }, "e", function(c)
-  --    if c.opacity < BACKDROP_OPACITY then
-  --      c.opacity = 1
-  --    else
-  --      c.opacity = c.opacity - 0.1
-  --    end
-  --  end,
-  --  {description = "toggle opacity", group = "client"}
-  --),
-
-  -- increment opacity
-  --awful.key({ MODKEY, "Control" }, "i", function(c)
-  --    if (c.opacity + 0.1) > 1 then
-  --      c.opacity = 1
-  --    else
-  --      c.opacity = c.opacity + 0.1
-  --    end
-  --  end,
-  --  {description = "toggle opacity", group = "client"}
-  --),
 
   -- reset opacity to 1
   awful.key({ MODKEY, "Control", "Shift" }, "i", function(c)

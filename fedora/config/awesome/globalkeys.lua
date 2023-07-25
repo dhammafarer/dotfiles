@@ -2,8 +2,6 @@ local gears = require("gears")
 local awful = require("awful")
 local naughty = require("naughty")
 
-local lain = require("lain")
-
 require("globals")
 
 local function dim_clients_except(m)
@@ -15,10 +13,10 @@ local function dim_clients_except(m)
 end
 
 local function toggle_layout()
-  if awful.layout.getname() == "tileleft" then
-    awful.layout.set(lain.layout.centerwork)
+  if awful.layout.getname() == LAYOUT_TILE_NAME then
+    awful.layout.set(LAYOUT_CENTER)
   else
-    awful.layout.set(awful.layout.suit.tile.left)
+    awful.layout.set(LAYOUT_TILE)
   end
 end
 
@@ -36,7 +34,6 @@ local globalkeys = gears.table.join(
       if next(Urgent_Clients) then
         local c = table.remove(Urgent_Clients)
         c:jump_to()
-        awful.client.focus.history.delete(c)
         naughty.destroy_all_notifications()
       else
         awful.tag.history.restore()
@@ -162,7 +159,7 @@ local globalkeys = gears.table.join(
     end),
 
   awful.key({ MODKEY }, "u", function()
-      awful.layout.set(lain.layout.centerwork)
+      awful.layout.set(LAYOUT_CENTER)
 
       local master = awful.client.getmaster()
       if master then
@@ -178,12 +175,10 @@ local globalkeys = gears.table.join(
 
   awful.key({ MODKEY }, "/",
     function()
-      local ln = awful.layout.getname()
-
-      if ln ~= "tileleft" then
-        awful.layout.set(awful.layout.suit.tile.left)
+      if awful.layout.getname() ~= LAYOUT_TILE_NAME then
+        awful.layout.set(LAYOUT_TILE)
       else
-        awful.layout.set(lain.layout.centerwork)
+        awful.layout.set(LAYOUT_CENTER)
       end
     end, { description = "Toggle centerwork/tile", group = "client" }
   ),
@@ -225,16 +220,14 @@ local globalkeys = gears.table.join(
     function()
       awful.tag.incmwfact(0.05)
 
-      if awful.layout.getname() == "tileleft" then
-        local fct = mouse.screen.selected_tag.master_width_factor
-
-        if fct > 0.70 then
-          awful.layout.set(lain.layout.centerwork)
-          awful.tag.incmwfact(-0.25)
-        end
-      end
-
-      --awful.spawn("notify-send "..mouse.screen.selected_tag.master_width_factor)
+      -- Automatically switch from tiled to centered layout when the master window factor crosses a threshold
+      -- if awful.layout.getname() == LAYOUT_TILE_NAME then
+      --   local fct = mouse.screen.selected_tag.master_width_factor
+      --   if fct > 0.70 then
+      --     awful.layout.set(LAYOUT_CENTER)
+      --     awful.tag.incmwfact(-0.25)
+      --   end
+      -- end
     end,
     { description = "increase master width factor", group = "layout" }
   ),
@@ -243,27 +236,26 @@ local globalkeys = gears.table.join(
     function()
       awful.tag.incmwfact(-0.05)
 
-      if awful.layout.getname() == "centerwork" then
-        local fct = mouse.screen.selected_tag.master_width_factor
+      -- Automatically switch from centered to tiled layout when the master window factor crosses a threshold
+      local fct = mouse.screen.selected_tag.master_width_factor
+      if awful.layout.getname() == LAYOUT_CENTER_NAME then
         if fct < 0.50 then
-          awful.layout.set(awful.layout.suit.tile.left)
+          awful.layout.set(LAYOUT_TILE)
           awful.tag.incmwfact(0.25)
         end
       end
 
-      --awful.spawn("notify-send "..mouse.screen.selected_tag.master_width_factor)
+      --awful.spawn("notify-send "..fct)
     end,
     { description = "decrease master width factor", group = "layout" }
   ),
 
   -- Next Layout
   awful.key({ MODKEY }, "s", function()
-    --awful.layout.inc(1)
-    local ln = awful.layout.getname()
-    if ln == "max" then
-      awful.layout.set(lain.layout.centerwork)
+    if awful.layout.getname() == LAYOUT_MAX_NAME then
+      awful.layout.set(LAYOUT_CENTER)
     else
-      awful.layout.set(awful.layout.suit.max)
+      awful.layout.set(LAYOUT_MAX)
     end
   end, { description = "select next", group = "layout" })
 )

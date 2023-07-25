@@ -1,4 +1,7 @@
 -- Global Variables
+local awful = require("awful")
+local lain = require("lain")
+
 TERMINAL = "xfce4-terminal"
 
 EDITOR = os.getenv("EDITOR") or "editor"
@@ -33,3 +36,12 @@ FLOATING_SIZES = {
 }
 
 Urgent_Clients = {}
+
+LAYOUT_CENTER = lain.layout.centerwork
+LAYOUT_CENTER_NAME = "centerwork"
+
+LAYOUT_TILE = awful.layout.suit.tile.left
+LAYOUT_TILE_NAME = "tileleft"
+
+LAYOUT_MAX = awful.layout.suit.max
+LAYOUT_MAX_NAME = "max"
