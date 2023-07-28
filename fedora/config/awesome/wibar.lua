@@ -6,7 +6,7 @@ local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
 local cmus_widget = require('awesome-wm-widgets.cmus-widget.cmus')
 
 local mytextclock = wibox.layout.margin(
-wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"), 4, 4, 0, 0)
+  wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"), 4, 4, 0, 0)
 
 local myvolume = wibox.layout.margin(volume_widget { widget_type = "vertical_bar" }, 0, 0, 4, 4)
 
@@ -84,13 +84,13 @@ local function setup_wibar(s)
   s.mywibox:setup {
     layout = wibox.layout.align.horizontal,
     -- expand = "none",
-    {   -- Left widgets
+    { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       s.mytaglist,
       s.mypromptbox,
     },
-    s.mytasklist,   -- Middle widget
-    {               -- Right widgets
+    s.mytasklist, -- Middle widget
+    {             -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       cmus_widget {
       },

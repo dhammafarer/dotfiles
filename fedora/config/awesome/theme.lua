@@ -9,11 +9,7 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
---local theme_path = string.format("%s/.config/awesome/themes/%s/", os.getenv("HOME"), "default")
-
 local theme = {}
-
---theme.wallpaper = string.format("%s/.wallpaper.png", os.getenv("HOME"), "default")
 
 theme.master_width_factor = 0.5
 

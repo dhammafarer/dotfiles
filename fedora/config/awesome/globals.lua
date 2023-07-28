@@ -2,6 +2,8 @@
 local awful = require("awful")
 local lain = require("lain")
 
+THEME_PATH = string.format("%s/.config/awesome/theme.lua", os.getenv("HOME"))
+
 TERMINAL = "xfce4-terminal"
 
 EDITOR = os.getenv("EDITOR") or "editor"
