@@ -4,7 +4,6 @@ vim.g.mapleader = ","
 
 local file = {
   ["<C-e>"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-  --["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
   ["<leader>"] = {
     f = {
       name = "+file",
@@ -66,6 +65,7 @@ local tabs = {
   ["<A-,>"] = { "<cmd>BufferPrevious<cr>", "Previous Buffer" },
   ["<A-.>"] = { "<cmd>BufferNext<cr>", "Next Buffer" },
   ["<A-c>"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
+  ["<A-x>"] = { "<cmd>BufferCloseAllButCurrent<cr>", "Close Buffer All But Current" },
   ["<A-p>"] = { "<cmd>BufferPin<cr>", "Pin Buffer" },
 }
 
@@ -84,15 +84,6 @@ local builtin = {
     m = { "<cmd>Man \"<cword>\"<cr>", "Look up Man Pages" }
   },
   ["<C-f>"] = { "za", "Toggle Fold" },
-}
-
-local ai = {
-  ["<leader>"] = {
-    a = {
-      name = "+assistant",
-      e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit with instructions" }
-    }
-  }
 }
 
 local dap = {
@@ -114,7 +105,18 @@ local noop = {
 vim.g.codeium_no_map_tab = 1
 
 local codeium = {
-  ["<C-e>"] = { function () return vim.fn['codeium#Accept']() end, "Codeium Accept", mode = "i", expr = true },
+  ["<C-u>"] = { function () return vim.fn['codeium#Accept']() end, "Codeium Accept", mode = "i", expr = true },
+  ["<C-l>"] = { function () return vim.fn['codeium#CycleCompletions'](-1) end, "Codeium Accept", mode = "i", expr = true },
+  ["<C-y>"] = { function () return vim.fn['codeium#CycleCompletions'](1) end, "Codeium Accept", mode = "i", expr = true },
+  ["<leader>"] = {
+    a = {
+      name = "+assistant",
+      e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
+      c = { "<cmd>ChatGPT<cr>", "GPT Chat" },
+      d = { "<cmd>CodeiumDisable<cr>", "Codeium Disable" },
+      D = { "<cmd>CodeiumEnable<cr>", "Codeium Enable" },
+    }
+  }
 }
 
 wk.register(file)
@@ -124,7 +126,6 @@ wk.register(diagnostics)
 wk.register(tabs)
 wk.register(floaterm)
 wk.register(hop)
-wk.register(ai)
 wk.register(builtin)
 wk.register(codeium)
 wk.register(noop)
