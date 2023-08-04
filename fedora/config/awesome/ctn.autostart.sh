@@ -17,7 +17,7 @@ function run_flatpak {
 function run_thunderbird {
   if ! flatpak ps | grep org.mozilla.Thunderbird;
   then
-    flatpak run --command=thunderbird org.mozilla.Thunderbird
+    flatpak run --command=thunderbird org.mozilla.Thunderbird &
   fi
 }
 

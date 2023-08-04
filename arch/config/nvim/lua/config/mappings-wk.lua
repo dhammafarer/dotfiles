@@ -113,8 +113,8 @@ local codeium = {
   ["<leader>"] = {
     a = {
       name = "+assistant",
+      a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
       e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
-      c = { "<cmd>ChatGPT<cr>", "GPT Chat" },
       d = { "<cmd>CodeiumDisable<cr>", "Codeium Disable" },
       D = { "<cmd>CodeiumEnable<cr>", "Codeium Enable" },
     }

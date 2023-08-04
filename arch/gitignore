@@ -2,8 +2,12 @@
 *.swp
 *.swo
 
+build
+tags
+
 ### haskell
 
+build
 dist
 dist-*
 cabal-dev
