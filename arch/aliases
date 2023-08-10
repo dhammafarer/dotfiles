@@ -101,8 +101,9 @@ alias gut="gu ~/tailnet"
 #        pacman        #
 ########################
 
-alias spacs="pacman-install"
+alias spacs="pacman -Sy"
 alias pacs="pacman -Ss"
+alias paq="pacman -Qs"
 
 # files
 alias link-dotfiles="sh $HOME/dotfiles/scripts/box.arch.link-dotfiles.sh"
@@ -235,6 +236,7 @@ alias vx="xclip -o"
 alias cdc="pwd | xclip"
 alias gi="grep -i"
 alias vpi="vim +PluginInstall +qall"
+alias bus="/home/pl/code/shell/bus-time/bus.sh"
 
 # ~/Apps
 alias bike-weather="curl 'wttr.in/{Neihu,Dazhi,Beitou}?1'"

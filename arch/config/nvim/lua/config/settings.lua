@@ -64,10 +64,10 @@ vim.g["python_indent"] = {
 }
 
 -- workaround needed to trigger folding on file opening
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    pattern = { "*" },
-    command = "normal zx",
-})
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+--     pattern = { "*" },
+--     command = "normal zx",
+-- })
 
 --vim.api.nvim_create_autocmd({ "BufEnter" }, {
 vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {

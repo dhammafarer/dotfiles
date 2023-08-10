@@ -3,6 +3,7 @@
 launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #ffb05f -sf #192330 -fn 11'
 
 declare -a options=(
+"pcscd"
 "sxhkd"
 "picom"
 )
@@ -19,6 +20,9 @@ case "$choice" in
 	;;
 	sxhkd)
 		pkill -USR1 -x sxhkd
+	;;
+	pcscd)
+		systemctl restart pcscd
 	;;
 	reboot)
     confirm=$(echo -e "yes\nno" | $launcher -p "Reboot?")

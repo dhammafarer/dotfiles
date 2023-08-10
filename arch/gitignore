@@ -4,6 +4,8 @@
 
 build
 tags
+tags.lock
+tags.temp
 
 ### haskell
 

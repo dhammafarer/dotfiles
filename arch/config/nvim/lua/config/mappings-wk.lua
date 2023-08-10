@@ -4,6 +4,7 @@ vim.g.mapleader = ","
 
 local file = {
   ["<C-e>"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  ["<C-t>"] = { "<cmd>Telescope tags<cr>", "Tags" },
   ["<leader>"] = {
     f = {
       name = "+file",
@@ -92,6 +93,7 @@ local dap = {
   ["<leader>"] = {
     d = {
       name = "+DAP",
+      c = { "<cmd>DapContinue<cr>", "Continue" },
       d = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
       t = { "<cmd>DapTerminate<cr>", "Terminate" },
       s = { "<cmd>DapStepOver<cr>", "Step Over" },
@@ -100,6 +102,7 @@ local dap = {
 }
 
 local noop = {
+  --["<C-u>"] = { "<Nop>", "No Op", mode = "i" },
   s = { "s", "No Op", mode = "s" },  -- prevent changing mode in snippet expansion
   l = { "l", "No Op", mode = "s" },  -- prevent changing mode in snippet expansion
 }
