@@ -40,6 +40,10 @@ XF86Launch9; t
 XF86Launch9; l
     ~/apps/Logseq
 
+# Bus
+XF86Launch9; b
+    ~/dotfiles/arch/bin/bus
+
 ##########################
 #       LEFT PINKY       #
 #       XF86Launch9      #
