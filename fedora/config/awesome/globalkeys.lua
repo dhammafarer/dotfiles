@@ -31,17 +31,17 @@ local function focus_by_master_offset(x, opacity)
 
     if master then
         local name = master.first_tag.name
+        if awful.client.next(x, master) then
+            awful.client.focus.byidx(x, master)
+        end
         if opacity then
             SET_OPACITY_FOR(name, opacity)
             set_clients_opacity(master, opacity)
         else
             SET_OPACITY_FOR(name, DEFAULT_INACTIVE_OPACITY)
-        end
-
-        if awful.client.next(x, master) then
-            awful.client.focus.byidx(x, master)
             undim_clients()
         end
+
     end
 end
 
