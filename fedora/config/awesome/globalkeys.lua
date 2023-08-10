@@ -4,10 +4,10 @@ local naughty = require("naughty")
 
 require("globals")
 
-local function dim_clients_except(m)
+local function set_clients_opacity(m, opacity)
     for _, x in ipairs(mouse.screen.selected_tag:clients()) do
         if x ~= m then
-            x.opacity = BACKDROP_OPACITY
+            x.opacity = opacity
         end
     end
 end
@@ -26,11 +26,22 @@ local function toggle_layout()
     end
 end
 
-local function focus_by_master_offset(x)
+local function focus_by_master_offset(x, opacity)
     local master = awful.client.getmaster()
-    if master and awful.client.next(x, master) then
-        awful.client.focus.byidx(x, master)
-        undim_clients()
+
+    if master then
+        local name = master.first_tag.name
+        if opacity then
+            SET_OPACITY_FOR(name, opacity)
+            set_clients_opacity(master, opacity)
+        else
+            SET_OPACITY_FOR(name, DEFAULT_INACTIVE_OPACITY)
+        end
+
+        if awful.client.next(x, master) then
+            awful.client.focus.byidx(x, master)
+            undim_clients()
+        end
     end
 end
 
@@ -52,14 +63,14 @@ local globalkeys = gears.table.join(
     -- Focus 2nd Client
     awful.key({ MODKEY }, "n",
         function()
-            focus_by_master_offset(1)
+            focus_by_master_offset(1, nil)
         end,
         { description = "Focus 2nd Client", group = "client" }
     ),
 
     awful.key({ MODKEY, "Control" }, "n",
         function()
-            focus_by_master_offset(1)
+            focus_by_master_offset(1, nil)
             toggle_layout()
         end,
         { description = "toggle reading mode off", group = "client" }
@@ -68,13 +79,13 @@ local globalkeys = gears.table.join(
     -- Focus Master
     awful.key({ MODKEY }, "e",
         function()
-            focus_by_master_offset(0)
+            focus_by_master_offset(0, nil)
         end,
         { description = "focus master", group = "client" }),
 
     awful.key({ MODKEY, "Control" }, "e",
         function()
-            focus_by_master_offset(0)
+            focus_by_master_offset(0, nil)
             toggle_layout()
         end,
         { description = "focus master", group = "client" }),
@@ -169,14 +180,7 @@ local globalkeys = gears.table.join(
     awful.key({ MODKEY }, "u", function()
             awful.layout.set(LAYOUT_CENTER)
 
-            local master = awful.client.getmaster()
-            if master then
-                master:raise()
-                client.focus = master
-                master.opacity = 1
-
-                dim_clients_except(master)
-            end
+            focus_by_master_offset(0, BACKDROP_OPACITY)
         end,
         { description = "toggle reading mode on", group = "client" }
     ),

@@ -63,3 +63,7 @@ function GET_OPACITY_FOR(name)
         return DEFAULT_INACTIVE_OPACITY
     end
 end
+
+function SET_OPACITY_FOR(name, opacity)
+    OPACITY[name] = opacity
+end
