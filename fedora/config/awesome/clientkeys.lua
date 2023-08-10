@@ -1,6 +1,5 @@
 local gears = require("gears")
 local awful = require("awful")
-local lain = require("lain")
 
 require("globals")
 
@@ -141,15 +140,17 @@ local clientkeys = gears.table.join(
 
     awful.key({ MODKEY, "Control" }, "m",
         function(c)
-            if Inactive_opacity == BACKDROP_OPACITY then
-                Inactive_opacity = DEFAULT_INACTIVE_OPACITY
+            local name = mouse.screen.selected_tag.name;
+
+            if not OPACITY[name] or OPACITY[name] ~= BACKDROP_OPACITY then
+                OPACITY[name] = BACKDROP_OPACITY
             else
-                Inactive_opacity = BACKDROP_OPACITY
+                OPACITY[name] = DEFAULT_INACTIVE_OPACITY
             end
 
             for _, x in ipairs(mouse.screen.selected_tag:clients()) do
                 if x ~= c then
-                    x.opacity = Inactive_opacity
+                    x.opacity = OPACITY[name]
                 end
             end
             c.opacity = 1

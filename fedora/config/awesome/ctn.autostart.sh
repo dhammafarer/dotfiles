@@ -31,6 +31,7 @@ function run_app {
 run picom -b --config $HOME/.config/picom/picom.conf
 run sxhkd
 run ibus-daemon -drxR
+run unclutter --timeout 1 --start-hidden --ignore-scrolling
 
 run_thunderbird
 run_flatpak com.nextcloud.desktopclient.nextcloud

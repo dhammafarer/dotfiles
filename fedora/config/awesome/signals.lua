@@ -84,7 +84,7 @@ client.connect_signal("focus",
           elseif c.backdrop then
             x.opacity = BACKDROP_OPACITY
           else
-            x.opacity = Inactive_opacity
+            x.opacity = GET_OPACITY_FOR(x.first_tag.name)
           end
         else
           c.opacity = 1

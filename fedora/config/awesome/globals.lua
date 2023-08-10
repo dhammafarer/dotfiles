@@ -16,6 +16,8 @@ BACKDROP_OPACITY = 0.00
 
 Inactive_opacity = DEFAULT_INACTIVE_OPACITY
 
+OPACITY = {}
+
 MARGINS = { left=0, bottom=0, right=0, top=0 }
 
 FLOATING_SIZES = {
@@ -37,6 +39,8 @@ FLOATING_SIZES = {
     end,
 }
 
+TAG_PROPS = {}
+
 Urgent = nil
 
 LAYOUT_CENTER = lain.layout.centerwork
@@ -47,3 +51,15 @@ LAYOUT_TILE_NAME = "tileleft"
 
 LAYOUT_MAX = awful.layout.suit.max
 LAYOUT_MAX_NAME = "max"
+
+function NOTIFY(msg)
+    awful.spawn("notify-send "..msg)
+end
+
+function GET_OPACITY_FOR(name)
+    if OPACITY[name] then
+        return OPACITY[name]
+    else
+        return DEFAULT_INACTIVE_OPACITY
+    end
+end

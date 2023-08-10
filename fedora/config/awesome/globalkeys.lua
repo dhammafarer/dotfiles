@@ -12,6 +12,12 @@ local function dim_clients_except(m)
     end
 end
 
+local function undim_clients()
+    for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+        x.opacity = 1
+    end
+end
+
 local function toggle_layout()
     if awful.layout.getname() == LAYOUT_TILE_NAME then
         awful.layout.set(LAYOUT_CENTER)
@@ -24,7 +30,7 @@ local function focus_by_master_offset(x)
     local master = awful.client.getmaster()
     if master and awful.client.next(x, master) then
         awful.client.focus.byidx(x, master)
-        master.opacity = 1
+        undim_clients()
     end
 end
 
