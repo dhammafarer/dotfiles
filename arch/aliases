@@ -18,6 +18,12 @@ alias sal="source ~/.aliases"
 alias szsh="source ~/.aliases"  
 
 ########################
+#         make         #
+########################
+alias mr="make run"
+alias mc="make clean"
+
+########################
 #       vagrant        #
 ########################
 

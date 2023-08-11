@@ -113,13 +113,15 @@ local codeium = {
   ["<C-u>"] = { function () return vim.fn['codeium#Accept']() end, "Codeium Accept", mode = "i", expr = true },
   ["<C-l>"] = { function () return vim.fn['codeium#CycleCompletions'](-1) end, "Codeium Accept", mode = "i", expr = true },
   ["<C-y>"] = { function () return vim.fn['codeium#CycleCompletions'](1) end, "Codeium Accept", mode = "i", expr = true },
+  ["<C-h>"] = {  "<cmd>CodeiumDisable<cr>", "Codeium Disable", mode = "i" },
+  ["<C-k>"] = {  "<cmd>CodeiumEnable<cr>", "Codeium Enable", mode = "i" },
   ["<leader>"] = {
     a = {
       name = "+assistant",
       a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
       e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
-      d = { "<cmd>CodeiumDisable<cr>", "Codeium Disable" },
-      D = { "<cmd>CodeiumEnable<cr>", "Codeium Enable" },
+      d = { "<cmd>CodeiumEnable<cr>", "Codeium Enable" },
+      D = { "<cmd>CodeiumDisable<cr>", "Codeium Disable" },
     }
   }
 }

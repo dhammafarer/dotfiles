@@ -22,7 +22,8 @@ case "$choice" in
 		pkill -USR1 -x sxhkd
 	;;
 	pcscd)
-		systemctl restart pcscd
+        notify-send "Please touch the device"
+		sudo systemctl restart pcscd
 	;;
 	reboot)
     confirm=$(echo -e "yes\nno" | $launcher -p "Reboot?")
