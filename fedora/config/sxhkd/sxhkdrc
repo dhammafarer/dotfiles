@@ -42,7 +42,7 @@ XF86Launch9; l
 
 # Bus
 XF86Launch9; b
-    ~/dotfiles/arch/bin/bus
+    ~/dotfiles/arch/bin/bus2
 
 ##########################
 #       LEFT PINKY       #

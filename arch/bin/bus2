@@ -1,0 +1,63 @@
+#!/bin/bash
+
+URL=https://pda.5284.gov.taipei/MQS/RouteDyna?routeid=
+
+ROUTE_ID_902=15171
+ROUTE_ID_645=10461
+
+STOP_ID_902=27677
+STOP_ID_645=21743
+
+TIME_OFFSET=0
+
+getRouteData() {
+    DATA=$(curl -s ${URL}${1})
+
+    echo $DATA
+}
+formatTime() {
+    SEC=$1
+    if [ $SEC -lt 0 ]; then
+        echo "No bus"
+    elif [ $SEC -lt 180 ]; then
+        echo "arriving"
+    else
+        echo "$(($SEC / 60)) mins"
+    fi
+}
+
+printTime() {
+    NAME=$1
+    THIS=$2
+    NEXT=$3
+
+    notify-send "$NAME" "${THIS}\n${NEXT}"
+}
+
+getBusTimes() {
+    ROUTE_ID=$1
+    STOP_ID=$2
+    NAME=$3
+
+    DATA=$(getRouteData ${ROUTE_ID})
+
+    ENTRIES=$(echo ${DATA} | jq ".Stop | to_entries")
+    IDX=$(echo ${ENTRIES} | jq ".[] | select(.value.id | contains(${STOP_ID})) | .key")
+
+    this_bus=$(echo ${ENTRIES} | jq ".[${IDX}].value.n1")
+    this_bus_time=$(echo ${this_bus} | awk -F"," '{ print $8 }')
+
+    offset=$(echo ${this_bus} | awk -F"," '{ print $9 }')
+
+    next_idx=$((IDX - offset))
+
+    next_bus_time=$(echo ${ENTRIES} | jq ".[${next_idx}].value.n1" | awk -F"," '{ print $8 }')
+
+    this=$(formatTime $this_bus_time)
+    next=$(formatTime $((next_bus_time + this_bus_time + TIME_OFFSET)))
+
+    printTime ${NAME} "${this}" "${next}"
+}
+
+getBusTimes ${ROUTE_ID_902} ${STOP_ID_902} 902
+getBusTimes ${ROUTE_ID_645} ${STOP_ID_645} 645
