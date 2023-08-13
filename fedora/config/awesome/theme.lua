@@ -42,7 +42,7 @@ theme.border_normal = colors.bg
 theme.border_focus  = colors.border
 theme.border_marked = "#91231c"
 
-theme.gap_single_client  = false
+theme.gap_single_client  = true
 
 theme.tasklist_disable_icon = true
 

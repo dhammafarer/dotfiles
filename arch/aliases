@@ -107,7 +107,7 @@ alias gut="gu ~/tailnet"
 #        pacman        #
 ########################
 
-alias spacs="pacman -Sy"
+alias spacs="sudo pacman -Sy"
 alias pacs="pacman -Ss"
 alias paq="pacman -Qs"
 

@@ -182,7 +182,18 @@ local clientkeys = gears.table.join(
                 end
             end
         end,
-        { description = "toggle minimize backdrop", group = "client" })
+        { description = "toggle minimize backdrop", group = "client" }),
+
+    -- Next Layout
+    awful.key({ MODKEY }, "s",
+        function(c)
+            c.floating = false
+            if awful.layout.getname() == LAYOUT_MAX_NAME then
+                awful.layout.set(LAYOUT_CENTER)
+            else
+                awful.layout.set(LAYOUT_MAX)
+            end
+        end, { description = "select next", group = "client" })
 )
 
 local function position_floating(idx, c)

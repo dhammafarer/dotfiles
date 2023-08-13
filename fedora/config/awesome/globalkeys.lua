@@ -260,16 +260,7 @@ local globalkeys = gears.table.join(
             --awful.spawn("notify-send "..fct)
         end,
         { description = "decrease master width factor", group = "layout" }
-    ),
-
-    -- Next Layout
-    awful.key({ MODKEY }, "s", function()
-        if awful.layout.getname() == LAYOUT_MAX_NAME then
-            awful.layout.set(LAYOUT_CENTER)
-        else
-            awful.layout.set(LAYOUT_MAX)
-        end
-    end, { description = "select next", group = "layout" })
+    )
 )
 
 -- Workspace bindings
