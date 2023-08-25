@@ -52,5 +52,5 @@ awful.rules.rules = {
     { rule = { class = "Signal" }, properties = { screen = 1, tag = "com" } },
     { rule = { class = "Google-chrome" }, properties = { screen = 1, tag = "com" } },
     { rule = { class = "thunderbird" }, properties = { screen = 1, tag = "com" } },
-    { rule = { class = "Logseq" }, properties = { screen = 1, tag = "run" } },
+    { rule = { class = "Logseq" }, properties = { screen = 1, tag = "gui" } },
 }

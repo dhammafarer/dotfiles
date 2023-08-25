@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sleep 0.1; xdotool key BackSpace; sleep 0.01; xdotool type "$1"; sleep 0.01; xdotool key Enter

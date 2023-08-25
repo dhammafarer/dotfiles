@@ -9,7 +9,7 @@ super + {_,control} + l
 
 # lock screen
 super + shift + Escape
-    xscreensaver-command -l
+    cmus-remote -U; xscreensaver-command -l
 
 # blank screen
 super + control + Escape

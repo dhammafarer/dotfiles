@@ -16,9 +16,9 @@ awful.tag.add("dev", {
   selected = true,
 })
 
-awful.tag.add("run", {
+awful.tag.add("map", {
   index = 2,
-  layout = LAYOUT_CENTER,
+  layout = LAYOUT_MAX,
 })
 
 awful.tag.add("web", {
@@ -31,22 +31,26 @@ awful.tag.add("com", {
   layout = LAYOUT_TILE,
 })
 
-awful.tag.add("gui", {
+awful.tag.add("art", {
   index = 5,
   layout = LAYOUT_CENTER,
 })
 
-awful.tag.add("art", {
+awful.tag.add("gui", {
   index = 6,
   layout = LAYOUT_CENTER,
 })
 
-awful.tag.add("vm", {
+awful.tag.add("run", {
   index = 7,
   layout = LAYOUT_CENTER,
 })
 
 awful.tag.add("med", {
   index = 8,
+  layout = awful.layout.suit.max.fullscreen,
+})
+awful.tag.add("vm", {
+  index = 9,
   layout = awful.layout.suit.max.fullscreen,
 })

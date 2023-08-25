@@ -74,3 +74,5 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
   pattern = { "*" },
   command = "normal zR",
 })
+
+vim.g["codeium_enabled"] = 'v:false'

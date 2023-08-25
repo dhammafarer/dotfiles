@@ -87,6 +87,7 @@ local builtin = {
     m = { "<cmd>Man \"<cword>\"<cr>", "Look up Man Pages" }
   },
   ["<C-f>"] = { "za", "Toggle Fold" },
+  ["<C-m>"] = { "zMzA", "Toggle Fold" },
 }
 
 local dap = {
@@ -102,7 +103,6 @@ local dap = {
 }
 
 local noop = {
-  --["<C-u>"] = { "<Nop>", "No Op", mode = "i" },
   s = { "s", "No Op", mode = "s" },  -- prevent changing mode in snippet expansion
   l = { "l", "No Op", mode = "s" },  -- prevent changing mode in snippet expansion
 }

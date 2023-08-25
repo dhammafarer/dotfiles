@@ -266,13 +266,14 @@ local globalkeys = gears.table.join(
 -- Workspace bindings
 local tag_keys = {
     "w", -- dev
-    "r", -- run
+    "r", -- map
     "f", -- web
     "a", -- com
     "x", -- gui
     "p", -- art
-    "c", -- vm
-    "b"  -- med
+    "c", -- run
+    "b", -- med
+    "d"  -- vm
 }
 
 for i, v in ipairs(tag_keys) do

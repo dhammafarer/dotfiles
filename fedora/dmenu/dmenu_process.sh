@@ -5,6 +5,7 @@ launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #ffb05f -sf #192330 -fn 11'
 declare -a options=(
 "pcscd"
 "sxhkd"
+"xmodmap"
 "picom"
 )
 
@@ -20,6 +21,9 @@ case "$choice" in
 	;;
 	sxhkd)
 		pkill -USR1 -x sxhkd
+	;;
+	xmodmap)
+		xmodmap ~/.Xmodmap
 	;;
 	pcscd)
         notify-send "Please touch the device"
