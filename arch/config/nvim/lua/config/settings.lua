@@ -76,3 +76,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
 })
 
 vim.g["codeium_enabled"] = 'v:false'
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "php",
+	command = "setlocal autoindent"
+})
