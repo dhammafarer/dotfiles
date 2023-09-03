@@ -79,6 +79,7 @@ local floaterm = {
 
 local hop = {
   s = { "<cmd>HopChar1<cr>", "Hop Char 1", mode = "n" },
+  W = { "<cmd>HopWord<cr>", "Hop Word", mode = "n" },
   l = { "<cmd>HopLineStart<cr>", "Hop Line Start", mode = {"n", "v"} },
 }
 
