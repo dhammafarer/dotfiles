@@ -115,7 +115,8 @@ super + space; w
 
 # print screen selection with maim
 Print
-    maim -s -u | xclip -selection clipboard -t image/png -i
+    scrot -s -q 100 -e 'xclip -selection clipboard -t image/png -i $f'
+    #maim -s -u | xclip -selection clipboard -t image/png -i
 
 #### End Rofi ####
 #######################
