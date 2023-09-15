@@ -48,7 +48,8 @@ awful.tag.add("run", {
 
 awful.tag.add("med", {
   index = 8,
-  layout = awful.layout.suit.max.fullscreen,
+  --layout = awful.layout.suit.max.fullscreen,
+  layout = LAYOUT_CENTER,
 })
 awful.tag.add("vm", {
   index = 9,

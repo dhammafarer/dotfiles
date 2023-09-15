@@ -76,21 +76,41 @@ local clientkeys = gears.table.join(
         { description = "move to master", group = "client" }
     ),
 
+    --    awful.key({ MODKEY, "Control" }, "u",
+    --        function(c)
+    --            local m = awful.client.getmaster()
+    --            if c == m then
+    --                awful.client.swap.byidx(1)
+    --                c:swap(m)
+    --                awful.client.focus.byidx(-1)
+    --            else
+    --                c:swap(m)
+    --            end
+    --            awful.layout.set(LAYOUT_CENTER)
+    --            m = awful.client.getmaster()
+    --            dim_clients_except(m)
+    --        end,
+    --        { description = "swap with master centered", group = "client" }
+    --    ),
     awful.key({ MODKEY, "Control" }, "u",
-        function(c)
+        function()
             local m = awful.client.getmaster()
-            if c == m then
-                awful.client.swap.byidx(1)
-                c:swap(m)
-                awful.client.focus.byidx(-1)
-            else
-                c:swap(m)
+            local stacked = not m.floating
+
+            for _, c in ipairs(mouse.screen.selected_tag:clients()) do
+                c.floating = stacked
+
+                c.width = ((1920 / 2) - 14)
+                c.height = (1080 - 42)
+
+                awful.placement.align(c, {
+                    position = "bottom",
+                    margins = { left = 0, bottom = 8, right = 0, top = 0 }
+                })
+                c.align = "bottom"
             end
-            awful.layout.set(LAYOUT_CENTER)
-            m = awful.client.getmaster()
-            dim_clients_except(m)
         end,
-        { description = "swap with master centered", group = "client" }
+        { description = "toggle float centered", group = "client" }
     ),
 
     -- reset opacity to 1
