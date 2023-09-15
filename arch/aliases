@@ -210,7 +210,7 @@ alias gsur="git submodule update --remote"
 alias pgpa="pass git remote | xargs -L1 pass git push --all"
 alias pgpom="pass git push -u origin master"
 alias pgpul="pass git pull origin master"
-alias pgen="pgpul && pass generate -c"
+alias pgn="pass generate -n"
 
 # working files and directories
 alias snip="us && vim ."
@@ -250,6 +250,7 @@ alias bike-weather="curl 'wttr.in/{Neihu,Dazhi,Beitou}?1'"
 #samba
 alias mnas="sudo mount -t cifs //192.168.7.30/市場行銷部/pawel /mnt/nas -o username=pawel,password=abcd1234,workgroup=workgroup,iocharset=utf8,uid=pawel,gid=users"
 alias unas="sudo umount /mnt/nas"
+alias mnas-multi="sudo mount -t cifs //192.168.7.30/Multimedia /mnt/nas -o username=pawel,password=abcd1234,workgroup=workgroup,iocharset=utf8,uid=pawel,gid=users"
 
 ##development
 #js
@@ -341,3 +342,9 @@ alias cr="cargo run"
 alias crw="cargo watch -x run"
 alias cb="cargo build"
 alias ct="cargo test"
+
+#php
+alias pha="php artisan"
+alias phas="pha serve"
+alias phamm="pha make:model"
+alias phami="pha migrate"

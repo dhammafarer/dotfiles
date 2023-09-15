@@ -69,10 +69,10 @@ vim.g["python_indent"] = {
 --     command = "normal zx",
 -- })
 
---vim.api.nvim_create_autocmd({ "BufEnter" }, {
-vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
+--vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
+vim.api.nvim_create_autocmd({ "BufRead" }, {
   pattern = { "*" },
-  command = "normal zR",
+  command = "set foldlevel=99",
 })
 
 vim.g["codeium_enabled"] = 'v:false'
@@ -80,4 +80,8 @@ vim.g["codeium_enabled"] = 'v:false'
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "php",
 	command = "setlocal autoindent"
+})
+
+vim.diagnostic.config({
+  virtual_text = false
 })

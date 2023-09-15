@@ -1,0 +1,19 @@
+snippet t "tag"
+	<${1}>
+		$0
+	</${1/([^\s]+).*/$1/}>
+
+snippet tt "tag single line"
+	<${1}>$0</${1/([^\s]+).*/$1/}>
+
+snippet tsc "self-closing tag"
+	<$1/>
+
+snippet div "div"
+	<div>$0</div>
+
+snippet p "p"
+	<p>$0</p>
+
+snippet h1 "h1"
+	<h1>$0</h1>

@@ -4,6 +4,7 @@ vim.g.mapleader = ","
 
 local file = {
   ["<C-e>"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
   ["<C-t>"] = { "<cmd>Telescope tags<cr>", "Tags" },
   ["<leader>"] = {
     f = {
@@ -53,6 +54,7 @@ local lsp = {
 }
 
 local diagnostics = {
+  ["<C-h>"] = { vim.diagnostic.goto_next, "Diagnostics Next" },
   ["<leader>"] = {
     e = {
       name = "+diagnostics",
@@ -87,8 +89,8 @@ local builtin = {
   ["<leader>"] = {
     m = { "<cmd>Man \"<cword>\"<cr>", "Look up Man Pages" }
   },
-  ["<C-f>"] = { "za", "Toggle Fold" },
-  ["<C-m>"] = { "zMzA", "Toggle Fold" },
+  ["<A-f>"] = { "za", "Toggle Fold" },
+  ["<A-m>"] = { "zMzA", "Toggle Fold" },
 }
 
 local dap = {
