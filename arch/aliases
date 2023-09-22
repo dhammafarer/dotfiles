@@ -257,7 +257,7 @@ alias mnas-multi="sudo mount -t cifs //192.168.7.30/Multimedia /mnt/nas -o usern
 alias ni="npm init -y"
 alias ns="npmInstallSave"
 alias nsd="npmInstallSaveDev"
-alias nrd="npm run develop"
+alias nrd="npm run dev"
 
 #gatsby
 alias gatcc="rm -rf .cache"
@@ -344,7 +344,12 @@ alias cb="cargo build"
 alias ct="cargo test"
 
 #php
+pham () {
+    php artisan make:${1} ${@:2}
+}
 alias pha="php artisan"
 alias phas="pha serve"
 alias phamm="pha make:model"
+alias phamm="pha make:model"
 alias phami="pha migrate"
+alias phacc="pha cache:clear"

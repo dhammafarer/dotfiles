@@ -89,10 +89,15 @@ shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
    cmus-remote -v {-,+}5
 
 alt + shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
-   cmus-remote -v {75,100} 
+   cmus-remote -v {50,75} 
 
-alt + shift + control XF86AudioRaiseVolume
+# connect H15 Pro
+alt + shift + control XF86AudioLowerVolume
    bluetoothctl connect 41:42:5B:66:E5:77
+
+# connect Redmi Buds 4
+alt + shift + control XF86AudioRaiseVolume
+   bluetoothctl connect E0:08:71:88:2A:B9
 
 alt + XF86Tools
    cplay
