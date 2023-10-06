@@ -24,6 +24,7 @@ local file = {
     },
     ["<space>"] = {
         w = { "<cmd>write<cr>", "Write" },
+        n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
     }
 }
 

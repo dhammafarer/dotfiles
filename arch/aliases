@@ -205,6 +205,7 @@ alias gpod="git push -u origin dev"
 alias gcr="git-create-repo"
 alias gsar="git-submodule-add-role"
 alias gsur="git submodule update --remote"
+alias grv="git remote -v"
 
 # Pass
 alias pgpa="pass git remote | xargs -L1 pass git push --all"

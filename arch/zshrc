@@ -8,7 +8,7 @@ ZSH_THEME="avit"
 autoload -Uz compinit
 compinit
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd notify)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd notify podman)
 
 source $ZSH/oh-my-zsh.sh
 

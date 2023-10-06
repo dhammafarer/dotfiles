@@ -1,0 +1,16 @@
+snippet c "comment"
+	# $1
+
+snippet d "debug"
+	- name: Debug
+	  ansible.builtin.debug:
+			${1:var}: $0
+
+snippet b "breakpoint"
+	- name: Breakpoint
+	  ansible.builtin.fail:
+			msg: "Breakpoint"
+
+snippet f "flush handlers"
+	- name: Flush handlers.
+	  ansible.builtin.meta: flush_handlers
