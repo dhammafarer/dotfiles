@@ -354,3 +354,7 @@ alias phamm="pha make:model"
 alias phamm="pha make:model"
 alias phami="pha migrate"
 alias phacc="pha cache:clear"
+
+#devops
+alias p="podman"
+alias pp="podman pod"

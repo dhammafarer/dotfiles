@@ -1,5 +1,6 @@
 local gears = require("gears")
 local awful = require("awful")
+local naughty = require("naughty")
 
 require("globals")
 
@@ -27,6 +28,10 @@ local clientkeys = gears.table.join(
 
     -- Close Client
     awful.key({ MODKEY }, "q", function(c)
+            if Urgent == c then
+                Urgent = nil
+                naughty.destroy_all_notifications()
+            end
             c:kill()
         end,
         { description = "close", group = "client" }),

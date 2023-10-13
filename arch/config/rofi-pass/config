@@ -72,7 +72,10 @@ xdotool_delay=12
 
 ## Programs to be used
 # Editor
-EDITOR='gvim -f'
+#EDITOR='gvim -f'
+
+#EDITOR=$EDITOR PASSWORD_STORE_DIR="${root}" termite -e "pass edit \"${selected_password}\""
+EDITOR='xfce4-terminal'
 
 # Browser
 BROWSER='xdg-open'
@@ -82,8 +85,8 @@ BROWSER='xdg-open'
 default_do='menu' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
 auto_enter='false'
 notify='false'
-#default_autotype='user :tab pass'
-default_autotype='pass'
+default_autotype='user :tab pass'
+#default_autotype='pass'
 
 # color of the help messages
 # leave empty for autodetection
@@ -102,24 +105,25 @@ clip_clear=45
 edit_new_pass="true"
 
 # default_user is also used for password files that have no user field.
+default_user=dev@palekiwi.com
 #default_user="${ROFI_PASS_DEFAULT_USER-$(whoami)}"
 #default_user2=mary_ann
 #password_length=12
 
 # Custom Keybindings
-autotype="Alt+1"
-type_user="Alt+2"
-type_pass="Alt+3"
-open_url="Alt+4"
-copy_name="Alt+u"
-copy_url="Alt+l"
-copy_pass="Alt+p"
-show="Alt+o"
-copy_entry="Alt+2"
-type_entry="Alt+1"
-copy_menu="Alt+c"
-action_menu="Alt+a"
-type_menu="Alt+t"
-help="Alt+h"
+autotype="Alt+n"
+type_user="Alt+i"
+type_pass="Alt+e"
+open_url="Alt+u"
+copy_name="Alt+1"
+#copy_url="Alt+l"
+#copy_pass="Alt+p"
+#show="Alt+o"
+#copy_entry="Alt+2"
+#type_entry="Alt+1"
+#copy_menu="Alt+c"
+#action_menu="Alt+a"
+#type_menu="Alt+t"
+#help="Alt+h"
 switch="Alt+x"
-insert_pass="Alt+n"
+insert_pass="Alt+2"

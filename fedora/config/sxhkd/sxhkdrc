@@ -165,6 +165,12 @@ super + Delete
 super + space; period
     ~/dotfiles/fedora/dmenu/dmenu_dotfiles.sh
 
+super + control + space; r
+    xdotool type "site:reddit.com"
+
+super + control + space; w
+    xdotool type "site:reddit.com/r/weightlifting"
+
 # TODO
 # colors
 super + space; d; c
