@@ -7,6 +7,10 @@ super + BackSpace
 super + {_,control} + l
     flatpak run {org.mozilla.firefox,com.google.Chrome}
 
+# open clipboard link in browser
+super + {_,control} + shift + l
+    flatpak run {org.mozilla.firefox,com.google.Chrome} --new-window $(xclip -o -selection clipboard)
+
 # lock screen
 super + shift + Escape
     cmus-remote -U; xscreensaver-command -l
@@ -86,10 +90,10 @@ control + XF86AudioLowerVolume
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
 shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
-   cmus-remote -v {-,+}5
+   cmus-remote -v {-,+}5%
 
 alt + shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
-   cmus-remote -v {50,75} 
+   cmus-remote -v {50,75}% 
 
 # connect H15 Pro
 alt + shift + control XF86AudioRaiseVolume
@@ -167,6 +171,12 @@ super + space; period
 
 super + control + space; r
     xdotool type "site:reddit.com"
+
+super + control + space; w
+    xdotool type "site:reddit.com/r/weightlifting"
+
+super + control + space; k
+    xdotool type 'alias k="kubectl"'
 
 super + control + space; w
     xdotool type "site:reddit.com/r/weightlifting"
