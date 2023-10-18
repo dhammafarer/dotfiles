@@ -16,14 +16,14 @@ awful.tag.add("dev", {
   selected = true,
 })
 
-awful.tag.add("map", {
+awful.tag.add("web", {
   index = 2,
-  layout = LAYOUT_MAX,
+  layout = LAYOUT_CENTER,
 })
 
-awful.tag.add("web", {
+awful.tag.add("map", {
   index = 3,
-  layout = LAYOUT_CENTER,
+  layout = LAYOUT_MAX,
 })
 
 awful.tag.add("com", {
@@ -31,7 +31,7 @@ awful.tag.add("com", {
   layout = LAYOUT_TILE,
 })
 
-awful.tag.add("art", {
+awful.tag.add("log", {
   index = 5,
   layout = LAYOUT_CENTER,
 })
@@ -48,10 +48,24 @@ awful.tag.add("run", {
 
 awful.tag.add("med", {
   index = 8,
-  --layout = awful.layout.suit.max.fullscreen,
-  layout = LAYOUT_CENTER,
+  layout = awful.layout.suit.max.fullscreen,
 })
 awful.tag.add("vm", {
   index = 9,
-  layout = awful.layout.suit.max.fullscreen,
+  layout = LAYOUT_CENTER,
+})
+
+awful.tag.add("dev2", {
+  index = 10,
+  layout = LAYOUT_CENTER,
+})
+
+awful.tag.add("run2", {
+  index = 11,
+  layout = LAYOUT_CENTER,
+})
+
+awful.tag.add("vm2", {
+  index = 12,
+  layout = LAYOUT_CENTER,
 })

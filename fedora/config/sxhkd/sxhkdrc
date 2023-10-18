@@ -110,11 +110,6 @@ alt + XF86Tools
 # Volume Control End #
 ######################
 
-#### Start Rofi ####
-# desktop entries
-super + v
-  dmenu_run
-
 # desktop entries
 super + space; n
     QT_STYLE_OVERRIDE=kvantum rofi -show drun -modi drun

@@ -220,7 +220,7 @@ local globalkeys = gears.table.join(
     ),
 
     -- Standard program
-    awful.key({ MODKEY }, "Return", function() awful.spawn(TERMINAL) end,
+    awful.key({ MODKEY, "Control" }, "BackSpace", function() awful.spawn(TERMINAL) end,
         { description = "open a terminal", group = "launcher" }),
 
     -- Reload/Quit
@@ -265,15 +265,18 @@ local globalkeys = gears.table.join(
 
 -- Workspace bindings
 local tag_keys = {
-    "w", -- dev
+    "t", -- dev
+    "s", -- web
     "r", -- map
-    "f", -- web
     "a", -- com
-    "x", -- gui
-    "p", -- art
-    "c", -- run
-    "b", -- med
-    "d"  -- vm
+    "w", -- gui
+    "x", -- art
+    "p", -- run
+    "c", -- med
+    "d", -- vm
+    "g", -- dev2
+    "b", -- run2
+    "v"  -- vm2
 }
 
 for i, v in ipairs(tag_keys) do

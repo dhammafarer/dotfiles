@@ -50,7 +50,7 @@ awful.rules.rules = {
 
     -- Assign clients to tags
     { rule = { class = "Signal" }, properties = { screen = 1, tag = "com" } },
-    -- { rule = { class = "Google-chrome" }, properties = { screen = 1, tag = "com" } },
+    { rule = { class = "org-knopflerfish-framework-BundleThread" }, properties = { screen = 1, tag = "map" } },
     { rule = { class = "thunderbird" }, properties = { screen = 1, tag = "com" } },
-    { rule = { class = "Logseq" }, properties = { screen = 1, tag = "gui" } },
+    { rule = { class = "Logseq" }, properties = { screen = 1, tag = "log" } },
 }
