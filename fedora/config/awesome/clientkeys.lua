@@ -44,6 +44,7 @@ local clientkeys = gears.table.join(
             if c.floating then
                 c.floating = false
                 c.opacity = 1
+                c.maximized = false
 
                 -- restore opacity on tiling clients
                 for _, x in ipairs(mouse.screen.selected_tag:clients()) do
@@ -66,7 +67,7 @@ local clientkeys = gears.table.join(
         { description = "toggle floating", group = "client" }
     ),
 
-    awful.key({ MODKEY }, "Insert",
+    awful.key({ MODKEY }, "/",
         function(c)
             local master = awful.client.getmaster()
 

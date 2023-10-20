@@ -58,7 +58,16 @@ end)
 local globalkeys = require("globalkeys")
 root.keys(globalkeys)
 
-require("tags")
+local tags = require("tags")
+
+for i, v in ipairs(tags) do
+    awful.tag.add(v.name, {
+      index = i,
+      layout = v.layout,
+      selected = v.selected,
+    })
+end
+
 require("rules")
 require("signals")
 

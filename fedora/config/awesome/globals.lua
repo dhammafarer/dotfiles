@@ -9,6 +9,7 @@ TERMINAL = "xfce4-terminal"
 EDITOR = os.getenv("EDITOR") or "editor"
 
 MODKEY = "Mod4"
+ALTKEY = "Mod1"
 
 DEFAULT_INACTIVE_OPACITY = 0.85
 
@@ -51,6 +52,16 @@ LAYOUT_TILE_NAME = "tileleft"
 
 LAYOUT_MAX = awful.layout.suit.max
 LAYOUT_MAX_NAME = "max"
+
+LAYOUT_FULL = awful.layout.suit.max.fullscreen
+LAYOUT_FULL_NAME = "fullscreen"
+
+awful.layout.layouts = {
+  LAYOUT_CENTER,
+  LAYOUT_MAX,
+  LAYOUT_FULL,
+  LAYOUT_TILE
+}
 
 function NOTIFY(msg)
     awful.spawn("notify-send "..msg)

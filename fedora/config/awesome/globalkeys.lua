@@ -185,7 +185,7 @@ local globalkeys = gears.table.join(
         { description = "toggle reading mode on", group = "client" }
     ),
 
-    awful.key({ MODKEY }, "/",
+    awful.key({ MODKEY }, "o",
         function()
             if awful.layout.getname() ~= LAYOUT_TILE_NAME then
                 awful.layout.set(LAYOUT_TILE)
@@ -202,30 +202,39 @@ local globalkeys = gears.table.join(
     ),
 
     awful.key({ MODKEY, "Control" }, ".",
-        function()
-            awful.tag.incnmaster(-1, nil, true)
-        end, { description = "increase the number of master clients", group = "layout" }
+        function() awful.tag.incnmaster(-1, nil, true) end,
+        { description = "increase the number of master clients", group = "layout" }
     ),
 
     -- Swap with next
     awful.key({ MODKEY, "Shift" }, "Tab",
-        function() awful.client.swap.byidx(1) end, { description = "swap with next client by index", group = "client" }
+        function() awful.client.swap.byidx(1) end,
+        { description = "swap with next client by index", group = "client" }
     ),
 
     -- Swap with previous
     awful.key({ MODKEY, "Shift", "Control" }, "Tab",
-        function()
-            awful.client.swap.byidx(-1)
-        end, { description = "swap with previous client by index", group = "client" }
+        function() awful.client.swap.byidx(-1) end,
+        { description = "swap with previous client by index", group = "client" }
     ),
 
-    -- Standard program
-    awful.key({ MODKEY, "Control" }, "BackSpace", function() awful.spawn(TERMINAL) end,
+    -- Spawn programs
+    awful.key({ MODKEY, "Control" }, "BackSpace",
+        function() awful.spawn(TERMINAL) end,
         { description = "open a terminal", group = "launcher" }),
 
+    awful.key({ ALTKEY },"XF86AudioRaiseVolume",
+        function() awful.spawn("cplay", { tag = "med"}) end,
+        { description = "open cmus", group = "launcher" }),
+
     -- Reload/Quit
-    awful.key({ MODKEY, "Control" }, "q", awesome.restart, { description = "reload awesome", group = "awesome" }),
-    awful.key({ MODKEY, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+    awful.key({ MODKEY, "Control" }, "q",awesome.restart,
+        { description = "reload awesome", group = "awesome" }
+    ),
+
+    awful.key({ MODKEY, "Shift" }, "q", awesome.quit,
+        { description = "quit awesome", group = "awesome" }
+    ),
 
     -- Master size
     awful.key({ MODKEY, "Shift" }, "n",
@@ -257,32 +266,17 @@ local globalkeys = gears.table.join(
                 end
             end
 
-            --awful.spawn("notify-send "..fct)
         end,
         { description = "decrease master width factor", group = "layout" }
     )
 )
 
--- Workspace bindings
-local tag_keys = {
-    "t", -- dev
-    "s", -- web
-    "r", -- map
-    "a", -- com
-    "w", -- gui
-    "x", -- art
-    "p", -- run
-    "c", -- med
-    "d", -- vm
-    "g", -- dev2
-    "b", -- run2
-    "v"  -- vm2
-}
+local tags = require('tags')
 
-for i, v in ipairs(tag_keys) do
+for i, v in ipairs(tags) do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
-        awful.key({ MODKEY }, v,
+        awful.key({ MODKEY }, v.key,
             function()
                 local screen = awful.screen.focused()
                 local tag = screen.tags[i]
@@ -294,7 +288,7 @@ for i, v in ipairs(tag_keys) do
         ),
 
         -- Move client to tag.
-        awful.key({ MODKEY, "Shift" }, v,
+        awful.key({ MODKEY, "Shift" }, v.key,
             function()
                 if client.focus then
                     local tag = client.focus.screen.tags[i]

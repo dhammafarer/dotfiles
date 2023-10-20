@@ -1,71 +1,65 @@
-local awful = require("awful")
-
 require("globals")
 
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
-  LAYOUT_CENTER,
-  LAYOUT_MAX,
-  LAYOUT_TILE
+return {
+    [1] = {
+        name = "dev",
+        key = "t",
+        layout = LAYOUT_CENTER,
+        selected = true,
+    },
+    [2] = {
+        name = "web",
+        key = "s",
+        layout = LAYOUT_CENTER,
+    },
+    [3] = {
+        name = "map",
+        key = "r",
+        layout = LAYOUT_MAX,
+    },
+    [4] = {
+        name = "com",
+        key = "a",
+        layout = LAYOUT_TILE,
+    },
+    [5] = {
+        name = "log",
+        key = "w",
+        layout = LAYOUT_CENTER,
+    },
+    [6] = {
+        name = "gui",
+        key = "x",
+        layout = LAYOUT_CENTER,
+    },
+    [7] = {
+        name = "ref",
+        key = "p",
+        layout = LAYOUT_CENTER,
+    },
+    [8] = {
+        name = "med",
+        key = "c",
+        layout = LAYOUT_CENTER,
+    },
+    [9] = {
+        name = "ssh",
+        key = "d",
+        layout = LAYOUT_TILE,
+    },
+    [10] = {
+        name = "dot",
+        key = "g",
+        layout = LAYOUT_CENTER,
+    },
+    [11] = {
+        name = "run",
+        key = "b",
+        layout = LAYOUT_CENTER,
+    },
+    [12] = {
+        name = "vmm",
+        key = "v",
+        layout = LAYOUT_TILE,
+    },
 }
--- }}}
-
-awful.tag.add("dev", {
-  index = 1,
-  layout = LAYOUT_CENTER,
-  selected = true,
-})
-
-awful.tag.add("web", {
-  index = 2,
-  layout = LAYOUT_CENTER,
-})
-
-awful.tag.add("map", {
-  index = 3,
-  layout = LAYOUT_MAX,
-})
-
-awful.tag.add("com", {
-  index = 4,
-  layout = LAYOUT_TILE,
-})
-
-awful.tag.add("log", {
-  index = 5,
-  layout = LAYOUT_CENTER,
-})
-
-awful.tag.add("gui", {
-  index = 6,
-  layout = LAYOUT_CENTER,
-})
-
-awful.tag.add("run", {
-  index = 7,
-  layout = LAYOUT_CENTER,
-})
-
-awful.tag.add("med", {
-  index = 8,
-  layout = awful.layout.suit.max.fullscreen,
-})
-awful.tag.add("vm", {
-  index = 9,
-  layout = LAYOUT_CENTER,
-})
-
-awful.tag.add("dev2", {
-  index = 10,
-  layout = LAYOUT_CENTER,
-})
-
-awful.tag.add("run2", {
-  index = 11,
-  layout = LAYOUT_CENTER,
-})
-
-awful.tag.add("vm2", {
-  index = 12,
-  layout = LAYOUT_CENTER,
-})
