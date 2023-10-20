@@ -15,5 +15,12 @@ choice=$(echo "$opts" | awk '{print $1}'| $launcher -p 'Dotfiles')
 path=$(echo "$opts" | awk -v re="$choice" '$1 == re {print $2}')
 
 # execute command with path
-xfce4-terminal -e "distrobox enter dev -e 'nvim $path'" -T "nvim $path"
-#myedit $path
+#xfce4-terminal -e "distrobox enter dev -e 'nvim $path'" -T "nvim $path"
+
+term=xfce4-terminal
+box=dev
+tag=dot
+idx=10
+
+awesome-client "require('awful.screen').focused().tags[$idx]:view_only()"
+awesome-client "require('awful.spawn').spawn('$term -e \"distrobox enter $box -e \'nvim $path\'\" -T \"Edit: $path\"', { tag = '$idx' })"

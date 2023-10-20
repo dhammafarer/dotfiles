@@ -27,13 +27,7 @@ alias mc="make clean"
 #       vagrant        #
 ########################
 
-alias vu="vagrant up"
-alias vpr="vagrant provision"
-alias vst="vagrant status"
-alias vgst="vagrant global-status"
-alias vh="vagrant halt"
-alias vdf="vagrant destroy -f"
-alias vrr="vagrant destroy -f && vagrant up"  # reset and restart
+alias va="vagrant"
 alias vbl="vagrant box list"
 
 alias vsshc="vagrant ssh-config"
