@@ -14,4 +14,5 @@ filename=$(echo "$opts" | awk -F "." -v re="$choice" '$1 == re {print $0}')
 path=$dir/$filename
 
 killall sxhkd
-sxhkd -c $path $HOME/.config/sxhkd/sxhkdrc
+sxhkd -c $path $SXHKDRC
+notify-send "sxhkd profile" "$choice"

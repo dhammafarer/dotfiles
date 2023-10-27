@@ -1,0 +1,35 @@
+#       _                                           _     _       _           
+#      | |                                         | |   | |     | |          
+#    __| |_ __ ___   ___ _ __  _   _       _____  _| |__ | | ____| |_ __ ___  
+#   / _` | '_ ` _ \ / _ \ '_ \| | | |     / __\ \/ / '_ \| |/ / _` | '__/ __| 
+#  | (_| | | | | | |  __/ | | | |_| |  _  \__ \>  <| | | |   < (_| | | | (__  
+#   \__,_|_| |_| |_|\___|_| |_|\__,_| (_) |___/_/\_\_| |_|_|\_\__,_|_|  \___| 
+#                                                                             
+
+# processes
+super + space; y
+    ~/.dmenu/process
+
+# quit
+super + Delete
+    ~/.dmenu/quit
+
+# ~/.dotfiles
+super + space; period
+    ~/.dmenu/dotfiles
+
+# mindmaps
+XF86Launch9; t
+    ~/.dmenu/mindmaps
+
+# sxhkd bindings
+super + space; z
+    ~/.dmenu/keybindings
+
+# gtk-3.0/bookmarks.ini
+super + space; f
+    ~/.dmenu/dir $HOME/.config/gtk-3.0/bookmarks ""
+
+# repositories
+super + space; r
+    ~/.dmenu/sys

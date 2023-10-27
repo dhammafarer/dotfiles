@@ -52,7 +52,7 @@ enum layer_names {
 #define TK_LI LT(LHC, KC_ESC)
 #define TK_LC LT(NAV, KC_SPC)
 //#define TK_LO LT(LHD, KC_TAB)
-#define TK_LO LT(PCT, KC_TAB)
+#define TK_LO LT(MOU, KC_TAB)
 
 // (NUM | Backspace), (SYM | Enter), (FUN | Delete)
 #define TK_RO LT(SYM, KC_ENT)

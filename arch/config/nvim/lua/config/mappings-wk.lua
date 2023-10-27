@@ -5,6 +5,7 @@ vim.g.mapleader = ","
 local file = {
     ["<C-e>"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+    ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<C-t>"] = { "<cmd>Telescope tags<cr>", "Tags" },
     ["<leader>"] = {
         f = {
@@ -29,6 +30,7 @@ local file = {
 }
 
 local lsp = {
+    ["<A-s>"] = { "<cmd>set ft=yaml<cr><cmd>Telescope yaml_schema<cr>", "Yaml Schema" },
     ["<C-k>"] = { vim.lsp.buf.signature_help, "LSP Signature help" },
     ["<C-space>"] = { vim.lsp.buf.hover, "LSP Hover" },
     ["<C-d>"] = { vim.lsp.buf.definition, "[LSP] Go to Definition" },
@@ -95,7 +97,7 @@ local builtin = {
     ["<leader>"] = {
         m = { "<cmd>Man \"<cword>\"<cr>", "Look up Man Pages" }
     },
-    ["<A-f>"] = { "za", "Toggle Fold" },
+    ["<A-z>"] = { "za", "Toggle Fold" },
     ["<A-m>"] = { "zMzA", "Toggle Fold" },
     ["<A-l>"] = { "<cmd>set cursorline!<cr>", "Toggle Cursorline" },
 }

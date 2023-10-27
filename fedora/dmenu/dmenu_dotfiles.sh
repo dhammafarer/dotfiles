@@ -19,8 +19,8 @@ path=$(echo "$opts" | awk -v re="$choice" '$1 == re {print $2}')
 
 term=xfce4-terminal
 box=dev
-tag=dot
-idx=10
+idx=1
 
 awesome-client "require('awful.screen').focused().tags[$idx]:view_only()"
-awesome-client "require('awful.spawn').spawn('$term -e \"distrobox enter $box -e \'nvim $path\'\" -T \"Edit: $path\"', { tag = '$idx' })"
+#awesome-client "require('awful.spawn').spawn('$term -e \"distrobox enter $box -e \'nvim $path\'\" -T \"Edit: $path\"')"
+awesome-client "require('awful.spawn').spawn('$term -e \"distrobox enter $box -e \'nvim $path\'\"')"

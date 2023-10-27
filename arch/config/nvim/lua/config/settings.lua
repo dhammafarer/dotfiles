@@ -35,10 +35,49 @@ set.hidden = true
 set.completeopt = 'menuone,noselect'
 
 set.foldlevel = 1
-set.foldmethod =  "indent"
+set.foldmethod = "indent"
 set.foldexpr = "nvim_treesitter#foldexpr()"
 
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")
+
+-- python indent
+vim.g["python_indent"] = {
+    disable_parentheses_indenting = 'v:false',
+    closed_paren_align_last_line = 'v:false',
+    searchpair_timeout = '150',
+    continue = 'shiftwidth() * 1',
+    open_paren = 'shiftwidth() * 1',
+    nested_paren = 'shiftwidth()'
+}
+
+-- workaround needed to trigger folding on file opening
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+--     pattern = { "*" },
+--     command = "normal zx",
+-- })
+
+--vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+    pattern = { "*" },
+    command = "set foldlevel=99",
+})
+
+vim.g["codeium_enabled"] = 'v:false'
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "php",
+    command = "setlocal autoindent"
+})
+
+vim.diagnostic.config({
+    virtual_text = false
+})
+
+vim.filetype.add({
+    pattern = {
+        ['.*.bu'] = 'yaml',
+    },
+})
 
 vim.filetype.add({
   pattern = {
@@ -53,44 +92,5 @@ vim.filetype.add({
 vim.filetype.add({
   pattern = {
     ['.*.lua.j2'] = 'lua.j2',
-  },
-})
-
--- python indent
-vim.g["python_indent"] = {
-  disable_parentheses_indenting = 'v:false',
-  closed_paren_align_last_line = 'v:false',
-  searchpair_timeout = '150',
-  continue = 'shiftwidth() * 1',
-  open_paren = 'shiftwidth() * 1',
-  nested_paren = 'shiftwidth()'
-}
-
--- workaround needed to trigger folding on file opening
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---     pattern = { "*" },
---     command = "normal zx",
--- })
-
---vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-  pattern = { "*" },
-  command = "set foldlevel=99",
-})
-
-vim.g["codeium_enabled"] = 'v:false'
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "php",
-	command = "setlocal autoindent"
-})
-
-vim.diagnostic.config({
-  virtual_text = false
-})
-
-vim.filetype.add({
-  pattern = {
-    ['.*.bu'] = 'yaml',
   },
 })

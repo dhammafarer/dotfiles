@@ -5,10 +5,18 @@
 ########################
 alias tplay="cd ~/tailnet && ansible-playbook"
 alias syu="tplay playbooks/dev/update.yml"
-alias setup-dotfiles="tplay playbooks/workstation/dotfiles.yml"
 alias sync_repos="tplay playbooks/workstation/sync_repos.yml"
 alias setup-neovim="tplay playbooks/dev/neovim.yml"
 alias update-roles="cd ~/code/ansible-roles && git submodule update --remote"
+
+setup-dotfiles () {
+    dir=~/tailnet
+    cmd=ansible-playbook
+    play=playbooks/workstation/dotfiles.yml
+    limit=$(hostname -d)
+
+    cd $dir && $cmd $play --limit $limit $@
+}
 
 ########################
 #        source        #
@@ -83,8 +91,16 @@ alias lll="exa -la --group-directories-first"
 alias chx="chmod +x"
 alias xmp="xmodmap ~/.Xmodmap"
 alias cbi="xclip -selection clipboard -t image/png -o > /tmp/\"$(date +%Y-%m-%d_%T).png\""
-alias vim="nvim"
-alias v="nvim"
+
+nvim_fg () {
+    if [ -z "$(jobs | grep nvim)" ]; then
+        nvim $@
+    else
+        fg
+    fi
+}
+
+alias v="nvim_fg"
 
 gu() {
   if [ -z "$1" ]; then
@@ -205,7 +221,15 @@ alias grv="git remote -v"
 alias pgpa="pass git remote | xargs -L1 pass git push --all"
 alias pgpom="pass git push -u origin master"
 alias pgpul="pass git pull origin master"
-alias pgn="pass generate -n"
+
+pass_insert () {
+    len=$1
+    name=$2
+    pass generate -n $name $len 1> /dev/null
+    pass edit $name
+}
+
+alias pi="pass_insert"
 
 # working files and directories
 alias snip="us && vim ."

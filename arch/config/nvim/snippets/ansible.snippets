@@ -2,9 +2,9 @@ snippet c "comment"
 	# $1
 
 snippet d "debug"
-	- name: Debug
+	- name: ${1:Debug}
 	  ansible.builtin.debug:
-			${1:var}: $0
+			${2:var}: $0
 
 snippet b "breakpoint"
 	- name: Breakpoint

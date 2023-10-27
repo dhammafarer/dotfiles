@@ -13,4 +13,4 @@ export SHELL=/bin/zsh
 export PAGER="most"
 
 export REDMI_BUDS4="E0:08:71:88:2A:B9"
-export H15_PRO="41:42:5B:66:E5:77"
+export H15_PRO="41:42:22:98:1F:9F"

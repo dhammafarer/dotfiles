@@ -8,52 +8,52 @@ return {
         selected = true,
     },
     [2] = {
+        name = "cmd",
+        key = "g",
+        layout = LAYOUT_CENTER,
+    },
+    [3] = {
         name = "web",
         key = "s",
         layout = LAYOUT_CENTER,
     },
-    [3] = {
+    [4] = {
         name = "map",
         key = "r",
         layout = LAYOUT_MAX,
     },
-    [4] = {
+    [5] = {
         name = "com",
         key = "a",
         layout = LAYOUT_TILE,
     },
-    [5] = {
+    [6] = {
         name = "log",
         key = "w",
         layout = LAYOUT_CENTER,
     },
-    [6] = {
+    [7] = {
         name = "gui",
         key = "x",
         layout = LAYOUT_CENTER,
     },
-    [7] = {
+    [8] = {
         name = "ref",
         key = "p",
         layout = LAYOUT_CENTER,
     },
-    [8] = {
+    [9] = {
         name = "med",
         key = "c",
         layout = LAYOUT_CENTER,
     },
-    [9] = {
+    [10] = {
         name = "ssh",
         key = "d",
         layout = LAYOUT_TILE,
     },
-    [10] = {
-        name = "dot",
-        key = "g",
-        layout = LAYOUT_CENTER,
-    },
     [11] = {
-        name = "run",
+        name = "sys",
         key = "b",
         layout = LAYOUT_CENTER,
     },

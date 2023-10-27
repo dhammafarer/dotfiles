@@ -2,6 +2,8 @@ local gears = require("gears")
 local awful = require("awful")
 local naughty = require("naughty")
 
+local tags = require("tags")
+
 require("globals")
 
 local function set_align(position, c)
@@ -215,7 +217,7 @@ local clientkeys = gears.table.join(
         function(c)
             c.floating = false
             if awful.layout.getname() == LAYOUT_MAX_NAME then
-                awful.layout.set(LAYOUT_CENTER)
+                awful.layout.set(tags[mouse.screen.selected_tag.index].layout)
             else
                 awful.layout.set(LAYOUT_MAX)
             end

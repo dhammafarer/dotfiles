@@ -44,3 +44,16 @@ ansp () {
   fi
   ansible-playbook "$@"
 }
+
+run_molecule () {
+  if ! type "molecule" &> /dev/null; then
+    source ~/.venv/ansible/bin/activate
+  fi
+  molecule "$@"
+}
+
+alias m="run_molecule"
+alias molc="m converge"
+alias moll="m login"
+alias mold="m destroy"
+alias molrr="molr && molc"

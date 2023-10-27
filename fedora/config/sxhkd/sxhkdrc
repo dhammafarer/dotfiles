@@ -1,7 +1,14 @@
+#             _     _       _           
+#            | |   | |     | |         
+#    _____  _| |__ | | ____| |_ __ ___ 
+#   / __\ \/ / '_ \| |/ / _` | '__/ __|
+#   \__ \>  <| | | |   < (_| | | | (__ 
+#   |___/_/\_\_| |_|_|\_\__,_|_|  \___|
+#                                                                          
+
 # guest terminals
 super + BackSpace
-    xfce4-terminal -e "distrobox enter dev" \
-    --default-working-directory=/home/pl/box/dev
+    xfce4-terminal -e "distrobox enter dev"
 
 # browsers
 super + {_,control} + l
@@ -34,11 +41,6 @@ XF86Launch6
 #control + XF86Tools
 XF86Launch5
     LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
-
-# mindmaps alt
-XF86Launch9; t
-    ~/dotfiles/fedora/dmenu/dmenu_xdgopen.sh \
-    $HOME/Nextcloud/Documents/mindmaps "Mindmaps" 3
 
 # Logseq
 XF86Launch9; l
@@ -97,7 +99,7 @@ alt + shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
 
 # connect H15 Pro
 alt + shift + control XF86AudioRaiseVolume
-   bluetoothctl connect 41:42:5B:66:E5:77
+   bluetoothctl connect 41:42:22:98:1F:9F
 
 # connect Redmi Buds 4
 alt + shift + control XF86AudioLowerVolume
@@ -124,66 +126,23 @@ Print
 ###  Left Hand Only ###
 #######################
 
-# web bookmarks
-super + space; s
-    rofi -show window -filter "Xfce4-terminal" -no-show-match
-
-# sxhkd bindings
-super + space; z
-    $HOME/dotfiles/fedora/dmenu/dmenu_sxhkd.sh
-
-# gtk-3.0/bookmarks.ini
-super + space; f
-    $HOME/dotfiles/fedora/dmenu/dmenu_dir.sh $HOME/.config/gtk-3.0/bookmarks ""
-
-# TODO
-# repositories
-super + space; r
-    $HOME/dotfiles/fedora/dmenu/dmenu_repos.sh
+# Rofi list terminals
+super + Return
+    rofi -show window -filter "Xfce4-terminal " -no-show-match
 
 # PureRef
 super + space; p
     QT_SCALE_FACTOR=1.12 PureRef
 
 #######################
-#### super + space ####
+####   text entry  ####
 #######################
 
-# processes
-super + space; y
-    ~/dotfiles/fedora/dmenu/dmenu_process.sh
-
-# quit
-super + Delete
-    ~/dotfiles/fedora/dmenu/dmenu_quit.sh
-
-# ~/.dotfiles
-super + space; period
-    ~/dotfiles/fedora/dmenu/dmenu_dotfiles.sh
-
-super + control + space; r
+super + Escape; r
     xdotool type "site:reddit.com"
 
-super + control + space; w
+super + Escape; w
     xdotool type "site:reddit.com/r/weightlifting"
 
-super + control + space; k
+super + Escape; k
     xdotool type 'alias k="kubectl"'
-
-super + control + space; w
-    xdotool type "site:reddit.com/r/weightlifting"
-
-# TODO
-# colors
-super + space; d; c
-    ~/dotfiles/fedora/dmenu/dmenu_colors.sh
-
-# TODO
-# scripts
-super + space; d; e
-    ~/dotfiles/fedora/dmenu/dmenu_scripts.sh
-
-# TODO
-# xrandr
-super + space; x
-    ~/dotfiles/fedora/dmenu/dmenu_xrandr.sh

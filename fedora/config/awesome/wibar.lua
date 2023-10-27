@@ -3,12 +3,18 @@ local gears = require("gears")
 local wibox = require("wibox")
 
 local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
-local cmus_widget = require('awesome-wm-widgets.cmus-widget.cmus')
+local cmus_widget = require('widgets.cmus')
 
 local mytextclock = wibox.layout.margin(
   wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"), 4, 4, 0, 0)
 
-local myvolume = wibox.layout.margin(volume_widget { widget_type = "vertical_bar" }, 0, 0, 4, 4)
+local myvolume = wibox.layout.margin(
+    volume_widget {
+        widget_type = "vertical_bar",
+        main_color = "#dddddd",
+        bg_color = "#666666",
+    }, 0, 0, 4, 4
+)
 
 local mysystray = wibox.layout.margin(wibox.widget.systray(), 3, 3, 3, 3)
 
