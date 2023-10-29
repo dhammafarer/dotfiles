@@ -298,6 +298,20 @@ for i, v in ipairs(tags) do
                 end
             end,
             { description = "move focused client to tag #" .. i, group = "tag" }
+        ),
+
+        -- Move client and view tag.
+        awful.key({ MODKEY, ALTKEY }, v.key,
+            function()
+                if client.focus then
+                    local tag = client.focus.screen.tags[i]
+                    if tag then
+                        client.focus:move_to_tag(tag)
+                        tag:view_only()
+                    end
+                end
+            end,
+            { description = "move focused client to tag #" .. i, group = "tag" }
         )
     )
 end
