@@ -49,7 +49,7 @@ enum layer_names {
 
 // Thumb Keys
 // (RGUI | Tab), (MOU | Escape), (NAV | Space)
-#define TK_LI LT(LHC, KC_ESC)
+#define TK_LI LT(PCT, KC_ESC)
 #define TK_LC LT(NAV, KC_SPC)
 //#define TK_LO LT(LHD, KC_TAB)
 #define TK_LO LT(MOU, KC_TAB)
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        KC_F14,     KC_K,       HM_H,       KC_COMM,    KC_DOT,    HM_SLSH,            HM_Z,      KC_X,       KC_C,       HM_D,       KC_V,       KC_VOLD,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
-       TK_RO,     TK_RC,      TK_RI,      TG(HSH),            KC_QUOT,                      KC_F18,       LT(MOU,KC_F16), TK_LI,      TK_LC,      TK_LO
+       TK_RO,     TK_RC,      TK_RI,      TG(HSH),            KC_QUOT,                      KC_F18,       LT(LHC,KC_F16), TK_LI,      TK_LC,      TK_LO
 // `-----------+-----------+-----------+-----------+-------------------------'    `-----------------------+-----------+-----------+-----------+-----------'
 ),
 
