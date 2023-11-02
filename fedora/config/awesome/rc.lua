@@ -47,33 +47,35 @@ beautiful.init(THEME_PATH)
 local globalkeys = require("globalkeys")
 
 awful.screen.connect_for_each_screen(function(s)
-    local setup_wibar = require("wibar")
+    if screen.index == 1 then
+        local setup_wibar = require("wibar")
+        setup_wibar(s)
+    end
 
     gears.wallpaper.set(beautiful.bg_normal)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
 
-    setup_wibar(s)
-
     local tags = require("tags")
 
     for i, v in ipairs(tags) do
-        awful.tag.add(v.name, {
-            index = i,
-            layout = v.layout,
-            selected = v.selected,
-            screen = s,
-        })
-    end
+        if s.index == v.screen then
+            awful.tag.add(v.name, {
+                index = i,
+                layout = v.layout,
+                selected = v.selected,
+                screen = s,
+            })
+        end
 
+        local screen = screen[v.screen]
 
-    for i, v in ipairs(tags) do
         globalkeys = gears.table.join(globalkeys,
             -- View tag only.
             awful.key({ MODKEY }, v.key,
                 function()
-                    local screen = awful.screen.focused()
+                    awful.screen.focus(screen)
                     local tag = screen.tags[i]
                     if tag then
                         tag:view_only()
@@ -86,7 +88,8 @@ awful.screen.connect_for_each_screen(function(s)
             awful.key({ MODKEY, "Shift" }, v.key,
                 function()
                     if client.focus then
-                        local tag = client.focus.screen.tags[i]
+                        client.focus:move_to_screen(screen)
+                        local tag = screen.tags[i]
                         if tag then
                             client.focus:move_to_tag(tag)
                         end
@@ -99,7 +102,8 @@ awful.screen.connect_for_each_screen(function(s)
             awful.key({ MODKEY, ALTKEY }, v.key,
                 function()
                     if client.focus then
-                        local tag = client.focus.screen.tags[i]
+                        client.focus:move_to_screen(screen)
+                        local tag = screen.tags[i]
                         if tag then
                             client.focus:move_to_tag(tag)
                             tag:view_only()
