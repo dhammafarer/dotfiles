@@ -34,7 +34,7 @@ return {
     },
     [6] = {
         name = "log",
-        key = "w",
+        key = "p",
         layout = LAYOUT_CENTER,
         screen = 1,
     },
@@ -46,7 +46,7 @@ return {
     },
     [8] = {
         name = "ref",
-        key = "p",
+        key = "w",
         layout = LAYOUT_FULL,
         screen = 2,
         selected = true,

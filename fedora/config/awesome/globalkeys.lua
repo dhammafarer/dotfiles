@@ -44,7 +44,6 @@ local function focus_by_master_offset(x, opacity)
     end
 end
 
-
 local globalkeys = gears.table.join(
 -- Focus screen
     awful.key({ ALTKEY }, "Tab",

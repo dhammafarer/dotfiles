@@ -46,11 +46,11 @@ beautiful.init(THEME_PATH)
 
 local globalkeys = require("globalkeys")
 
+local screencount = screen:count()
+
 awful.screen.connect_for_each_screen(function(s)
-    if screen.index == 1 then
-        local setup_wibar = require("wibar")
-        setup_wibar(s)
-    end
+    local setup_wibar = require("wibar")
+    setup_wibar(s)
 
     gears.wallpaper.set(beautiful.bg_normal)
 
@@ -60,6 +60,10 @@ awful.screen.connect_for_each_screen(function(s)
     local tags = require("tags")
 
     for i, v in ipairs(tags) do
+        if screencount == 1 then
+            v.screen = 1
+        end
+
         if s.index == v.screen then
             awful.tag.add(v.name, {
                 index = i,
