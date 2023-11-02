@@ -41,13 +41,17 @@ local function focus_by_master_offset(x, opacity)
             SET_OPACITY_FOR(name, DEFAULT_INACTIVE_OPACITY)
             undim_clients()
         end
-
     end
 end
 
 
 local globalkeys = gears.table.join(
--- Restore last tag
+-- Focus screen
+    awful.key({ ALTKEY }, "Tab",
+        function() awful.screen.focus_relative(1) end,
+        { description = "focus the next screen", group = "screen" }),
+
+    -- Restore last tag
     awful.key({ MODKEY }, "z",
         function()
             if Urgent then
@@ -223,12 +227,12 @@ local globalkeys = gears.table.join(
         function() awful.spawn(TERMINAL) end,
         { description = "open a terminal", group = "launcher" }),
 
-    awful.key({ ALTKEY },"XF86AudioRaiseVolume",
-        function() awful.spawn("cplay", { tag = "med"}) end,
+    awful.key({ ALTKEY }, "XF86AudioRaiseVolume",
+        function() awful.spawn("cplay", { tag = "med" }) end,
         { description = "open cmus", group = "launcher" }),
 
     -- Reload/Quit
-    awful.key({ MODKEY, "Control" }, "q",awesome.restart,
+    awful.key({ MODKEY, "Control" }, "q", awesome.restart,
         { description = "reload awesome", group = "awesome" }
     ),
 
@@ -265,7 +269,6 @@ local globalkeys = gears.table.join(
                     awful.tag.incmwfact(0.25)
                 end
             end
-
         end,
         { description = "decrease master width factor", group = "layout" }
     )

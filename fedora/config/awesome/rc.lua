@@ -11,28 +11,28 @@ require("awful.autofocus")
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-  naughty.notify({
-    preset = naughty.config.presets.critical,
-    title = "Oops, there were errors during startup!",
-    text = awesome.startup_errors
-  })
+    naughty.notify({
+        preset = naughty.config.presets.critical,
+        title = "Oops, there were errors during startup!",
+        text = awesome.startup_errors
+    })
 end
 
 -- Handle runtime errors after startup
 do
-  local in_error = false
-  awesome.connect_signal("debug::error", function(err)
-    -- Make sure we don't go into an endless error loop
-    if in_error then return end
-    in_error = true
+    local in_error = false
+    awesome.connect_signal("debug::error", function(err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
 
-    naughty.notify({
-      preset = naughty.config.presets.critical,
-      title = "Oops, an error happened!",
-      text = tostring(err)
-    })
-    in_error = false
-  end)
+        naughty.notify({
+            preset = naughty.config.presets.critical,
+            title = "Oops, an error happened!",
+            text = tostring(err)
+        })
+        in_error = false
+    end)
 end
 -- }}}
 
@@ -45,28 +45,29 @@ local beautiful = require("beautiful")
 beautiful.init(THEME_PATH)
 
 awful.screen.connect_for_each_screen(function(s)
-  local setup_wibar = require("wibar")
+    local setup_wibar = require("wibar")
 
-  gears.wallpaper.set(beautiful.bg_normal)
+    gears.wallpaper.set(beautiful.bg_normal)
 
-  -- Create a promptbox for each screen
-  s.mypromptbox = awful.widget.prompt()
+    -- Create a promptbox for each screen
+    s.mypromptbox = awful.widget.prompt()
 
-  setup_wibar(s)
+    setup_wibar(s)
+
+    local tags = require("tags")
+
+    for i, v in ipairs(tags) do
+        awful.tag.add(v.name, {
+            index = i,
+            layout = v.layout,
+            selected = v.selected,
+            screen = s,
+        })
+    end
 end)
 
 local globalkeys = require("globalkeys")
 root.keys(globalkeys)
-
-local tags = require("tags")
-
-for i, v in ipairs(tags) do
-    awful.tag.add(v.name, {
-      index = i,
-      layout = v.layout,
-      selected = v.selected,
-    })
-end
 
 require("rules")
 require("signals")
