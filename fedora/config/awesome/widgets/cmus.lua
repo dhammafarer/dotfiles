@@ -21,8 +21,8 @@ local function worker(user_args)
     local font = args.font or beautiful.font
 
     local timeout = args.timeout or 10
-    local max_length = args.max_length or 30
-    local space = args.space or 5
+    local max_length = args.max_length or 50
+    local space = args.space or 6
 
     cmus_widget.widget = wibox.widget {
         {
@@ -41,7 +41,7 @@ local function worker(user_args)
             self:get_children_by_id("text")[1]:set_text(title)
         end,
         update_volume = function(self, volume)
-            local fmt = "(" .. volume .. "%)"
+            local fmt = volume .. "% /"
             self:get_children_by_id("volume")[1]:set_text(fmt)
         end
     }
@@ -51,9 +51,14 @@ local function worker(user_args)
             local cmus_info = {}
 
             for s in stdout:gmatch("[^\r\n]+") do
+                local title = string.match(s, "^tag title (.+)$")
                 local stream = string.match(s, "^stream (.+)$")
                 local status = string.match(s, "^status (.+)$")
                 local volume = string.match(s, "^set vol_left (.+)$")
+
+                if title then
+                    cmus_info["title"] = title
+                end
 
                 if stream then
                     cmus_info["stream"] = stream
@@ -68,17 +73,13 @@ local function worker(user_args)
                 end
             end
 
-            local title = cmus_info.stream
+            local title = cmus_info.stream or cmus_info.title
             local volume = cmus_info.volume
 
             if title then
-                if cmus_info["status"] == "playing" then
-                    widget:set_title(ellipsize(title, max_length))
-                    widget:update_volume(volume)
-                    widget.visible = true
-                else
-                    widget.visible = false
-                end
+                widget:set_title(ellipsize(title, max_length))
+                widget:update_volume(volume)
+                widget.visible = true
             end
         else
             widget.visible = false

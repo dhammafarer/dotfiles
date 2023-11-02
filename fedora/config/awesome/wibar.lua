@@ -10,10 +10,11 @@ local mytextclock = wibox.layout.margin(
 
 local myvolume = wibox.layout.margin(
     volume_widget {
-        widget_type = "vertical_bar",
+        widget_type = "icon_and_text",
         main_color = "#dddddd",
         bg_color = "#666666",
-    }, 0, 0, 4, 4
+        with_icon = false,
+    }, 4, 0, 4, 4
 )
 
 local mysystray = wibox.layout.margin(wibox.widget.systray(), 3, 3, 3, 3)

@@ -10,7 +10,7 @@ return {
     [2] = {
         name = "cmd",
         key = "g",
-        layout = LAYOUT_CENTER,
+        layout = LAYOUT_TILE,
     },
     [3] = {
         name = "web",
@@ -18,7 +18,7 @@ return {
         layout = LAYOUT_CENTER,
     },
     [4] = {
-        name = "map",
+        name = "gui",
         key = "r",
         layout = LAYOUT_MAX,
     },
@@ -33,9 +33,9 @@ return {
         layout = LAYOUT_CENTER,
     },
     [7] = {
-        name = "gui",
+        name = "map",
         key = "x",
-        layout = LAYOUT_CENTER,
+        layout = LAYOUT_MAX,
     },
     [8] = {
         name = "ref",
