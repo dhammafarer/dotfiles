@@ -10,73 +10,58 @@
 super + BackSpace
     xfce4-terminal -e "distrobox enter dev"
 
-# browsers
-super + {_,control} + l
-    flatpak run {org.mozilla.firefox,com.google.Chrome}
-
-# open clipboard link in browser
-super + {_,control} + shift + l
-    flatpak run {org.mozilla.firefox,com.google.Chrome} --new-window $(xclip -o -selection clipboard)
+# Rofi list terminals
+super + Return
+    rofi -show window -filter "Xfce4-terminal " -no-show-match
 
 # lock screen
 super + shift + Escape
-    cmus-remote -U; xscreensaver-command -l
+    playerctl -a pause; xscreensaver-command -l
 
 # blank screen
 super + control + Escape
     xscreensaver-command -a
 
+#### XF86 Keys
+XF86AudioPrev
+    playerctl -p firefox.instance2 play-pause
+
+XF86AudioNext
+    playerctl -p firefox.instance2 next
+
+XF86AudioStop
+    playerctl -a pause
+
 {XF86AudioPlay,XF86AudioPause}
     cplay
 
-# rofi-pass
-XF86Tools
+XF86Explorer
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
+
+XF86Search
+    rofi -show window
+
+# browsers
+XF86HomePage + {_,alt}
+    flatpak run {org.mozilla.firefox,com.google.Chrome}
+
+# open clipboard link in browser
+XF86HomePage + {_,alt} + control
+    flatpak run {org.mozilla.firefox,com.google.Chrome} --new-window $(xclip -o -selection clipboard)
+
+# rofi-calc
+XF86Calculator
+    LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
+
+#XF86Favorites -> dmenu
 
 # blank screen
 XF86Launch6
     xscreensaver-command -a
 
-# rofi-calc
-#control + XF86Tools
-XF86Launch5
-    LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
-
-# Logseq
-XF86Launch9; l
-    ~/apps/Logseq
-
 # Bus
 XF86Launch9; b
     ~/dotfiles/arch/bin/bus2
-
-##########################
-#       LEFT PINKY       #
-#       XF86Launch9      #
-##########################
-
-# virtual machine manager
-XF86Launch9; s
-    /usr/bin/virt-manager
-
-
-##########################
-#       LEFT THUMB       #
-#       XF86Launch7      #
-##########################
-
-# virtual machine manager
-XF86Launch7; m
-    /usr/bin/virt-manager
-
-##########################
-#       RIGHT THUMB      #
-#       XF86Launch8      #
-##########################
-
-# send notification
-XF86Launch8; t
-    notify-send 'l8'
 
 ##################
 # Volume Control #
@@ -85,8 +70,11 @@ XF86Launch8; t
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
+control + XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ 100%; notify-send -t 800 "Master Vol:" 100%
+
 control + XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ 50%
+    pactl set-sink-volume @DEFAULT_SINK@ 50%; notify-send -t 800 "Master Vol:" 50%
 
 { button7,button6 }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
@@ -94,8 +82,11 @@ control + XF86AudioLowerVolume
 shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
    cmus-remote -v {-,+}5%
 
-alt + shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
-   cmus-remote -v {50,75}% 
+control + shift + XF86AudioLowerVolume
+   cmus-remote -v 50%; notify-send -t 800 "Cmus Vol:" 50%
+
+control + shift + XF86AudioRaiseVolume
+   cmus-remote -v 75%; notify-send -t 800 "Cmus Vol:" 75%
 
 # connect H15 Pro
 alt + shift + control XF86AudioRaiseVolume
@@ -109,26 +100,28 @@ alt + shift + control XF86AudioLowerVolume
 # Volume Control End #
 ######################
 
-# desktop entries
-super + space; n
-    QT_STYLE_OVERRIDE=kvantum rofi -show drun -modi drun
 
-super + space; w
-    rofi -show window
+##########################
+#       LEFT PINKY       #
+#       XF86Launch9      #
+##########################
+
+# virtual machine manager
+XF86Launch9; s
+    /usr/bin/virt-manager
+
+# desktop entries
+super + j
+    QT_STYLE_OVERRIDE=kvantum rofi -show drun -modi drun
 
 # print screen selection with maim
 Print
     scrot -s -q 100 -e 'xclip -selection clipboard -t image/png -i $f'
-    #maim -s -u | xclip -selection clipboard -t image/png -i
 
 #### End Rofi ####
 #######################
 ###  Left Hand Only ###
 #######################
-
-# Rofi list terminals
-super + Return
-    rofi -show window -filter "Xfce4-terminal " -no-show-match
 
 # PureRef
 super + space; p

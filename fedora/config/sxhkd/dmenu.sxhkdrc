@@ -6,30 +6,34 @@
 #   \__,_|_| |_| |_|\___|_| |_|\__,_| (_) |___/_/\_\_| |_|_|\_\__,_|_|  \___| 
 #                                                                             
 
-# processes
-super + space; y
-    ~/.dmenu/process
-
 # quit
 super + Delete
     ~/.dmenu/quit
 
+# processes
+XF86Favorites; p
+    ~/.dmenu/process
+
 # ~/.dotfiles
-super + space; period
+XF86Favorites; period
     ~/.dmenu/dotfiles
 
 # mindmaps
-XF86Launch9; t
+XF86Favorites; m
     ~/.dmenu/mindmaps
 
 # sxhkd bindings
-super + space; z
+XF86Favorites; z
     ~/.dmenu/keybindings
 
 # gtk-3.0/bookmarks.ini
-super + space; f
+XF86Favorites; f
     ~/.dmenu/dir $HOME/.config/gtk-3.0/bookmarks ""
 
 # repositories
-super + space; r
+XF86Favorites; r
     ~/.dmenu/sys
+
+# repositories
+XF86Favorits; x
+    ~/.dmenu/xrandr
