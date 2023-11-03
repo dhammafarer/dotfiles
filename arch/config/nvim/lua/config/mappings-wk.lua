@@ -3,10 +3,10 @@ local wk = require("which-key")
 vim.g.mapleader = ","
 
 local file = {
-    ["<C-e>"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Open Recent File" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-    ["<C-t>"] = { "<cmd>Telescope tags<cr>", "Tags" },
+    ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=true<cr>", "Tags" },
     ["<leader>"] = {
         f = {
             name = "+file",
@@ -21,6 +21,7 @@ local file = {
         },
         n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
         x = { "<cmd>quit<cr>", "Quit" },
+        q = { "<cmd>quit<cr>", "Quit" },
         w = { "<cmd>write<cr>", "Write" },
     },
     ["<space>"] = {

@@ -20,10 +20,10 @@ case "$choice" in
 	  picom
 	;;
 	sxhkd)
-		pkill -USR1 -x sxhkd && notify-send "Restarted" "$choice"
+		pkill -USR1 -x sxhkd && notify-send -t 600 "Restarted" "$choice"
 	;;
 	xmodmap)
-		xmodmap ~/.Xmodmap && notify-send "Restarted" "$choice"
+		xmodmap ~/.Xmodmap && notify-send -t 600 "Restarted" "$choice"
 	;;
 	pcscd)
         notify-send "Please touch the device"

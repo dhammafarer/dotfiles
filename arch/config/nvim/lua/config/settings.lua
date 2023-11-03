@@ -74,23 +74,15 @@ vim.diagnostic.config({
 })
 
 vim.filetype.add({
-    pattern = {
-        ['.*.bu'] = 'yaml',
-    },
-})
-
-vim.filetype.add({
   pattern = {
     ['.*/playbooks?/.*.ya?ml'] = 'yaml.ansible',
     ['.*/roles/.*.ya?ml'] = 'yaml.ansible',
     ['.*/handlers/.*.ya?ml'] = 'yaml.ansible',
     ['.*/tasks/.*.ya?ml'] = 'yaml.ansible',
     ['.*/molecule/.*.ya?ml'] = 'yaml.ansible',
-  },
-})
-
-vim.filetype.add({
-  pattern = {
     ['.*.lua.j2'] = 'lua.j2',
+    ['.*.gohtml'] = 'html',
+    ['.*go.mod'] = 'gomod',
+    ['.*.bu'] = 'yaml',
   },
 })

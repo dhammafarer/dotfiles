@@ -45,11 +45,10 @@ return {
         screen = 1,
     },
     [8] = {
-        name = "ref",
-        key = "w",
-        layout = LAYOUT_FULL,
-        screen = 2,
-        selected = true,
+        name = "vmm",
+        key = "v",
+        layout = LAYOUT_TILE,
+        screen = 1,
     },
     [9] = {
         name = "med",
@@ -70,9 +69,10 @@ return {
         screen = 1,
     },
     [12] = {
-        name = "vmm",
-        key = "v",
-        layout = LAYOUT_TILE,
-        screen = 1,
+        name = "ref",
+        key = "w",
+        layout = LAYOUT_FULL,
+        screen = 2,
+        selected = true,
     },
 }
