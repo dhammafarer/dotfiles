@@ -23,11 +23,11 @@ super + control + Escape
     xscreensaver-command -a
 
 #### XF86 Keys
-XF86AudioPrev
-    playerctl -p firefox.instance2 play-pause
+#XF86AudioPrev
+#XF86AudioNext
 
-XF86AudioNext
-    playerctl -p firefox.instance2 next
+XF86AudioMute
+    playerctl -p firefox.instance2 play-pause
 
 XF86AudioStop
     playerctl -a pause
@@ -89,11 +89,11 @@ control + shift + XF86AudioRaiseVolume
    cmus-remote -v 75%; notify-send -t 800 "Cmus Vol:" 75%
 
 # connect H15 Pro
-alt + shift + control XF86AudioRaiseVolume
+control + XF86AudioPrev
    bluetoothctl connect 41:42:22:98:1F:9F
 
 # connect Redmi Buds 4
-alt + shift + control XF86AudioLowerVolume
+control + XF86AudioNext
    bluetoothctl connect E0:08:71:88:2A:B9
 
 ######################
