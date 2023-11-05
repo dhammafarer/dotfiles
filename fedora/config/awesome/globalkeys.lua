@@ -2,6 +2,8 @@ local gears = require("gears")
 local awful = require("awful")
 local naughty = require("naughty")
 
+local capslock = require('widgets.capslock')
+
 require("globals")
 
 local function set_clients_opacity(m, opacity)
@@ -272,5 +274,7 @@ local globalkeys = gears.table.join(
         { description = "decrease master width factor", group = "layout" }
     )
 )
+
+globalkeys = awful.util.table.join(globalkeys, capslock.key)
 
 return globalkeys

@@ -2,8 +2,11 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 
+require("globals")
+
 local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
 local cmus_widget = require('widgets.cmus')
+local capslock = require('widgets.capslock')
 
 local mytextclock = wibox.layout.margin(
   wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"), 4, 4, 0, 0)
@@ -18,8 +21,6 @@ local myvolume = wibox.layout.margin(
 )
 
 local mysystray = wibox.layout.margin(wibox.widget.systray(), 3, 3, 3, 3)
-
-require("globals")
 
 local taglist_buttons = gears.table.join(
   awful.button({}, 1, function(t) t:view_only() end),
@@ -99,6 +100,8 @@ local function setup_wibar(s)
     s.mytasklist, -- Middle widget
     {             -- Right widgets
       layout = wibox.layout.fixed.horizontal,
+      spacing = 4,
+      capslock,
       cmus_widget {
       },
       myvolume,

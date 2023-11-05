@@ -10,30 +10,37 @@
 super + Delete
     ~/.dmenu/quit
 
+XF86Tools; Delete
+    ~/.dmenu/quit
+
 # processes
-XF86Favorites; p
+XF86Tools; p
     ~/.dmenu/process
 
 # ~/.dotfiles
-XF86Favorites; period
+XF86Tools; period
     ~/.dmenu/dotfiles
 
 # mindmaps
-XF86Favorites; m
+XF86Tools; t
     ~/.dmenu/mindmaps
 
 # sxhkd bindings
-XF86Favorites; z
+XF86Tools; z
     ~/.dmenu/keybindings
 
 # gtk-3.0/bookmarks.ini
-XF86Favorites; f
+XF86Tools; f
     ~/.dmenu/dir $HOME/.config/gtk-3.0/bookmarks ""
 
 # repositories
-XF86Favorites; r
+XF86Tools; r
     ~/.dmenu/sys
 
 # repositories
-XF86Favorits; x
+XF86Tools; x
     ~/.dmenu/xrandr
+
+XF86Tools; n
+    QT_STYLE_OVERRIDE=kvantum rofi -show drun -modi drun
+

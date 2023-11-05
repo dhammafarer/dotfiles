@@ -22,9 +22,25 @@ super + shift + Escape
 super + control + Escape
     xscreensaver-command -a
 
+super + space
+    playerctl -p firefox.instance2 play-pause
+
+super + control + space
+    cplay
+
 #### XF86 Keys
-#XF86AudioPrev
-#XF86AudioNext
+## Logitech Keyboard    ## ThinkPad Keyboard
+# XF86HomePage          # XF86LaunchA
+# XF86Mail              # XF86Explorer
+# XF86Search            # XF86Search
+# XF86Calc              # XF86Display
+# XF86Tools             # XF86Tools
+# XF86AudioPrev         # XF86
+# XF86AudioPlay         # XF86AudioMicMute
+# XF86AudioNext         # XF86
+# XF86                  #XF86BrightnessDown
+# XF86                  #XF86BrightnessUp
+# XF86                  #XF86WLAN
 
 XF86AudioMute
     playerctl -p firefox.instance2 play-pause
@@ -32,25 +48,31 @@ XF86AudioMute
 XF86AudioStop
     playerctl -a pause
 
-{XF86AudioPlay,XF86AudioPause}
+{XF86AudioPlay,XF86AudioPause,XF86AudioMicMute}
     cplay
 
-XF86Explorer
+{XF86Explorer,XF86Mail}
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
 
 XF86Search
     rofi -show window
 
 # browsers
-XF86HomePage + {_,alt}
-    flatpak run {org.mozilla.firefox,com.google.Chrome}
+{XF86HomePage,XF86LaunchA}
+    flatpak run org.mozilla.firefox
+
+{XF86HomePage,XF86LaunchA} + alt
+    flatpak run com.google.Chrome
 
 # open clipboard link in browser
-XF86HomePage + {_,alt} + control
-    flatpak run {org.mozilla.firefox,com.google.Chrome} --new-window $(xclip -o -selection clipboard)
+{XF86HomePage,XF86LaunchA} + control
+    flatpak run org.mozilla.firefox --new-window $(xclip -o -selection clipboard)
+
+{XF86HomePage,XF86LaunchA} + alt + control
+    flatpak run com.google.Chrome --new-window $(xclip -o -selection clipboard)
 
 # rofi-calc
-XF86Calculator
+{XF86Calculator,XF86Display}
     LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 
 #XF86Favorites -> dmenu
@@ -109,10 +131,6 @@ control + XF86AudioNext
 # virtual machine manager
 XF86Launch9; s
     /usr/bin/virt-manager
-
-# desktop entries
-super + j
-    QT_STYLE_OVERRIDE=kvantum rofi -show drun -modi drun
 
 # print screen selection with maim
 Print
