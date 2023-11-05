@@ -22,7 +22,7 @@ return {
     },
     [4] = {
         name = "gui",
-        key = "r",
+        key = "w",
         layout = LAYOUT_MAX,
         screen = 1,
     },
@@ -70,7 +70,7 @@ return {
     },
     [12] = {
         name = "ref",
-        key = "w",
+        key = "r",
         layout = LAYOUT_FULL,
         screen = 2,
         selected = true,
