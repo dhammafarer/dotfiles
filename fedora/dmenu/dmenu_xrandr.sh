@@ -20,6 +20,10 @@ nuc_tv=HDMI-A-0
 nuc_asus=HDMI-A-1
 nuc_huion=DisplayPort-0
 
+restart_wm () {
+    awesome-client "awesome.restart()"
+}
+
 if [[ $(hostname) == "debian-nuc" ]];
 then
   choice=$(echo "$(printf '%s\n' "${options_nuc[@]}")" | mydmenu -sb "#5294e2" -sf "#2f343f" -p 'xrandr profile: ')
@@ -28,21 +32,25 @@ then
       xrandr --output $nuc_asus --auto --primary \
         --output $nuc_huion --off \
         --output $nuc_tv --off
+      restart_wm
     ;;
     huion)
       xrandr --output $nuc_asus  --off \
         --output $nuc_huion --auto --primary \
         --output $nuc_tv --off
+      restart_wm
     ;;
     dual)
       xrandr --output $nuc_asus --auto --primary \
         --output $nuc_huion --auto --below $nuc_asus \
         --output $nuc_tv --off
+      restart_wm
     ;;
     tv)
       xrandr --output $nuc_asus --off \
         --output $nuc_huion --off \
         --output $nuc_tv --mode 1360x768 --primary
+      restart_wm
     ;;
     *)
       exit 1
@@ -55,14 +63,17 @@ then
     asus)
       xrandr --output $ctn_asus --auto --primary \
         --output $ctn_huion --off
+      restart_wm
     ;;
     huion)
       xrandr --output $ctn_huion --auto --primary \
         --output $ctn_asus --off
+      restart_wm
     ;;
     dual)
       xrandr --output $ctn_asus --auto --primary --output \
         $ctn_huion --auto --below DP-5
+      restart_wm
     ;;
     *)
       exit 1

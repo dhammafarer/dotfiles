@@ -18,11 +18,11 @@ XF86Tools; p
     ~/.dmenu/process
 
 # ~/.dotfiles
-XF86Tools; period
+super + Escape; period
     ~/.dmenu/dotfiles
 
 # mindmaps
-XF86Tools; t
+super + Escape; t
     ~/.dmenu/mindmaps
 
 # sxhkd bindings

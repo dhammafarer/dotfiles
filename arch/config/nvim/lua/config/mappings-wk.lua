@@ -2,22 +2,30 @@ local wk = require("which-key")
 
 vim.g.mapleader = ","
 
-local file = {
-    ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Open Recent File" },
-    ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+    ["<A-s>"] = { "<cmd>Telescope yaml_schema<cr>", "Yaml Schema" },
+    ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
+    ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=true<cr>", "Tags" },
     ["<leader>"] = {
         f = {
-            name = "+file",
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
             f = { "<cmd>Telescope find_files<cr>", "Find File" },
             g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
             h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
             m = { "<cmd>Telescope marks<cr>", "Marks" },
-            n = { "<cmd>enew<cr>", "New File" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
             t = { "<cmd>Telescope tags<cr>", "Tags" },
+        },
+    }
+}
+
+local file = {
+    ["<leader>"] = {
+        f = {
+            name = "+file",
+            n = { "<cmd>enew<cr>", "New File" },
         },
         n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
         x = { "<cmd>quit<cr>", "Quit" },
@@ -26,6 +34,7 @@ local file = {
     },
     ["<space>"] = {
         w = { "<cmd>write<cr>", "Write" },
+        q = { "<cmd>quit<cr>", "Quit" },
         x = { "<cmd>quit<cr>", "Quit" },
         n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
     }
@@ -141,6 +150,7 @@ local codeium = {
 }
 
 wk.register(file)
+wk.register(telescope)
 wk.register(lsp)
 wk.register(dap)
 wk.register(diagnostics)

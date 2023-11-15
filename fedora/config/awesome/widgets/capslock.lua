@@ -5,10 +5,10 @@ local capslock = wibox.widget {
     widget = wibox.widget.textbox,
     align = "center",
     valign = "center",
-    forced_width = 28,
+    forced_width = 55,
 }
 
-local active = "<span foreground='#ffbd7a' weight='bold'>CAPS</span>"
+local active = "<span foreground='#ffbd7a' weight='bold'>CAPSLOCK</span>"
 
 function capslock:check()
     awful.spawn.easy_async_with_shell(

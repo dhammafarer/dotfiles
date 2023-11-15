@@ -4,11 +4,10 @@ stty -ixon
 
 ZSH_THEME="avit"
 
-
 autoload -Uz compinit
 compinit
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd notify podman)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd notify podman kubectl)
 
 source $ZSH/oh-my-zsh.sh
 

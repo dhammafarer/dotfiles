@@ -55,7 +55,9 @@ local globalkeys = gears.table.join(
     -- Restore last tag
     awful.key({ MODKEY }, "z",
         function()
-            if Urgent then
+            if awful.screen.focused().index ~= 1 then
+                awful.screen.focus(1)
+            elseif  Urgent then
                 Urgent:jump_to()
                 Urgent = nil
                 naughty.destroy_all_notifications()

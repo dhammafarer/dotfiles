@@ -61,14 +61,14 @@ XF86Search
 {XF86HomePage,XF86LaunchA}
     flatpak run org.mozilla.firefox
 
-{XF86HomePage,XF86LaunchA} + alt
+{XF86HomePage,XF86LaunchA} + shift
     flatpak run com.google.Chrome
 
 # open clipboard link in browser
 {XF86HomePage,XF86LaunchA} + control
     flatpak run org.mozilla.firefox --new-window $(xclip -o -selection clipboard)
 
-{XF86HomePage,XF86LaunchA} + alt + control
+{XF86HomePage,XF86LaunchA} + shift + control
     flatpak run com.google.Chrome --new-window $(xclip -o -selection clipboard)
 
 # rofi-calc
@@ -92,10 +92,10 @@ XF86Launch9; b
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
-control + XF86AudioRaiseVolume
+XF86AudioNext
     pactl set-sink-volume @DEFAULT_SINK@ 100%; notify-send -t 800 "Master Vol:" 100%
 
-control + XF86AudioLowerVolume
+XF86AudioPrev
     pactl set-sink-volume @DEFAULT_SINK@ 50%; notify-send -t 800 "Master Vol:" 50%
 
 { button7,button6 }
@@ -104,19 +104,19 @@ control + XF86AudioLowerVolume
 shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
    cmus-remote -v {-,+}5%
 
-control + shift + XF86AudioLowerVolume
+shift + XF86AudioPrev
    cmus-remote -v 50%; notify-send -t 800 "Cmus Vol:" 50%
 
-control + shift + XF86AudioRaiseVolume
+shift + XF86AudioNext
    cmus-remote -v 75%; notify-send -t 800 "Cmus Vol:" 75%
 
 # connect H15 Pro
-control + XF86AudioPrev
+control + XF86MonBrightnessDown
    bluetoothctl connect 41:42:22:98:1F:9F
 
 # connect Redmi Buds 4
-control + XF86AudioNext
-   bluetoothctl connect E0:08:71:88:2A:B9
+control + XF86MonBrightnessUp
+  bluetoothctl connect E0:08:71:88:2A:B9
 
 ######################
 # Volume Control End #

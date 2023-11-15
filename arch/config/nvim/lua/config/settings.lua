@@ -86,3 +86,8 @@ vim.filetype.add({
     ['.*.bu'] = 'yaml',
   },
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "*/files/*.yml", "*/k8s/*.yml" },
+    command = "setlocal filetype=yaml",
+})

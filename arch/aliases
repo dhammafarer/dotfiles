@@ -345,9 +345,6 @@ alias umount-sdwhite="sd-umount sdwhite"
 alias mkeys="sdblack-mount"
 alias umkeys="sdblack-umount"
 
-alias mtmedia="sshfs ubuntu@klaasje.ddns.net:/mnt/external/media ~/mnt/media -C -p 437"
-alias mtphotos="sshfs ubuntu@klaasje.ddns.net:/mnt/external/data/photos ~/mnt/photos -C -p 437"
-
 restart-pcscd () {
   sudo systemctl stop pcscd.socket
   sudo systemctl start pcscd.socket
@@ -357,13 +354,19 @@ getjson () {
   curl -s $1 | jq $2
 }
 
-#cargo
+# cargo
 alias cr="cargo run"
 alias crw="cargo watch -x run"
 alias cb="cargo build"
 alias ct="cargo test"
 
-#php
+# go
+alias got="go test -cover ."
+
+alias gotc="go test -coverprofile=/tmp/coverage.out && \
+    go tool cover -html=/tmp/coverage.out -o /tmp/coverage.html"
+
+# php
 pham () {
     php artisan make:${1} ${@:2}
 }
@@ -377,6 +380,5 @@ alias phacc="pha cache:clear"
 #devops
 alias p="podman"
 alias pp="podman pod"
-
-#kubernetes
-alias k="kubectl"
+alias pcomp="podman-compose"
+alias m="make"

@@ -10,7 +10,7 @@ return {
     },
     [2] = {
         name = "cmd",
-        key = "g",
+        key = "d",
         layout = LAYOUT_TILE,
         screen = 1,
     },
@@ -58,7 +58,7 @@ return {
     },
     [10] = {
         name = "ssh",
-        key = "d",
+        key = "g",
         layout = LAYOUT_TILE,
         screen = 1,
     },
