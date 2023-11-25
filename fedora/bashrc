@@ -26,16 +26,13 @@ fi
 
 unset rc
 
+source ~/.bashenv
+
 if [[ -z $SSH_CONNECTION ]]; then
   export GPG_TTY="$(tty)"
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
 fi
-
-# ibus
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
 
 # aliases
 ansp () {

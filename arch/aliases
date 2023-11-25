@@ -211,6 +211,7 @@ alias gchd="git checkout dev"
 alias gpo="git push -u origin"
 alias gpod="git push -u origin dev"
 alias gpom="git push -u origin main"
+alias gpa="git remote | xargs -L1 git push --all"
 alias gpul="git pull origin main"
 alias gpod="git push -u origin dev"
 alias gcr="git-create-repo"
@@ -250,13 +251,16 @@ alias rrd="rr ~/Downloads"
 alias rrn="rr ~/Nextcloud"
 alias rrc="rr ~/ctn"
 
+cat-to-clipboard() {
+    cat $1 | xclip -selection clipboard
+}
 
 #applications
 alias vi="vim"
 alias xo="xdg-open"
 alias pc="pass -c"
 alias tmpw="cd /tmp; wget "
-alias ctc="xclip -selection clipboard"
+alias ctc="cat-to-clipboard"
 alias cx="xclip"
 alias vx="xclip -o"
 alias cdc="pwd | xclip"
@@ -301,10 +305,6 @@ huion () {
 #xrandr
 alias dp5="xrandr --output DP-5 --auto --primary --output HDMI-0 --off"
 alias hdmi0="xrandr --output DP-5 --off --output HDMI-0 --auto --primary"
-
-#utilities
-alias gen-pass="pwgen -ysBv 20 1 | ctc"
-alias gen-login="pwgen -sBv 15 1 | ctc"
 
 #radio
 alias radio="pyradio -s stations -p 1 -d"

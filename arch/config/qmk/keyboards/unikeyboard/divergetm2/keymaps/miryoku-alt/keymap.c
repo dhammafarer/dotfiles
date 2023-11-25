@@ -41,6 +41,7 @@ enum layer_names {
 #define HM_U LT(SYM,KC_U)
 #define HM_Z LT(LHN,KC_Z)
 #define HM_D LT(MED,KC_D)
+#define HM_F LT(PCT,KC_F)
 
 // Right
 #define HM_N RGUI_T(KC_N)
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [COLEMAK] = LAYOUT_ortho_4x12_2x2u(
 // ,-------------------------------------------------------------------------.    ,-----------------------------------------------------------------------.
-       KC_F15,     KC_J,       HM_L,       HM_U,       KC_Y,      KC_QUOT,            KC_Q,      KC_W,       KC_F,       KC_P,       KC_B,       KC_PSCR,
+       KC_F15,     KC_J,       HM_L,       HM_U,       KC_Y,      KC_QUOT,            KC_Q,      KC_W,       HM_F,       KC_P,       KC_B,       KC_PSCR,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|
        KC_F13,     KC_M,       HM_N,       HM_E,       HM_I,      HM_O,               HM_A,      HM_R,       HM_S,       HM_T,       KC_G,       KC_VOLU,
 // |-----------+-----------+-----------+-----------+-----------+-------------|    |-----------+-----------+-----------+-----------+-----------+-----------|

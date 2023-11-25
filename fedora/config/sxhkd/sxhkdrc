@@ -22,8 +22,18 @@ super + shift + Escape
 super + control + Escape
     xscreensaver-command -a
 
+#super + space
+#    playerctl -p firefox.instance2 play-pause
+
+# temporary workaround until media keys are fixed on Udemy
 super + space
-    playerctl -p firefox.instance2 play-pause
+    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Space
+
+XF86AudioPrev
+    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Left
+
+XF86AudioNext
+    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Right
 
 super + control + space
     cplay
@@ -58,6 +68,17 @@ XF86Search
     rofi -show window
 
 # browsers
+super + {F1,F2,F3}
+    {flatpak run org.mozilla.firefox,\
+    flatpak run com.google.Chrome, \
+    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log}
+
+super + {1,2,3}
+    {flatpak run org.mozilla.firefox,\
+    flatpak run com.google.Chrome, \
+    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log}
+
+
 {XF86HomePage,XF86LaunchA}
     flatpak run org.mozilla.firefox
 
@@ -89,26 +110,23 @@ XF86Launch9; b
 # Volume Control #
 ##################
 
+# horizontal mouse scroll
+{ button7,button6 }
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
-XF86AudioNext
-    pactl set-sink-volume @DEFAULT_SINK@ 100%; notify-send -t 800 "Master Vol:" 100%
-
-XF86AudioPrev
-    pactl set-sink-volume @DEFAULT_SINK@ 50%; notify-send -t 800 "Master Vol:" 50%
-
-{ button7,button6 }
-    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+control + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
+    {pactl set-sink-volume @DEFAULT_SINK@ 50%; notify-send -t 800 "Master Vol:" 50%, \
+    pactl set-sink-volume @DEFAULT_SINK@ 100%; notify-send -t 800 "Master Vol:" 100%}
 
 shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
    cmus-remote -v {-,+}5%
 
-shift + XF86AudioPrev
-   cmus-remote -v 50%; notify-send -t 800 "Cmus Vol:" 50%
-
-shift + XF86AudioNext
-   cmus-remote -v 75%; notify-send -t 800 "Cmus Vol:" 75%
+shift + control + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
+   {cmus-remote -v 50%; notify-send -t 800 "Cmus Vol:" 50%, \
+   cmus-remote -v 75%; notify-send -t 800 "Cmus Vol:" 75%}
 
 # connect H15 Pro
 control + XF86MonBrightnessDown
@@ -154,6 +172,3 @@ super + Escape; r
 
 super + Escape; w
     xdotool type "site:reddit.com/r/weightlifting"
-
-super + Escape; k
-    xdotool type 'alias k="kubectl"'
