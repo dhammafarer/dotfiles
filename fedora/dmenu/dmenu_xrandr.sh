@@ -13,6 +13,8 @@ declare -a options_nuc=(
 "tv"
 )
 
+launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #5294e2 -sf #2f343f -fn 11'
+
 ctn_asus=DP-5
 ctn_huion=HDMI-0
 
@@ -24,9 +26,9 @@ restart_wm () {
     awesome-client "awesome.restart()"
 }
 
-if [[ $(hostname) == "debian-nuc" ]];
+if [[ $(hostname) == "nuc" ]];
 then
-  choice=$(echo "$(printf '%s\n' "${options_nuc[@]}")" | mydmenu -sb "#5294e2" -sf "#2f343f" -p 'xrandr profile: ')
+  choice=$(echo "$(printf '%s\n' "${options_nuc[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in
     asus)
       xrandr --output $nuc_asus --auto --primary \
@@ -58,7 +60,7 @@ then
   esac
 elif [[ $(hostname) == "ctn" ]];
 then
-  choice=$(echo "$(printf '%s\n' "${options_ctn[@]}")" | mydmenu -sb "#5294e2" -sf "#2f343f" -p 'xrandr profile: ')
+  choice=$(echo "$(printf '%s\n' "${options_ctn[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in
     asus)
       xrandr --output $ctn_asus --auto --primary \

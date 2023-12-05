@@ -4,7 +4,7 @@ local wibox = require("wibox")
 
 require("globals")
 
-local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')
+local volume_widget = require('widgets.pactl-widget.volume')
 local cmus_widget = require('widgets.cmus')
 local capslock = require('widgets.capslock')
 
