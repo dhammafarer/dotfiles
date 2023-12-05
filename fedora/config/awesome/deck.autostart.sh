@@ -30,6 +30,8 @@ function run_app {
 
 export SXHKDRC="$HOME/.config/sxhkd/dmenu.sxhkdrc $HOME/.config/sxhkd/sxhkdrc"
 
+xrandr --output eDP --rotate right
+
 run picom -b --config $HOME/.config/picom/picom.conf
 run sxhkd -c $SXHKDRC
 run ibus-daemon -drxR
@@ -37,3 +39,4 @@ run ibus-daemon -drxR
 xmodmap ~/.xmodmap
 
 run xscreensaver -no-splash
+

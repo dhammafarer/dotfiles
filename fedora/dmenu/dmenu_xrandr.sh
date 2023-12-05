@@ -13,10 +13,20 @@ declare -a options_nuc=(
 "tv"
 )
 
+declare -a options_deck=(
+"external"
+"builtin"
+"dual"
+"presentation"
+)
+
 launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #5294e2 -sf #2f343f -fn 11'
 
 ctn_asus=DP-5
 ctn_huion=HDMI-0
+
+deck_builtin="eDP --rotate right"
+deck_external="DisplayPort-0"
 
 nuc_tv=HDMI-A-0
 nuc_asus=HDMI-A-1
@@ -75,6 +85,34 @@ then
     dual)
       xrandr --output $ctn_asus --auto --primary --output \
         $ctn_huion --auto --below DP-5
+      restart_wm
+    ;;
+    *)
+      exit 1
+    ;;
+  esac
+elif [[ $(hostname) == "deck" ]];
+then
+  choice=$(echo "$(printf '%s\n' "${options_deck[@]}")" | $launcher -p 'xrandr profile: ')
+  case "$choice" in
+    external)
+      xrandr --output $deck_external --auto --primary
+      xrandr --output $deck_builtin --off
+      restart_wm
+    ;;
+    builtin)
+      xrandr --output $deck_builtin --auto --primary
+      xrandr --output $deck_external --off
+      restart_wm
+    ;;
+    dual)
+      xrandr --output $deck_external --auto --primary
+      xrandr --output $deck_builtin --auto --below $deck_external
+      restart_wm
+    ;;
+    presentation)
+      xrandr --output $deck_builtin --auto --primary
+      xrandr --output $deck_external --auto --above $deck_builtin --rotate normal
       restart_wm
     ;;
     *)
