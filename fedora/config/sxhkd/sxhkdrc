@@ -14,6 +14,13 @@ super + BackSpace
 super + Return
     rofi -show window -filter "Xfce4-terminal " -no-show-match
 
+# digits
+super + {0,1,2,3}
+    { flatpak run com.google.Chrome, \
+    LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort,\
+    flatpak run org.mozilla.firefox,\
+    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log}
+
 # lock screen
 super + shift + Escape
     playerctl -a pause; xscreensaver-command -l
@@ -72,12 +79,6 @@ super + {F1,F2,F3}
     {flatpak run org.mozilla.firefox,\
     flatpak run com.google.Chrome, \
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log}
-
-super + {1,2,3}
-    {flatpak run org.mozilla.firefox,\
-    flatpak run com.google.Chrome, \
-    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log}
-
 
 {XF86HomePage,XF86LaunchA}
     flatpak run org.mozilla.firefox
@@ -169,6 +170,9 @@ super + space; p
 
 super + Escape; r
     xdotool type "site:reddit.com"
+
+super + Escape; p
+    xdotool type "alias p='podman'"
 
 super + Escape; w
     xdotool type "site:reddit.com/r/weightlifting"

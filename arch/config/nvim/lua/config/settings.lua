@@ -4,7 +4,7 @@ local set = vim.opt
 set.termguicolors = true
 
 set.title = true
-set.titlestring = "%t (%{expand('%:p:h')})"
+set.titlestring = "[vim] %t (%{expand('%:p:h')})"
 
 vim.notify = require("notify")
 

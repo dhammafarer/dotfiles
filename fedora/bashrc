@@ -49,10 +49,10 @@ run_molecule () {
   molecule "$@"
 }
 
-alias molecule="run_molecule"
-alias molc="molecule converge"
-alias moll="molecule login"
-alias mold="molecule destroy"
+alias molc='run_molecule converge'
+alias moll='run_molecule login'
+alias mold='run_molecule destroy'
+alias molv='run_molecule verify'
 alias molrr="molr && molc"
 
 alias m="minikube"
