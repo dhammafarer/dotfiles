@@ -1,0 +1,13 @@
+#!/bin/sh
+
+alias pgpa="pass git remote | xargs -L1 pass git push --all"
+alias pgpom="pass git push -u origin master"
+alias pgpul="pass git pull origin master"
+alias pi="pass_insert"
+
+pass_insert () {
+    len=$1
+    name=$2
+    pass generate -n $name $len 1> /dev/null
+    pass edit $name
+}

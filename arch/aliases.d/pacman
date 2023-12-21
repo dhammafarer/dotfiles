@@ -1,0 +1,5 @@
+#!/bin/sh
+
+alias pacq="pacman -Qs"
+alias pacs="pacman -Ss"
+alias spacs="sudo pacman -Sy"

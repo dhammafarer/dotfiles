@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#nas
+alias mnas-multi="sudo mount -t cifs //192.168.7.30/Multimedia /mnt/nas -o username=pawel,password=abcd1234,workgroup=workgroup,iocharset=utf8,uid=pawel,gid=users"
+alias mnas="sudo mount -t cifs //192.168.7.30/市場行銷部/pawel /mnt/nas -o username=pawel,password=abcd1234,workgroup=workgroup,iocharset=utf8,uid=pawel,gid=users"
+alias unas="sudo umount /mnt/nas"

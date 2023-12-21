@@ -1,0 +1,12 @@
+#!/bin/sh
+
+alias va="vagrant"
+alias vbl="vagrant box list"
+alias vh="vagrant halt"
+alias vs="vagrant ssh"
+alias vssh1="vagrant ssh machine1"
+alias vssh2="vagrant ssh machine2"
+alias vssh3="vagrant ssh machine3"
+alias vssh="vagrant ssh"
+alias vsshc="vagrant ssh-config"
+alias vu="vagrant up"

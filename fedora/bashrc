@@ -27,32 +27,10 @@ fi
 unset rc
 
 source ~/.bashenv
+source ~/.bash_aliases
 
 if [[ -z $SSH_CONNECTION ]]; then
   export GPG_TTY="$(tty)"
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
 fi
-
-# aliases
-ansp () {
-  if ! type "ansible-playbook" > /dev/null; then
-    source ~/.venv/ansible/bin/activate
-  fi
-  ansible-playbook "$@"
-}
-
-run_molecule () {
-  if ! type "molecule" &> /dev/null; then
-    source ~/.venv/ansible/bin/activate
-  fi
-  molecule "$@"
-}
-
-alias molc='run_molecule converge'
-alias moll='run_molecule login'
-alias mold='run_molecule destroy'
-alias molv='run_molecule verify'
-alias molrr="molr && molc"
-
-alias m="minikube"

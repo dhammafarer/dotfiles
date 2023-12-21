@@ -1,0 +1,9 @@
+#!/bin/sh
+
+alias molc="molecule converge"
+alias mold="molecule destroy"
+alias molis="molecule init scenario"
+alias moll="molecule login"
+alias molrr="mold && molc"
+alias molt="molecule test"
+alias molv="molecule verify"

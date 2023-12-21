@@ -1,0 +1,5 @@
+#!/bin/sh
+
+alias p="podman"
+alias pp="podman pod"
+alias pcomp="podman-compose"

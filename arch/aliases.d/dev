@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# make
+alias mr="make run"
+alias mc="make clean"
+
+# cargo
+alias cr="cargo run"
+alias crw="cargo watch -x run"
+alias cb="cargo build"
+alias ct="cargo test"
+
+# go
+alias got="go test -cover ."
+alias gotc="gotcov && go tool cover -html=/tmp/coverage.out -o /tmp/coverage.html"
+alias gotcov="go test -coverprofile=/tmp/coverage.out"
+
+# php
+alias pha="php artisan"
+alias phas="pha serve"
+alias phamm="pha make:model"
+alias phamm="pha make:model"
+alias phami="pha migrate"
+alias phacc="pha cache:clear"
+
+#js
+alias ni="npm init -y"
+alias nrd="npm run dev"
+alias ns="npmInstallSave"
+alias nsd="npmInstallSaveDev"

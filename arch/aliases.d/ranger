@@ -1,0 +1,6 @@
+#!/bin/sh
+
+alias rr="ranger"
+alias rrc="rr ~/ctn"
+alias rrd="rr ~/Downloads"
+alias rrn="rr ~/Nextcloud"

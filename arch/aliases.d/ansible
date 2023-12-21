@@ -1,0 +1,9 @@
+#!/bin/sh
+
+alias angci="ansible-galaxy collection install"
+alias ans="ansible"
+alias ansd="ansible-doc"
+alias ansg="ansible-galaxy" 
+alias ansi="ansible-inventory"
+alias ansp="ansible-playbook"
+alias ansv="ansible-vault"

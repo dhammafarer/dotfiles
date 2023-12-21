@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source ~/.aliases.d/ansible
+source ~/.aliases.d/git
+source ~/.aliases.d/minikube
+source ~/.aliases.d/molecule
+source ~/.aliases.d/podman
+source ~/.aliases.d/vagrant
+
+alias ded="distrobox enter dev"
+
+run_molecule () {
+  if ! type "molecule" &> /dev/null; then
+    source ~/.venv/ansible/bin/activate
+  fi
+  molecule "$@"
+}
