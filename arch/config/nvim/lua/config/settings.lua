@@ -81,6 +81,8 @@ vim.filetype.add({
     ['.*/tasks/.*.ya?ml'] = 'yaml.ansible',
     ['.*/molecule/.*.ya?ml'] = 'yaml.ansible',
     ['.*.lua.j2'] = 'lua.j2',
+    ['.*.service.j2'] = 'systemd.j2',
+    ['.*.timer.j2'] = 'systemd.j2',
     ['.*.gohtml'] = 'html',
     ['.*go.mod'] = 'gomod',
     ['.*.bu'] = 'yaml',

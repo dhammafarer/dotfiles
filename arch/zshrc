@@ -7,20 +7,25 @@ ZSH_THEME="avit"
 autoload -Uz compinit
 compinit
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd notify podman kubectl)
-
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd podman kubectl)
 source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
 eval "$(fasd --init auto)"
 
-# zsh-notify
-zstyle ':notify:*' error-title "Command failed (in #{time_elapsed})"
-zstyle ':notify:*' success-title "Command finished (in #{time_elapsed})"
-zstyle ':notify:*' success-icon "/home/pl/dotfiles/arch/img/notify_icon_success.png"
-zstyle ':notify:*' error-icon "/home/pl/dotfiles/arch/img/notify_icon_error.png"
-zstyle ':notify:*' command-complete-timeout 10
-# zstyle ':notify:*' expire-time 30000
-zstyle ':notify:*' app-name sh
-zstyle ':notify:*' activate-terminal no
+# if not connecting through ssh
+if [[ -z $SSH_CONNECTION ]]; then
+    plugins+=(notify)
+
+    # zsh-notify
+    zstyle ':notify:*' error-title "Command failed (in #{time_elapsed})"
+    zstyle ':notify:*' success-title "Command finished (in #{time_elapsed})"
+    zstyle ':notify:*' success-icon "/home/pl/dotfiles/arch/img/notify_icon_success.png"
+    zstyle ':notify:*' error-icon "/home/pl/dotfiles/arch/img/notify_icon_error.png"
+    zstyle ':notify:*' command-complete-timeout 10
+    # zstyle ':notify:*' expire-time 30000
+    zstyle ':notify:*' app-name sh
+    zstyle ':notify:*' activate-terminal no
+    zstyle ':notify:*' enable-on-ssh no
+fi

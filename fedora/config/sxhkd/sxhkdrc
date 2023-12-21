@@ -140,17 +140,7 @@ control + XF86MonBrightnessUp
 ######################
 # Volume Control End #
 ######################
-
-
-##########################
-#       LEFT PINKY       #
-#       XF86Launch9      #
-##########################
-
-# virtual machine manager
-XF86Launch9; s
-    /usr/bin/virt-manager
-
+#
 # print screen selection with maim
 Print
     scrot -s -q 100 -e 'xclip -selection clipboard -t image/png -i $f'
@@ -164,15 +154,28 @@ Print
 super + space; p
     QT_SCALE_FACTOR=1.12 PureRef
 
+##########################
+#       LEFT PINKY       #
+#       XF86Launch9      #
+##########################
+
+# virtual machine manager
+super + Escape; s
+    /usr/bin/virt-manager
+
+
 #######################
 ####   text entry  ####
 #######################
 
-super + Escape; r
-    xdotool type "site:reddit.com"
+XF86Launch9; {p,r,t,w}
+    /bin/bash -c "sleep 0.1 && printf '{\
+    "alias p='podman'", \
+    "site:reddit.com", \
+    "paradise-liberty.ts.net", \
+    "site:reddit.com/r/weightlifting" \
+    }' | xclip -selection clipboard; xdotool key Control_L+Shift+v"
+    xdotool type {
 
-super + Escape; p
-    xdotool type "alias p='podman'"
-
-super + Escape; w
-    xdotool type "site:reddit.com/r/weightlifting"
+XF86Launch9; g
+    /bin/bash -c "sleep 0.1 && ssh-add -L | xclip -selection clipboard; xdotool key Control_L+Shift+v"
