@@ -22,7 +22,7 @@ return {
     },
     [4] = {
         name = "gui",
-        key = "w",
+        key = "x",
         layout = LAYOUT_MAX,
         screen = 1,
     },
@@ -40,7 +40,7 @@ return {
     },
     [7] = {
         name = "map",
-        key = "x",
+        key = "w",
         layout = LAYOUT_MAX,
         screen = 1,
     },

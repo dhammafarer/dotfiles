@@ -83,6 +83,7 @@ vim.filetype.add({
     ['.*.lua.j2'] = 'lua.j2',
     ['.*.service.j2'] = 'systemd.j2',
     ['.*.timer.j2'] = 'systemd.j2',
+    ['.*.hujson'] = 'hjson',
     ['.*.gohtml'] = 'html',
     ['.*go.mod'] = 'gomod',
     ['.*.bu'] = 'yaml',

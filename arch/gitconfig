@@ -4,6 +4,8 @@
 [core]
 	editor = /usr/sbin/nvim
 	excludesfile = ~/.gitignore
+	pager = less -F
+	hookspath = /home/pl/.git/hooks
 [pull]
 	rebase = false
 [init]
