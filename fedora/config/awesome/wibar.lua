@@ -93,6 +93,7 @@ local function setup_wibar(s)
     layout = wibox.layout.align.horizontal,
     -- expand = "none",
     { -- Left widgets
+      capslock,
       layout = wibox.layout.fixed.horizontal,
       s.mytaglist,
       s.mypromptbox,
@@ -101,7 +102,6 @@ local function setup_wibar(s)
     {             -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       spacing = 4,
-      capslock,
       cmus_widget {
       },
       myvolume,
