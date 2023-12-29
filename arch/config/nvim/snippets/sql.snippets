@@ -1,0 +1,119 @@
+# table
+snippet create_table
+	CREATE TABLE ${1:table} (
+		${2:schema}
+	);
+
+snippet drop_table
+	DROP TABLE
+
+snippet drop_table_if_exists
+	DROP TABLE IF EXISTS
+
+snippet if_exists
+	IF EXISTS
+
+# crud
+snippet select_from
+	SELECT
+		${1:*}
+	FROM
+		${2:table};
+
+snippet insert_into
+	INSERT INTO
+		${1:table}
+	VALUES
+		${2:value}
+
+snippet where
+	WHERE
+
+snippet values
+	VALUES
+
+snippet join
+	JOIN ${1:table} ON ${2:field1} = ${3:field2}
+
+snippet left_join
+	LEFT JOIN ${1:table} ON ${2:field1} = ${3:field2}
+
+snippet right_join
+	RIGHT JOIN ${1:table} ON ${2:field1} = ${3:field2}
+
+snippet full_join
+	FULL JOIN ${1:table} ON ${2:field1} = ${3:field2}
+
+snippet primary_key
+	PRIMARY KEY
+
+snippet references
+	REFERENCES
+
+snippet on_delete_set_null
+	ON DELETE SET NULL
+
+snippet on_delete_set_default
+	ON DELETE SET DEFAULT
+
+snippet on_delete_cascade
+	ON DELETE CASCADE
+
+### data types
+# string
+snippet char
+	CHAR
+
+snippet text
+	TEXT
+
+snippet varchar
+	VARCHAR($1)
+
+# numeric
+snippet bigint
+	BIGINT
+
+snippet bool
+	BOOL
+
+snippet smallint
+	SMALLINT
+
+snippet mediumint
+	MEDIUMINT
+
+snippet integer
+	INTEGER
+
+snippet float 
+	FLOAT 
+
+snippet double_precision 
+	DOUBLE PRECISION
+
+snippet serial
+	SERIAL
+
+# date and time
+snippet date
+	DATE
+
+snippet datetime
+	DATETIME
+
+snippet timestamp
+	TIMESTAMP
+
+snippet time
+	TIME
+
+snippet year
+	YEAR
+
+# other
+snippet json
+	JSON
+
+snippet jsonb
+	JSONB
