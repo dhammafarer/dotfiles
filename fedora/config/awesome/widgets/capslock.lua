@@ -5,7 +5,7 @@ local capslock = wibox.widget {
     widget = wibox.widget.textbox,
     align = "center",
     valign = "center",
-    --forced_width = 55,
+    forced_width = 55,
 }
 
 local active = "<span foreground='#ffbd7a' weight='bold'>CAPSLOCK</span>"
