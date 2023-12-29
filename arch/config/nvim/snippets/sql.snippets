@@ -26,11 +26,31 @@ snippet insert_into
 	VALUES
 		${2:value}
 
+# keywords
 snippet where
 	WHERE
 
 snippet values
 	VALUES
+
+snippet on
+	ON
+
+snippet as
+	AS
+# operators
+snippet and
+	AND
+
+# joins #
+snippet right
+	RIGHT
+
+snippet left
+	LEFT
+
+snippet full
+	FULL
 
 snippet join
 	JOIN ${1:table} ON ${2:field1} = ${3:field2}
@@ -48,7 +68,7 @@ snippet primary_key
 	PRIMARY KEY
 
 snippet references
-	REFERENCES
+	REFERENCES ${1:table} (${2:field})
 
 snippet on_delete_set_null
 	ON DELETE SET NULL
