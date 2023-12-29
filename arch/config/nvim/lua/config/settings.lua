@@ -85,6 +85,7 @@ vim.filetype.add({
     ['.*.timer.j2'] = 'systemd.j2',
     ['.*.hujson'] = 'hjson',
     ['.*.gohtml'] = 'html',
+    ['.*.jet'] = 'html',
     ['.*go.mod'] = 'gomod',
     ['.*.bu'] = 'yaml',
   },

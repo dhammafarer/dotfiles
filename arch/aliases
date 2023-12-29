@@ -15,7 +15,7 @@ source ~/.aliases.d/vagrant
 alias cat="bat -p"
 alias cdc="pwd | ctc"
 alias chx="chmod +x"
-alias ctc="cat $1 | xclip -selection clipboard"
+alias ctc="cat_to_clipboard"
 alias gud="gu ~/dotfiles"
 alias gut="gu ~/tailnet"
 alias pc="pass -c"
@@ -45,4 +45,8 @@ nvim_fg () {
     else
         fg
     fi
+}
+
+cat_to_clipboard () {
+    bat -p $1 | xclip -selection clipboard
 }

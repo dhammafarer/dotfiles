@@ -62,10 +62,12 @@ awful.screen.connect_for_each_screen(function(s)
     local tags = require("tags")
 
     for i, v in ipairs(tags) do
+        -- only one screen, set all screen values of tagt to 1
         if screencount == 1 then
             v.screen = 1
         end
 
+        -- only create a tag, if screen index matches screen value of tag
         if s.index == v.screen then
             awful.tag.add(v.name, {
                 index = i,
@@ -75,6 +77,7 @@ awful.screen.connect_for_each_screen(function(s)
             })
         end
 
+        -- set up keymappings for each screen
         local screen = screen[v.screen]
 
         globalkeys = gears.table.join(globalkeys,

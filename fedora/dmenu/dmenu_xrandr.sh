@@ -73,18 +73,18 @@ then
   choice=$(echo "$(printf '%s\n' "${options_ctn[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in
     asus)
-      xrandr --output $ctn_asus --auto --primary \
-        --output $ctn_huion --off
+      xrandr --output $ctn_asus --auto --primary
+      xrandr --output $ctn_huion --off
       restart_wm
     ;;
     huion)
-      xrandr --output $ctn_huion --auto --primary \
-        --output $ctn_asus --off
+      xrandr --output $ctn_huion --auto --primary
+      xrandr --output $ctn_asus --off
       restart_wm
     ;;
     dual)
-      xrandr --output $ctn_asus --auto --primary --output \
-        $ctn_huion --auto --below DP-5
+      xrandr --output $ctn_asus --auto --primary
+      xrandr --output $ctn_huion --auto --below $ctn_asus
       restart_wm
     ;;
     *)

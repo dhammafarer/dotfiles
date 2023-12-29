@@ -94,7 +94,8 @@ local tabs = {
 }
 
 local floaterm = {
-    t = { "<Cmd>FloatermToggle myfloat<CR>", "Toggle terminal" },
+    t = { "<Cmd>FloatermToggle first<CR>", "Toggle first terminal" },
+    T = { "<Cmd>FloatermToggle second<CR>", "Toggle second terminal" },
     ["<Esc>"] = { "<C-\\><C-n>:q<CR>", "Close floatterm", mode = "t" }
 }
 
