@@ -5,6 +5,7 @@ launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #ffb05f -sf #192330 -fn 11'
 declare -a options=(
 "pcscd"
 "sxhkd"
+"logid"
 "xmodmap"
 "picom"
 )
@@ -24,6 +25,10 @@ case "$choice" in
 	;;
 	xmodmap)
 		xmodmap ~/.Xmodmap && notify-send -t 600 "Restarted" "$choice"
+	;;
+	logid)
+        notify-send "Please touch the device"
+		sudo systemctl restart logid
 	;;
 	pcscd)
         notify-send "Please touch the device"
