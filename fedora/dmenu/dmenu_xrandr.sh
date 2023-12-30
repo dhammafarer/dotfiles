@@ -29,8 +29,8 @@ deck_builtin="eDP --rotate right"
 deck_external="DisplayPort-0"
 
 nuc_tv=HDMI-A-0
-nuc_asus=HDMI-A-1
-nuc_huion=DisplayPort-0
+nuc_asus=HDMI-A-4
+nuc_huion=DisplayPort-3
 
 restart_wm () {
     awesome-client "awesome.restart()"
