@@ -7,7 +7,7 @@
 	pager = less -F
 	hookspath = /home/pl/.git/hooks
 [pull]
-	rebase = false
+	rebase = true
 [init]
 	defaultBranch = main
 [filter "lfs"]
