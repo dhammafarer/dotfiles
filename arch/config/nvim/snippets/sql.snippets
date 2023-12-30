@@ -13,18 +13,57 @@ snippet drop_table_if_exists
 snippet if_exists
 	IF EXISTS
 
+snippet cascade
+	CASCADE
+
 # crud
 snippet select_from
 	SELECT
-		${1:*}
+		${0:*}
 	FROM
-		${2:table};
+		${1:table};
 
 snippet insert_into
 	INSERT INTO
 		${1:table}
 	VALUES
 		${2:value}
+
+snippet group_by
+	GROUP BY
+		${2:value}
+
+# aggregate
+snippet sum
+	SUM($1)
+
+snippet avg 
+	AVG($1) 
+
+snippet min 
+	MIN($1) 
+
+snippet max 
+	MAX($1) 
+
+snippet count 
+	COUNT($1) 
+
+# sorting
+snippet order_by
+	ORDER BY
+
+snippet asc
+	ASC
+
+snippet desc
+	DESC
+
+snippet offset
+	OFFSET
+
+snippet limit
+	LIMIT
 
 # keywords
 snippet where
