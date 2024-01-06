@@ -13,7 +13,49 @@ snippet drop_table_if_exists
 snippet if_exists
 	IF EXISTS
 
+# transactions
+snippet begin
+	BEGIN
+
+# functions
+snippet create_or_replace_function
+	CREATE OR REPLACE FUNCTION
+
+snippet now()
+	NOW()
+
+snippet trigger
+	TRIGGER
+
+snippet union 
+	UNION 
+
+snippet union_all
+	UNION ALL
+
+snippet with_as
+	WITH ${1:table} AS (
+	  $2
+	)
+
+snippet create_view
+	CREATE VIEW ${1:view} AS (
+	  $2
+	)
+
+snippet create_index_on
+	CREATE INDEX ON ${1:table} (${2:column});
+
+snippet drop_index
+	DROP INDEX ${1:table}_${2:column}_idx;
+
+snippet explain_analyze
+	EXPLAIN ANALYZE
+
 # crud
+snippet select
+	SELECT
+
 snippet select_from
 	SELECT
 		${1:*}
@@ -68,7 +110,7 @@ snippet primary_key
 	PRIMARY KEY
 
 snippet references
-	REFERENCES ${1:table} (${2:field})
+	REFERENCES ${1:table} (${2:column})
 
 snippet on_delete_set_null
 	ON DELETE SET NULL
@@ -79,61 +121,18 @@ snippet on_delete_set_default
 snippet on_delete_cascade
 	ON DELETE CASCADE
 
-### data types
-# string
-snippet char
-	CHAR
+snippet default
+	DEFAULT
 
-snippet text
-	TEXT
+snippet current_timestamp
+	CURRENT_TIMESTAMP
 
-snippet varchar
-	VARCHAR($1)
+snippet current_time
+	CURRENT_TIME
 
-# numeric
-snippet bigint
-	BIGINT
+# common fields
+snippet updated_at
+	updated_at
 
-snippet bool
-	BOOL
-
-snippet smallint
-	SMALLINT
-
-snippet mediumint
-	MEDIUMINT
-
-snippet integer
-	INTEGER
-
-snippet float 
-	FLOAT 
-
-snippet double_precision 
-	DOUBLE PRECISION
-
-snippet serial
-	SERIAL
-
-# date and time
-snippet date
-	DATE
-
-snippet datetime
-	DATETIME
-
-snippet timestamp
-	TIMESTAMP
-
-snippet time
-	TIME
-
-snippet year
-	YEAR
-
-# other
-snippet json
-	JSON
-
-snippet jsonb
-	JSONB
+snippet created_at
+	created_at

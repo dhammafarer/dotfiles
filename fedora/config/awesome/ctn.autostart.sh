@@ -38,7 +38,6 @@ run unclutter --timeout 1 --start-hidden --ignore-scrolling
 run_thunderbird
 run_flatpak com.nextcloud.desktopclient.nextcloud
 run_flatpak org.signal.Signal
-run_flatpak org.goldendict.GoldenDict
 
 xmodmap ~/.xmodmap
 

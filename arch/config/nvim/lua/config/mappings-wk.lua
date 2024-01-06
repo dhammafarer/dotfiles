@@ -37,6 +37,7 @@ local file = {
         q = { "<cmd>quit<cr>", "Quit" },
         x = { "<cmd>quit<cr>", "Quit" },
         n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
+        y = { "<cmd>%y+<cr>", "Coppy contents to clipboard" },
     }
 }
 
@@ -45,6 +46,7 @@ local lsp = {
     ["<C-k>"] = { vim.lsp.buf.signature_help, "LSP Signature help" },
     ["<C-space>"] = { vim.lsp.buf.hover, "LSP Hover" },
     ["<C-d>"] = { vim.lsp.buf.definition, "[LSP] Go to Definition" },
+    ["<C-f>"] = { function() vim.lsp.buf.format { async = true } end, "LSP Format", mode = "i" },
     ["<space>"] = {
         a = { vim.lsp.buf.code_action, "LSP Code Action" },
         c = {
@@ -60,7 +62,8 @@ local lsp = {
             i = { vim.lsp.buf.implementation, "Go to Implementation" },
             r = { vim.lsp.buf.references, "Go to References" },
             t = { vim.lsp.buf.type_definition, "Go to Type Definition" },
-        }
+        },
+        Q = { "<cmd>LspRestart<cr>", "LSP Restart" },
     },
     g = {
         name = "+go to",
@@ -142,14 +145,28 @@ local codeium = {
     ["<leader>"] = {
         a = {
             name = "+assistant",
-            a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
-            e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
             d = { "<cmd>CodeiumEnable<cr>", "Codeium Enable" },
             D = { "<cmd>CodeiumDisable<cr>", "Codeium Disable" },
         }
     }
 }
 
+local chatgpt = {
+    ["<leader>"] = {
+        a = {
+            name = "+assistant",
+            a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
+            e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
+        }
+    }
+}
+
+local capslock = {
+    ["<A-n>"] = { "<Plug>CapsLockToggle", "Toggle Capslock", mode = "i" }
+}
+
+wk.register(capslock)
+wk.register(chatgpt)
 wk.register(file)
 wk.register(telescope)
 wk.register(lsp)
@@ -159,7 +176,7 @@ wk.register(tabs)
 wk.register(floaterm)
 wk.register(hop)
 wk.register(builtin)
-wk.register(codeium)
+--wk.register(codeium)
 wk.register(noop)
 
 wk.setup({})
