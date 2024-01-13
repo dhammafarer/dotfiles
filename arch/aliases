@@ -23,6 +23,10 @@ alias sal="source ~/.aliases"
 alias v="nvim_fg"
 alias xo="xdg-open"
 
+ssht() {
+    /usr/bin/ssh -t "$@" "tmux attach || tmux new"
+}
+
 gu() {
   if [ -z "$1" ]; then
     gitui

@@ -1,3 +1,7 @@
+# user
+snippet create_user
+	CREATE USER ${1:username};
+
 # table
 snippet create_table
 	CREATE TABLE ${1:table} (
@@ -13,7 +17,6 @@ snippet drop_table_if_exists
 snippet if_exists
 	IF EXISTS
 
-<<<<<<< HEAD:arch/config/nvim/snippets/sql/sql.snippets
 # transactions
 snippet begin
 	BEGIN
@@ -52,10 +55,9 @@ snippet drop_index
 
 snippet explain_analyze
 	EXPLAIN ANALYZE
-=======
+
 snippet cascade
 	CASCADE
->>>>>>> main:arch/config/nvim/snippets/sql.snippets
 
 # crud
 snippet select
