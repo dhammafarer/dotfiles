@@ -88,6 +88,7 @@ vim.filetype.add({
     ['.*.jet'] = 'html',
     ['.*go.mod'] = 'gomod',
     ['.*.bu'] = 'yaml',
+    ['.*.yml.j2'] = 'yaml.j2',
     ['.*.dbml'] = 'dbml',
   },
 })

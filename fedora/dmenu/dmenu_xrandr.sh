@@ -30,7 +30,7 @@ deck_external="DisplayPort-0"
 
 nuc_tv=HDMI-A-0
 nuc_asus=HDMI-A-4
-nuc_huion=DisplayPort-3
+nuc_huion=DisplayPort-0
 
 restart_wm () {
     awesome-client "awesome.restart()"

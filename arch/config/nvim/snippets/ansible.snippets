@@ -1,16 +1,31 @@
 snippet c "comment"
 	# $1
 
-snippet d "debug"
+snippet debug
 	- name: ${1:Debug}
 	  ansible.builtin.debug:
 			${2:var}: $0
 
-snippet b "breakpoint"
+snippet fail
 	- name: Breakpoint
 	  ansible.builtin.fail:
 			msg: "Breakpoint"
 
-snippet f "flush handlers"
+snippet flush_handlers
 	- name: Flush handlers.
 	  ansible.builtin.meta: flush_handlers
+
+snippet playbook
+	---
+	- name: ${1:name}
+	  hosts: ${2:all}
+	
+	  tasks:
+	    - name: $0
+
+snippet block_user
+	- name: Run tasks for user {{ $1 }}.
+	  become: true
+	  become_user: "{{ $1 }}"
+	  block:
+	    - name: $0
