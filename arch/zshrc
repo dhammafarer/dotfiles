@@ -7,7 +7,7 @@ ZSH_THEME="avit"
 autoload -Uz compinit
 compinit
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd podman kubectl)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git pass fasd podman kubectl systemd)
 source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases

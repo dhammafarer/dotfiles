@@ -1,0 +1,20 @@
+#!/bin/sh
+
+alias ctn="sshdev ctn"
+
+alias baple="ssht baple"
+alias rpi="ssht rpi"
+alias asus="ssht asus"
+alias brix="ssht brix"
+alias gitserver="ssht gitserver"
+alias gitserver-test="ssht gitserver-test"
+alias prometheus="ssht prometheus"
+alias prometheus-test="ssht prometheus-test"
+
+sshdev() {
+    /usr/bin/ssh -t "$@" 'SSH_CONNECTION=1 distrobox enter dev'
+}
+
+ssht() {
+    /usr/bin/ssh -t "$@" "tmux attach || tmux new"
+}

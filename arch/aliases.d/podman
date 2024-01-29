@@ -3,3 +3,9 @@
 alias p="podman"
 alias pp="podman pod"
 alias pcomp="podman-compose"
+
+alias pvm="podman_volume_mountpoint"
+
+podman_volume_mountpoint() {
+    podman volume inspect $1 --format "{{.Mountpoint}}"
+}

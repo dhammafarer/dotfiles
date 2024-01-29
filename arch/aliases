@@ -9,6 +9,7 @@ source ~/.aliases.d/pacman
 source ~/.aliases.d/pass
 source ~/.aliases.d/podman
 source ~/.aliases.d/ranger
+source ~/.aliases.d/ssh
 source ~/.aliases.d/tailnet
 source ~/.aliases.d/vagrant
 
@@ -22,20 +23,6 @@ alias pc="pass -c"
 alias sal="source ~/.aliases"  
 alias v="nvim_fg"
 alias xo="xdg-open"
-
-alias ctn="sshdev ctn"
-alias baple="ssht baple"
-alias rpi="ssht rpi"
-alias asus="ssht asus"
-alias brix="ssht brix"
-
-sshdev() {
-    /usr/bin/ssh -t "$@" 'SSH_CONNECTION=1 distrobox enter dev'
-}
-
-ssht() {
-    /usr/bin/ssh -t "$@" "tmux attach || tmux new"
-}
 
 gu() {
   if [ -z "$1" ]; then
