@@ -6,7 +6,7 @@ alias gar="git_add_remote"
 alias gca="git commit --amend"
 alias gcir="git_create_init_repo"
 alias gcl="git_clone_repo"
-alias gcld="git_clone_repo_dhammafarer"
+alias gclp="git_clone_repo_palekiwi"
 alias gclr="git_clone_rpi"
 alias gcmd="git checkout master && git merge dev"
 alias gcr="git_create_repo"
@@ -43,16 +43,16 @@ git_clone_rpi() {
   git clone ssh://git@rpi:/srv/git/$1
 }
 
-git_clone_repo_dhammafarer() {
-  git clone git@github.com:dhammafarer/$1.git $2
+git_clone_repo_palekiwi() {
+  git clone git@github.com:palekiwi/$1.git $2
 }
 
-git_clone_role_dhammafarer() {
-  cd ~/code/roles/ && git clone git@github.com:dhammafarer/ansible-role-$1.git $1
+git_clone_role_palekiwi() {
+  cd ~/code/roles/ && git clone git@github.com:palekiwi/ansible-role-$1.git $1
 }
 
 git_submodule_add_role() {
-  git submodule add git@github.com:dhammafarer/ansible-role-$1.git $1
+  git submodule add git@github.com:palekiwi/ansible-role-$1.git $1
 }
 
 git_create_repo() {
@@ -61,13 +61,13 @@ git_create_repo() {
 
 git_set_remote() {
   NAME=${1:-`basename $PWD`}
-  git remote set-url origin git@github.com:dhammafarer/$NAME.git
+  git remote set-url origin git@github.com:palekiwi/$NAME.git
   git remote -v
 }
 
 git_add_remote() {
   NAME=${1:-`basename $PWD`}
-  git remote add origin git@github.com:dhammafarer/$NAME.git
+  git remote add origin git@github.com:palekiwi/$NAME.git
   git remote -v
 }
 
