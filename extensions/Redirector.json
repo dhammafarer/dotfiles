@@ -1,0 +1,24 @@
+{
+    "createdBy": "Redirector v3.5.3",
+    "createdAt": "2024-02-23T08:02:07.672Z",
+    "redirects": [
+        {
+            "description": "Youtube Subscriptions Only",
+            "exampleUrl": "https://www.youtube.com",
+            "exampleResult": "https://youtube.com/feed/subscriptions",
+            "error": null,
+            "includePattern": "https://(w{0,3}\\.)?youtube.com/?$",
+            "excludePattern": "",
+            "patternDesc": "Redirect from youtube homepage to subscriptions",
+            "redirectUrl": "https://youtube.com/feed/subscriptions",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame",
+                "history"
+            ]
+        }
+    ]
+}
