@@ -8,10 +8,8 @@ alias tplay="cd ~/tailnet && ansible-playbook"
 alias update_roles="cd ~/tailnet; ansible-galaxy install -r requirements.yml -f"
 
 tailnet_setup_dotfiles () {
-    dir=~/tailnet
     cmd=ansible-playbook
-    play=playbooks/workstation/dotfiles.yml
-    limit=$(hostname -d)
 
-    cd $dir && $cmd $play --limit $limit $@
+    cd /home/pl/tailnet && $cmd playbooks/workstation/dotfiles.yml --limit $(hostname -d)
+    cd /home/pl/devbox && $cmd playbooks/dev.yml -t dotfiles
 }
