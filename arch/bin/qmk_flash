@@ -5,11 +5,11 @@ image=ghcr.io/qmk/qmk_cli
 usb_args="--privileged -v /dev:/dev"
 
 keyboard=unikeyboard/divergetm2
-keymap=miryoku-alt
+keymap=miryoku
 target=flash
 
 qmk_host_dir=$HOME/qmk_firmware
-keymap_host_path=/home/pl/dotfiles/arch/config/qmk/keyboards/${keyboard}/keymaps/${keymap}
+keymap_host_path=/home/pl/dotfiles/arch/config/qmk/${keyboard}/${keymap}
 keymap_mount_path="/qmk_firmware/keyboards/${keyboard}/keymaps/${keymap}"
 
 cmd=$keyboard:$keymap:$target
