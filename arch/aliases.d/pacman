@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# pacman
+alias syu="cd ~/devbox && ansible-playbook playbooks/dev.yml -t packages"
+
 alias pacq="pacman -Qs"
 alias pacs="pacman -Ss"
 alias spacs="sudo pacman -Sy"

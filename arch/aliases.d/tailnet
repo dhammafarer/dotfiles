@@ -3,7 +3,6 @@
 alias setup_neovim="tplay playbooks/dev/neovim.yml"
 alias setup_dotfiles="tailnet_setup_dotfiles"
 alias sync_repos="tplay playbooks/workstation/sync_repos.yml"
-alias syu="tplay playbooks/dev/update.yml"
 alias tplay="cd ~/tailnet && ansible-playbook"
 alias update_roles="cd ~/tailnet; ansible-galaxy install -r requirements.yml -f"
 
