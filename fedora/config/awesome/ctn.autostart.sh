@@ -43,6 +43,4 @@ run nextcloud
 
 xmodmap ~/.xmodmap
 
-run_app Logseq
-
 run xscreensaver -no-splash

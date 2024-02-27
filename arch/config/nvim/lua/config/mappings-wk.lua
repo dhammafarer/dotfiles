@@ -1,4 +1,5 @@
 local wk = require("which-key")
+local kiwi = require('kiwi')
 
 vim.g.mapleader = ","
 
@@ -12,11 +13,12 @@ local telescope = {
         f = {
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
             f = { "<cmd>Telescope find_files<cr>", "Find File" },
+            w = { "<cmd>Telescope find_files cwd=/home/pl/Nextcloud/Notes<cr>", "Search files in wiki" },
+            t = { "<cmd>Telescope live_grep cwd=/home/pl/Nextcloud/Notes<cr>", "Search text in wiki" },
             g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
             h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
             m = { "<cmd>Telescope marks<cr>", "Marks" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-            t = { "<cmd>Telescope tags<cr>", "Tags" },
         },
     }
 }
@@ -98,7 +100,7 @@ local tabs = {
 
 local floaterm = {
     t = { "<Cmd>FloatermToggle first<CR>", "Toggle first terminal" },
-    T = { "<Cmd>FloatermToggle second<CR>", "Toggle second terminal" },
+    ["<A-t>"] = { "<Cmd>FloatermToggle second<CR>", "Toggle second terminal" },
     ["<Esc>"] = { "<C-\\><C-n>:q<CR>", "Close floatterm", mode = "t" }
 }
 
@@ -151,14 +153,16 @@ local codeium = {
     }
 }
 
-local chatgpt = {
+local utils = {
     ["<leader>"] = {
         a = {
             name = "+assistant",
             a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
             e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
-        }
-    }
+        },
+        v = { kiwi.open_wiki_index, "Open wiki index"},
+    },
+    T = { kiwi.todo.toggle, "Toggle Todo"},
 }
 
 local capslock = {
@@ -166,7 +170,7 @@ local capslock = {
 }
 
 wk.register(capslock)
-wk.register(chatgpt)
+wk.register(utils)
 wk.register(file)
 wk.register(telescope)
 wk.register(lsp)
