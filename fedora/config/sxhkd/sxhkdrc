@@ -18,7 +18,7 @@ super + Return
 super + {0,1,2,3,7,colon,equal}
     {flatpak run com.google.Chrome, \
     LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort,\
-    flatpak run org.mozilla.firefox,\
+    /usr/bin/firefox,\
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log, \
     flatpak run org.goldendict.GoldenDict, \
     flatpak run com.google.Chrome, \

@@ -33,6 +33,4 @@ run_flatpak org.signal.Signal
 
 xmodmap ~/.xmodmap
 
-run_app Logseq
-
 run xscreensaver -no-splash
