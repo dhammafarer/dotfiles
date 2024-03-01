@@ -8,6 +8,7 @@ source ~/.aliases.d/podman
 source ~/.aliases.d/vagrant
 
 alias ded="distrobox enter dev"
+alias blender="/home/pl/apps/blender/current/blender"
 
 run_molecule () {
   if ! type "molecule" &> /dev/null; then

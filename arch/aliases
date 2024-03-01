@@ -53,5 +53,5 @@ cat_to_clipboard () {
 }
 
 wiki () {
-    cd ~/Nextcloud/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
+    cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
 }

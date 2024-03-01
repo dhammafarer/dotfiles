@@ -7,3 +7,20 @@ alias ansg="ansible-galaxy"
 alias ansi="ansible-inventory"
 alias ansp="ansible-playbook"
 alias ansv="ansible-vault"
+
+alias wans="ansible_workstation"
+alias dans="ansible_devbox"
+
+ansible_workstation () {
+    dir=$(pwd)
+    cd /home/pl/workstation
+    ansible-playbook -l $(hostname -d) playbooks/main.yml -t $1
+    cd $dir
+}
+
+ansible_devbox () {
+    dir=$(pwd)
+    cd /home/pl/devbox
+    ansible-playbook playbooks/main.yml -t $1
+    cd $dir
+}
