@@ -52,6 +52,6 @@ cat_to_clipboard () {
     bat -p $1 | xclip -selection clipboard
 }
 
-wiki () {
+notes () {
     cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
 }
