@@ -66,8 +66,8 @@ const searchEngines = [
   },
   {
     key: "d",
-    name: "Dribbble",
-    url: "https://dribbble.com/search/",
+    name: "DDG",
+    url: "https://duckduckgo.com/?q=",
     fn: null,
   },
   {
