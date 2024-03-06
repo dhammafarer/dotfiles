@@ -55,3 +55,7 @@ cat_to_clipboard () {
 notes () {
     cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
 }
+
+alias calendar="calcurse"
+alias ollama="distrobox-host-exec /opt/ollama"
+alias oterm="source ~/.venv/dev/bin/activate && oterm"

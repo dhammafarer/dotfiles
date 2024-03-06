@@ -1,0 +1,13 @@
+[General]
+Binary = calcurse
+Hostname = nc.paradise-liberty.ts.net
+Path = remote.php/dav/calendars/pl/main
+AuthMethod = basic
+InsecureSSL = No
+HTTPS = Yes
+SyncFilter = cal,todo
+DryRun = No
+Verbose = Yes
+[Auth]
+Username = pl
+PasswordCommand = cat /home/pl/.calcurse
