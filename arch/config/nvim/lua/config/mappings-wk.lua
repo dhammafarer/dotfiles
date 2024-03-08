@@ -164,6 +164,12 @@ local utils = {
             e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
         },
         v = { kiwi.open_wiki_index, "Open wiki index"},
+        o = {
+            name = "+ollama",
+            o = { "<cmd>lua require('ollama').prompt()<cr>", "ollama prompt", mode = {"n", "v"} },
+            g = { "<cmd>lua require('ollama').prompt('Generate_Code')<cr>", "generate code", mode = {"n", "v"} },
+             
+        }
     },
     T = { kiwi.todo.toggle, "Toggle Todo"},
 }

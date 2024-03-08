@@ -14,7 +14,7 @@ alias dans="ansible_devbox"
 ansible_workstation () {
     dir=$(pwd)
     cd /home/pl/workstation
-    ansible-playbook -l $(hostname -d) playbooks/main.yml -t $1
+    ansible-playbook -l $(hostname -d | cut --delimiter="." --fields=1) playbooks/main.yml -t $1
     cd $dir
 }
 

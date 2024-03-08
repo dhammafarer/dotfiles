@@ -14,16 +14,20 @@ super + BackSpace
 super + Return
     rofi -show window -filter "Xfce4-terminal " -no-show-match
 
-# super + num
-super + {0,1,2,3,7,colon,equal}
-    {flatpak run com.google.Chrome, \
-    LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort,\
-    /usr/bin/firefox,\
-    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log, \
-    flatpak run org.goldendict.GoldenDict, \
-    flatpak run com.google.Chrome, \
-    /usr/bin/virt-manager, \
-    }
+super + 0
+    flatpak run com.google.Chrome
+super + 1
+    LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
+super + 2
+    /usr/bin/firefox
+super + 3
+    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
+super + 7
+    xfce4-terminal --working-directory="/home/pl/Nextcloud/Notes" -e "distrobox enter dev -e 'nvim index.md'"
+super + colon
+    flatpak run org.goldendict.GoldenDict
+super + equal
+    /usr/bin/virt-manager
 
 # lock screen
 super + shift + Escape

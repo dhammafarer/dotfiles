@@ -57,5 +57,5 @@ notes () {
 }
 
 alias calendar="calcurse"
-alias ollama="distrobox-host-exec /opt/ollama"
-alias oterm="source ~/.venv/dev/bin/activate && oterm"
+alias ollama="/opt/ollama"
+alias oterm="source ~/.venv/arch/dev/bin/activate && oterm"

@@ -36,7 +36,7 @@ commit_dir "$data_dir" apts todo
 
 # Optionally run the CalDAV synchronization script in the background.
 cd "$data_dir" || exit
-if [ -d caldav ] && command -v CALCURSE_CALDAV_PASSWORD=$(pass show Cloud/calcurse) calcurse-caldav >/dev/null; then
+if [ -d caldav ] && command -v calcurse-caldav >/dev/null; then
 	(
 		date="$(date +'%b %d %H:%M:%S')"
 		echo "$date Running calcurse-caldav from the post-save hook..."
