@@ -1,6 +1,6 @@
 #!/bin/sh
 
-alias ctn="sshdev ctn"
+alias ctn="sshdev ctn -A"
 
 alias baple="ssht baple"
 alias rpi="ssht rpi"

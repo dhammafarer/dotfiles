@@ -1,6 +1,7 @@
 #!/bin/sh
 
 source ~/.aliases.d/ansible
+source ~/.aliases.d/bin
 source ~/.aliases.d/dev
 source ~/.aliases.d/exa
 source ~/.aliases.d/git
@@ -9,9 +10,9 @@ source ~/.aliases.d/pacman
 source ~/.aliases.d/pass
 source ~/.aliases.d/podman
 source ~/.aliases.d/ranger
-source ~/.aliases.d/ssh
 source ~/.aliases.d/tailnet
 source ~/.aliases.d/vagrant
+source ~/.aliases.d/vpn
 
 alias cat="bat -p"
 alias cdc="pwd | ctc"
@@ -51,11 +52,3 @@ nvim_fg () {
 cat_to_clipboard () {
     bat -p $1 | xclip -selection clipboard
 }
-
-notes () {
-    cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
-}
-
-alias calendar="calcurse"
-alias ollama="/opt/ollama"
-alias oterm="source ~/.venv/arch/dev/bin/activate && oterm"

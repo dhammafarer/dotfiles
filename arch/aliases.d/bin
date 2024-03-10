@@ -1,0 +1,9 @@
+#!/bin/sh
+
+notes () {
+    cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
+}
+
+alias calendar="calcurse"
+alias ollama="/opt/ollama"
+alias oterm="~/.venv/arch/dev/bin/python oterm"

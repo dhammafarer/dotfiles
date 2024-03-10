@@ -3,3 +3,5 @@
 export EDITOR=/usr/bin/vi
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
+
+export OLLAMA_URL=http://ctn:11434/api
