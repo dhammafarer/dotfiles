@@ -165,10 +165,11 @@ local utils = {
             e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
         },
         v = { kiwi.open_wiki_index, "Open wiki index"},
-        o = {
+        t = {
             name = "+ollama",
-            o = { "<cmd>lua require('ollama').prompt()<cr>", "ollama prompt", mode = {"n", "v"} },
-            g = { "<cmd>lua require('ollama').prompt('Generate_Code')<cr>", "generate code", mode = {"n", "v"} },
+            a = { ":<c-u>Ollama Ask<cr>", "Ask", mode = {"n", "v"} },
+            t = { ":<c-u>lua require('ollama').prompt()<cr>", "ollama prompt", mode = {"n", "v"} },
+            s = { ":<c-u>Ollama Summarize<cr>", "Summarize", mode = {"n", "v"} },
         },
         g = {
             name = "+Gen",
