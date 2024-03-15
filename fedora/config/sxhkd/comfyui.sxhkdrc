@@ -1,0 +1,22 @@
+#### ComfyUI ####
+
+super + Escape; a
+    ~/dotfiles/fedora/bin/comfyui-cmd "apply"
+
+super + Escape; c
+    ~/dotfiles/fedora/bin/comfyui-cmd "conditioning"
+
+super + Escape; s
+    ~/dotfiles/fedora/bin/comfyui-cmd "KSampler" true
+
+super + Escape; g
+    ~/dotfiles/fedora/bin/comfyui-cmd "mask"
+
+super + Escape; p
+    ~/dotfiles/fedora/bin/comfyui-cmd "load"
+
+super + Escape; v
+    ~/dotfiles/fedora/bin/comfyui-cmd "vae"
+
+super + Escape; r
+    ~/dotfiles/fedora/bin/comfyui-cmd "image"

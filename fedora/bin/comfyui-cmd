@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sleep 0.1
+
+xdotool click --repeat 2 1
+
+xdotool type "$1"
+
+[[ -z "$2" ]] && exit
+
+sleep 0.1
+
+xdotool key Enter 

@@ -24,3 +24,10 @@ ansible_devbox () {
     ansible-playbook playbooks/main.yml -t $1
     cd $dir
 }
+
+neovim-plugins () {
+    dir=$(pwd)
+    cd /home/pl/devbox
+    ansible-playbook playbooks/neovim.yml -t plugins
+    cd $dir
+}

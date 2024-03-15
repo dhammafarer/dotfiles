@@ -5,7 +5,6 @@
 #   \__ \>  <| | | |   < (_| | | | (__ 
 #   |___/_/\_\_| |_|_|\_\__,_|_|  \___|
 #                                                                          
-
 # guest terminals
 super + BackSpace
     xfce4-terminal -e "distrobox enter dev"
@@ -40,12 +39,12 @@ super + shift + Escape
 super + control + Escape
     xscreensaver-command -a
 
-#super + space
-#    playerctl -p firefox.instance2 play-pause
+super + space
+    playerctl -i cmus play-pause
 
 # temporary workaround until media keys are fixed on Udemy
-super + space
-    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Space
+#super + space
+#    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Space
 
 XF86AudioPrev
     xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Left
@@ -164,16 +163,6 @@ Print
 # PureRef
 super + space; p
     QT_SCALE_FACTOR=1.12 PureRef
-
-##########################
-#       LEFT PINKY       #
-#       XF86Launch9      #
-##########################
-
-# virtual machine manager
-super + Escape; s
-    /usr/bin/virt-manager
-
 
 #######################
 ####   text entry  ####

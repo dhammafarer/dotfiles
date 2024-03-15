@@ -3,6 +3,9 @@ local kiwi = require('kiwi')
 
 vim.g.mapleader = ","
 
+vim.keymap.set({'n', 'v'}, '<Down>', 'gj')
+vim.keymap.set({'n', 'v'}, '<Up>', 'gk')
+
 local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<A-s>"] = { "<cmd>Telescope yaml_schema<cr>", "Yaml Schema" },
@@ -142,8 +145,6 @@ local codeium = {
     ["<C-u>"] = { function() return vim.fn['codeium#Accept']() end, "Codeium Accept", mode = "i", expr = true },
     ["<C-l>"] = { function() return vim.fn['codeium#CycleCompletions'](-1) end, "Codeium Accept", mode = "i", expr = true },
     ["<C-y>"] = { function() return vim.fn['codeium#CycleCompletions'](1) end, "Codeium Accept", mode = "i", expr = true },
-    ["<C-h>"] = { "<cmd>CodeiumDisable<cr>", "Codeium Disable", mode = "i" },
-    ["<C-k>"] = { "<cmd>CodeiumEnable<cr>", "Codeium Enable", mode = "i" },
     ["<leader>"] = {
         a = {
             name = "+assistant",
@@ -168,7 +169,10 @@ local utils = {
             name = "+ollama",
             o = { "<cmd>lua require('ollama').prompt()<cr>", "ollama prompt", mode = {"n", "v"} },
             g = { "<cmd>lua require('ollama').prompt('Generate_Code')<cr>", "generate code", mode = {"n", "v"} },
-             
+        },
+        g = {
+            name = "+Gen",
+            g = { ":Gen<CR>", "Run", mode = {"n", "v"} },
         }
     },
     T = { kiwi.todo.toggle, "Toggle Todo"},
@@ -189,7 +193,7 @@ wk.register(tabs)
 wk.register(floaterm)
 wk.register(hop)
 wk.register(builtin)
---wk.register(codeium)
+wk.register(codeium)
 wk.register(noop)
 
 wk.setup({})
