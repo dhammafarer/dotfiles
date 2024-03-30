@@ -29,4 +29,3 @@ if [[ -z $SSH_CONNECTION ]]; then
     zstyle ':notify:*' activate-terminal no
     zstyle ':notify:*' enable-on-ssh no
 fi
-eval "$(~/.rbenv/bin/rbenv init - zsh)"

@@ -1,10 +1,41 @@
 snippet frozen_string_literal
 	# frozen_string_literal: true
 
-snippet do
+	$0
+
+snippet d
 	do |$1|
-		$0
+	  $0
 	end
 
-snippet bl
+snippet do
+	do
+	  $0
+	end
+
+snippet b
 	{ |$1| $0 }
+
+snippet sl
+	->($1) { $0 }
+
+snippet l
+	lambda { |$1| $0 }
+
+snippet def
+	def $1
+	  $0
+	end
+
+snippet if
+	if $1
+	  $0
+	end
+
+snippet binding.irb
+	binding.irb
+
+snippet RSpec.describe
+	RSpec.describe "$1" do
+	  $0
+	end

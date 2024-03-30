@@ -10,10 +10,10 @@ super + BackSpace
     xfce4-terminal -e "distrobox enter dev"
 
 # Rofi list terminals
-super + shift + Return
+super + Return
     rofi -show window -filter "Xfce4-terminal " -no-show-match
 
-super + Return
+super + shift + Return
     xfce4-terminal -e "bash -c 'source ~/.bashenv && ~/.venv/fedora/user/bin/oterm'"
 
 super + 0
@@ -21,7 +21,8 @@ super + 0
 super + 1
     LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 super + 2
-    /usr/bin/firefox
+    flatpak run org.mozilla.firefox
+    #/usr/bin/firefox
 super + 3
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
 super + 7
@@ -130,7 +131,7 @@ XF86Launch9; b
 
 control + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     {pactl set-sink-volume @DEFAULT_SINK@ 50%; notify-send -t 800 "Master Vol:" 50%, \
-    pactl set-sink-volume @DEFAULT_SINK@ 100%; notify-send -t 800 "Master Vol:" 100%}
+    pactl set-sink-volume @DEFAULT_SINK@ 75%; notify-send -t 800 "Master Vol:" 75%}
 
 shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
    cmus-remote -v {-,+}5%
@@ -139,9 +140,9 @@ shift + control + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
    {cmus-remote -v 50%; notify-send -t 800 "Cmus Vol:" 50%, \
    cmus-remote -v 75%; notify-send -t 800 "Cmus Vol:" 75%}
 
-# connect H15 Pro
+# connect TOZO OpenBuds
 control + XF86MonBrightnessDown
-   bluetoothctl connect 41:42:22:98:1F:9F
+   bluetoothctl connect 58:FC:C6:CE:92:70
 
 # connect Redmi Buds 4
 control + XF86MonBrightnessUp
