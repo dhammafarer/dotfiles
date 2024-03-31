@@ -8,9 +8,8 @@ export EDITOR=nvim
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 # dev
 PATH="$HOME/.npm-global/bin/:$HOME/.cargo/bin:$(go env GOPATH)/bin:$PATH"
-# ruby
+
 PATH="$HOME/.rbenv/bin:$PATH"
-export PATH
 
 export LD_LIBRARY_PATH=/usr/local/lib
 
@@ -20,4 +19,5 @@ export REDMI_BUDS4="E0:08:71:88:2A:B9"
 export H15_PRO="41:42:22:98:1F:9F"
 export TOZO="58:FC:C6:CE:92:70"
 
+export PATH
 eval "$(~/.rbenv/bin/rbenv init - zsh)"
