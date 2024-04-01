@@ -37,6 +37,8 @@ run sxhkd -c $SXHKDRC
 run ibus-daemon -drxR
 run unclutter --timeout 1 --start-hidden --ignore-scrolling
 
+run nextcloud
+
 run_flatpak org.signal.Signal
 
 xmodmap ~/.xmodmap
