@@ -131,7 +131,7 @@ XF86Launch9; b
 
 control + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     {pactl set-sink-volume @DEFAULT_SINK@ 50%; notify-send -t 800 "Master Vol:" 50%, \
-    pactl set-sink-volume @DEFAULT_SINK@ 75%; notify-send -t 800 "Master Vol:" 75%}
+    pactl set-sink-volume @DEFAULT_SINK@ 65%; notify-send -t 800 "Master Vol:" 65%}
 
 shift + { XF86AudioLowerVolume,XF86AudioRaiseVolume }
    cmus-remote -v {-,+}5%

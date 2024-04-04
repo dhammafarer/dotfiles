@@ -3,6 +3,7 @@
 alias ctn="sshdev ctn -A"
 
 alias baple="ssht baple"
+alias gpuserver="ssht gpuserver"
 alias rpi="ssht rpi"
 alias asus="ssht asus"
 alias brix="ssht brix"

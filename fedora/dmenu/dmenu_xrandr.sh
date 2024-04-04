@@ -36,7 +36,7 @@ restart_wm () {
     awesome-client "awesome.restart()"
 }
 
-if [[ $(hostname) == "nuc" ]];
+if [[ $(hostname -s) == "nuc" ]];
 then
   choice=$(echo "$(printf '%s\n' "${options_nuc[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in
@@ -68,7 +68,7 @@ then
       exit 1
     ;;
   esac
-elif [[ $(hostname) == "ctn" ]];
+elif [[ $(hostname -s) == "ctn" ]];
 then
   choice=$(echo "$(printf '%s\n' "${options_ctn[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in
@@ -91,7 +91,7 @@ then
       exit 1
     ;;
   esac
-elif [[ $(hostname) == "deck" ]];
+elif [[ $(hostname -s) == "deck" ]];
 then
   choice=$(echo "$(printf '%s\n' "${options_deck[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in
