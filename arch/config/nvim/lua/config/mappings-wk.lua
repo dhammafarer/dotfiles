@@ -159,6 +159,7 @@ local utils = {
     ["<F5>"] = { "<C-R>=strftime('%F')<cr>", "Insert date", mode = "i" },
     ["<F6>"] = { "<C-R>=strftime('%a, %d %b %Y')<cr>", "Insert pretty date", mode = "i" },
     ["<F8>"] = { "<C-R>=expand('%:t')<cr>", "Insert current filename", mode = "i" },
+    ["<F9>"] = { "<cmd>%s/_/ /g<cr>", "Insert current filename", mode = "n" },
     ["<leader>"] = {
         a = {
             name = "+assistant",
