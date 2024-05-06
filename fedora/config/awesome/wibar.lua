@@ -4,6 +4,7 @@ local wibox = require("wibox")
 
 require("globals")
 
+local battery_widget = require("widgets.battery-widget.battery")
 local volume_widget = require('widgets.pactl-widget.volume')
 local cmus_widget = require('widgets.cmus')
 local capslock = require('widgets.capslock')
@@ -102,6 +103,7 @@ local function setup_wibar(s)
       layout = wibox.layout.fixed.horizontal,
       spacing = 4,
       capslock,
+      battery_widget(),
       cmus_widget {
       },
       myvolume,
