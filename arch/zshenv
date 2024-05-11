@@ -21,3 +21,5 @@ export TOZO="58:FC:C6:CE:92:70"
 
 export PATH
 eval "$(~/.rbenv/bin/rbenv init - zsh)"
+
+if [ -e /home/pl/.nix-profile/etc/profile.d/nix.sh ]; then . /home/pl/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

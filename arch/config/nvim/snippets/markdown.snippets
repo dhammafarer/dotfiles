@@ -1,2 +1,14 @@
 snippet todo
 	- [ ] $0
+
+snippet _template:pair
+	---
+	date: $1
+	topic: $2
+	with: ${3}
+	repo: ${4:spabreaks}
+	branch: $5
+	url: $6
+	---
+
+	$0

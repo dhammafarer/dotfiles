@@ -1,11 +1,11 @@
 [user]
-	email = contact@palekiwi.com
-	name = Pale Kiwi
+	email = dev@palekiwi.com
+	name = Pawel Lisewski
 [core]
 	editor = /usr/sbin/nvim
 	excludesfile = ~/.gitignore
 	pager = less -F
-	hookspath = /home/pl/.githooks
+    #hookspath = /home/pl/.githooks
 [pull]
 	rebase = true
 [init]

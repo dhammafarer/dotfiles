@@ -1,7 +1,8 @@
 #!/bin/sh
 
 
-alias gac="git add . && git commit -m"
+alias gac="git add . && git commit"
+alias gacm="git add . && git commit -m"
 alias gar="git_add_remote"
 alias gca="git commit --amend"
 alias gcir="git_create_init_repo"

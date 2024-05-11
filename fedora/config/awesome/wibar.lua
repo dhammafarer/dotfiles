@@ -103,10 +103,10 @@ local function setup_wibar(s)
       layout = wibox.layout.fixed.horizontal,
       spacing = 4,
       capslock,
-      battery_widget(),
       cmus_widget {
       },
       myvolume,
+      battery_widget(),
       mytextclock,
       mysystray,
     },

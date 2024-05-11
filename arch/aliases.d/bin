@@ -4,6 +4,12 @@ notes () {
     cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
 }
 
+ygt () {
+    cd ~/Notes/ygt && nvim +"lua require('kiwi').open_wiki_index('ygt')" index.md
+}
+
 alias calendar="calcurse"
 alias ollama="/opt/ollama"
 alias oterm="~/.venv/arch/dev/bin/python oterm"
+
+alias hmake="distrobox-host-exec make"

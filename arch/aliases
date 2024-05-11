@@ -3,6 +3,7 @@
 source ~/.aliases.d/ansible
 source ~/.aliases.d/bin
 source ~/.aliases.d/dev
+source ~/.aliases.d/docker
 source ~/.aliases.d/exa
 source ~/.aliases.d/git
 source ~/.aliases.d/molecule

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source ~/.aliases.d/ansible
+source ~/.aliases.d/docker
 source ~/.aliases.d/git
 source ~/.aliases.d/minikube
 source ~/.aliases.d/molecule

@@ -17,7 +17,9 @@ super + shift + Return
     xfce4-terminal -e "bash -c 'source ~/.bashenv && ~/.venv/fedora/user/bin/oterm'"
 
 super + 0
-    flatpak run com.google.Chrome
+    flatpak run com.google.Chrome --profile-directory=Default
+super + shift+ 0
+    flatpak run com.google.Chrome --profile-directory="Profile 1"
 super + 1
     LC_MONETARY=zh_TW.utf8 ~/.local/bin/rofi -show calc -modi calc -no-show-match -no-sort
 super + 2

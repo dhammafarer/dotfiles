@@ -166,7 +166,8 @@ local utils = {
             a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
             e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
         },
-        v = { kiwi.open_wiki_index, "Open wiki index"},
+        V = { function() kiwi.open_wiki_index("notes") end, "Open notes wiki index"},
+        v = { function() kiwi.open_wiki_index("ygt") end, "Open ygt wiki index"},
         t = {
             name = "+ollama",
             a = { ":<c-u>Ollama Ask<cr>", "Ask", mode = {"n", "v"} },
