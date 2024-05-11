@@ -8,7 +8,7 @@ vim.keymap.set({'n', 'v'}, '<Up>', 'gk')
 
 local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-    ["<A-s>"] = { "<cmd>Telescope yaml_schema<cr>", "Yaml Schema" },
+    ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
     ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=true<cr>", "Tags" },
@@ -16,12 +16,13 @@ local telescope = {
         f = {
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
             f = { "<cmd>Telescope find_files<cr>", "Find File" },
-            w = { "<cmd>Telescope find_files cwd=/home/pl/Nextcloud/Notes<cr>", "Search files in wiki" },
-            t = { "<cmd>Telescope live_grep cwd=/home/pl/Nextcloud/Notes<cr>", "Search text in wiki" },
-            g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
             h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
             m = { "<cmd>Telescope marks<cr>", "Marks" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+            s = { "<cmd>Telescope grep_string<cr>", "Live Grep" },
+            t = { "<cmd>Telescope live_grep cwd=/home/pl/Nextcloud/Notes<cr>", "Search text in wiki" },
+            w = { "<cmd>Telescope find_files cwd=/home/pl/Nextcloud/Notes<cr>", "Search files in wiki" },
+            y = { "<cmd>Telescope yaml_schema<cr>", "Yaml Schema" },
         },
     }
 }
@@ -47,7 +48,6 @@ local file = {
 }
 
 local lsp = {
-    ["<A-s>"] = { "<cmd>set ft=yaml<cr><cmd>Telescope yaml_schema<cr>", "Yaml Schema" },
     ["<C-k>"] = { vim.lsp.buf.signature_help, "LSP Signature help" },
     ["<C-space>"] = { vim.lsp.buf.hover, "LSP Hover" },
     ["<C-d>"] = { vim.lsp.buf.definition, "[LSP] Go to Definition" },
