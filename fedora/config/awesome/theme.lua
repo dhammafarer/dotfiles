@@ -11,7 +11,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.master_width_factor = 0.5
+theme.master_width_factor = 0.66
 
 local colors = {}
 

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+##### spa
+alias spa="cd ~/code/ygt/spabreaks"
+alias spa_console="spa && hmake console"
+alias spa_dev="spa && hmake dev"
+alias spa_guard="spa && hmake guard"
+alias spa_db-migrate="spa && hmake db-migrate"
+alias spa_db-rollback="spa && hmake db-rollback"
+alias spa_db-redo="spa && hmake db-migrate-redo"
+alias spa_routes="spa && hmake routes"
+alias spa_test="spa && hmake test-bash"
+alias spa_build="spa && hmake build"
+
+##### wss
+alias wss="cd ~/code/ygt/sales"
+alias wss_dev="wss && hmake db-run && hmake dev"
+
+##### btr
+alias btr="cd ~/code/ygt/booking-transform"
+alias btr_dev="btr && hmake dev"
+
+##### vrs
+alias vrs="cd ~/code/ygt/sb-voucher-redemptions"
+alias vrs_dev="vrs && hmake dev"
+
+##### mya
+alias mya="cd ~/code/ygt/my-account"

@@ -25,7 +25,7 @@ set.scrolloff = 5
 set.fileencoding = 'utf-8'
 
 set.number = true
-set.relativenumber = true
+set.relativenumber = false
 set.cursorline = false
 
 set.timeout = true

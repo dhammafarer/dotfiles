@@ -2,6 +2,7 @@
 
 source ~/.aliases.d/ansible
 source ~/.aliases.d/bin
+source ~/.aliases.d/bluetooth
 source ~/.aliases.d/dev
 source ~/.aliases.d/docker
 source ~/.aliases.d/exa
@@ -14,6 +15,7 @@ source ~/.aliases.d/ranger
 source ~/.aliases.d/tailnet
 source ~/.aliases.d/vagrant
 source ~/.aliases.d/vpn
+source ~/.aliases.d/ygt
 
 alias cat="bat -p"
 alias cdc="pwd | ctc"

@@ -18,4 +18,4 @@ box=dev
 idx=1
 
 awesome-client "require('awful.screen').focused().tags[$idx]:view_only()"
-awesome-client "require('awful.spawn').spawn('$term -e \"distrobox enter $box -e \'nvim $path\'\"')"
+awesome-client "require('awful.spawn').spawn('$term -e \"distrobox enter $box -- nvim -f $path\"')"

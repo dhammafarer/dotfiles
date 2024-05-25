@@ -1,0 +1,4 @@
+#!/bin/sh
+
+alias blredmi="bluetoothctl connect E0:08:71:88:2A:B9"
+alias bltozo="bluetoothctl connect 58:FC:C6:CE:92:70"
