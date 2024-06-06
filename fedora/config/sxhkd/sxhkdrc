@@ -16,8 +16,10 @@ super + Return
 super + shift + Return
     xfce4-terminal -e "bash -c 'source ~/.bashenv && ~/.venv/fedora/user/bin/oterm'"
 
+#super + 0
+#    flatpak run com.google.Chrome --profile-directory=Default
 super + 0
-    flatpak run com.google.Chrome --profile-directory=Default
+    flatpak run com.google.Chrome
 super + shift+ 0
     flatpak run com.google.Chrome --profile-directory="Profile 1"
 super + 1
@@ -72,6 +74,12 @@ super + control + space
 # XF86                  #XF86BrightnessUp
 # XF86                  #XF86WLAN
 
+XF86MonBrightnessUp
+    light -A 5
+
+XF86MonBrightnessDown
+    light -U 5
+
 XF86AudioMute
     playerctl -p firefox.instance2 play-pause
 
@@ -125,8 +133,8 @@ XF86Launch9; b
 ##################
 
 # horizontal mouse scroll
-{ button7,button6 }
-    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+#{ button7,button6 }
+#    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%

@@ -1,28 +1,39 @@
 #!/bin/sh
 
+dir=/home/pl/ygt
+
 ##### spa
-alias spa="cd ~/code/ygt/spabreaks"
-alias spa_console="spa && hmake console"
-alias spa_dev="spa && hmake dev"
-alias spa_guard="spa && hmake guard"
-alias spa_db-migrate="spa && hmake db-migrate"
-alias spa_db-rollback="spa && hmake db-rollback"
-alias spa_db-redo="spa && hmake db-migrate-redo"
-alias spa_routes="spa && hmake routes"
-alias spa_test="spa && hmake test-bash"
-alias spa_build="spa && hmake build"
+alias spa="cd $dir/spabreaks"
+alias spa-db-migrate="spa && hmake db-migrate"
+alias spa-db-rollback="spa && hmake db-rollback"
+alias spa-db-redo="spa && hmake db-migrate-redo"
+alias spa-routes="spa && hmake routes"
+alias spa-build="spa && hmake build"
+
+spa-console () { spa && tmux new -s "spa-console" "distrobox-host-exec make console" }
+spa-dev () { spa && tmux new -s "spa-dev" "distrobox-host-exec make dev" }
+spa-guard () { spa && tmux new -s "spa-guard" "distrobox-host-exec make guard" }
+spa-debug () { spa && tmux new -s "spa-debug" "go-task debug-web" }
+spa-git () { spa && tmux new -s "spa-git" "gitui" }
+spa-test () { spa && distrobox-host-exec make test }
+spa-test-bash () { spa && tmux new -s "spa-test-bash" "distrobox-host-exec make test-bash" }
+
 
 ##### wss
-alias wss="cd ~/code/ygt/sales"
-alias wss_dev="wss && hmake db-run && hmake dev"
+alias wss="cd $dir/sales"
+alias wssdev="wss && hmake db-run && hmake dev"
 
 ##### btr
-alias btr="cd ~/code/ygt/booking-transform"
-alias btr_dev="btr && hmake dev"
+alias btr="cd $dir/booking-transform"
+alias btrdev="btr && hmake dev"
 
 ##### vrs
-alias vrs="cd ~/code/ygt/sb-voucher-redemptions"
-alias vrs_dev="vrs && hmake dev"
+alias vrs="cd $dir/sb-voucher-redemptions"
+alias vrsdev="vrs && hmake dev"
 
 ##### mya
-alias mya="cd ~/code/ygt/my-account"
+alias mya="cd $dir/my-account"
+alias myadev="mya && hmake dev"
+alias myatest="mya && hmake test"
+alias myaguard="mya && hmake guard"
+alias myabuild="mya && hmake build"

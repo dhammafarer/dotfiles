@@ -4,20 +4,20 @@ return {
     [1] = {
         name = "dev",
         key = "t",
-        layout = LAYOUT_CENTER,
+        layout = LAYOUT_BOTTOM,
         selected = true,
         screen = 1,
     },
     [2] = {
         name = "cmd",
         key = "d",
-        layout = LAYOUT_TILE,
+        layout = LAYOUT_BOTTOM,
         screen = 1,
     },
     [3] = {
         name = "web",
         key = "s",
-        layout = LAYOUT_CENTER,
+        layout = LAYOUT_BOTTOM,
         screen = 1,
     },
     [4] = {
@@ -35,7 +35,7 @@ return {
     [6] = {
         name = "log",
         key = "p",
-        layout = LAYOUT_CENTER,
+        layout = LAYOUT_BOTTOM,
         screen = 1,
     },
     [7] = {
@@ -65,7 +65,7 @@ return {
     [11] = {
         name = "sys",
         key = "b",
-        layout = LAYOUT_CENTER,
+        layout = LAYOUT_BOTTOM,
         screen = 1,
     },
     [12] = {

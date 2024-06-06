@@ -159,7 +159,7 @@ local clientkeys = gears.table.join(
         { description = "toggle floating", group = "client" }
     ),
 
-    awful.key({ MODKEY }, "y",
+    awful.key({ MODKEY }, "j",
         function(c)
             c.ontop = not c.ontop
         end,
@@ -218,6 +218,11 @@ local clientkeys = gears.table.join(
             c.floating = false
             if awful.layout.getname() == LAYOUT_MAX_NAME then
                 awful.layout.set(tags[mouse.screen.selected_tag.index].layout)
+                for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+                    if not x.floating then
+                        x.opacity = 1
+                    end
+                end
             else
                 awful.layout.set(LAYOUT_MAX)
             end

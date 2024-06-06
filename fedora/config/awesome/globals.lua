@@ -50,6 +50,9 @@ LAYOUT_CENTER_NAME = "centerwork"
 LAYOUT_TILE = awful.layout.suit.tile.left
 LAYOUT_TILE_NAME = "tileleft"
 
+LAYOUT_BOTTOM = awful.layout.suit.tile.bottom
+LAYOUT_BOTTOM_NAME = "tilebottom"
+
 LAYOUT_MAX = awful.layout.suit.max
 LAYOUT_MAX_NAME = "max"
 
@@ -60,7 +63,8 @@ awful.layout.layouts = {
   LAYOUT_CENTER,
   LAYOUT_MAX,
   LAYOUT_FULL,
-  LAYOUT_TILE
+  LAYOUT_TILE,
+  LAYOUT_BOTTOM
 }
 
 function NOTIFY(msg)

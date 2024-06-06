@@ -111,6 +111,18 @@ local globalkeys = gears.table.join(
         end,
         { description = "Focus 3rd client", group = "client" }),
 
+    awful.key({ MODKEY }, "y",
+        function()
+            awful.layout.set(LAYOUT_BOTTOM)
+
+            for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+                if not x.floating then
+                    x.opacity = 1
+                end
+            end
+        end,
+        { description = "Horizontal split", group = "client" }),
+
     awful.key({ MODKEY }, "Tab",
         function()
             local screen = awful.screen.focused()
@@ -123,6 +135,11 @@ local globalkeys = gears.table.join(
                 end
             end
             awful.client.focus.byidx(1)
+            for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+                if not x.floating then
+                    x.opacity = 1
+                end
+            end
         end, { description = "focus next by index", group = "client" }),
 
     awful.key({ MODKEY, "Control" }, "Tab",

@@ -20,6 +20,13 @@ declare -a options_deck=(
 "presentation"
 )
 
+declare -a options_pale=(
+"external"
+"builtin"
+"dual"
+"presentation"
+)
+
 launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #5294e2 -sf #2f343f -fn 11'
 
 ctn_asus=DP-5
@@ -27,6 +34,9 @@ ctn_huion=HDMI-0
 
 deck_builtin="eDP --rotate right"
 deck_external="DisplayPort-0"
+
+pale_builtin=eDP-1
+pale_external=DP-5
 
 nuc_tv=HDMI-A-0
 nuc_asus=HDMI-A-4
@@ -113,6 +123,34 @@ then
     presentation)
       xrandr --output $deck_builtin --auto --primary
       xrandr --output $deck_external --auto --above $deck_builtin --rotate normal
+      restart_wm
+    ;;
+    *)
+      exit 1
+    ;;
+  esac
+elif [[ $(hostname -s) == "pale" ]];
+then
+  choice=$(echo "$(printf '%s\n' "${options_pale[@]}")" | $launcher -p 'xrandr profile: ')
+  case "$choice" in
+    dual)
+      xrandr --output $pale_external --auto --primary
+      xrandr --output $pale_builtin --auto --below $pale_external
+      restart_wm
+    ;;
+    builtin)
+      xrandr --output $pale_builtin --auto --primary
+      xrandr --output $pale_external --off
+      restart_wm
+    ;;
+    external)
+      xrandr --output $pale_external --auto --primary
+      xrandr --output $pale_builtin --off
+      restart_wm
+    ;;
+    presentation)
+      xrandr --output $pale_builtin --auto --primary
+      xrandr --output $pale_external --auto --above $pale_builtin
       restart_wm
     ;;
     *)

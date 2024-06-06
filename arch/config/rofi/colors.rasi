@@ -3,11 +3,11 @@
 **/
 
 * {
-    fg:                          #d3d7cf;
+    fg:                          #c5c5c8;
     fg-light:                    #474B57;
     fg-dark:                     #babdb6;
 
-    bg:                          #2f343f;
+    bg:                          #1d1d1f;
     bg-light:                    #474B57;
     bg-dark:                     #242a33;
 

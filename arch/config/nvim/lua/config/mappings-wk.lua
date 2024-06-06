@@ -99,8 +99,9 @@ local tabs = {
     ["<A-<>"] = { "<cmd>BufferMovePrevious<cr>", "Move Previous Buffer" },
     ["<A->>"] = { "<cmd>BufferMoveNext<cr>", "Move Next Buffer" },
     ["<A-c>"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
-    ["<A-x>"] = { "<cmd>BufferCloseAllButCurrent<cr>", "Close Buffer All But Current" },
     ["<A-p>"] = { "<cmd>BufferPin<cr>", "Pin Buffer" },
+    ["<A-x>"] = { "<cmd>BufferCloseAllButCurrent<cr>", "Close Buffer All But Current" },
+    ["<A-q>"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close Buffer All But Pinned" },
 }
 
 local floaterm = {
@@ -168,8 +169,7 @@ local utils = {
             a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
             e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
         },
-        V = { function() kiwi.open_wiki_index("notes") end, "Open notes wiki index"},
-        v = { function() kiwi.open_wiki_index("ygt") end, "Open ygt wiki index"},
+        v = { function() kiwi.open_wiki_index() end, "Open wiki index"},
         t = {
             name = "+ollama",
             a = { ":<c-u>Ollama Ask<cr>", "Ask", mode = {"n", "v"} },
