@@ -1,5 +1,18 @@
 #!/usr/bin/bash
 
+pale_builtin=eDP-1
+pale_external=DP-3
+pale_tablet=DP-5
+
+declare -a options_pale=(
+"presentation"
+"external"
+"builtin"
+"dual"
+"sidecar"
+"triple"
+)
+
 declare -a options_ctn=(
 "asus"
 "dual"
@@ -7,7 +20,7 @@ declare -a options_ctn=(
 )
 
 declare -a options_nuc=(
-"asus"
+"xasus"
 "dual"
 "huion"
 "tv"
@@ -20,23 +33,13 @@ declare -a options_deck=(
 "presentation"
 )
 
-declare -a options_pale=(
-"external"
-"builtin"
-"dual"
-"presentation"
-)
-
-launcher='dmenu -i -nb #192330 -nf #D3D7CF -sb #5294e2 -sf #2f343f -fn 11'
+launcher='dmenu -i -nb #1d1f21 -nf #D3D7CF -sb #5294e2 -sf #2f343f -fn 11'
 
 ctn_asus=DP-5
 ctn_huion=HDMI-0
 
 deck_builtin="eDP --rotate right"
 deck_external="DisplayPort-0"
-
-pale_builtin=eDP-1
-pale_external=DP-5
 
 nuc_tv=HDMI-A-0
 nuc_asus=HDMI-A-4
@@ -133,24 +136,40 @@ elif [[ $(hostname -s) == "pale" ]];
 then
   choice=$(echo "$(printf '%s\n' "${options_pale[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in
-    dual)
-      xrandr --output $pale_external --auto --primary
-      xrandr --output $pale_builtin --auto --below $pale_external
-      restart_wm
-    ;;
     builtin)
+      xrandr --output $pale_tablet --off
       xrandr --output $pale_builtin --auto --primary
       xrandr --output $pale_external --off
       restart_wm
     ;;
     external)
+      xrandr --output $pale_tablet --off
       xrandr --output $pale_external --auto --primary
       xrandr --output $pale_builtin --off
       restart_wm
     ;;
+    dual)
+      xrandr --output $pale_tablet --off
+      xrandr --output $pale_external --auto --primary
+      xrandr --output $pale_builtin --auto --below $pale_external
+      restart_wm
+    ;;
     presentation)
+      xrandr --output $pale_tablet --off
       xrandr --output $pale_builtin --auto --primary
       xrandr --output $pale_external --auto --above $pale_builtin
+      restart_wm
+    ;;
+    triple)
+      xrandr --output $pale_builtin --auto --primary
+      xrandr --output $pale_external --auto --above $pale_builtin
+      xrandr --output $pale_tablet --auto --rotate right --right-of $pale_external
+      restart_wm
+    ;;
+    sidecar)
+      xrandr --output $pale_builtin --auto --primary --pos 0x720
+      xrandr --output $pale_external --off
+      xrandr --output $pale_tablet --auto --rotate right --pos 1920x0
       restart_wm
     ;;
     *)
