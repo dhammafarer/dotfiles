@@ -9,8 +9,14 @@ local volume_widget = require('widgets.pactl-widget.volume')
 local cmus_widget = require('widgets.cmus')
 local capslock = require('widgets.capslock')
 
-local mytextclock = wibox.layout.margin(
-  wibox.widget.textclock("%b %d  <span foreground='#ddd' weight='bold'>%H:%M</span>"), 4, 4, 0, 0)
+local timeTW = wibox.layout.margin(
+  wibox.widget.textclock("<span foreground='#ddd' weight='bold'><span foreground='#666'>TW</span> %H:%M    %b %d</span>", nil, "Asia/Taipei"), 4, 4, 0, 0)
+
+local timeUK = wibox.layout.margin(
+  wibox.widget.textclock("<span foreground='#ddd' weight='bold'><span foreground='#666'>UK</span> %H:%M</span>", nil, "Europe/London"), 4, 4, 0, 0)
+
+local timePL = wibox.layout.margin(
+  wibox.widget.textclock("<span foreground='#ddd' weight='bold'><span foreground='#666'>PL</span> %H:%M</span>", nil, "Europe/Warsaw"), 4, 4, 0, 0)
 
 local myvolume = wibox.layout.margin(
     volume_widget {
@@ -107,7 +113,9 @@ local function setup_wibar(s)
       },
       myvolume,
       battery_widget(),
-      mytextclock,
+      timeUK,
+      timePL,
+      timeTW,
       mysystray,
     },
   }

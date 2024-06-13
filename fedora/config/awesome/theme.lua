@@ -18,8 +18,10 @@ local colors = {}
 colors.bg = "#1d1f21"
 colors.blue = "#5f819d"
 colors.border = "#282a2e"
-colors.grey = "#373b41"
-colors.white = "#c5c8c6"
+--colors.grey = "#373b41"
+colors.grey = "#555"
+--colors.white = "#c5c8c6"
+colors.white = "#efe"
 colors.dark = "#707880"
 colors.light = "#282a2e"
 

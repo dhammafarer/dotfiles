@@ -48,8 +48,9 @@ end
 
 local globalkeys = gears.table.join(
 -- Focus screen
-    awful.key({ ALTKEY }, "Tab",
-        function() awful.screen.focus_relative(1) end,
+    awful.key({ MODKEY }, "space",
+        -- function() awful.screen.focus_relative(1) end,
+        function() awful.screen.focus(1) end,
         { description = "focus the next screen", group = "screen" }),
 
     -- Restore last tag
