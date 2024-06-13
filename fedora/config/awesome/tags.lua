@@ -1,78 +1,109 @@
 require("globals")
 
 return {
-    [1] = {
-        name = "dev",
+    {
+        name = "term",
+        index = 1,
+        column_count = 1,
+        gap_single_client = true,
         key = "t",
         layout = LAYOUT_BOTTOM,
-        selected = true,
+        master_fill_policy = "expand",
+        master_width_factor = 0.75,
         screen = 1,
+        selected = true,
     },
-    [2] = {
-        name = "cmd",
+    {
+        name = "dev",
+        index = 2,
         key = "d",
         layout = LAYOUT_BOTTOM,
         screen = 1,
+        master_width_factor = 0.5,
     },
-    [3] = {
-        name = "web",
+    {
+        index = 3,
+        name = "surf",
         key = "s",
         layout = LAYOUT_BOTTOM,
         screen = 1,
+        master_width_factor = 0.5,
     },
-    [4] = {
-        name = "gui",
+    {
+        index = 4,
+        name = "exec",
         key = "x",
         layout = LAYOUT_MAX,
         screen = 1,
+        master_width_factor = 0.5,
     },
-    [5] = {
-        name = "com",
-        key = "a",
+    {
+        index = 5,
+        name = "back",
+        key = "b",
         layout = LAYOUT_TILE,
         screen = 1,
+        master_width_factor = 0.5,
     },
-    [6] = {
-        name = "log",
-        key = "p",
-        layout = LAYOUT_BOTTOM,
+    {
+        index = 6,
+        name = "chat",
+        key = "c",
+        layout = LAYOUT_TILE,
         screen = 1,
+        master_width_factor = 0.5,
     },
-    [7] = {
-        name = "map",
+    {
+        index = 7,
+        name = "wiki",
         key = "w",
         layout = LAYOUT_MAX,
         screen = 1,
+        master_width_factor = 0.5,
     },
-    [8] = {
-        name = "vmm",
+    {
+        index = 8,
+        name = "virt",
         key = "v",
         layout = LAYOUT_TILE,
         screen = 1,
+        master_width_factor = 0.5,
     },
-    [9] = {
-        name = "med",
-        key = "c",
-        layout = LAYOUT_CENTER,
-        screen = 1,
-    },
-    [10] = {
-        name = "ssh",
-        key = "g",
+    {
+        index = 1,
+        name = "apps",
+        key = "a",
         layout = LAYOUT_TILE,
-        screen = 1,
+        screen = 2,
+        master_width_factor = 0.66,
+        gap = 0,
+        selected = true
     },
-    [11] = {
-        name = "sys",
-        key = "b",
-        layout = LAYOUT_BOTTOM,
-        screen = 1,
-    },
-    [12] = {
-        name = "ref",
+    {
+        index = 2,
+        name = "run",
         key = "r",
+        layout = LAYOUT_TILE,
+        screen = 2,
+        master_width_factor = 0.5,
+        master_count = 3,
+        gap = 0,
+    },
+    {
+        index = 3,
+        name = "pres",
+        key = "p",
         layout = LAYOUT_FULL,
         screen = 2,
-        selected = true,
+        master_width_factor = 0.5,
+        gap = 0,
+    },
+    {
+        index = 4,
+        name = "git",
+        key = "g",
+        layout = LAYOUT_TILE,
+        screen = 2,
+        master_width_factor = 0.5,
     },
 }
