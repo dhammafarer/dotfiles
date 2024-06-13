@@ -46,7 +46,7 @@ return {
         master_width_factor = 0.5,
     },
     {
-        name = "chat",
+        name = "comm",
         screen = { 1, 1, 1 },
         index = { 6, 6, 6 },
         key = "c",

@@ -49,7 +49,7 @@ awful.rules.rules = {
     },
 
     -- Assign clients to tags
-    { rule = { class = "Signal" }, properties = { screen = 1, tag = "chat" } },
+    { rule = { class = "Signal" }, properties = { screen = 1, tag = "comm" } },
     { rule = { class = "Virt-manager" }, properties = { screen = 1, tag = "virt" } },
     { rule = { class = "org-knopflerfish-framework-BundleThread" }, properties = { screen = 1, tag = "wiki" } },
 }
