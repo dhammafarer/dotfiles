@@ -63,19 +63,20 @@ awful.screen.connect_for_each_screen(function(s)
 
     for i, t in ipairs(tags) do
         -- only one screen, set all screen values of tagt to 1
-        if t.screen > screencount then
-            t.screen = 1
-            t.selected = false
-            t.index = i
-        end
+        -- if t.screen > screencount then
+        --     t.screen = 1
+        --     t.selected = false
+        --     t.index = i
+        -- end
 
-        -- only create a tag, if screen index matches screen value of tag
-        if s.index == t.screen then
+        -- only create a tag, if screen index matches screen value of tag for given screencount
+        if s.index == t.screen[screencount] then
+            local index = t.index[screencount]
             awful.tag.add(t.name, {
-                index = t.index,
+                index = index,
                 layout = t.layout,
                 selected = t.selected,
-                screen = t.screen,
+                screen = s.index,
                 master_width_factor = t.master_width_factor,
                 master_count = t.master_count,
                 column_count = t.column_count,
@@ -84,14 +85,14 @@ awful.screen.connect_for_each_screen(function(s)
             })
 
             -- set up keymappings for each screen
-            local scr = screen[t.screen]
+            local scr = screen[s.index]
 
             globalkeys = gears.table.join(globalkeys,
                 -- View tag only.
                 awful.key({ MODKEY }, t.key,
                     function()
                         awful.screen.focus(scr)
-                        local tag = scr.tags[t.index]
+                        local tag = scr.tags[index]
                         if tag then
                             tag:view_only()
                         end
@@ -104,7 +105,7 @@ awful.screen.connect_for_each_screen(function(s)
                     function()
                         if client.focus then
                             client.focus:move_to_screen(scr)
-                            local tag = scr.tags[t.index]
+                            local tag = scr.tags[index]
                             if tag then
                                 client.focus:move_to_tag(tag)
                             end
@@ -118,7 +119,7 @@ awful.screen.connect_for_each_screen(function(s)
                     function()
                         if client.focus then
                             client.focus:move_to_screen(scr)
-                            local tag = scr.tags[t.index]
+                            local tag = scr.tags[index]
                             if tag then
                                 client.focus:move_to_tag(tag)
                                 tag:view_only()
