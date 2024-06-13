@@ -3,37 +3,53 @@
 dir=/home/pl/ygt
 
 ##### spa
-alias spa="cd $dir/spabreaks"
+spa () { cd $dir/spabreaks }
+spa-vim () { spa && tmux -2 new -s "spa-nvim" "nvim"\; set status off }
+spa-console () { spa && tmux new -s "spa-console" "distrobox-host-exec make console" }
+spa-dev () { spa && tmux new -s "spa-dev" "distrobox-host-exec make dev" }
+spa-guard () { spa && tmux new -s "spa-guard" "distrobox-host-exec make guard" }
+spa-debug () { spa && tmux new -s "spa-debug" "go-task debug-web" }
+spa-git () { spa && tmux new -s "spa-gitui" "gitui" }
+spa-test () { spa && tmux new -s "spa-test" "distrobox-host-exec make test" }
+spa-test-bash () { spa && tmux new -s "spa-test-bash" "distrobox-host-exec make test-bash" }
+spa-build () { spa && tmux new -s "spa-build" "distrobox-host-exec make build" }
+
+alias spaconsole="spa-console"
+alias spadebug="spa-debug"
+alias spadev="spa-dev"
+alias spagit="spa-git"
+alias spaguard="spa-guard"
+alias spatest="spa-test"
+alias spatestbash="spa-test-bash"
 alias spa-db-migrate="spa && hmake db-migrate"
 alias spa-db-rollback="spa && hmake db-rollback"
 alias spa-db-redo="spa && hmake db-migrate-redo"
 alias spa-routes="spa && hmake routes"
 alias spa-build="spa && hmake build"
 
-spa-console () { spa && tmux new -s "spa-console" "distrobox-host-exec make console" }
-spa-dev () { spa && tmux new -s "spa-dev" "distrobox-host-exec make dev" }
-spa-guard () { spa && tmux new -s "spa-guard" "distrobox-host-exec make guard" }
-spa-debug () { spa && tmux new -s "spa-debug" "go-task debug-web" }
-spa-git () { spa && tmux new -s "spa-git" "gitui" }
-spa-test () { spa && distrobox-host-exec make test }
-spa-test-bash () { spa && tmux new -s "spa-test-bash" "distrobox-host-exec make test-bash" }
-
-
 ##### wss
-alias wss="cd $dir/sales"
-alias wssdev="wss && hmake db-run && hmake dev"
+wss () { cd $dir/sales }
+wss-dev () { wss && tmux new -s "wss-dev" "distrobox-host-exec make db-run && distrobox-host-exec make dev" }
+
+alias wssdev="wss-dev"
 
 ##### btr
-alias btr="cd $dir/booking-transform"
-alias btrdev="btr && hmake dev"
+alias btrdir="cd $dir/booking-transform"
+btr-dev () { btrdir && tmux new -s "btr-dev" "distrobox-host-exec make dev" }
+alias btrdev="btr-dev"
+btr-console () { btrdir && tmux new -s "btr-console" "distrobox-host-exec make console" }
+alias btrconsole="btr-console"
 
 ##### vrs
 alias vrs="cd $dir/sb-voucher-redemptions"
 alias vrsdev="vrs && hmake dev"
 
 ##### mya
-alias mya="cd $dir/my-account"
-alias myadev="mya && hmake dev"
-alias myatest="mya && hmake test"
+mya () { cd $dir/my-account }
+mya-dev () { mya && tmux new -s "mya-dev" "distrobox-host-exec make dev" }
+mya-test () { mya && distrobox-host-exec make test }
+
+alias myadev="mya-dev"
+alias myatest="mya-test"
 alias myaguard="mya && hmake guard"
 alias myabuild="mya && hmake build"
