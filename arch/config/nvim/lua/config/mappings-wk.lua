@@ -10,8 +10,9 @@ local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
     ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
+    ["<C-t>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
-    ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=true<cr>", "Tags" },
+    ["<C-b>"] = { "<cmd>Telescope tags only_sort_tags=true<cr>", "Tags" },
     ["<leader>"] = {
         f = {
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -33,6 +34,7 @@ local file = {
             name = "+file",
             n = { "<cmd>enew<cr>", "New File" },
         },
+        c = { "<cmd>let @+=expand('%')<cr>", "Copy current filepath to clipboard"},
         n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
         x = { "<cmd>quit<cr>", "Quit" },
         q = { "<cmd>quit<cr>", "Quit" },
@@ -100,8 +102,8 @@ local tabs = {
     ["<A->>"] = { "<cmd>BufferMoveNext<cr>", "Move Next Buffer" },
     ["<A-c>"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
     ["<A-p>"] = { "<cmd>BufferPin<cr>", "Pin Buffer" },
-    ["<A-x>"] = { "<cmd>BufferCloseAllButCurrent<cr>", "Close Buffer All But Current" },
-    ["<A-q>"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close Buffer All But Pinned" },
+    ["<A-q>"] = { "<cmd>BufferCloseAllButCurrent<cr>", "Close Buffer All But Current" },
+    ["<A-x>"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close Buffer All But Pinned" },
 }
 
 local floaterm = {
@@ -159,8 +161,8 @@ local codeium = {
 
 local utils = {
     ["<F4>"] = { "<C-R>=strftime('%T')<cr>", "Insert time", mode = "i" },
-    ["<F5>"] = { "<C-R>=strftime('%F')<cr>", "Insert date", mode = "i" },
-    ["<F6>"] = { "<C-R>=strftime('%a, %d %b %Y')<cr>", "Insert pretty date", mode = "i" },
+    ["<F5>"] = { "<C-R>=strftime('%Y-%m-%d %a')<cr>", "Insert date with weekday", mode = "i" },
+    ["<F6>"] = { "<C-R>=strftime('%F')<cr>", "Insert date", mode = "i" },
     ["<F8>"] = { "<C-R>=expand('%:t')<cr>", "Insert current filename", mode = "i" },
     ["<F9>"] = { "<cmd>%s/_/ /g<cr>", "Insert current filename", mode = "n" },
     ["<leader>"] = {
