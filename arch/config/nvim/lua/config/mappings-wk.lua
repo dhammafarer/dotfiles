@@ -6,6 +6,8 @@ vim.g.mapleader = ","
 vim.keymap.set({'n', 'v'}, '<Down>', 'gj')
 vim.keymap.set({'n', 'v'}, '<Up>', 'gk')
 
+vim.api.nvim_set_keymap('v', '<C-C>', '"+y', { noremap = true, silent = true })
+
 local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
@@ -45,8 +47,8 @@ local file = {
         q = { "<cmd>quit<cr>", "Quit" },
         x = { "<cmd>quit<cr>", "Quit" },
         n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
-        y = { "<cmd>%y+<cr>", "Coppy contents to clipboard" },
-    }
+        y = { "<cmd>%y+<cr>", "Copy contents to clipboard" },
+    },
 }
 
 local lsp = {
