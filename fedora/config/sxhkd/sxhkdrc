@@ -44,8 +44,8 @@ super + shift + Escape
 super + control + Escape
     xscreensaver-command -a
 
-super + space
-    playerctl -i cmus play-pause
+# super + space
+#    playerctl -i cmus play-pause
 
 # temporary workaround until media keys are fixed on Udemy
 #super + space
@@ -57,8 +57,8 @@ XF86AudioPrev
 XF86AudioNext
     xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Right
 
-super + control + space
-    cplay
+#super + control + space
+#    cplay
 
 #### XF86 Keys
 ## Logitech Keyboard    ## ThinkPad Keyboard
@@ -74,20 +74,20 @@ super + control + space
 # XF86                  #XF86BrightnessUp
 # XF86                  #XF86WLAN
 
+XF86AudioMute
+    cplay
+
 XF86MonBrightnessUp
     light -A 5
 
 XF86MonBrightnessDown
     light -U 5
 
-XF86AudioMute
-    playerctl -p firefox.instance2 play-pause
+{XF86AudioPlay,XF86AudioPause}
+    playerctl -i cmus play-pause
 
-XF86AudioStop
-    playerctl -a pause
-
-{XF86AudioPlay,XF86AudioPause,XF86AudioMicMute}
-    cplay
+# XF86AudioMicMute
+#     amixer set Capture toggle
 
 {XF86Explorer,XF86Mail}
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
@@ -133,8 +133,8 @@ XF86Launch9; b
 ##################
 
 # horizontal mouse scroll
-#{ button7,button6 }
-#    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+{ button7,button6 }
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
 { XF86AudioLowerVolume,XF86AudioRaiseVolume }
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
@@ -172,8 +172,8 @@ Print
 #######################
 
 # PureRef
-super + space; p
-    QT_SCALE_FACTOR=1.12 PureRef
+# super + space; p
+#     QT_SCALE_FACTOR=1.12 PureRef
 
 #######################
 ####   text entry  ####
