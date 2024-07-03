@@ -11,9 +11,9 @@ local base_card_url = "https://palatinategroup.atlassian.net/browse/"
 
 -- patterns
 local patterns = {
-    card = "%[[%a-%d]+%]",
+    card = "%[?(SB%-%d+)%]?",
     phrase = "^%s*(.-)%s*$",
-    pr = "#[%d-]+"
+    pr = "#([%d-]+)"
 }
 
 -- functions
@@ -29,7 +29,7 @@ end
 local match_pr_id = function()
     local match = string.match(clipboard(), patterns.pr)
     if match then
-        return string.sub(match, 2)
+        return match
     else
         return cur_file
     end
@@ -38,7 +38,7 @@ end
 local match_cards = function()
     local cards = {}
     for w in string.gmatch(clipboard(), patterns.card) do
-        table.insert(cards, string.sub(w, 2, -2))
+        table.insert(cards, w)
     end
     return cards
 end
@@ -66,7 +66,7 @@ end
 local branch_name = function()
     local res = {}
     for w in string.gmatch(clipboard(), patterns.card) do
-        table.insert(res, string.sub(w, 2, -2))
+        table.insert(res, w)
     end
 
     local t = string.gsub(string.lower(match_title()), "%s", "-")
