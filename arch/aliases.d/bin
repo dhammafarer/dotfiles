@@ -1,6 +1,6 @@
 #!/bin/sh
 
-notes () {
+nt () {
     cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md
 }
 

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 alias gac="git add . && git commit"
 alias gacm="git add . && git commit -m"
 alias gar="git_add_remote"

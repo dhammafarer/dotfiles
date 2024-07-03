@@ -1,0 +1,3 @@
+#!/bin/sh
+
+alias prs="gh f -p"
