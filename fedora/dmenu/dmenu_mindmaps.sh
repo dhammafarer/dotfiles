@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-dir=$HOME/Nextcloud/Documents/mindmaps
+dir=$HOME/Nextcloud/Documents/Mindmaps
 prompt="Mindmaps"
 columns=3
 
