@@ -3,6 +3,7 @@ local awful = require("awful")
 local naughty = require("naughty")
 
 local capslock = require('widgets.capslock')
+local mic = require('widgets.mic')
 
 require("globals")
 
@@ -51,7 +52,12 @@ local globalkeys = gears.table.join(
     awful.key({ MODKEY }, "space",
         -- function() awful.screen.focus_relative(1) end,
         function() awful.screen.focus(1) end,
-        { description = "focus the next screen", group = "screen" }),
+        { description = "focus primary screen", group = "screen" }),
+
+    awful.key({ MODKEY, "Control" }, "space",
+        -- function() awful.screen.focus_relative(1) end,
+        function() awful.screen.focus(2) end,
+        { description = "focus secondary screen", group = "screen" }),
 
     -- Restore last tag
     awful.key({ MODKEY }, "z",
@@ -295,6 +301,6 @@ local globalkeys = gears.table.join(
     )
 )
 
-globalkeys = awful.util.table.join(globalkeys, capslock.key)
+globalkeys = awful.util.table.join(globalkeys, capslock.key, mic.key)
 
 return globalkeys

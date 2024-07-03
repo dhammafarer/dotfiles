@@ -46,7 +46,7 @@ return {
         master_width_factor = 0.5,
     },
     {
-        name = "comm",
+        name = "coms",
         screen = { 1, 1, 1 },
         index = { 6, 6, 6 },
         key = "c",
@@ -84,9 +84,9 @@ return {
         screen = { 1, 2, 2 },
         index = { 10, 2, 1 },
         key = "r",
-        layout = LAYOUT_TILE,
+        layout = LAYOUT_BOTTOM,
         master_width_factor = 0.5,
-        master_count = 3,
+        master_count = 1,
         gap = 0,
     },
     {

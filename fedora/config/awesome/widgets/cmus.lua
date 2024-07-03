@@ -22,9 +22,21 @@ local function worker(user_args)
 
     local timeout = args.timeout or 10
     local max_length = args.max_length or 50
-    local space = args.space or 6
+    local space = args.space or 2
+
+    local icon_widget = wibox.widget {
+        {
+            id = "icon",
+            widget = wibox.widget.imagebox,
+            resize = false,
+            image = "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg",
+        },
+        valign = 'center',
+        layout = wibox.container.place,
+    }
 
     cmus_widget.widget = wibox.widget {
+        icon_widget,
         {
             id = "text",
             font = font,
@@ -37,11 +49,11 @@ local function worker(user_args)
         },
         spacing = space,
         layout = wibox.layout.fixed.horizontal,
-        set_title = function(self, title)
-            self:get_children_by_id("text")[1]:set_text(title)
+        set_title = function(self, _title)
+            self:get_children_by_id("text")[1]:set_text("")
         end,
         update_volume = function(self, volume)
-            local fmt = volume .. "% /"
+            local fmt = volume .. "%"
             self:get_children_by_id("volume")[1]:set_text(fmt)
         end
     }
@@ -75,6 +87,17 @@ local function worker(user_args)
 
             local title = cmus_info.stream or cmus_info.title
             local volume = cmus_info.volume
+
+            if cmus_info["status"] ==  "playing" then
+                icon_widget.icon:set_image(
+                "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg")
+            elseif cmus_info["status"] ==  "paused" then
+                icon_widget.icon:set_image(
+                "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-pause-symbolic.svg")
+            else
+                icon_widget.icon:set_image(
+                "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-stop-symbolic.svg")
+            end
 
             if title then
                 widget:set_title(ellipsize(title, max_length))

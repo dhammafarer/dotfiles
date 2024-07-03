@@ -49,7 +49,8 @@ awful.rules.rules = {
     },
 
     -- Assign clients to tags
-    { rule = { class = "Signal" }, properties = { screen = 1, tag = "comm" } },
+    { rule = { class = "Signal" }, properties = { tag = "coms" } },
+    { rule = { class = "Slack" }, properties = { tag = "apps" } },
     { rule = { class = "Virt-manager" }, properties = { screen = 1, tag = "virt" } },
     { rule = { class = "org-knopflerfish-framework-BundleThread" }, properties = { screen = 1, tag = "wiki" } },
 }

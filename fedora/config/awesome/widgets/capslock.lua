@@ -8,8 +8,8 @@ local capslock = wibox.widget {
     forced_width = 68,
 }
 
-local active = "<span foreground='#192330' background='#ffbd7a' weight='bold'> CAPSLOCK </span>"
-local inactive = "<span foreground='#192330'></span>"
+local active = "<span foreground='#1d1f21' background='#ffbd7a' weight='bold'> CAPSLOCK </span>"
+local inactive = "<span foreground='#1d1f21'></span>"
 
 function capslock:check()
     awful.spawn.easy_async_with_shell(

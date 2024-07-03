@@ -8,6 +8,7 @@ local battery_widget = require("widgets.battery-widget.battery")
 local volume_widget = require('widgets.pactl-widget.volume')
 local cmus_widget = require('widgets.cmus')
 local capslock = require('widgets.capslock')
+local mic = require('widgets.mic')
 
 local timeTW = wibox.layout.margin(
   wibox.widget.textclock("<span foreground='#ddd' weight='bold'><span foreground='#666'>TW</span> %H:%M    %b %d</span>", nil, "Asia/Taipei"), 4, 4, 0, 0)
@@ -109,9 +110,9 @@ local function setup_wibar(s)
       layout = wibox.layout.fixed.horizontal,
       spacing = 4,
       capslock,
-      cmus_widget {
-      },
+      mic,
       myvolume,
+      cmus_widget{},
       battery_widget(),
       timeUK,
       timePL,

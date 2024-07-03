@@ -34,6 +34,12 @@ local function worker(user_args)
 
     cmus_widget.widget = wibox.widget {
         {
+            id = "icon",
+            widget = wibox.widget.imagebox,
+            resize = false,
+            image = "/home/pl/.local/share/icons/Arc/status/symbolic/microphone-sensitivity-muted-symbolic.svg"
+        },
+        {
             id = "text",
             font = font,
             widget = wibox.widget.textbox

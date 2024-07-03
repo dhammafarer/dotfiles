@@ -2,36 +2,52 @@ local awful = require("awful")
 local wibox = require("wibox")  -- Provides the widgets
 local watch = require("awful.widget.watch")
 
-local active = ""
-local inactive = "<span foreground='#1d1f21' background='#a54242' weight='bold'> MIC MUTE </span>"
-
-
-local mic_widget = wibox.widget {
-    widget = wibox.widget.textbox,
-    align = "center",
-    valign = "center",
+local icon_widget = wibox.widget {
+    {
+        id = "icon",
+        widget = wibox.widget.imagebox,
+        resize = false,
+        image = "/home/pl/.local/share/icons/Arc/devices/symbolic/audio-input-microphone-symbolic.svg",
+    },
+    valign = 'center',
+    layout = wibox.container.place,
 }
 
-watch("amixer get Capture | grep Mono:", 5, function(widget, stdout)
-    widget:check()
-    if string.match(stdout, "%[on%]") then
-        widget.markup = active
+local mic_widget = wibox.widget {
+    layout = wibox.layout.fixed.horizontal,
+    icon_widget,
+    {
+        id = "text",
+        widget = wibox.widget.textbox,
+        align = "center",
+        valign = "center",
+        markup = "<span foreground='#cc6666' background='#1d1f21' weight='bold'> MIC MUTE </span>"
+    }
+}
+
+local function set_markup(widget, stdout)
+    if string.match(stdout, "%[off%]") then
+        widget.text.visible = true
+        icon_widget.visible = false
     else
-        widget.markup = inactive
+        widget.text.visible = false
+        icon_widget.visible = true
     end
+end
+
+local command = "amixer get Capture | grep Mono:"
+
+watch(command, 5, function(widget, stdout)
+    set_markup(widget, stdout)
   end,
   mic_widget
 )
 
 function mic_widget:check()
     awful.spawn.easy_async_with_shell(
-        "amixer get Capture | grep Mono:",
+        command,
         function(stdout)
-            if string.match(stdout, "%[on%]") then
-                self.markup = active
-            else
-                self.markup = inactive
-            end
+            set_markup(self, stdout)
         end)
 end
 
