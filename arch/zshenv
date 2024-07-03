@@ -12,6 +12,7 @@ PATH="$HOME/.npm-global/bin/:$HOME/.cargo/bin:$(go env GOPATH)/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
 
 export LD_LIBRARY_PATH=/usr/local/lib
+export JIRA_API_TOKEN=ATATT3xFfGF0Ks-vdTSEQG2QElC1oyIJagW94QeBRhfrlo6uQ5YfnbL2nDqtWIeRBz4GlARDpAeoSWmqQlaH7dAzr4AlbW5NnqampXGPbZSU_mcsWZJE7Y8mzw1_ijMSvDrFJJgaQdhEdL2aZrHjelnLwfpL306Y01rgEUmKVSpcrHV3FfHgtzc=7FE91E52
 
 export SHELL=/bin/zsh
 

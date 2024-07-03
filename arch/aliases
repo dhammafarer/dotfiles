@@ -6,6 +6,7 @@ source ~/.aliases.d/bluetooth
 source ~/.aliases.d/dev
 source ~/.aliases.d/docker
 source ~/.aliases.d/exa
+source ~/.aliases.d/gh
 source ~/.aliases.d/git
 source ~/.aliases.d/molecule
 source ~/.aliases.d/pacman
