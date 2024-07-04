@@ -35,7 +35,7 @@ local function set_markup(widget, stdout)
     end
 end
 
-local command = "amixer get Capture | grep Mono:"
+local command = "amixer get Capture"
 
 watch(command, 5, function(widget, stdout)
     set_markup(widget, stdout)
