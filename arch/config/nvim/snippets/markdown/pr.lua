@@ -1,6 +1,7 @@
 local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
 local f = ls.function_node
+local t = ls.text_node
 local c = ls.choice_node
 local sn = ls.snippet_node
 
@@ -45,11 +46,13 @@ end
 
 local card_urls = function()
     local res = {}
+    table.insert(res, "")
     for _, v in ipairs(match_cards()) do
-        table.insert(res, base_card_url .. v)
+        table.insert(res, "- " .. base_card_url .. v)
     end
 
-    return table.concat(res, " ")
+    -- return table.concat(res, " ")
+    return res
 end
 
 local cards = function()
@@ -64,14 +67,7 @@ local match_title = function()
 end
 
 local branch_name = function()
-    local res = {}
-    for w in string.gmatch(clipboard(), patterns.card) do
-        table.insert(res, w)
-    end
-
-    local t = string.gsub(string.lower(match_title()), "%s", "-")
-
-    return table.concat(res, "-") .. "-" .. t
+    return (string.gsub(string.lower(match_title()), "%s", "-"))
 end
 
 local repo_choice = sn(1, { c(1, repos) })
@@ -83,8 +79,8 @@ return {
         id: {}
         title: {}
         url: https://github.com/ygt/{}/pull/{}
-        card: {}
-        branch: {}
+        cards: {}
+        branch: {}-{}
         ---
         ]],
         {
@@ -92,8 +88,9 @@ return {
             f(match_title),
             repo_choice,
             f(match_pr_id),
-            f(card_urls),
-            f(branch_name)
+            t(card_urls()),
+            t(cards()),
+            i(2, branch_name())
         })
     ),
     s("new_pr", fmt(
