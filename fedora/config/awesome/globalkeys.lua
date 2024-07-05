@@ -60,7 +60,7 @@ local globalkeys = gears.table.join(
         { description = "focus secondary screen", group = "screen" }),
 
     -- Restore last tag
-    awful.key({ ALTKEY }, "Tab",
+    awful.key({ MODKEY }, "z",
         function()
             if awful.screen.focused().index ~= 1 then
                 awful.screen.focus(1)
