@@ -63,7 +63,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     for i, t in ipairs(tags) do
         awful.tag.add(t.name, {
-            index = t.index,
+            index = i,
             layout = t.layout,
             default_layout = t.layout,
             selected = t.selected,
@@ -84,7 +84,7 @@ awful.screen.connect_for_each_screen(function(s)
                 function()
                     awful.screen.focus(s)
                     --local tag = screen[s.index].tags[index]
-                    local tag = s.tags[t.index]
+                    local tag = s.tags[i]
                     if tag then
                         tag:view_only()
                     end
@@ -97,7 +97,7 @@ awful.screen.connect_for_each_screen(function(s)
                 function()
                     if client.focus then
                         client.focus:move_to_screen(s)
-                        local tag = s.tags[t.index]
+                        local tag = s.tags[i]
                         if tag then
                             client.focus:move_to_tag(tag)
                         end
@@ -111,7 +111,7 @@ awful.screen.connect_for_each_screen(function(s)
                 function()
                     if client.focus then
                         client.focus:move_to_screen(s)
-                        local tag = s.tags[t.index]
+                        local tag = s.tags[i]
                         if tag then
                             client.focus:move_to_tag(tag)
                             tag:view_only()
