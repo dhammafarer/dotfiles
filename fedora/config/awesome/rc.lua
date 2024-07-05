@@ -59,77 +59,68 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
 
-    local tags = require("tags")
+    local tags = require("tags")[screencount][s.index]
 
     for i, t in ipairs(tags) do
-        -- only one screen, set all screen values of tagt to 1
-        -- if t.screen > screencount then
-        --     t.screen = 1
-        --     t.selected = false
-        --     t.index = i
-        -- end
+        awful.tag.add(t.name, {
+            index = t.index,
+            layout = t.layout,
+            default_layout = t.layout,
+            selected = t.selected,
+            screen = s.index,
+            master_width_factor = t.master_width_factor,
+            master_count = t.master_count,
+            column_count = t.column_count,
+            gap_single_client = t.gap_single_client,
+            gap = t.gap,
+        })
 
-        -- only create a tag, if screen index matches screen value of tag for given screencount
-        if s.index == t.screen[screencount] then
-            local index = t.index[screencount]
-            awful.tag.add(t.name, {
-                index = index,
-                layout = t.layout,
-                selected = t.selected,
-                screen = s.index,
-                master_width_factor = t.master_width_factor,
-                master_count = t.master_count,
-                column_count = t.column_count,
-                gap_single_client = t.gap_single_client,
-                gap = t.gap,
-            })
+        -- set up keymappings for each screen
+        -- local scr = screen[s.index]
 
-            -- set up keymappings for each screen
-            local scr = screen[s.index]
+        globalkeys = gears.table.join(globalkeys,
+            -- View tag only.
+            awful.key({ MODKEY }, t.key,
+                function()
+                    awful.screen.focus(s)
+                    --local tag = screen[s.index].tags[index]
+                    local tag = s.tags[t.index]
+                    if tag then
+                        tag:view_only()
+                    end
+                end,
+                { description = "view tag #" .. i, group = "tag" }
+            ),
 
-            globalkeys = gears.table.join(globalkeys,
-                -- View tag only.
-                awful.key({ MODKEY }, t.key,
-                    function()
-                        awful.screen.focus(scr)
-                        local tag = scr.tags[index]
+            -- Move client to tag.
+            awful.key({ MODKEY, "Shift" }, t.key,
+                function()
+                    if client.focus then
+                        client.focus:move_to_screen(s)
+                        local tag = s.tags[t.index]
                         if tag then
+                            client.focus:move_to_tag(tag)
+                        end
+                    end
+                end,
+                { description = "move focused client to tag #" .. i, group = "tag" }
+            ),
+
+            -- Move client and view tag.
+            awful.key({ MODKEY, ALTKEY }, t.key,
+                function()
+                    if client.focus then
+                        client.focus:move_to_screen(s)
+                        local tag = s.tags[t.index]
+                        if tag then
+                            client.focus:move_to_tag(tag)
                             tag:view_only()
                         end
-                    end,
-                    { description = "view tag #" .. i, group = "tag" }
-                ),
-
-                -- Move client to tag.
-                awful.key({ MODKEY, "Shift" }, t.key,
-                    function()
-                        if client.focus then
-                            client.focus:move_to_screen(scr)
-                            local tag = scr.tags[index]
-                            if tag then
-                                client.focus:move_to_tag(tag)
-                            end
-                        end
-                    end,
-                    { description = "move focused client to tag #" .. i, group = "tag" }
-                ),
-
-                -- Move client and view tag.
-                awful.key({ MODKEY, ALTKEY }, t.key,
-                    function()
-                        if client.focus then
-                            client.focus:move_to_screen(scr)
-                            local tag = scr.tags[index]
-                            if tag then
-                                client.focus:move_to_tag(tag)
-                                tag:view_only()
-                            end
-                        end
-                    end,
-                    { description = "move focused client to tag #" .. i, group = "tag" }
-                )
+                    end
+                end,
+                { description = "move focused client to tag #" .. i, group = "tag" }
             )
-        end
+        )
     end
 end)
 

@@ -217,8 +217,9 @@ local clientkeys = gears.table.join(
         function(c)
             c.floating = false
             if awful.layout.getname() == LAYOUT_MAX_NAME then
-                awful.layout.set(tags[mouse.screen.selected_tag.index].layout)
-                for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+                local selected_tag = mouse.screen.selected_tag
+                awful.layout.set(selected_tag["default_layout"])
+                for _, x in ipairs(selected_tag:clients()) do
                     if not x.floating then
                         x.opacity = 1
                     end
