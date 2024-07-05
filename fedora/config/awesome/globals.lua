@@ -10,6 +10,7 @@ EDITOR = os.getenv("EDITOR") or "editor"
 
 MODKEY = "Mod4"
 ALTKEY = "Mod1"
+ISOKEY = "Mod5" -- ISO_Level3_Shift
 
 DEFAULT_INACTIVE_OPACITY = 0.85
 

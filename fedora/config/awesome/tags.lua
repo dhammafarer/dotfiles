@@ -1,5 +1,9 @@
 require("globals")
 
+-- try an alternative table
+-- tags[screens][tag]
+-- return { [1] = { [1] = }, [2] = { [1] = {}, [2] = {} } }
+
 return {
     {
         name = "term",
@@ -70,9 +74,17 @@ return {
         master_width_factor = 0.5,
     },
     {
+        name = "fnd",
+        screen = { 1, 1, 1 },
+        index = { 9, 9, 9 },
+        key = "f",
+        layout = LAYOUT_TILE,
+        master_width_factor = 0.5,
+    },
+    {
         name = "apps",
         screen = { 1, 2, 3 },
-        index = { 9, 1, 1 },
+        index = { 10, 1, 1 },
         key = "a",
         layout = LAYOUT_TILE,
         master_width_factor = 0.66,
@@ -82,7 +94,7 @@ return {
     {
         name = "run",
         screen = { 1, 2, 2 },
-        index = { 10, 2, 1 },
+        index = { 11, 2, 1 },
         key = "r",
         layout = LAYOUT_BOTTOM,
         master_width_factor = 0.5,
@@ -92,7 +104,7 @@ return {
     {
         name = "pres",
         screen = { 1, 2, 2 },
-        index = { 11, 3, 2 },
+        index = { 12, 3, 2 },
         key = "p",
         layout = LAYOUT_FULL,
         master_width_factor = 0.5,
@@ -101,7 +113,7 @@ return {
     {
         name = "git",
         screen = { 1, 2, 2 },
-        index = { 12, 4, 3 },
+        index = { 13, 4, 3 },
         key = "g",
         layout = LAYOUT_TILE,
         master_width_factor = 0.5,

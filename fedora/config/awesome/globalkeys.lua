@@ -48,19 +48,19 @@ local function focus_by_master_offset(x, opacity)
 end
 
 local globalkeys = gears.table.join(
--- Focus screen
-    awful.key({ MODKEY }, "space",
+    -- Focus screen 1
+    awful.key({ MODKEY }, "Return",
         -- function() awful.screen.focus_relative(1) end,
         function() awful.screen.focus(1) end,
         { description = "focus primary screen", group = "screen" }),
 
-    awful.key({ MODKEY, "Control" }, "space",
-        -- function() awful.screen.focus_relative(1) end,
+    -- Focus screen 2
+    awful.key({ MODKEY, "Control" }, "Return",
         function() awful.screen.focus(2) end,
         { description = "focus secondary screen", group = "screen" }),
 
     -- Restore last tag
-    awful.key({ MODKEY }, "z",
+    awful.key({ ALTKEY }, "Tab",
         function()
             if awful.screen.focused().index ~= 1 then
                 awful.screen.focus(1)
