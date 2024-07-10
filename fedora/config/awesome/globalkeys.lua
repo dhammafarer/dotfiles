@@ -48,6 +48,11 @@ local function focus_by_master_offset(x, opacity)
 end
 
 local globalkeys = gears.table.join(
+    -- toggle between screens
+    awful.key({ ALTKEY }, "Tab",
+        function() awful.screen.focus_relative(1) end,
+        { description = "focus primary screen", group = "screen" }),
+
     -- Focus screen 1
     awful.key({ MODKEY }, "Return",
         -- function() awful.screen.focus_relative(1) end,
@@ -77,14 +82,14 @@ local globalkeys = gears.table.join(
     -- Focus 2nd Client
     awful.key({ MODKEY }, "n",
         function()
-            focus_by_master_offset(1, nil)
+            focus_by_master_offset(0, nil)
         end,
         { description = "Focus 2nd Client", group = "client" }
     ),
 
     awful.key({ MODKEY, "Control" }, "n",
         function()
-            focus_by_master_offset(1, nil)
+            focus_by_master_offset(0, nil)
             toggle_layout()
         end,
         { description = "toggle reading mode off", group = "client" }
@@ -93,7 +98,7 @@ local globalkeys = gears.table.join(
     -- Focus Master
     awful.key({ MODKEY }, "e",
         function()
-            focus_by_master_offset(0, nil)
+            focus_by_master_offset(1, nil)
         end,
         { description = "focus master", group = "client" }),
 
@@ -120,7 +125,11 @@ local globalkeys = gears.table.join(
 
     awful.key({ MODKEY }, "y",
         function()
-            awful.layout.set(LAYOUT_BOTTOM)
+            if awful.layout.getname() ~= LAYOUT_BOTTOM_NAME then
+                awful.layout.set(LAYOUT_BOTTOM)
+            else
+                awful.layout.set(LAYOUT_MAX)
+            end
 
             for _, x in ipairs(mouse.screen.selected_tag:clients()) do
                 if not x.floating then
@@ -209,9 +218,14 @@ local globalkeys = gears.table.join(
         end),
 
     awful.key({ MODKEY }, "u", function()
-            awful.layout.set(LAYOUT_CENTER)
+            --awful.layout.set(LAYOUT_CENTER)
+            --focus_by_master_offset(0, BACKDROP_OPACITY)
+            if awful.layout.getname() ~= LAYOUT_TILE_NAME then
+                awful.layout.set(LAYOUT_TILE)
+            else
+                awful.layout.set(LAYOUT_MAX)
+            end
 
-            focus_by_master_offset(0, BACKDROP_OPACITY)
         end,
         { description = "toggle reading mode on", group = "client" }
     ),
