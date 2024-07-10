@@ -12,9 +12,10 @@ local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
     ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
-    ["<C-t>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    ["<C-b>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
-    ["<C-b>"] = { "<cmd>Telescope tags only_sort_tags=true<cr>", "Tags" },
+    ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=false fname_width=60 show_line=false<cr>", "Tags" },
+    ["<C-s>"] = { "<cmd>Telescope current_buffer_tags show_line=true<cr>", "Tags" },
     ["<leader>"] = {
         f = {
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -29,6 +30,23 @@ local telescope = {
         },
     }
 }
+
+local open_on_line = function()
+    local str = vim.fn.getreg("+")
+
+    if str then
+        local pattern = ":(%d+)"
+        local path = str:match("([%a%/%_]+%.[%a%.]+)")
+        local ln = str:match(pattern)
+        local cmd
+        if ln then
+            cmd = string.format("e +%s %s", ln, path)
+        else
+            cmd = 'e ' .. path
+        end
+        vim.cmd(cmd)
+    end
+end
 
 local file = {
     ["<leader>"] = {
@@ -48,6 +66,7 @@ local file = {
         x = { "<cmd>quit<cr>", "Quit" },
         n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
         y = { "<cmd>%y+<cr>", "Copy contents to clipboard" },
+        e = { open_on_line, "LSP Format" },
     },
 }
 
