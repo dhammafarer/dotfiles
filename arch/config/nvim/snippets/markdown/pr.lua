@@ -1,5 +1,6 @@
 local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
+local s = ls.snippet
 local f = ls.function_node
 local t = ls.text_node
 local c = ls.choice_node
@@ -7,6 +8,7 @@ local sn = ls.snippet_node
 
 -- variables
 local repos = { t("spabreaks"), t("sales"), t("sb-voucher-redemptions") }
+local repo_codes = { t("sb"), t("wss"), t("vrs") }
 local base_card_url = "https://palatinategroup.atlassian.net/browse/"
 --
 
@@ -19,10 +21,6 @@ local patterns = {
 
 -- functions
 
-local cur_file = function()
-    return vim.fn.expand('%:t:r')
-end
-
 local clipboard = function()
     return vim.fn.getreg("+") .. "";
 end
@@ -32,7 +30,7 @@ local match_pr_id = function()
     if match then
         return match
     else
-        return cur_file
+        return ""
     end
 end
 
@@ -70,7 +68,8 @@ local branch_name = function()
     return (string.gsub(string.lower(match_title()), "%s", "-"))
 end
 
-local repo_choice = sn(1, { c(1, repos) })
+local repo_name = sn(1, { c(1, repos) })
+local repo_code = sn(1, { c(1, repo_codes) })
 
 return {
     s("_template:pr", fmt(
@@ -86,7 +85,7 @@ return {
         {
             f(match_pr_id),
             f(match_title),
-            repo_choice,
+            repo_name,
             f(match_pr_id),
             t(card_urls()),
             t(cards()),
@@ -95,8 +94,8 @@ return {
     ),
     s("new_pr", fmt(
         [[
-        [{} {}](./{}.md)
+        [{} {}](pr/{}/{}.md)
         ]],
-        { f(cards), f(match_title), f(match_pr_id) }
+        { f(cards), f(match_title), repo_code, f(match_pr_id) }
     ))
 }

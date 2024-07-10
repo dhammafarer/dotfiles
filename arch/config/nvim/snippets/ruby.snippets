@@ -32,9 +32,6 @@ snippet if
 	  $0
 	end
 
-snippet binding.irb
-	binding.irb
-
 snippet RSpec.describe
 	RSpec.describe "$1" do
 	  $0
@@ -47,3 +44,9 @@ snippet test
 
 snippet log
 	puts "***** ${1:val}: #{$1.inspect}"
+
+snippet debug
+	binding.pry
+
+snippet binding.pry
+	binding.pry

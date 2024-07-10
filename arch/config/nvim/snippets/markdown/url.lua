@@ -1,6 +1,7 @@
 local ls = require("luasnip")
 local s = ls.snippet
 local f = ls.function_node
+local fmt = require("luasnip.extras.fmt").fmt
 
 local clipboard = function()
     return vim.fn.getreg("+") .. "";
@@ -18,6 +19,19 @@ local paste_url = function()
     return unescape(clipboard())
 end
 
+local get_date = function()
+    return os.date('%Y-%m-%d %a')
+end
+
 return {
-    s("url", { f(paste_url) })
+    s("url", { f(paste_url) }),
+    s("journal", fmt(
+        [[
+        [{}](./{}.md)
+        ]],
+        {
+            f(function() return os.date('%Y-%m-%d %a') end),
+            f(function() return os.date('%Y/%m/%d') end)
+        }
+    ))
 }
