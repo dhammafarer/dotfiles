@@ -3,6 +3,7 @@
 launcher='dmenu -i -nb #1d1f21 -nf #D3D7CF -sb #cc6666 -sf #1d1f21 -fn 11'
 
 declare -a options=(
+"suspend"
 "poweroff"
 "reboot"
 )
@@ -13,6 +14,11 @@ declare -a options=(
 
 choice=$(echo "$(printf '%s\n' "${options[@]}")" | $launcher -p 'Quit: ')
 case "$choice" in
+	suspend)
+    confirm=$(echo -e "yes\nno" | $launcher -p "Suspend?")
+
+    [[ "$confirm" == "yes" ]] && { systemctl suspend; }
+	;;
 	poweroff)
     confirm=$(echo -e "yes\nno" | $launcher -p "Power off?")
 
