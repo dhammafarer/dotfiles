@@ -4,7 +4,15 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    initExtra = "source ~/.aliases.d/index.zsh";
+    initExtra = ''
+    source ~/.aliases.d/index.zsh
+    if [[ -z $SSH_CONNECTION ]]; then
+      export GPG_TTY="$(tty)"
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      gpgconf --launch gpg-agent
+    fi
+
+    '';
     sessionVariables = {
       EDITOR = "nvim";
     };
