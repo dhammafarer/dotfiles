@@ -68,7 +68,7 @@ return {
             {
                 name = "九",
                 key = "p",
-                layout = LAYOUT_FULL,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
                 gap = 0,
             },
@@ -163,7 +163,7 @@ return {
             {
                 name = "九",
                 key = "p",
-                layout = LAYOUT_FULL,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
                 gap = 0,
             },
