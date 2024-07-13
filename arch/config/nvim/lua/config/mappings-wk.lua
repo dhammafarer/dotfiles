@@ -16,6 +16,8 @@ local telescope = {
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=false fname_width=60 show_line=false<cr>", "Tags" },
     ["<C-s>"] = { "<cmd>Telescope current_buffer_tags show_line=true<cr>", "Tags" },
+    ["<C-q>"] = { "<cmd>Telescope quickfix show_line=false<cr>", "Quickfix" },
+    ["<C-h>"] = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix" },
     ["<leader>"] = {
         f = {
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -30,6 +32,17 @@ local telescope = {
         },
     }
 }
+
+local toggle_quickfix = function()
+    for _, win in pairs(vim.fn.getwininfo()) do
+        if win["quickfix"] == 1 then
+            vim.cmd "cclose"
+            return
+        else
+            vim.cmd "copen"
+        end
+    end
+end
 
 local open_on_line = function()
     local str = vim.fn.getreg("+")
@@ -48,25 +61,48 @@ local open_on_line = function()
     end
 end
 
+local toggle = {
+    t = {
+        name = "+toggle",
+        d = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
+        b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
+    }
+}
+
+local git = {
+    ["<leader>"] = {
+        g = {
+            name = "+git",
+            b = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
+            d = { "<cmd>Gitsigns diffthis<cr>", "Diff this" },
+            h = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
+            n = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
+            p = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
+        },
+    },
+}
+
 local file = {
     ["<leader>"] = {
         f = {
             name = "+file",
             n = { "<cmd>enew<cr>", "New File" },
         },
-        c = { "<cmd>let @+=expand('%')<cr>", "Copy current filepath to clipboard"},
-        n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
-        x = { "<cmd>quit<cr>", "Quit" },
-        q = { "<cmd>quit<cr>", "Quit" },
-        w = { "<cmd>write<cr>", "Write" },
+        c = { "<cmd>let @+=expand('%')<cr>", "copy current filepath to clipboard"},
+        q = { "<cmd>quit<cr>", "quit" },
+        t = { "<cmd>NvimTreeToggle<cr>", "tree toggle" },
+        w = { "<cmd>write<cr>", "write" },
+        x = { "<cmd>quit<cr>", "quit" },
     },
     ["<space>"] = {
-        w = { "<cmd>write<cr>", "Write" },
+        e = { open_on_line, "Open file on line" },
+        h = { "<cmd>hide<cr>", "Hide" },
+        o = { "<cmd>only<cr>", "Only" },
+        n = { toggle_quickfix, "Toggle quickfix" },
         q = { "<cmd>quit<cr>", "Quit" },
+        w = { "<cmd>write<cr>", "Write" },
         x = { "<cmd>quit<cr>", "Quit" },
-        n = { "<cmd>NvimTreeToggle<cr>", "Tree Toggle" },
         y = { "<cmd>%y+<cr>", "Copy contents to clipboard" },
-        e = { open_on_line, "LSP Format" },
     },
 }
 
@@ -104,7 +140,7 @@ local lsp = {
 }
 
 local diagnostics = {
-    ["<C-h>"] = { vim.diagnostic.goto_next, "Diagnostics Next" },
+    ["<C-d>"] = { vim.diagnostic.goto_next, "Diagnostics Next" },
     ["<leader>"] = {
         e = {
             name = "+diagnostics",
@@ -128,8 +164,7 @@ local tabs = {
 }
 
 local floaterm = {
-    t = { "<Cmd>FloatermToggle first<CR>", "Toggle first terminal" },
-    ["<A-t>"] = { "<Cmd>FloatermToggle second<CR>", "Toggle second terminal" },
+    ["<A-t>"] = { "<Cmd>FloatermToggle first<CR>", "Toggle first terminal" },
     ["<Esc>"] = { "<C-\\><C-n>:q<CR>", "Close floatterm", mode = "t" }
 }
 
@@ -192,12 +227,12 @@ local utils = {
             e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
         },
         v = { function() kiwi.open_wiki_index() end, "Open wiki index"},
-        t = {
-            name = "+ollama",
-            a = { ":<c-u>Ollama Ask<cr>", "Ask", mode = {"n", "v"} },
-            t = { ":<c-u>lua require('ollama').prompt()<cr>", "ollama prompt", mode = {"n", "v"} },
-            s = { ":<c-u>Ollama Summarize<cr>", "Summarize", mode = {"n", "v"} },
-        },
+        -- t = {
+        --     name = "+ollama",
+        --     a = { ":<c-u>Ollama Ask<cr>", "Ask", mode = {"n", "v"} },
+        --     t = { ":<c-u>lua require('ollama').prompt()<cr>", "ollama prompt", mode = {"n", "v"} },
+        --     s = { ":<c-u>Ollama Summarize<cr>", "Summarize", mode = {"n", "v"} },
+        -- },
         g = {
             name = "+Gen",
             g = { ":Gen<CR>", "Run", mode = {"n", "v"} },
@@ -222,6 +257,8 @@ wk.register(floaterm)
 wk.register(hop)
 wk.register(builtin)
 wk.register(codeium)
+wk.register(git)
+wk.register(toggle)
 wk.register(noop)
 
 wk.setup({})
