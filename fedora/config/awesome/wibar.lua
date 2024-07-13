@@ -11,13 +11,19 @@ local capslock = require('widgets.capslock')
 local mic = require('widgets.mic')
 
 local timeTW = wibox.layout.margin(
-  wibox.widget.textclock("<span foreground='#ddd' weight='bold'><span foreground='#666'>TW</span> %H:%M    %b %d</span>", nil, "Asia/Taipei"), 4, 4, 0, 0)
+  wibox.widget.textclock("<span foreground='#ddd' weight='bold'>%b %d  %H:%M</span>", nil, "Asia/Taipei"), 4, 4, 0, 0)
+
+local timeJP = wibox.layout.margin(
+  wibox.widget.textclock("<span foreground='#aaa' weight='bold'><span foreground='#666'>TOKYO</span>  %H:%M</span>", nil, "Asia/Tokyo"), 4, 4, 0, 0)
 
 local timeUK = wibox.layout.margin(
-  wibox.widget.textclock("<span foreground='#ddd' weight='bold'><span foreground='#666'>UK</span> %H:%M</span>", nil, "Europe/London"), 4, 4, 0, 0)
+  wibox.widget.textclock("<span foreground='#aaa' weight='bold'><span foreground='#666'>LONDON</span>  %H:%M</span>", nil, "Europe/London"), 4, 4, 0, 0)
+
+local timeON = wibox.layout.margin(
+  wibox.widget.textclock("<span foreground='#aaa' weight='bold'><span foreground='#666'>TORONTO</span>  %H:%M</span>", nil, "America/Toronto"), 4, 4, 0, 0)
 
 local timePL = wibox.layout.margin(
-  wibox.widget.textclock("<span foreground='#ddd' weight='bold'><span foreground='#666'>PL</span> %H:%M</span>", nil, "Europe/Warsaw"), 4, 4, 0, 0)
+  wibox.widget.textclock("<span foreground='#aaa' weight='bold'><span foreground='#666'>WARSAW</span>  %H:%M</span>", nil, "Europe/Warsaw"), 4, 4, 0, 0)
 
 local myvolume = wibox.layout.margin(
     volume_widget {
@@ -114,8 +120,10 @@ local function setup_wibar(s)
       myvolume,
       cmus_widget{},
       battery_widget(),
+      timeON,
       timeUK,
       timePL,
+      timeJP,
       timeTW,
       mysystray,
     },
