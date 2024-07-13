@@ -37,10 +37,61 @@
         "type": "github"
       }
     },
+    "plugin-capslock": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653140207,
+        "narHash": "sha256-Dyg0fFclhDC6ulr9+7oIivvWm3N21tJZmUsniralfbk=",
+        "owner": "barklan",
+        "repo": "capslock.nvim",
+        "rev": "35b560dd5585cd60e45a2367ad6ff9873f4c21a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "barklan",
+        "repo": "capslock.nvim",
+        "type": "github"
+      }
+    },
+    "plugin-kiwi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720283380,
+        "narHash": "sha256-aXM6oDxR5TX/aDpF3yH4a3XWnAYqFMSNh9SngNlSMWU=",
+        "owner": "serenevoid",
+        "repo": "kiwi.nvim",
+        "rev": "8bcddb4ec3aab665e85ab76ecdc85f434727f9c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "serenevoid",
+        "repo": "kiwi.nvim",
+        "type": "github"
+      }
+    },
+    "plugin-prettier": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686934076,
+        "narHash": "sha256-4xq+caprcQQotvBXnWWSsMwVB2hc5uyjrhT1dPBffXI=",
+        "owner": "MunifTanjim",
+        "repo": "prettier.nvim",
+        "rev": "d98e732cb73690b07c00c839c924be1d1d9ac5c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MunifTanjim",
+        "repo": "prettier.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plugin-capslock": "plugin-capslock",
+        "plugin-kiwi": "plugin-kiwi",
+        "plugin-prettier": "plugin-prettier"
       }
     }
   },

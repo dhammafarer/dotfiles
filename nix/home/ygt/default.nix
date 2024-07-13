@@ -20,7 +20,6 @@
     gitui
     google-chrome
     jq
-    neovim
     pass
     ranger
     ripgrep
@@ -30,6 +29,7 @@
     arc-icon-theme
     fira-code-nerdfont
     unclutter-xfixes
+    playerctl
   ];
 
   programs.firefox = {
@@ -41,7 +41,7 @@
   	../programs/git.nix
   	../programs/zsh.nix
   	../programs/media.nix
-  	# ./programs/neovim
+  	../programs/neovim
   	# ./modules/ruby.nix
   ];
 }
