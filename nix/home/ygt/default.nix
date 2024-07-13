@@ -27,6 +27,7 @@
 	#../modules/ygt.nix
   	../programs/git.nix
   	../programs/zsh.nix
+  	../programs/media.nix
   	# ./programs/neovim
   	# ./modules/ruby.nix
   ];
