@@ -45,5 +45,6 @@
     ../common/programs/firefox.nix
     ../common/programs/git.nix
     ../common/programs/rofi.nix
+    ../common/programs/tmux.nix
   ];
 }
