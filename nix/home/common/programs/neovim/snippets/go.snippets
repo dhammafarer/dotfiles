@@ -1,0 +1,23 @@
+snippet r
+	return ${1:val}
+
+snippet rr
+	return ${1:val}, nil
+
+snippet ie "if err"
+	if err != nil {
+		return ${1:err}
+	}
+
+snippet iee "if err2"
+	if err != nil {
+		return nil, ${1:err}
+	}
+
+snippet wr
+	w http.ResponseWriter, r *http.Request
+
+snippet test
+	func Test$1(t *testing.T) {
+		$0
+	}

@@ -1,1 +1,0 @@
-require("capslock").setup({})

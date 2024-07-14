@@ -5,7 +5,7 @@
     enable = true;
     enableCompletion = true;
     initExtra = ''
-    source ~/.aliases.d/index.zsh
+    source ~/.config/zsh/aliases.d/index.zsh
     if [[ -z $SSH_CONNECTION ]]; then
       export GPG_TTY="$(tty)"
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -32,10 +32,8 @@
     };
   };
 
-  home.file = {
-  	"./.aliases.d" = {
-		source = ./aliases.d;
-		recursive = true;
-	}; 	
+  home.file."${config.xdg.configHome}/zsh/aliases.d" = {
+	source = ../config/zsh/aliases.d;
+	recursive = true;
   };
 }

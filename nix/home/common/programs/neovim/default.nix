@@ -44,10 +44,32 @@
         xclip
         luajitPackages.luarocks
         luajitPackages.lua-lsp
+        lua-language-server
         nixd
       ];
 
       plugins = with pkgs.vimPlugins; [
+
+        { plugin = nvim-lspconfig; config = toLuaFile ./plugins/lsp.lua; }
+        { plugin = nvim-tree-lua; config = toLuaFile ./plugins/tree.lua; }
+        { plugin = nightfox-nvim; config = toLuaFile ./plugins/nightfox.lua; }
+        { plugin = lualine-nvim; config = toLuaFile ./plugins/lualine.lua; }
+        { plugin = telescope-nvim; config = toLuaFile ./plugins/telescope.lua; }
+        { plugin = barbar-nvim; config = toLuaFile ./plugins/barbar.lua; }
+        { plugin = nvim-notify; config = toLuaFile ./plugins/notify.lua; }
+        { plugin = indent-blankline-nvim; config = toLuaFile ./plugins/indent-blankline.lua; }
+        { plugin = gitsigns-nvim; config = toLuaFile ./plugins/gitsigns.lua; }
+        { plugin = luasnip; config = toLuaFile ./plugins/luasnip.lua; }
+        { plugin = nvim-cmp; config = toLuaFile ./plugins/cmp.lua; }
+        { plugin = none-ls-nvim; config = toLuaFile ./plugins/null-ls.lua; }
+        { plugin = own-prettier; config = toLuaFile ./plugins/prettier.lua; }
+        { plugin = own-kiwi; config = toLuaFile ./plugins/kiwi.lua; }
+
+        { plugin = hop-nvim; config = toLua "require('hop').setup()"; }
+        { plugin = nvim-autopairs; config = toLua "require('nvim-autopairs').setup()"; }
+        { plugin = own-capslock; config = toLua "require('capslock').setup()"; }
+        { plugin = neodev-nvim; config = toLua "require('neodev').setup()"; }
+        { plugin = nvim-surround; config = toLua "require('nvim-surround').setup()"; }
 
         plenary-nvim
         which-key-nvim
@@ -55,28 +77,7 @@
         vim-visual-multi
         vim-floaterm
         lspkind-nvim
-
-        { plugin = nvim-lspconfig; config = toLuaFile ./plugins/lsp.lua; }
-        { plugin = nvim-tree-lua; config = toLuaFile ./plugins/tree.lua; }
-        { plugin = nightfox-nvim; config = toLuaFile ./plugins/nightfox.lua; }
-        { plugin = nightfox-nvim; config = toLuaFile ./plugins/nightfox.lua; }
-        { plugin = lualine-nvim; config = toLuaFile ./plugins/lualine-nvim.lua; }
-        { plugin = telescope-nvim; config = toLuaFile ./plugins/telescope-nvim.lua; }
-        { plugin = barbar-nvim; config = toLuaFile ./plugins/barbar.lua; }
-        { plugin = hop-nvim; config = toLuaFile ./plugins/hop.lua; }
-        { plugin = nvim-autopairs; config = toLuaFile ./plugins/nvim-autopairs.lua; }
-        { plugin = nvim-surround; config = toLuaFile ./plugins/nvim-surround.lua; }
-        { plugin = nvim-notify; config = toLuaFile ./plugins/nvim-notify.lua; }
-        { plugin = indent-blankline-nvim; config = toLuaFile ./plugins/indent-blankline.lua; }
-        { plugin = own-capslock; config = toLuaFile ./plugins/capslock.lua; }
-        { plugin = own-kiwi; config = toLuaFile ./plugins/kiwi.lua; }
-        { plugin = gitsigns-nvim; config = toLuaFile ./plugins/gitsigns.lua; }
-        { plugin = luasnip; config = toLuaFile ./plugins/luasnip.lua; }
-        { plugin = nvim-cmp; config = toLuaFile ./plugins/nvim-cmp.lua; }
-        { plugin = nvim-cmp; config = toLuaFile ./plugins/nvim-cmp.lua; }
-        { plugin = none-ls-nvim; config = toLuaFile ./plugins/null-ls.lua; }
-        { plugin = neodev-nvim; config = toLuaFile ./plugins/neodev.lua; }
-        { plugin = own-prettier; config = toLuaFile ./plugins/prettier.lua; }
+        cmp-nvim-lsp
         telescope-ui-select-nvim
         vim-gutentags
         cmp-path

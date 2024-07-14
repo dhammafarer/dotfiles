@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ~/.aliases.d/git.zsh
+source ~/.config/zsh/aliases.d/git.zsh
 
 alias v="nvim"
 alias gu="gitui"
