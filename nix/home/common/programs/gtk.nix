@@ -1,11 +1,16 @@
 { config, pkgs, ... }:
 
 {
-    programs.firefox = {
-        enable = true;
-    };
+  gtk = {
+    enable = true;
+    theme.name = "Adwaita-dark";
+    cursorTheme.name = "Adwaita";
+    cursorTheme.size = 12;
+  };
 
-    home.packages = with pkgs; [
-        firefox
-    ];
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
 }

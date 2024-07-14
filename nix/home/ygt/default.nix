@@ -44,6 +44,8 @@
   	../common/programs/zsh.nix
     ../common/programs/firefox.nix
     ../common/programs/git.nix
+    ../common/programs/gtk.nix
+    ../common/programs/qt.nix
     ../common/programs/rofi.nix
     ../common/programs/tmux.nix
   ];
