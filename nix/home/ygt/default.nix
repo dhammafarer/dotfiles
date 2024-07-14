@@ -50,5 +50,6 @@
     ../common/programs/qt.nix
     ../common/programs/rofi.nix
     ../common/programs/tmux.nix
+    ../common/programs/picom.nix
   ];
 }
