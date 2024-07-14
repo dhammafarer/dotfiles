@@ -5,17 +5,22 @@
   home.homeDirectory = "/home/ygt";
   home.stateVersion = "24.05";
 
-  programs.home-manager.enable = true;
-
   nixpkgs.config.allowUnfree = true;
 
-  # Packages that should be installed to the user profile.
+  programs.home-manager.enable = true;
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home.packages = with pkgs; [
     acpi
     bat
     eza
+    fasd
+    maim
     fzf
-    firefox
     git
     gitui
     google-chrome
@@ -28,20 +33,17 @@
     tldr
     arc-icon-theme
     fira-code-nerdfont
+    jetbrains-mono
     unclutter-xfixes
     playerctl
   ];
 
-  programs.firefox = {
-    enable = true;
-  };
-
   imports = [
-	#../modules/ygt.nix
-  	../programs/git.nix
-  	../programs/zsh.nix
-  	../programs/media.nix
-  	../programs/neovim
-  	# ./modules/ruby.nix
+  	../common/programs/media.nix
+  	../common/programs/neovim
+  	../common/programs/zsh.nix
+    ../common/programs/firefox.nix
+    ../common/programs/git.nix
+    ../common/programs/rofi.nix
   ];
 }
