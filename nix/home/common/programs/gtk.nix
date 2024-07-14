@@ -5,7 +5,10 @@
     enable = true;
     theme.name = "Adwaita-dark";
     cursorTheme.name = "Adwaita";
-    cursorTheme.size = 12;
+    cursorTheme.size = 16;
+    gtk3.extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+    };
   };
 
   dconf.settings = {

@@ -25,6 +25,7 @@
     gitui
     google-chrome
     jq
+    lua
     pass
     ranger
     ripgrep
@@ -39,6 +40,7 @@
   ];
 
   imports = [
+  	../common/programs/awesome.nix
   	../common/programs/media.nix
   	../common/programs/neovim
   	../common/programs/zsh.nix
