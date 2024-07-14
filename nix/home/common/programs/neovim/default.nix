@@ -21,6 +21,7 @@
       })
     ];
   };
+
   programs.neovim =
     let
       toLua = str: "lua << EOF\n${str}\nEOF\n";
@@ -95,4 +96,9 @@
         ]))
       ];
     };
+
+  home.file."${config.xdg.configHome}/nvim/snippets" = {
+    source = ./snippets;
+    recursive = true;
+  };
 }
