@@ -7,9 +7,12 @@
         userEmail = "dev@palekiwi.com";
         ignores = [
             "*.swp"
-            "build"
-            ".envrc"
             ".direnv"
+            ".envrc"
+            ".gutctags"
+            "build"
+            "gemset.nix"
+            "shell.nix"
             "tags"
         ];
         extraConfig = {

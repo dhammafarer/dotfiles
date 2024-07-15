@@ -3,7 +3,7 @@
 {
   gtk = {
     enable = true;
-    theme.name = "Adwaita-dark";
+    theme.name = "Breeze-Dark";
     cursorTheme.name = "Adwaita";
     cursorTheme.size = 16;
     gtk3.extraConfig = {
