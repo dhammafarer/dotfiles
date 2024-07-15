@@ -23,7 +23,6 @@ return {
                 layout = LAYOUT_BOTTOM,
                 master_fill_policy = "expand",
                 master_width_factor = 0.75,
-                selected = true,
             },
             {
                 name = "三",
@@ -78,7 +77,6 @@ return {
                 layout = LAYOUT_TILE,
                 master_width_factor = 0.66,
                 gap = 0,
-                selected = true
             },
             {
                 name = "甲",
