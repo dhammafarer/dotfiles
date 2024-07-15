@@ -39,7 +39,6 @@
     jetbrains-mono
     unclutter-xfixes
     playerctl
-    xfce.xfce4-terminal
   ];
 
   imports = [
@@ -54,5 +53,7 @@
     ../common/programs/rofi.nix
     ../common/programs/tmux.nix
     ../common/programs/picom.nix
+    ../common/programs/terminal.nix
+    ../common/programs/sxhkd.nix
   ];
 }
