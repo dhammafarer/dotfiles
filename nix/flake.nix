@@ -26,6 +26,8 @@
                 pkgs = import nixpkgs { system = "x86_64-linux"; };
 
                 modules = [ ./home/pl/default.nix ];
+
+                extraSpecialArgs = { inherit inputs; };
             };
 
             ygt = home-manager.lib.homeManagerConfiguration {
