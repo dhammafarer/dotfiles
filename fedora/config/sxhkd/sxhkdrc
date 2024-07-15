@@ -28,7 +28,7 @@ super + 2
     flatpak run org.mozilla.firefox
     #/usr/bin/firefox
 super + 3
-    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log
+    ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass-pl.log
 super + 7
     xfce4-terminal --working-directory="/home/pl/Nextcloud/Notes" -e "distrobox enter dev -e 'nvim index.md'"
 super + colon
