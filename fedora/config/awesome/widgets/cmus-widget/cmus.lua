@@ -12,6 +12,8 @@ local watch = require("awful.widget.watch")
 local spawn = require("awful.spawn")
 local beautiful = require('beautiful')
 
+local HOME = os.getenv("HOME")
+
 local function ellipsize(text, length)
     -- utf8 only available in Lua 5.3+
     if utf8 == nil then
@@ -37,7 +39,7 @@ local function worker(user_args)
             id = "icon",
             widget = wibox.widget.imagebox,
             resize = false,
-            image = "/home/pl/.local/share/icons/Arc/status/symbolic/microphone-sensitivity-muted-symbolic.svg"
+            image = HOME .. "/.local/share/icons/Arc/status/symbolic/microphone-sensitivity-muted-symbolic.svg"
         },
         {
             id = "text",

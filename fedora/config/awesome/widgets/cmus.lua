@@ -4,6 +4,8 @@ local watch = require("awful.widget.watch")
 local spawn = require("awful.spawn")
 local beautiful = require('beautiful')
 
+local HOME = os.getenv("HOME")
+
 local function ellipsize(text, length)
     -- utf8 only available in Lua 5.3+
     if utf8 == nil then
@@ -29,7 +31,7 @@ local function worker(user_args)
             id = "icon",
             widget = wibox.widget.imagebox,
             resize = false,
-            image = "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg",
+            image = HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg",
         },
         valign = 'center',
         layout = wibox.container.place,
@@ -90,13 +92,13 @@ local function worker(user_args)
 
             if cmus_info["status"] ==  "playing" then
                 icon_widget.icon:set_image(
-                "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg")
+                HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg")
             elseif cmus_info["status"] ==  "paused" then
                 icon_widget.icon:set_image(
-                "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-pause-symbolic.svg")
+                HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-pause-symbolic.svg")
             else
                 icon_widget.icon:set_image(
-                "/home/pl/.local/share/icons/Arc/actions/symbolic/media-playback-stop-symbolic.svg")
+                HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-stop-symbolic.svg")
             end
 
             if title then

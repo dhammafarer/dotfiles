@@ -2,12 +2,14 @@ local awful = require("awful")
 local wibox = require("wibox")  -- Provides the widgets
 local watch = require("awful.widget.watch")
 
+local HOME = os.getenv("HOME")
+
 local icon_widget = wibox.widget {
     {
         id = "icon",
         widget = wibox.widget.imagebox,
         resize = false,
-        image = "/home/pl/.local/share/icons/Arc/devices/symbolic/audio-input-microphone-symbolic.svg",
+        image = HOME .. "/.local/share/icons/Arc/devices/symbolic/audio-input-microphone-symbolic.svg",
     },
     valign = 'center',
     layout = wibox.container.place,
