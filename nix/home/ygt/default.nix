@@ -39,6 +39,7 @@
     jetbrains-mono
     unclutter-xfixes
     playerctl
+    xfce.xfce4-terminal
   ];
 
   imports = [
