@@ -120,12 +120,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    awesome
     git
     gitui
     gnupg
     neovim
+    picom
     rsync
+    sxhkd
     wget
+    xorg.xrandr
+    xscreensaver
+    zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
