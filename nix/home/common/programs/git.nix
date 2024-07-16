@@ -12,7 +12,6 @@
             ".gutctags"
             "build"
             "gemset.nix"
-            "shell.nix"
             "tags"
         ];
         extraConfig = {

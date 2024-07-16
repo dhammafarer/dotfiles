@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "ygt";
-  home.homeDirectory = "/home/ygt";
+  home.username = "pl";
+  home.homeDirectory = "/home/pl";
   home.stateVersion = "24.05";
 
   nixpkgs.config.allowUnfree = true;
@@ -39,10 +39,6 @@
     jetbrains-mono
     unclutter-xfixes
     playerctl
-    gnumake
-    go-task
-    google-cloud-sdk
-    sops
   ];
 
   imports = [
