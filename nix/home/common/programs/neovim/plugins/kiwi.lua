@@ -1,6 +1,8 @@
+local HOME = os.getenv("HOME")
+
 require('kiwi').setup({
         {
         name = "notes",
-        path = "/home/ygt/Nextcloud/Notes"
+        path = HOME .. "/Nextcloud/Notes"
     },
 })

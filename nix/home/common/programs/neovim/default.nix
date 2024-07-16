@@ -51,6 +51,7 @@
 
       plugins = with pkgs.vimPlugins; [
 
+        plenary-nvim
         { plugin = nvim-lspconfig; config = toLuaFile ./plugins/lsp.lua; }
         { plugin = nvim-tree-lua; config = toLuaFile ./plugins/tree.lua; }
         { plugin = nightfox-nvim; config = toLuaFile ./plugins/nightfox.lua; }
@@ -72,7 +73,6 @@
         { plugin = neodev-nvim; config = toLua "require('neodev').setup()"; }
         { plugin = nvim-surround; config = toLua "require('nvim-surround').setup()"; }
 
-        plenary-nvim
         which-key-nvim
         nvim-web-devicons
         vim-visual-multi
