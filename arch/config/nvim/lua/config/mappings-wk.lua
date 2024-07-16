@@ -66,10 +66,16 @@ local toggle = {
         name = "+toggle",
         d = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
+        h = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
     }
 }
 
 local git = {
+    g = {
+        name = "+git",
+        h = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
+        H = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
+    },
     ["<leader>"] = {
         g = {
             name = "+git",
