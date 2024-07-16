@@ -86,13 +86,14 @@
         cmp-nvim-lsp-signature-help
 
         (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-vim
           p.tree-sitter-bash
-          p.tree-sitter-lua
           p.tree-sitter-json
+          p.tree-sitter-lua
           p.tree-sitter-markdown
           p.tree-sitter-markdown_inline
+          p.tree-sitter-nix
+          p.tree-sitter-ruby
+          p.tree-sitter-vim
         ]))
       ];
     };

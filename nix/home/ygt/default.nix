@@ -39,6 +39,11 @@
     jetbrains-mono
     unclutter-xfixes
     playerctl
+    gnumake
+    go-task
+    google-cloud-sdk
+    sops
+    bundix
   ];
 
   imports = [

@@ -51,11 +51,11 @@ super + control + Escape
 #super + space
 #    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Space
 
-XF86AudioPrev
-    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Left
-
-XF86AudioNext
-    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Right
+# XF86AudioPrev
+#     notify-send "Mic Mute"; amixer set Capture nocap
+# 
+# XF86AudioNext
+#     notify-send "Mic ON"; amixer set Capture cap
 
 #super + control + space
 #    cplay
