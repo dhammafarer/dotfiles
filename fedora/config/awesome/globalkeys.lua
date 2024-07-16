@@ -315,6 +315,6 @@ local globalkeys = gears.table.join(
     )
 )
 
-globalkeys = awful.util.table.join(globalkeys, capslock.key, mic.key)
+globalkeys = gears.table.join(globalkeys, capslock.key, mic.keys)
 
 return globalkeys
