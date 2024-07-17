@@ -43,6 +43,7 @@
     go-task
     google-cloud-sdk
     sops
+    bundix
   ];
 
   imports = [
