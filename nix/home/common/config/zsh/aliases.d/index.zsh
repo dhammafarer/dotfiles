@@ -21,7 +21,6 @@ alias pc="pass -c"
 alias rr="ranger"
 alias sal="source ~/.aliases"  
 alias update="home-manager switch --flake ~/dotfiles/nix"
-alias v="nvim"
 alias v="nvim_fg"
 alias xo="xdg-open"
 
@@ -35,4 +34,16 @@ pass_insert () {
     name=$2
     pass generate -n $name $len 1> /dev/null
     pass edit $name
+}
+
+nvim_fg () {
+    if [ -z "$(jobs | grep nvim)" ]; then
+        nvim $@
+    else
+        fg
+    fi
+}
+
+cat_to_clipboard () {
+    bat -p $1 | xclip -selection clipboard
 }
