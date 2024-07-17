@@ -42,8 +42,8 @@ snippet test
 	  $0
 	end
 
-snippet log
-    puts "#{'${1:val}'.center(${2:50}, '-')}\n"; Pry::ColorPrinter.pp($1); puts "#{'-' * $2}\n\n"; # rubocop:disable Style/Semicolon
+# snippet log
+#     puts "#{'${1:val}'.center(${2:50}, '-')}\n"; Pry::ColorPrinter.pp($1); puts "#{'-' * $2}\n\n"; # rubocop:disable Style/Semicolon
 
 snippet debug
 	binding.pry
