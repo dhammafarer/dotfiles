@@ -13,6 +13,7 @@ spa-git () { spa && tmux new -s "spa-gitui" "gitui" }
 spa-test () { spa && tmux new -s "spa-test" "distrobox-host-exec make test" }
 spa-test-bash () { spa && tmux new -s "spa-test-bash" "distrobox-host-exec make test-bash" }
 spa-build () { spa && tmux new -s "spa-build" "distrobox-host-exec make build" }
+spa-psql () { spa && tmux new -s "spa-psql" "distrobox-host-exec make psql" }
 
 alias spaconsole="spa-console"
 alias spadebug="spa-debug"
@@ -26,6 +27,7 @@ alias spa-db-rollback="spa && hmake db-rollback"
 alias spa-db-redo="spa && hmake db-migrate-redo"
 alias spa-routes="spa && hmake routes"
 alias spabuild="spa-build"
+alias spapsql="spa-psql"
 
 ##### wss
 wss () { cd $dir/sales }
