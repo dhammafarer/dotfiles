@@ -1,10 +1,12 @@
 local wk = require("which-key")
+local gs = require('gitsigns')
 local kiwi = require('kiwi')
+
 
 vim.g.mapleader = ","
 
-vim.keymap.set({'n', 'v'}, '<Down>', 'gj')
-vim.keymap.set({'n', 'v'}, '<Up>', 'gk')
+vim.keymap.set({ 'n', 'v' }, '<Down>', 'gj')
+vim.keymap.set({ 'n', 'v' }, '<Up>', 'gk')
 
 vim.api.nvim_set_keymap('v', '<C-C>', '"+y', { noremap = true, silent = true })
 
@@ -18,6 +20,7 @@ local telescope = {
     ["<C-s>"] = { "<cmd>Telescope current_buffer_tags show_line=true<cr>", "Tags" },
     ["<C-q>"] = { "<cmd>Telescope quickfix show_line=false<cr>", "Quickfix" },
     ["<C-h>"] = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix" },
+    ["<C-u>"] = { "<cmd>Telescope loclist show_line=true fname_width=60<cr>", "Loclist" },
     ["<leader>"] = {
         f = {
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -61,30 +64,30 @@ local open_on_line = function()
     end
 end
 
+local hunks_to_loclist = function()
+    gs.setqflist("attached", { use_location_list = true, open = true})
+end
+
 local toggle = {
     t = {
         name = "+toggle",
-        d = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
+        h = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
-        h = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
+        d = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
+        m = { "<cmd>Gitsigns change_base master true<cr>", "Change base: Master" },
+        ["0"] = { "<cmd>Gitsigns change_base HEAD true<cr>", "Change base: HEAD~1" },
+        ["1"] = { "<cmd>Gitsigns change_base ~1 true<cr>", "Change base: HEAD~1" },
+        ["2"] = { "<cmd>Gitsigns change_base ~2 true<cr>", "Change base: HEAD~2" },
+        c = { function() gs.change_base(vim.fn.getreg("+"), true) end, "Change base: Clipboard" },
+        q = { hunks_to_loclist, "Hunks to Loclist" },
     }
 }
 
 local git = {
-    g = {
-        name = "+git",
-        h = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
-        H = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
-    },
+    h = { function() gs.nav_hunk("next", { preview = false }) end, "Next hunk" },
+    H = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
     ["<leader>"] = {
-        g = {
-            name = "+git",
-            b = { "<cmd>Gitsigns blame_line<cr>", "Blame line" },
-            d = { "<cmd>Gitsigns diffthis<cr>", "Diff this" },
-            h = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
-            n = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
-            p = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
-        },
+        d = { "<cmd>Gitsigns diffthis<cr>", "Diff this" },
     },
 }
 
@@ -94,7 +97,7 @@ local file = {
             name = "+file",
             n = { "<cmd>enew<cr>", "New File" },
         },
-        c = { "<cmd>let @+=expand('%')<cr>", "copy current filepath to clipboard"},
+        c = { "<cmd>let @+=expand('%')<cr>", "copy current filepath to clipboard" },
         q = { "<cmd>quit<cr>", "quit" },
         t = { "<cmd>NvimTreeToggle<cr>", "tree toggle" },
         w = { "<cmd>write<cr>", "write" },
@@ -153,7 +156,6 @@ local diagnostics = {
             e = { vim.diagnostic.goto_next, "Diagnostics Next" },
             u = { vim.diagnostic.goto_prev, "Diagnostics Prev" },
             f = { vim.diagnostic.open_float, "Diagnostics Float" },
-            l = { vim.diagnostic.setloclist, "Diagnostics List" },
         }
     }
 }
@@ -232,7 +234,7 @@ local utils = {
             a = { "<cmd>ChatGPT<cr>", "GPT Chat" },
             e = { "<cmd>ChatGPTEditWithInstructions<cr>", "GPT Edit" },
         },
-        v = { function() kiwi.open_wiki_index() end, "Open wiki index"},
+        v = { function() kiwi.open_wiki_index() end, "Open wiki index" },
         -- t = {
         --     name = "+ollama",
         --     a = { ":<c-u>Ollama Ask<cr>", "Ask", mode = {"n", "v"} },
@@ -241,10 +243,10 @@ local utils = {
         -- },
         g = {
             name = "+Gen",
-            g = { ":Gen<CR>", "Run", mode = {"n", "v"} },
+            g = { ":Gen<CR>", "Run", mode = { "n", "v" } },
         }
     },
-    T = { kiwi.todo.toggle, "Toggle Todo"},
+    T = { kiwi.todo.toggle, "Toggle Todo" },
 }
 
 local capslock = {
@@ -256,7 +258,7 @@ wk.register(utils)
 wk.register(file)
 wk.register(telescope)
 wk.register(lsp)
-wk.register(dap)
+--wk.register(dap)
 wk.register(diagnostics)
 wk.register(tabs)
 wk.register(floaterm)
