@@ -65,7 +65,34 @@ local open_on_line = function()
 end
 
 local hunks_to_loclist = function()
-    gs.setqflist("attached", { use_location_list = true, open = true})
+    gs.setqflist("attached", { use_location_list = true, open = true })
+end
+
+local set_base_branch = function(git_base)
+    if git_base == nil then
+        git_base = vim.g.git_base
+    else
+        vim.g.git_base = git_base
+    end
+
+    gs.change_base(git_base, true)
+end
+
+local toggle_git_status = function()
+    local git_base
+    if vim.g.git_base ~= nil then
+        git_base = vim.g.git_base
+    else
+        git_base = "master"
+    end
+
+    require('neo-tree.command').execute({
+        action = "focus",
+        position = "right",
+        toggle = true,
+        source = "git_status",
+        git_base = git_base
+    })
 end
 
 local toggle = {
@@ -74,11 +101,11 @@ local toggle = {
         h = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
         d = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
-        m = { "<cmd>Gitsigns change_base master true<cr>", "Change base: Master" },
-        ["0"] = { "<cmd>Gitsigns change_base HEAD true<cr>", "Change base: HEAD~1" },
-        ["1"] = { "<cmd>Gitsigns change_base ~1 true<cr>", "Change base: HEAD~1" },
-        ["2"] = { "<cmd>Gitsigns change_base ~2 true<cr>", "Change base: HEAD~2" },
-        c = { function() gs.change_base(vim.fn.getreg("+"), true) end, "Change base: Clipboard" },
+        ["m"] = { function() set_base_branch("master") end, "Change base: master"},
+        ["0"] = { function() set_base_branch("HEAD") end, "Change base: HEAD~1" },
+        ["1"] = { function() set_base_branch("HEAD~1") end, "Change base: HEAD~1" },
+        ["2"] = { function() set_base_branch("HEAD~2") end, "Change base: HEAD~2" },
+        ["c"] = { function() set_base_branch(vim.fn.getreg("+")) end, "Change base: Clipboard" },
         q = { hunks_to_loclist, "Hunks to Loclist" },
     }
 }
@@ -99,7 +126,12 @@ local file = {
         },
         c = { "<cmd>let @+=expand('%')<cr>", "copy current filepath to clipboard" },
         q = { "<cmd>quit<cr>", "quit" },
-        t = { "<cmd>NvimTreeToggle<cr>", "tree toggle" },
+        t = { "<cmd>Neotree toggle position=left<cr>", "tree toggle" },
+        -- n = { "<cmd>Neotree toggle source=git_status git_base=master position=right<cr>", "tree toggle" },
+        n = { toggle_git_status, "Tree: Git status" },
+        m = { function() toggle_git_status("master") end, "Change base: master" },
+        ["1"] = { function() toggle_git_status("HEAD~1") end, "Change base: HEAD~1" },
+        ["2"] = { function() toggle_git_status("HEAD~2") end, "Change base: HEAD~2" },
         w = { "<cmd>write<cr>", "write" },
         x = { "<cmd>quit<cr>", "quit" },
     },
@@ -169,6 +201,8 @@ local tabs = {
     ["<A-p>"] = { "<cmd>BufferPin<cr>", "Pin Buffer" },
     ["<A-q>"] = { "<cmd>BufferCloseAllButCurrent<cr>", "Close Buffer All But Current" },
     ["<A-x>"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close Buffer All But Pinned" },
+    ["<A-h>"] = { "<cmd>BufferFirst<cr>", "Go to First" },
+    ["<A-/>"] = { "<cmd>BufferPrevious<cr>", "Go to Previous" },
 }
 
 local floaterm = {
@@ -183,9 +217,9 @@ local hop = {
 }
 
 local builtin = {
-    ["<leader>"] = {
-        m = { "<cmd>Man \"<cword>\"<cr>", "Look up Man Pages" }
-    },
+    -- ["<leader>"] = {
+    --     m = { "<cmd>Man \"<cword>\"<cr>", "Look up Man Pages" }
+    -- },
     ["<A-z>"] = { "za", "Toggle Fold" },
     ["<A-m>"] = { "zMzA", "Toggle Fold" },
     ["<A-l>"] = { "<cmd>set cursorline!<cr>", "Toggle Cursorline" },
