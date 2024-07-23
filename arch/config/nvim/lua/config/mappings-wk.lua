@@ -68,12 +68,9 @@ local hunks_to_loclist = function()
     gs.setqflist("attached", { use_location_list = true, open = true })
 end
 
-local toggle_git_status = function(action, toggle)
-    local git_base
-    if vim.g.git_base ~= nil then
+local toggle_git_status = function(action, toggle, git_base)
+    if git_base == nil then
         git_base = vim.g.git_base
-    else
-        git_base = "master"
     end
 
     require('neo-tree.command').execute({
@@ -94,7 +91,7 @@ local set_base_branch = function(git_base, action)
 
     gs.change_base(git_base, true)
 
-    toggle_git_status(action, false)
+    toggle_git_status(action, false, git_base)
 end
 
 local toggle = {
@@ -103,12 +100,12 @@ local toggle = {
         h = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
         d = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
+        q = { hunks_to_loclist, "Hunks to Loclist" },
         ["m"] = { function() set_base_branch("master", "show") end, "Change base: master" },
         ["0"] = { function() set_base_branch("HEAD", "close") end, "Change base: HEAD~1" },
         ["1"] = { function() set_base_branch("HEAD~1", "show") end, "Change base: HEAD~1" },
         ["2"] = { function() set_base_branch("HEAD~2", "show") end, "Change base: HEAD~2" },
         ["c"] = { function() set_base_branch(vim.fn.getreg("+")) end, "Change base: Clipboard" },
-        q = { hunks_to_loclist, "Hunks to Loclist" },
     }
 }
 
@@ -129,11 +126,8 @@ local file = {
         c = { "<cmd>let @+=expand('%')<cr>", "copy current filepath to clipboard" },
         q = { "<cmd>quit<cr>", "quit" },
         t = { "<cmd>Neotree toggle position=left<cr>", "tree toggle" },
-        -- n = { "<cmd>Neotree toggle source=git_status git_base=master position=right<cr>", "tree toggle" },
-        n = { function() toggle_git_status("focus", true) end, "Tree: Git status" },
-        m = { function() toggle_git_status("master") end, "Change base: master" },
-        ["1"] = { function() toggle_git_status("HEAD~1") end, "Change base: HEAD~1" },
-        ["2"] = { function() toggle_git_status("HEAD~2") end, "Change base: HEAD~2" },
+        n = { function() toggle_git_status("focus", true, nil) end, "Tree: Git status" },
+        m = { function() toggle_git_status("focus", true, "master") end, "Change base: master" },
         w = { "<cmd>write<cr>", "write" },
         x = { "<cmd>quit<cr>", "quit" },
     },
