@@ -1,16 +1,16 @@
 #!/usr/bin/bash
 
 pale_builtin=eDP-1
-pale_external=DP-3
+pale_external=DP-2
 pale_tablet=DP-5
 
 declare -a options_pale=(
-"presentation"
-"external"
 "builtin"
+"external"
 "dual"
 "sidecar"
 "triple"
+"presentation"
 )
 
 declare -a options_ctn=(
