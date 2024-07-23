@@ -68,17 +68,7 @@ local hunks_to_loclist = function()
     gs.setqflist("attached", { use_location_list = true, open = true })
 end
 
-local set_base_branch = function(git_base)
-    if git_base == nil then
-        git_base = vim.g.git_base
-    else
-        vim.g.git_base = git_base
-    end
-
-    gs.change_base(git_base, true)
-end
-
-local toggle_git_status = function()
+local toggle_git_status = function(action, toggle)
     local git_base
     if vim.g.git_base ~= nil then
         git_base = vim.g.git_base
@@ -87,12 +77,24 @@ local toggle_git_status = function()
     end
 
     require('neo-tree.command').execute({
-        action = "focus",
+        action = action,
         position = "right",
-        toggle = true,
+        toggle = toggle,
         source = "git_status",
         git_base = git_base
     })
+end
+
+local set_base_branch = function(git_base, action)
+    if git_base == nil then
+        git_base = vim.g.git_base
+    else
+        vim.g.git_base = git_base
+    end
+
+    gs.change_base(git_base, true)
+
+    toggle_git_status(action, false)
 end
 
 local toggle = {
@@ -101,10 +103,10 @@ local toggle = {
         h = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
         d = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
-        ["m"] = { function() set_base_branch("master") end, "Change base: master"},
-        ["0"] = { function() set_base_branch("HEAD") end, "Change base: HEAD~1" },
-        ["1"] = { function() set_base_branch("HEAD~1") end, "Change base: HEAD~1" },
-        ["2"] = { function() set_base_branch("HEAD~2") end, "Change base: HEAD~2" },
+        ["m"] = { function() set_base_branch("master", "show") end, "Change base: master" },
+        ["0"] = { function() set_base_branch("HEAD", "close") end, "Change base: HEAD~1" },
+        ["1"] = { function() set_base_branch("HEAD~1", "show") end, "Change base: HEAD~1" },
+        ["2"] = { function() set_base_branch("HEAD~2", "show") end, "Change base: HEAD~2" },
         ["c"] = { function() set_base_branch(vim.fn.getreg("+")) end, "Change base: Clipboard" },
         q = { hunks_to_loclist, "Hunks to Loclist" },
     }
@@ -128,7 +130,7 @@ local file = {
         q = { "<cmd>quit<cr>", "quit" },
         t = { "<cmd>Neotree toggle position=left<cr>", "tree toggle" },
         -- n = { "<cmd>Neotree toggle source=git_status git_base=master position=right<cr>", "tree toggle" },
-        n = { toggle_git_status, "Tree: Git status" },
+        n = { function() toggle_git_status("focus", true) end, "Tree: Git status" },
         m = { function() toggle_git_status("master") end, "Change base: master" },
         ["1"] = { function() toggle_git_status("HEAD~1") end, "Change base: HEAD~1" },
         ["2"] = { function() toggle_git_status("HEAD~2") end, "Change base: HEAD~2" },
