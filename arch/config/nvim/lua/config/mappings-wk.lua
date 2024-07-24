@@ -14,7 +14,7 @@ local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
     ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
-    ["<C-b>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    -- ["<C-b>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=false fname_width=60 show_line=false<cr>", "Tags" },
     ["<C-s>"] = { "<cmd>Telescope current_buffer_tags show_line=true<cr>", "Tags" },
@@ -85,6 +85,9 @@ end
 local set_base_branch = function(git_base, action)
     if git_base == nil then
         git_base = vim.g.git_base
+    elseif git_base == vim.g.git_base then
+        git_base = "HEAD"
+        vim.g.git_base = git_base
     else
         vim.g.git_base = git_base
     end
@@ -95,11 +98,13 @@ local set_base_branch = function(git_base, action)
 end
 
 local toggle = {
+    ["<leader>"] = {
+        h = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
+    },
     t = {
         name = "+toggle",
         h = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
-        d = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
         q = { hunks_to_loclist, "Hunks to Loclist" },
         ["m"] = { function() set_base_branch("master", "show") end, "Change base: master" },
         ["0"] = { function() set_base_branch("HEAD", "close") end, "Change base: HEAD~1" },
@@ -110,8 +115,8 @@ local toggle = {
 }
 
 local git = {
-    h = { function() gs.nav_hunk("next", { preview = false }) end, "Next hunk" },
-    H = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
+    h = { function() gs.nav_hunk("next", { preview = false, wrap = false }) end, "Next hunk" },
+    H = { function() gs.nav_hunk("prev", { preview = false, wrap = false }) end, "Prev hunk" },
     ["<leader>"] = {
         d = { "<cmd>Gitsigns diffthis<cr>", "Diff this" },
     },
@@ -131,6 +136,7 @@ local file = {
         w = { "<cmd>write<cr>", "write" },
         x = { "<cmd>quit<cr>", "quit" },
     },
+    ["<C-b>"] = { "<cmd>Neotree float buffers<cr>", "Buffers" },
     ["<space>"] = {
         e = { open_on_line, "Open file on line" },
         h = { "<cmd>hide<cr>", "Hide" },
