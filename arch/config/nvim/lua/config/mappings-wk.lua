@@ -111,7 +111,7 @@ local toggle = {
         ["0"] = { function() set_base_branch("HEAD", "close") end, "Change base: HEAD~1" },
         ["1"] = { function() set_base_branch("HEAD~1", "show") end, "Change base: HEAD~1" },
         ["2"] = { function() set_base_branch("HEAD~2", "show") end, "Change base: HEAD~2" },
-        ["c"] = { function() set_base_branch(vim.fn.getreg("+")) end, "Change base: Clipboard" },
+        ["c"] = { function() set_base_branch(vim.fn.getreg("+"), "show") end, "Change base: Clipboard" },
     }
 }
 
