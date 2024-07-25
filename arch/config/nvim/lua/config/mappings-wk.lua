@@ -14,13 +14,14 @@ local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
     ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
-    -- ["<C-b>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    ["<C-b>"] = { "<cmd>Telescope buffers ignore_current_buffer=false sort_mru=true<cr>", "Buffers" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=false fname_width=60 show_line=false<cr>", "Tags" },
     ["<C-s>"] = { "<cmd>Telescope current_buffer_tags show_line=true<cr>", "Tags" },
     ["<C-q>"] = { "<cmd>Telescope quickfix show_line=false<cr>", "Quickfix" },
     ["<C-h>"] = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix" },
-    ["<C-u>"] = { "<cmd>Telescope loclist show_line=true fname_width=60<cr>", "Loclist" },
+    -- ["<C-u>"] = { "<cmd>Telescope loclist show_line=true fname_width=60<cr>", "Loclist" },
+    ["<C-u>"] = { "<cmd>Telescope lsp_references include_declaration=true fname_width=60 show_line=false trim_text=false<cr>", "Loclist" },
     ["<leader>"] = {
         f = {
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -136,7 +137,7 @@ local file = {
         w = { "<cmd>write<cr>", "write" },
         x = { "<cmd>quit<cr>", "quit" },
     },
-    ["<C-b>"] = { "<cmd>Neotree float buffers<cr>", "Buffers" },
+    -- ["<C-b>"] = { "<cmd>Neotree float buffers<cr>", "Buffers" },
     ["<space>"] = {
         e = { open_on_line, "Open file on line" },
         h = { "<cmd>hide<cr>", "Hide" },
