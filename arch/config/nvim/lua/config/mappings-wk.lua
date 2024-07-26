@@ -14,7 +14,7 @@ local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
     ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
-    ["<C-b>"] = { "<cmd>Telescope buffers ignore_current_buffer=false sort_mru=true<cr>", "Buffers" },
+    ["<C-b>"] = { "<cmd>Telescope buffers ignore_current_buffer=true sort_mru=true<cr>", "Buffers" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<C-t>"] = { "<cmd>Telescope tags only_sort_tags=false fname_width=60 show_line=false<cr>", "Tags" },
     ["<C-s>"] = { "<cmd>Telescope current_buffer_tags show_line=true<cr>", "Tags" },
@@ -116,8 +116,8 @@ local toggle = {
 }
 
 local git = {
-    h = { function() gs.nav_hunk("next", { preview = false, wrap = false }) end, "Next hunk" },
-    H = { function() gs.nav_hunk("prev", { preview = false, wrap = false }) end, "Prev hunk" },
+    h = { function() gs.nav_hunk("next", { preview = false, wrap = true }) end, "Next hunk" },
+    H = { function() gs.nav_hunk("prev", { preview = false, wrap = true }) end, "Prev hunk" },
     ["<leader>"] = {
         d = { "<cmd>Gitsigns diffthis<cr>", "Diff this" },
     },
