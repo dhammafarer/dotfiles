@@ -13,9 +13,8 @@ choice=$(echo "$opts" | awk '{print $1}'| $launcher -p 'Dotfiles')
 # Extract a path based on the choice
 path=$(echo "$opts" | awk -v re="$choice" '$1 == re {print $2}')
 
-term=xfce4-terminal
 box=dev
 idx=6
 
 awesome-client "require('awful.screen').focused().tags[$idx]:view_only()"
-awesome-client "require('awful.spawn').spawn('$term -e \"distrobox enter $box -- nvim -f $path\"')"
+awesome-client "require('awful.spawn').spawn('kitty sh -c \"distrobox enter $box -- nvim -f $path\"')"
