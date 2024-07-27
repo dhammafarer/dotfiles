@@ -9,6 +9,7 @@
         enable = true;
         keybindings = {
             "super + BackSpace" = "xfce4-terminal";
+            "super + 2" = "firefox";
         };
     };
 }

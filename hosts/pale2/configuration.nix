@@ -14,7 +14,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
+
+  # boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=2" ];
 
   # Enable OpenGL
   hardware.opengl = {
@@ -51,7 +53,7 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+        # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
@@ -59,7 +61,7 @@
   };
 
   hardware.nvidia.prime = {
-    sync.enable = false;
+    #sync.enable = true;
     offload = {
       enable = true;
       enableOffloadCmd = true;
@@ -132,8 +134,12 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  hardware.enableAllFirmware = true;
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.support32Bit = false;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -178,24 +184,6 @@
   programs.firefox.enable = true;
   programs.zsh.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    awesome
-    git
-    gitui
-    gnupg
-    neovim
-    picom
-    rsync
-    sxhkd
-    wget
-    xorg.xrandr
-    xscreensaver
-    zsh
-    docker-compose
-  ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -238,4 +226,34 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
   virtualisation.docker.enable = true;
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    awesome
+    git
+    gitui
+    gnupg
+    neovim
+    picom
+    rsync
+    sxhkd
+    wget
+    xorg.xrandr
+    xorg.xmodmap
+    xscreensaver
+    zsh
+    docker-compose
+    pavucontrol
+    sof-firmware
+    alsa-firmware
+    alsa-lib
+    alsa-oss
+    alsa-tools
+    alsa-topology-conf
+    alsa-ucm-conf
+    alsa-plugins
+    alsa-utils
+    libnotify
+  ];
 }

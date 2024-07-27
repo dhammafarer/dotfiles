@@ -44,6 +44,7 @@
     google-cloud-sdk
     sops
     bundix
+    dmenu
   ];
 
   imports = [
