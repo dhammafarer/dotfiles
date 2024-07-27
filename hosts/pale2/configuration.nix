@@ -20,8 +20,8 @@
 
   services.fwupd.enable = true;
 
-  hardware.enableAllFirmware = false;
-  hardware.enableRedistributableFirmware = true;
+  # hardware.enableAllFirmware = false;
+  # hardware.enableRedistributableFirmware = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
