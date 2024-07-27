@@ -16,7 +16,29 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_6_9;
 
-  # boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=2" ];
+  # boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
+
+  services.fwupd.enable = true;
+
+  hardware.enableAllFirmware = false;
+  hardware.enableRedistributableFirmware = true;
+
+  # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.support32Bit = false;
+
+  sound.enable = true;
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    #jack.enable = true;
+    #media-session.enable = true;
+  };
+
 
   # Enable OpenGL
   hardware.opengl = {
@@ -134,26 +156,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  hardware.enableAllFirmware = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  hardware.pulseaudio.support32Bit = false;
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -245,15 +247,17 @@
     zsh
     docker-compose
     pavucontrol
-    sof-firmware
-    alsa-firmware
-    alsa-lib
-    alsa-oss
-    alsa-tools
-    alsa-topology-conf
-    alsa-ucm-conf
-    alsa-plugins
-    alsa-utils
+    # sof-firmware
+    # alsa-firmware
+    # alsa-lib
+    # alsa-oss
+    # alsa-tools
+    # alsa-topology-conf
+    # alsa-ucm-conf
+    # alsa-plugins
+    # alsa-utils
     libnotify
+    pciutils
+    acpi
   ];
 }
