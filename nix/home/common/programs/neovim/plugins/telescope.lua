@@ -1,7 +1,7 @@
 -- Ansible managed: templates/lua/plugins/telescope.lua.j2 modified on 2024-05-30 03:10:13 by pl on dev.pale.paradise-liberty.ts.net
 local telescope = require("telescope")
 local actions = require("telescope.actions")
- local action_state = require "telescope.actions.state"
+local action_state = require "telescope.actions.state"
 
 telescope.setup {
     extensions = {
@@ -11,22 +11,29 @@ telescope.setup {
         }
     },
     defaults = {
-        layout_strategy = "vertical",
+        layout_strategy = 'vertical',
         layout_config = {
-            height = 0.95,
-        },
+            vertical = {
+                height = 0.9,
+                mirror = true,
+                prompt_position = "top",
+                preview_cutoff = 0,
+                preview_height = 0.5,
+                width = 0.8
+            }
+        }
     },
     pickers = {
         quickfixhistory = {
-             mappings = {
-               i = {
-                 ["<CR>"] = function(prompt_buf)
-                   local entry = action_state.get_selected_entry()
-                   actions.close(prompt_buf)
-                   vim.cmd("Telescope quickfix fname_width=60 show_line=true nr=" .. entry.nr)
-                 end
-               }
-             }
+            mappings = {
+                i = {
+                    ["<CR>"] = function(prompt_buf)
+                        local entry = action_state.get_selected_entry()
+                        actions.close(prompt_buf)
+                        vim.cmd("Telescope quickfix fname_width=60 show_line=true nr=" .. entry.nr)
+                    end
+                }
+            }
         }
     }
 }
