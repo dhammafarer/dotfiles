@@ -236,7 +236,9 @@
     xscreensaver
     zsh
     docker-compose
-    # pavucontrol
+    kitty
+    pavucontrol
+    alsa-utils
     # sof-firmware
     # alsa-firmware
     # alsa-lib
@@ -245,7 +247,6 @@
     # alsa-topology-conf
     # alsa-ucm-conf
     # alsa-plugins
-    # alsa-utils
     libnotify
     pciutils
     acpi
