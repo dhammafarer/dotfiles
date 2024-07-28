@@ -20,6 +20,7 @@
     sops
     bundix
     slack
+    gcc
   ];
 
   imports = [

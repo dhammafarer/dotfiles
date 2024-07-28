@@ -55,7 +55,7 @@
         nvim-web-devicons
         nui-nvim
 
-        { plugin = nvim-treesitter.withAllGrammars; config = toLua "require('nvim-treesitter').setup()"; }
+        # { plugin = nvim-treesitter.withAllGrammars; config = toLua "require('nvim-treesitter').setup()"; }
         { plugin = nvim-lspconfig; config = toLuaFile ./plugins/lsp.lua; }
         { plugin = neo-tree-nvim; config = toLuaFile ./plugins/neotree.lua; }
         { plugin = nightfox-nvim; config = toLuaFile ./plugins/nightfox.lua; }
