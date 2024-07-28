@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 launcher='dmenu -i -nb #1d1f21 -nf #D3D7CF -sb #ffb05f -sf #192330 -fn 11'
 

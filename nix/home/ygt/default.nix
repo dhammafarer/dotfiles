@@ -62,5 +62,7 @@
     ../common/programs/terminal.nix
     ../common/programs/sxhkd.nix
     ../common/programs/kitty.nix
+    ../common/programs/dmenu.nix
+    ../common/programs/xorg.nix
   ];
 }
