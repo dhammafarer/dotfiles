@@ -61,5 +61,6 @@
     ../common/programs/picom.nix
     ../common/programs/terminal.nix
     ../common/programs/sxhkd.nix
+    ../common/programs/kitty.nix
   ];
 }

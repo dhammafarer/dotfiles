@@ -4,7 +4,7 @@ local awful = require("awful")
 
 THEME_PATH = string.format("%s/.config/awesome/theme.lua", os.getenv("HOME"))
 
-TERMINAL = "xfce4-terminal"
+TERMINAL = "kitty"
 
 EDITOR = os.getenv("EDITOR") or "editor"
 
@@ -20,24 +20,24 @@ Inactive_opacity = DEFAULT_INACTIVE_OPACITY
 
 OPACITY = {}
 
-MARGINS = { left=0, bottom=0, right=0, top=0 }
+MARGINS = { left = 0, bottom = 0, right = 0, top = 0 }
 
 FLOATING_SIZES = {
-  [1] = function (c)
-      c.width = 640
-      c.height = 360
+    [1] = function(c)
+        c.width = 640
+        c.height = 360
     end,
-  [2] = function (c)
-      c.width = 854
-      c.height = 480
+    [2] = function(c)
+        c.width = 854
+        c.height = 480
     end,
-  [3] = function (c)
-      c.width = 1280
-      c.height = 720
+    [3] = function(c)
+        c.width = 1280
+        c.height = 720
     end,
-  [4] = function (c)
-      c.width = 474
-      c.height = 266
+    [4] = function(c)
+        c.width = 474
+        c.height = 266
     end,
 }
 
@@ -61,15 +61,15 @@ LAYOUT_FULL = awful.layout.suit.max.fullscreen
 LAYOUT_FULL_NAME = "fullscreen"
 
 awful.layout.layouts = {
-  LAYOUT_CENTER,
-  LAYOUT_MAX,
-  LAYOUT_FULL,
-  LAYOUT_TILE,
-  LAYOUT_BOTTOM
+    LAYOUT_CENTER,
+    LAYOUT_MAX,
+    LAYOUT_FULL,
+    LAYOUT_TILE,
+    LAYOUT_BOTTOM
 }
 
 function NOTIFY(msg)
-    awful.spawn("notify-send "..msg)
+    awful.spawn("notify-send " .. msg)
 end
 
 function GET_OPACITY_FOR(name)
