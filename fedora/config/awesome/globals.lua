@@ -4,7 +4,7 @@ local lain = require("lain")
 
 THEME_PATH = string.format("%s/.config/awesome/theme.lua", os.getenv("HOME"))
 
-TERMINAL = "xfce4-terminal"
+TERMINAL = "kitty"
 
 EDITOR = os.getenv("EDITOR") or "editor"
 
