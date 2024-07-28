@@ -222,37 +222,29 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    acpi
+    alsa-utils
     awesome
+    docker-compose
     git
     gitui
     gnupg
+    kitty
+    libnotify
+    light
     neovim
+    pavucontrol
+    pciutils
     picom
+    pulseaudio
     rsync
     sxhkd
     wget
-    xorg.xrandr
-    xorg.xmodmap
     xorg.xev
+    xorg.xmodmap
     xorg.xprop
+    xorg.xrandr
     xscreensaver
     zsh
-    docker-compose
-    kitty
-    pavucontrol
-    alsa-utils
-    # sof-firmware
-    # alsa-firmware
-    # alsa-lib
-    # alsa-oss
-    # alsa-tools
-    # alsa-topology-conf
-    # alsa-ucm-conf
-    # alsa-plugins
-    libnotify
-    pciutils
-    acpi
-    light
-    pulseaudio
   ];
 }

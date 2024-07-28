@@ -23,7 +23,7 @@ end
 
 local function toggle_layout()
     if awful.layout.getname() == LAYOUT_TILE_NAME then
-        --awful.layout.set(LAYOUT_CENTER)
+        awful.layout.set(LAYOUT_CENTER)
     else
         awful.layout.set(LAYOUT_TILE)
     end
@@ -235,7 +235,7 @@ local globalkeys = gears.table.join(
             if awful.layout.getname() ~= LAYOUT_TILE_NAME then
                 awful.layout.set(LAYOUT_TILE)
             else
-                -- awful.layout.set(LAYOUT_CENTER)
+                awful.layout.set(LAYOUT_CENTER)
             end
         end, { description = "Toggle centerwork/tile", group = "client" }
     ),
@@ -304,17 +304,17 @@ local globalkeys = gears.table.join(
 
             -- Automatically switch from centered to tiled layout when the master window factor crosses a threshold
             local fct = mouse.screen.selected_tag.master_width_factor
-            -- if awful.layout.getname() == LAYOUT_CENTER_NAME then
-            --     if fct < 0.50 then
-            --         awful.layout.set(LAYOUT_TILE)
-            --         awful.tag.incmwfact(0.25)
-            --     end
-            -- end
+            if awful.layout.getname() == LAYOUT_CENTER_NAME then
+                if fct < 0.50 then
+                    awful.layout.set(LAYOUT_TILE)
+                    awful.tag.incmwfact(0.25)
+                end
+            end
         end,
         { description = "decrease master width factor", group = "layout" }
     )
 )
 
-globalkeys = awful.util.table.join(globalkeys, capslock.key, mic.key)
+globalkeys = gears.table.join(globalkeys, capslock.key, mic.keys)
 
 return globalkeys

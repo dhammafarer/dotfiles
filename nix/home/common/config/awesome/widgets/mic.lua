@@ -1,6 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")  -- Provides the widgets
 local watch = require("awful.widget.watch")
+local gears = require("gears")
 
 local HOME = os.getenv("HOME")
 
@@ -9,7 +10,7 @@ local icon_widget = wibox.widget {
         id = "icon",
         widget = wibox.widget.imagebox,
         resize = false,
-        image = HOME .. "/.nix-profile/share/icons/Arc/devices/symbolic/audio-input-microphone-symbolic.svg",
+        image = HOME .. "/.local/share/icons/Arc/devices/symbolic/audio-input-microphone-symbolic.svg",
     },
     valign = 'center',
     layout = wibox.container.place,
@@ -23,7 +24,7 @@ local mic_widget = wibox.widget {
         widget = wibox.widget.textbox,
         align = "center",
         valign = "center",
-        markup = "<span foreground='#cc6666' background='#1d1f21' weight='bold'> MIC MUTE </span>"
+        markup = "<span foreground='#1d1f21' background='#cc6666' weight='bold'>  MIC MUTE  </span>"
     }
 }
 
@@ -53,11 +54,27 @@ function mic_widget:check()
         end)
 end
 
-mic_widget.key = awful.key(
-    {}, "XF86AudioMicMute",
-    function()
-        awful.spawn("amixer set Capture toggle")
-        mic_widget:check()
-    end)
+mic_widget.keys = gears.table.join(
+    awful.key( {}, "XF86AudioMicMute",
+        function()
+            awful.spawn("amixer set Capture toggle")
+            mic_widget:check()
+        end
+    ),
+    awful.key( {}, "XF86AudioPrev",
+        function()
+            awful.spawn("amixer set Capture nocap")
+            awful.spawn("notify-send Mic MUTE")
+            mic_widget:check()
+        end
+    ),
+    awful.key( {}, "XF86AudioNext",
+        function()
+            awful.spawn("amixer set Capture cap")
+            awful.spawn("notify-send Mic ON")
+            mic_widget:check()
+        end
+    )
+)
 
 return mic_widget
