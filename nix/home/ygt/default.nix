@@ -15,39 +15,15 @@
   };
 
   home.packages = with pkgs; [
-    acpi
-    bat
-    eza
-    fasd
-    maim
-    fzf
-    git
-    gitui
-    google-chrome
-    jq
-    lua
-    pass
-    ranger
-    ripgrep
-    universal-ctags
-    tree
-    which
-    tldr
-    arc-icon-theme
-    kdePackages.breeze-gtk
-    fira-code-nerdfont
-    jetbrains-mono
-    unclutter-xfixes
-    playerctl
-    gnumake
     go-task
     google-cloud-sdk
     sops
     bundix
-    dmenu
+    slack
   ];
 
   imports = [
+    ../common/programs/packages.nix
   	../common/programs/awesome.nix
   	../common/programs/media.nix
   	../common/programs/neovim
@@ -64,5 +40,6 @@
     ../common/programs/kitty.nix
     ../common/programs/dmenu.nix
     ../common/programs/xorg.nix
+    ../common/programs/gh.nix
   ];
 }

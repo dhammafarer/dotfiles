@@ -20,6 +20,7 @@ stdenv.mkDerivation {
     elmPackages.elm
     elmPackages.elm-test
     elmPackages.elm-format
+    elmPackages.elm-analyse
     elmPackages.elm-language-server
     nodejs_22
     sops

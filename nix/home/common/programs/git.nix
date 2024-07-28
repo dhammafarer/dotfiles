@@ -10,9 +10,10 @@
             ".direnv"
             ".envrc"
             ".gutctags"
+            "tags"
+            "tags.lock"
             "build"
             "gemset.nix"
-            "tags"
         ];
         extraConfig = {
             init.defaultBranch = "master";

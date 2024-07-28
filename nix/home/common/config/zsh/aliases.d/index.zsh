@@ -4,6 +4,7 @@ source ~/.config/zsh/aliases.d/docker.zsh
 source ~/.config/zsh/aliases.d/exa.zsh
 source ~/.config/zsh/aliases.d/gh.zsh
 source ~/.config/zsh/aliases.d/git.zsh
+source ~/.config/zsh/aliases.d/ygt.zsh
 
 nt () {
     cd ~/Notes && nvim +"lua require('kiwi').open_wiki_index()" index.md

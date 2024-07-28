@@ -50,12 +50,12 @@
       ];
 
       plugins = with pkgs.vimPlugins; [
-
         plenary-nvim
         nvim-web-devicons
         nvim-web-devicons
         nui-nvim
 
+        { plugin = nvim-treesitter.withAllGrammars; config = toLua "require('nvim-treesitter').setup()"; }
         { plugin = nvim-lspconfig; config = toLuaFile ./plugins/lsp.lua; }
         { plugin = neo-tree-nvim; config = toLuaFile ./plugins/neotree.lua; }
         { plugin = nightfox-nvim; config = toLuaFile ./plugins/nightfox.lua; }
@@ -88,16 +88,17 @@
         cmp_luasnip
         cmp-nvim-lsp-signature-help
 
-        (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-bash
-          p.tree-sitter-json
-          p.tree-sitter-lua
-          p.tree-sitter-markdown
-          p.tree-sitter-markdown_inline
-          p.tree-sitter-nix
-          p.tree-sitter-ruby
-          p.tree-sitter-vim
-        ]))
+        # (nvim-treesitter.withPlugins (p: [
+        #   p.tree-sitter-bash
+        #   p.tree-sitter-json
+        #   p.tree-sitter-lua
+        #   p.tree-sitter-nix
+        #   p.tree-sitter-markdown
+        #   p.tree-sitter-markdown_inline
+        #   p.tree-sitter-ruby
+        #   p.tree-sitter-vim
+        # ]))
+        nvim-treesitter.withAllGrammars
       ];
     };
 

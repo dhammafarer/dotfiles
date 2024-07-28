@@ -240,6 +240,7 @@
     rsync
     sxhkd
     wget
+    wmctrl
     xorg.xev
     xorg.xmodmap
     xorg.xprop
