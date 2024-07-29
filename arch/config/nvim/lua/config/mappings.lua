@@ -94,6 +94,7 @@ local set_base_branch = function(git_base, action)
     end
 
     gs.change_base(git_base, true)
+    gs.toggle_deleted(true)
 
     toggle_git_status(action, false, git_base)
 end

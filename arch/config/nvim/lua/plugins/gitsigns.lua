@@ -11,6 +11,8 @@ require('gitsigns').setup {
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  show_deleted = false,
+
   watch_gitdir = {
     follow_files = true
   },
