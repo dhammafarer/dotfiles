@@ -6,9 +6,11 @@ if git grep --cached -qE -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter
 fi
 
 # Run ESLint on staged .js files
-for file in $(git diff --cached --name-only --diff-filter=ACM | grep ".rb$"); do
-  if ! rubocop "$file" > /dev/null; then
-    echo "Rubocop failed on staged file '$file'. Please fix the errors and try again."
-    exit 1
-  fi
-done
+rb_files=$(git diff --cached --name-only --diff-filter=ACM | grep ".rb$")
+
+if [[ $rb_files ]]; then
+    if ! rubocop $rb_files; then
+        echo "Rubocop failed on staged file. Please fix the errors and try again."
+        exit 1
+    fi
+fi
