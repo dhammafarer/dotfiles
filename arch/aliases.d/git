@@ -1,5 +1,10 @@
 #!/bin/sh
 
+git_grep_focused_test() {
+    git grep -E -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter\.pp\(\w+\)"
+}
+alias gfoc="git_grep_focused_test"
+
 alias gac="git add . && git commit"
 alias gacm="git add . && git commit -m"
 alias gar="git_add_remote"
@@ -17,7 +22,7 @@ alias gpo="git push -u origin"
 alias gpod="git push -u origin dev"
 alias gpom="git push -u origin main"
 alias gprm="git push -u rpi main"
-alias gpul="git pull origin main"
+alias gpul="git pull origin master"
 alias grar="git_remote_add_rpi"
 alias grls="git_remote_ls_rpi"
 alias grcr="git_remote_cr_rpi"
