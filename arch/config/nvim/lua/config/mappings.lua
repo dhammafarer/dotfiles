@@ -69,15 +69,16 @@ local hunks_to_loclist = function()
     gs.setqflist("attached", { use_location_list = true, open = true })
 end
 
-local toggle_git_status = function(action, toggle, git_base)
+local toggle_git_status = function(action, toggle, float, position, git_base)
     if git_base == nil then
         git_base = vim.g.git_base
     end
 
     require('neo-tree.command').execute({
         action = action,
-        position = "right",
+        position = position,
         toggle = toggle,
+        float = float,
         source = "git_status",
         git_base = git_base
     })
@@ -96,7 +97,7 @@ local set_base_branch = function(git_base, action)
     gs.change_base(git_base, true)
     gs.toggle_deleted(true)
 
-    toggle_git_status(action, false, git_base)
+    toggle_git_status(action, false, false, "right", git_base)
 end
 
 local toggle = {
@@ -106,7 +107,9 @@ local toggle = {
     t = {
         name = "+toggle",
         h = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
+        d = { "<cmd>Gitsigns toggle_deleted<cr>", "Deleted" },
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
+        f = { "<cmd>Neotree float git_status<cr>", "Float git status" },
         q = { hunks_to_loclist, "Hunks to Loclist" },
         ["m"] = { function() set_base_branch("master", "show") end, "Change base: master" },
         ["0"] = { function() set_base_branch("HEAD", "close") end, "Change base: HEAD~1" },
@@ -133,8 +136,8 @@ local file = {
         c = { "<cmd>let @+=expand('%')<cr>", "copy current filepath to clipboard" },
         q = { "<cmd>quit<cr>", "quit" },
         t = { "<cmd>Neotree toggle position=left<cr>", "tree toggle" },
-        n = { function() toggle_git_status("focus", true, nil) end, "Tree: Git status" },
-        m = { function() toggle_git_status("focus", true, "master") end, "Change base: master" },
+        n = { function() toggle_git_status("focus", true, false, "right", nil) end, "Tree: Git status" },
+        m = { function() toggle_git_status("focus", true, false, "right" ,"master") end, "Change base: master" },
         w = { "<cmd>write<cr>", "write" },
         x = { "<cmd>quit<cr>", "quit" },
     },
