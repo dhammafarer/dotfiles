@@ -47,6 +47,5 @@ require('plugins.yaml-companion')
 require('plugins.nvim-treesitter')
 require('plugins.nvim-treesitter-text-objects')
 
-require('config.settings-base')
 require('config.settings')
 require('config.mappings')
