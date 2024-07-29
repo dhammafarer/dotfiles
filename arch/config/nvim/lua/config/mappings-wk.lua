@@ -53,7 +53,7 @@ local open_on_line = function()
 
     if str then
         local pattern = ":(%d+)"
-        local path = str:match("([%a%/%_]+%.[%a%.]+)")
+        local path = str:match("(%.?[%a%/%_]+%.[%a%.]+)")
         local ln = str:match(pattern)
         local cmd
         if ln then
