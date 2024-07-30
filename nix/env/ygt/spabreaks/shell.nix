@@ -6,9 +6,9 @@ let
   env = bundlerEnv {
     name = "spabreaks-bundler-env";
     inherit ruby;
-    gemfile = /home/ygt/code/spabreaks/Gemfile;
-    lockfile = /home/ygt/code/spabreaks/Gemfile.lock;
-    gemset = /home/ygt/code/spabreaks/gemset.nix;
+    gemfile = ~/code/ygt/spabreaks/Gemfile;
+    lockfile = ~/code/ygt/spabreaks/Gemfile.lock;
+    gemset = ~/code/ygt/spabreaks/gemset.nix;
   };
 in
 stdenv.mkDerivation {
