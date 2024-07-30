@@ -11,12 +11,13 @@
       "super + BackSpace" = "kitty";
       "super + 0" = "google-chrome-stable";
       "super + 1" = "rofi -show calc -modi calc -no-show-match -no-sort";
-      "super + 2" = "firefox";
+      "super + 2" = "/var/home/pl/.nix-profile/bin/firefox";
       "super + 3" = "rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log";
       "super + Delete" = "~/.dmenu/quit";
       "super + equal" = "virt-manager";
       "super + shift + Escape" = "playerctl -a pause; xscreensaver-command -l";
       "super + control + Escape" = "xscreensaver-command -a";
+      "XF86AudioMute" = "~/dotfiles/arch/bin/cplay";
       "XF86Tools; p" = "~/.dmenu/process";
       "XF86Tools; x" = "~/.dmenu/xrandr";
       "XF86MonBrightnessUp" = "light -A 5";

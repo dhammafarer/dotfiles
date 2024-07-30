@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-dir=/home/ygt/code
+dir=~/code/ygt
 
 ##### spa
 spa () { cd $dir/spabreaks }

@@ -7,7 +7,7 @@
 #                                                                          
 # guest terminals
 super + BackSpace
-    kitty sh -c "distrobox enter dev"
+    kitty
 
 # Rofi list terminals
 #super + Return

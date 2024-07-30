@@ -27,7 +27,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "fasd" ];
+      plugins = [ "git" "fasd" "pass" "systemd" ];
       theme = "avit";
     };
   };

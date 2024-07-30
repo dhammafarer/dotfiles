@@ -1,0 +1,51 @@
+extends sql
+
+snippet primary_key
+	primary key
+
+snippet pk
+	pk
+
+snippet default
+	default: ${1:value}
+
+snippet unique
+	unique
+
+snippet not_null
+	not null
+
+snippet increment
+	increment
+
+snippet table
+	Table ${1:name} {
+		$2
+	}
+
+snippet ref
+	ref: > ${2:field}
+
+snippet ref_one_to_many
+	ref: < ${2:field}
+
+snippet ref_one_to_one
+	ref: - ${2:field}
+
+snippet ref_many_to_many
+	ref: <> ${2:field}
+
+snippet note
+	note: '$1'
+
+snippet update
+	update
+
+snippet delete
+	delete
+
+snippet cascade
+	cascade
+
+snippet no_action
+	no action
