@@ -45,6 +45,9 @@
         truncate_to_repo = true;
       };
       format = lib.concatStrings [
+        "$username"
+        "$hostname"
+        ""
         "$directory"
         " "
         "$git_branch"

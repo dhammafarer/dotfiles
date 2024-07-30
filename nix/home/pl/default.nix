@@ -54,6 +54,7 @@
     signal-desktop
     slack
     firefox
+    docker-compose
   ];
 
   imports = [
@@ -64,5 +65,6 @@
   	../common/programs/git.nix
   	../common/programs/sxhkd.nix
   	../common/programs/rofi.nix
+    ../common/programs/tmux.nix
   ];
 }
