@@ -4,19 +4,19 @@ dir=~/code/ygt
 
 ##### spa
 spa () { cd $dir/spabreaks }
-spa-shell () { spa && nix-shell ~/dotfiles/nix/env/ygt/spabreaks/shell.nix --command zsh }
+spa-shell () { spa && nix-shell ~/dotfiles/nix/env/ygt/spabreaks/shell.nix $@ }
 spa-console () { spa && tmux new -s "spa-console" "make console" }
 spa-dev () { spa && tmux new -s "spa-dev" "make dev" }
 spa-guard () { spa && tmux new -s "spa-guard" "make guard" }
 spa-debug () { spa && tmux new -s "spa-debug" "task debug-web" }
-spa-git () { spa && tmux new -s "spa-gitui" "gitui" }
+spa-git () { spa-shell --command "tmux new -s 'spa-gitui' 'gitui'" }
 spa-test () { spa && tmux new -s "spa-test" "make test" }
 spa-test-bash () { spa && tmux new -s "spa-test-bash" "make test-bash" }
 spa-build () { spa && tmux new -s "spa-build" "make build" }
 spa-psql () { spa && tmux new -s "spa-psql" "make psql" }
 
 alias spaconsole="spa-console"
-alias spashell="spa-shell"
+alias spashell="spa-shell --command zsh"
 alias spadebug="spa-debug"
 alias spadev="spa-dev"
 alias spagit="spa-git"
