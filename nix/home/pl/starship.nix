@@ -36,7 +36,7 @@
         deleted   = " ✖($count)";
       };
       nix_shell = {
-        format = "[$symbol$state( \($name\))]($style)";
+        format = "[\\[$state$symbol(\($name\))\\]]($style)";
         symbol = "❄";
         style = "bold blue";
         impure_msg = "";
