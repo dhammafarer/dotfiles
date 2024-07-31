@@ -149,10 +149,10 @@ local lsp = {
     -- Q = { "<cmd>LspRestart<cr>", desc = "LSP Restart" },
     { "g", group = "go to" },
     { "gc", vim.lsp.buf.declaration, desc = "[LSP] Go to Declaration" },
-    { "d", vim.lsp.buf.definition, desc = "[LSP] Go to Definition" },
-    { "i", vim.lsp.buf.implementation, desc = "[LSP] Go to Implementation" },
-    { "r", vim.lsp.buf.references, desc = "[LSP] Go to References" },
-    { "t", vim.lsp.buf.type_definition, desc = "[LSP] Go to Type Definition" },
+    { "gd", vim.lsp.buf.definition, desc = "[LSP] Go to Definition" },
+    { "gi", vim.lsp.buf.implementation, desc = "[LSP] Go to Implementation" },
+    { "gr", vim.lsp.buf.references, desc = "[LSP] Go to References" },
+    { "gt", vim.lsp.buf.type_definition, desc = "[LSP] Go to Type Definition" },
 }
 
 local diagnostics = {
