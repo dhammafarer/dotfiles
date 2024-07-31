@@ -1,5 +1,5 @@
 local awful = require("awful")
-local wibox = require("wibox")  -- Provides the widgets
+local wibox = require("wibox") -- Provides the widgets
 local watch = require("awful.widget.watch")
 local gears = require("gears")
 
@@ -32,19 +32,21 @@ local function set_markup(widget, stdout)
         widget.text.markup = "<span foreground='#1d1f21' background='#333' weight='bold'>  MIC OFF  </span>"
         widget.text.visible = true
         icon_widget.visible = false
+        --awful.spawn("/home/pl/dotfiles/arch/bin/plug_kitchen 'off'")
     else
         widget.text.markup = "<span foreground='#1d1f21' background='#cc6666' weight='bold'>  MIC REC  </span>"
         widget.text.visible = true
         icon_widget.visible = false
+        --awful.spawn("/home/pl/dotfiles/arch/bin/plug_kitchen 'on'")
     end
 end
 
 local command = "amixer get Capture"
 
 watch(command, 5, function(widget, stdout)
-    set_markup(widget, stdout)
-  end,
-  mic_widget
+        set_markup(widget, stdout)
+    end,
+    mic_widget
 )
 
 function mic_widget:check()
@@ -56,20 +58,20 @@ function mic_widget:check()
 end
 
 mic_widget.keys = gears.table.join(
-    awful.key( {}, "XF86AudioMicMute",
+    awful.key({}, "XF86AudioMicMute",
         function()
             awful.spawn("amixer set Capture toggle")
             mic_widget:check()
         end
     ),
-    awful.key( {}, "XF86AudioPrev",
+    awful.key({}, "XF86AudioPrev",
         function()
             awful.spawn("amixer set Capture nocap")
             awful.spawn("notify-send Mic MUTE")
             mic_widget:check()
         end
     ),
-    awful.key( {}, "XF86AudioNext",
+    awful.key({}, "XF86AudioNext",
         function()
             awful.spawn("amixer set Capture cap")
             awful.spawn("notify-send Mic ON")

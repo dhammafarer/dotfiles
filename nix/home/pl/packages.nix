@@ -45,5 +45,6 @@
     xorg.xev
     xorg.xset
     freeplane
+    home-assistant-cli
   ];
 }
