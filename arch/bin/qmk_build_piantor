@@ -1,0 +1,25 @@
+#!/bin/bash
+
+image=ghcr.io/qmk/qmk_cli
+
+usb_args="--privileged -v /dev:/dev"
+
+keyboard=beekeeb/piantor_pro
+keymap=miryoku
+target=build
+
+qmk_host_dir=$HOME/qmk_firmware
+keymap_host_path=/home/pl/dotfiles/arch/config/qmk/${keyboard}/${keymap}
+keymap_mount_path="/qmk_firmware/keyboards/${keyboard}/keymaps/${keymap}"
+
+cmd=$keyboard:$keymap:$target
+
+podman run --rm -it $usb_args \
+	-w /qmk_firmware \
+	-v "${qmk_host_dir}":/qmk_firmware:z \
+    -v "${keymap_host_path}":${keymap_mount_path}:z \
+	-e ALT_GET_KEYBOARDS=true \
+	-e SKIP_GIT="$SKIP_GIT" \
+	-e MAKEFLAGS="$MAKEFLAGS" \
+	$image \
+	make "$cmd"
