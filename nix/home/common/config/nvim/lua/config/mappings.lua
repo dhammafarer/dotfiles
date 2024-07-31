@@ -132,12 +132,12 @@ local lsp = {
     { "<C-d>", vim.lsp.buf.definition, desc = "[LSP] Go to Definition" },
     { "<C-f>", function() vim.lsp.buf.format { async = true } end, desc = "LSP Format", mode = "i" },
     { "<space>a", vim.lsp.buf.code_action, desc = "LSP Code Action" },
+    { "f", function() vim.lsp.buf.format { async = true } end, desc = "LSP Format" },
     -- c = {
     --     name = "+code",
     --     a = { vim.lsp.buf.code_action, desc = "LSP Code Action" },
     --     r = { vim.lsp.buf.rename, desc = "LSP Rename" },
     -- },
-    -- f = { function() vim.lsp.buf.format { async = true } end, desc = "LSP Format" },
     -- g = {
     --     name = "+go to",
     --     c = { vim.lsp.buf.declaration, desc = "Go to Declaration" },
