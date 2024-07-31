@@ -23,16 +23,17 @@ local mic_widget = wibox.widget {
         id = "text",
         widget = wibox.widget.textbox,
         align = "center",
-        valign = "center",
-        markup = "<span foreground='#1d1f21' background='#cc6666' weight='bold'>  MIC ON  </span>"
+        valign = "center"
     }
 }
 
 local function set_markup(widget, stdout)
     if string.match(stdout, "%[off%]") then
-        widget.text.visible = false
+        widget.text.markup = "<span foreground='#1d1f21' background='#333' weight='bold'>  MIC OFF  </span>"
+        widget.text.visible = true
         icon_widget.visible = false
     else
+        widget.text.markup = "<span foreground='#1d1f21' background='#cc6666' weight='bold'>  MIC REC  </span>"
         widget.text.visible = true
         icon_widget.visible = false
     end
