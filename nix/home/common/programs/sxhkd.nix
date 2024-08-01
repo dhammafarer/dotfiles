@@ -21,6 +21,7 @@
       "XF86Tools; p" = "~/.dmenu/process";
       "XF86Tools; x" = "~/.dmenu/xrandr";
       "XF86Tools; n" = "~/.dmenu/run";
+      "super + Escape; t" = "~/.dmenu/mindmaps";
       "XF86MonBrightnessUp" = "light -A 5";
       "XF86MonBrightnessDown" = "light -U 5";
       "{XF86AudioPlay,XF86AudioPause}" = "playerctl -i cmus play-pause";

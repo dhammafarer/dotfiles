@@ -29,12 +29,12 @@ local mic_widget = wibox.widget {
 
 local function set_markup(widget, stdout)
     if string.match(stdout, "%[off%]") then
-        widget.text.markup = "<span foreground='#1d1f21' background='#333' weight='bold'>  MIC OFF  </span>"
+        widget.text.markup = "<span foreground='#1d1f21' background='#333' weight='bold'>  MIC  </span>"
         widget.text.visible = true
         icon_widget.visible = false
-        --awful.spawn("/home/pl/dotfiles/arch/bin/plug_kitchen 'off'")
+        --awful.spawn("/home/pl/dotfiles/arch/bin/plug_kitchen 'off'"R
     else
-        widget.text.markup = "<span foreground='#1d1f21' background='#cc6666' weight='bold'>  MIC REC  </span>"
+        widget.text.markup = "<span foreground='#1d1f21' background='#cc6666' weight='bold'>  MIC  </span>"
         widget.text.visible = true
         icon_widget.visible = false
         --awful.spawn("/home/pl/dotfiles/arch/bin/plug_kitchen 'on'")

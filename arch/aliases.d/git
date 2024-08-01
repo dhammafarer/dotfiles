@@ -3,7 +3,14 @@
 git_grep_focused_test() {
     git grep -E -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter\.pp\(\w+\)"
 }
+
 alias gfoc="git_grep_focused_test"
+ 
+set_git_base() {
+    export GIT_BASE=$1
+}
+
+alias sgb="set_git_base"
 
 alias gac="git add . && git commit"
 alias gacm="git add . && git commit -m"

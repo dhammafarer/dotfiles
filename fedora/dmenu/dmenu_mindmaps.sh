@@ -16,5 +16,5 @@ choice=$(echo "$opts" | awk -F '.' '{print $1}' \
 filename=$(echo "$opts" | awk -F '.' -v re="$choice" '$1 == re {print $0}')
 
 if [[ "$filename" ]]; then
-  /var/home/pl/.local/bin/freeplane $dir/$filename
+  freeplane $dir/$filename
 fi

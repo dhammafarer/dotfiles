@@ -1,5 +1,18 @@
 #!/usr/bin/env zsh
 
+git_grep_focused_test() {
+    git grep -E -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter\.pp\(\w+\)"
+}
+
+alias gfoc="git_grep_focused_test"
+ 
+set_pr_base() {
+    export PR_BASE=$1
+}
+
+alias spb="set_pr_base"
+
+
 alias gac="git add . && git commit"
 alias gacm="git add . && git commit -m"
 alias gar="git_add_remote"
