@@ -8,8 +8,8 @@
     settings = {
       add_newline = true;
       character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
+        success_symbol = "[󰲒](bold white)";
+        error_symbol = "[󰲒](bold red)";
       };
       package = {
         disabled = true;
@@ -29,15 +29,24 @@
         format = "([$all_status$ahead_behind]($style))";
         style = "red";
         conflicted  = "";
-        untracked = " ($count)";
+        ahead = " 󰄿";
+        behind = " 󰄼";
+        untracked = " 󰄰($count)";
         modified  = " ($count)";
-        staged    = " ($count)";
+        staged    = " 󰄵($count)";
         renamed   = " 󰁕($count)";
         deleted   = " ✖($count)";
+        stashed   = " 󰀚";
+      };
+      env_var = {
+        variable = "GIT_BASE";
+        disabled = false;
+        format = " 󰜴 [$env_value]($style)";
+        style = "yellow bold dimmed";
       };
       nix_shell = {
         format = "[\\[$state$symbol(\($name\))\\]]($style)";
-        symbol = "❄";
+        symbol = "󱄅";
         style = "bold blue";
         impure_msg = "";
       };
@@ -49,8 +58,8 @@
         "$hostname"
         ""
         "$directory"
-        " "
         "$git_branch"
+        "$env_var"
         "$git_state"
         "$git_metrics"
         "$git_status"

@@ -46,5 +46,6 @@
     xorg.xset
     freeplane
     home-assistant-cli
+    ibus-with-plugins
   ];
 }

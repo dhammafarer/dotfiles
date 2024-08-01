@@ -32,7 +32,7 @@ local function set_markup(widget, stdout)
         widget.text.markup = "<span foreground='#1d1f21' background='#333' weight='bold'>  MIC  </span>"
         widget.text.visible = true
         icon_widget.visible = false
-        --awful.spawn("/home/pl/dotfiles/arch/bin/plug_kitchen 'off'"R
+        --awful.spawn("/home/pl/dotfiles/arch/bin/plug_kitchen 'off'")
     else
         widget.text.markup = "<span foreground='#1d1f21' background='#cc6666' weight='bold'>  MIC  </span>"
         widget.text.visible = true

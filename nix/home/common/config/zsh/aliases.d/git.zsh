@@ -7,11 +7,20 @@ git_grep_focused_test() {
 alias gfoc="git_grep_focused_test"
  
 set_pr_base() {
-    export PR_BASE=$1
+    export GIT_BASE=$1
 }
 
-alias spb="set_pr_base"
+set_pr_base_from_gh() {
+    branch=$(gh pr view --json baseRefName | jq -r .baseRefName)
+    if [ -e $branch ]; then
+        unset GIT_BASE
+    else
+        export GIT_BASE=$branch
+    fi
+}
 
+alias spr="set_pr_base"
+alias sgh="set_pr_base_from_gh"
 
 alias gac="git add . && git commit"
 alias gacm="git add . && git commit -m"
