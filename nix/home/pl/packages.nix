@@ -20,6 +20,7 @@
     gitui
     gnumake
     google-chrome
+    gpick
     jetbrains-mono
     jq
     kdePackages.breeze-gtk

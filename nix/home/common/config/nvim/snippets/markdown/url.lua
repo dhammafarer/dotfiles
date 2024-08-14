@@ -27,7 +27,7 @@ return {
     s("url", { f(paste_url) }),
     s("journal", fmt(
         [[
-        [{}](./{}.md)
+        [{}](journal/{}.md)
         ]],
         {
             f(function() return os.date('%Y-%m-%d %a') end),

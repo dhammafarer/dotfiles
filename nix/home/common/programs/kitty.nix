@@ -3,7 +3,7 @@
 {
   programs.kitty = {
     enable = true;
-    shellIntegration.enableZshIntegration = false;
+    shellIntegration.enableZshIntegration = true;
 
     settings = {
       font_family = "FiraCode Nerd Font Mono";

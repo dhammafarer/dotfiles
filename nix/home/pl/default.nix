@@ -10,16 +10,19 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./packages.nix
-    ./packages-ygt.nix
-    ./starship.nix
-    ./neovim.nix
-  	../common/programs/zsh.nix
-  	../common/programs/gtk.nix
   	../common/programs/gh.nix
   	../common/programs/git.nix
-  	../common/programs/sxhkd.nix
+  	../common/programs/gtk.nix
   	../common/programs/rofi.nix
+  	../common/programs/sxhkd.nix
+  	../common/programs/zsh.nix
     ../common/programs/tmux.nix
+    ../common/programs/dmenu.nix
+    ./kitty.nix
+    ./neovim.nix
+    ./packages-ygt.nix
+    ./packages.nix
+    ./starship.nix
+    ./awesome.nix
   ];
 }

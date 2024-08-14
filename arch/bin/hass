@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+set -a
+source ~/.hass-cli
+set +a
+
+hass-cli $@

@@ -31,18 +31,18 @@
         conflicted  = "";
         ahead = " 󰄿";
         behind = " 󰄼";
-        untracked = " 󰄗($count)";
-        modified  = " 󰆢($count)(green)";
-        staged    = " 󰄵($count)";
-        renamed   = " 󰁕($count)";
-        deleted   = " 󰅘($count)";
-        stashed   = " 󰅳";
+        untracked = " ($count)󰄗";
+        modified  = " ($count)󰆢";
+        staged    = " ($count)󰄵";
+        renamed   = " ($count)󰁕";
+        deleted   = " ($count)󰅘";
+        stashed   = " ($count)󰅳";
       };
       env_var = {
         variable = "GIT_BASE";
         disabled = false;
-        format = "[$env_value]($style) ";
-        style = "white bold dimmed";
+        format = " into [$env_value]($style)";
+        style = "yellow bold dimmed";
       };
       nix_shell = {
         format = "[\\[$state$symbol(\($name\))\\]]($style)";
@@ -58,11 +58,11 @@
         "$hostname"
         ""
         "$directory"
-        "$env_var"
         "$git_branch"
         "$git_state"
         "$git_metrics"
         "$git_status"
+        "$env_var"
         " "
         "$nix_shell"
         "$line_break"
