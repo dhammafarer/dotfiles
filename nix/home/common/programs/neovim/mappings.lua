@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap('v', '<C-C>', '"+y', { noremap = true, silent = true })
 
 local telescope = {
     ["<A-f>"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-    ["<A-s>"] = { "<cmd>Telescope grep_string<cr>", "String Grep" },
+    ["<A-s>"] = { "<cmd>Telescope grep_string word_match=-w<cr>", "String Grep" },
     ["<C-e>"] = { "<cmd>Telescope oldfiles cwd_only=true<cr>", "Recent Files" },
     ["<C-b>"] = { "<cmd>Telescope buffers ignore_current_buffer=true sort_mru=true<cr>", "Buffers" },
     ["<C-f>"] = { "<cmd>Telescope find_files<cr>", "Find File" },

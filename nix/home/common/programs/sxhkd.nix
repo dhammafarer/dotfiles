@@ -31,19 +31,19 @@
       "shift + control + XF86AudioLowerVolume" = "cmus-remote -v 50%; notify-send -t 800 'Cmus Vol:' 50%";
       "shift + control + XF86AudioRaiseVolume" = "cmus-remote -v 75%; notify-send -t 800 'Cmus Vol:' 75%";
       "Print" = "maim --select | xclip -selection clipboard -target image/png";
-      "XF86Favorites" = "rofi -show window";
-      "XF86Calculator" = "rofi -show window";
+      # "XF86Favorites" = "rofi -show window";
+      # "XF86Calculator" = "rofi -show window";
       "XF86HomePage; p" = "~/.dmenu/process";
       "XF86HomePage; x" = "~/.dmenu/xrandr";
       "XF86HomePage; n" = "~/.dmenu/run";
       "XF86Search" = "rofi -show window";
-      "XF86Explorer" = "rofi -show window";
-      "XF86Tools" = "~/dotfiles/arch/bin/hass_state toggle light.kitchen_ceiling";
-      "XF86Launch5" = "~/dotfiles/arch/bin/hass state toggle light.desk";
-      "XF86Launch6" = "~/dotfiles/arch/bin/hass state toggle light.salon";
-      "XF86Launch7" = "~/dotfiles/arch/bin/hass state toggle light.kitchen";
+      #"XF86Explorer" = "rofi -show window";
+      # "XF86Tools" = "~/dotfiles/arch/bin/hass_state toggle light.kitchen_ceiling";
+      # "XF86Launch5" = "~/dotfiles/arch/bin/hass state toggle light.desk";
+      # "XF86Launch6" = "~/dotfiles/arch/bin/hass state toggle light.salon";
+      # "XF86Launch7" = "~/dotfiles/arch/bin/hass state toggle light.kitchen";
       "XF86Launch8" = "~/.dmenu/hass";
-      "XF86Launch9" = "~/dotfiles/arch/bin/hass state toggle light.workbench";
+      # "XF86Launch9" = "~/dotfiles/arch/bin/hass state toggle light.workbench";
     };
   };
 }

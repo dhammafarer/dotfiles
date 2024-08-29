@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    ansible
+    ansible-lint
     acpi
     arc-icon-theme
     bat
@@ -47,6 +49,8 @@
     xorg.xset
     freeplane
     home-assistant-cli
-    ibus-with-plugins
+    # ibus-with-plugins
+    # ibus
+    # ibus-engines.libpinyin
   ];
 }

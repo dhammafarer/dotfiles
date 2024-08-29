@@ -6,6 +6,7 @@ require("mason-lspconfig").setup {
         "astro",
         "clangd",
         "elmls",
+        "eslint",
         "gopls",
         "lua_ls",
         "pyright",

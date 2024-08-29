@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap('v', '<C-C>', '"+y', { noremap = true, silent = true })
 
 local telescope = {
     { "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-    { "<A-s>", "<cmd>Telescope grep_string<cr>",desc =  "String Grep" },
+    { "<A-s>", "<cmd>Telescope grep_string word_match=-w<cr>",desc =  "String Grep" },
     { "<C-e>", "<cmd>Telescope oldfiles cwd_only=true<cr>", desc = "Recent Files" },
     { "<C-b>", "<cmd>Telescope buffers ignore_current_buffer=true sort_mru=true<cr>", desc = "Buffers" },
     { "<C-f>", "<cmd>Telescope find_files<cr>", desc = "Find File" },
@@ -242,6 +242,10 @@ local utils = {
 local capslock = {
     "<A-n>", "<Plug>CapsLockToggle", desc = "Toggle Capslock", mode = "i"
 }
+
+vim.keymap.set({ 'n', 'v' }, '<Up>', 'gk')
+--vim.keymap.set('n', '<leader>ga', "<cmd>Telescope grep_string word_match=-w search_dirs=input('Dir: ')<cr>")
+vim.keymap.set('n', '<leader>ga', ":Telescope grep_string search_dirs=")
 
 wk.add(capslock)
 wk.add(utils)

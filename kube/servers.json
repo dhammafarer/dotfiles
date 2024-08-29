@@ -1,0 +1,12 @@
+{
+    "Servers": {
+        "Spabreaks": {
+            "Name": "spabreaks-db",
+            "Group": "localhost",
+            "Port": 5432,
+            "Username": "postgres",
+            "Host": "db",
+            "MaintenanceDB": "postgres"
+        }
+    }
+}

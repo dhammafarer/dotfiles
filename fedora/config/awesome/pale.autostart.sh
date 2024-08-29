@@ -26,7 +26,7 @@ run sxhkd
 # run ibus-daemon -drxR
 run unclutter --timeout 1 --start-hidden --ignore-scrolling
 
-# run flatpak com.nextcloud.desktopclient.nextcloud
+run_flatpak com.nextcloud.desktopclient.nextcloud
 run signal-desktop
 
 run slack
