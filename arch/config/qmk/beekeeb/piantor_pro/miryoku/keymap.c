@@ -189,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [APP] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     KC_NO,   KC_WBAK, KC_BRID, KC_BRIU, KC_WFWD, KC_PSCR,                      QK_BOOT, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
+     KC_NO,   KC_WBAK, KC_BRID, KC_BRIU, KC_WFWD, KC_PSCR,                      XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, QK_BOOT, KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_NO,   KC_WFAV, KC_CALC, KC_WHOM, KC_WSCH, KC_MYCM,                      XXXXXXX, KC_RGUI, KC_RCTL, KC_RSFT, KC_RALT, KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
