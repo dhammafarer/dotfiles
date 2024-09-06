@@ -21,6 +21,7 @@
     git
     gitui
     gnumake
+    go
     google-chrome
     gpick
     jetbrains-mono
@@ -30,6 +31,7 @@
     maim
     neovim
     nodePackages.prettier
+    nodePackages.typescript-language-server
     nodejs_22
     pass
     playerctl
@@ -40,6 +42,7 @@
     tldr
     tmux
     tree
+    typescript
     unclutter-xfixes
     universal-ctags
     which

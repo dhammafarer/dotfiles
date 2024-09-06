@@ -80,7 +80,7 @@ lspconfig["tailwindcss"].setup {
     capabilities = capabilities,
     flags = lsp_flags,
 }
-lspconfig["tsserver"].setup {
+lspconfig["ts_ls"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
