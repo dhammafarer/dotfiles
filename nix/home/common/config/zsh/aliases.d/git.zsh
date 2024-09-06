@@ -46,12 +46,12 @@ alias grcr="git_remote_cr_rpi"
 alias grr="rm -rf .git && git init"
 alias grrc="git rm -r --cached ."
 alias grv="git remote -v"
-alias gs="git switch"
-alias gsl="git switch -"
+alias gs="git_switch"
+alias gsl="git switch - && sgh"
 alias gsar="git_submodule_add_role"
 alias gsc="git switch -c"
 alias gsd="git switch dev"
-alias gsm="git switch master"
+alias gsm="git switch master && unset GIT_BASE"
 alias gsr="git_set_remote"
 alias gst="git status"
 alias gsts="git status --short"
@@ -63,6 +63,10 @@ git_clone_repo() {
 
 git_clone_rpi() {
   git clone ssh://git@rpi:/srv/git/$1
+}
+
+git_switch() {
+  git switch $1 && sgh
 }
 
 git_clone_repo_palekiwi() {
