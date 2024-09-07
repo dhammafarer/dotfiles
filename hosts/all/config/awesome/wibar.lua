@@ -77,28 +77,7 @@ local tasklist_buttons = gears.table.join(
   end)
 )
 
-local function setup_wibar(s)
-  -- Create a taglist widget
-  s.mytaglist = awful.widget.taglist {
-    screen  = s,
-    filter  = awful.widget.taglist.filter.noempty,
-    buttons = taglist_buttons
-  }
-
-  -- Create a tasklist widget
-  s.mytasklist = awful.widget.tasklist {
-    screen  = s,
-    layout  = {
-      layout = wibox.layout.flex.horizontal
-    },
-    style   = {
-      font = "Fira Code Bold 8",
-      align = "center",
-    },
-    filter  = awful.widget.tasklist.filter.currenttags,
-    buttons = tasklist_buttons
-  }
-
+local function setup_wibox(s)
   -- Create the wibox
   s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -128,6 +107,31 @@ local function setup_wibar(s)
       mysystray,
     },
   }
+end
+
+local function setup_wibar(s)
+  -- Create a taglist widget
+  s.mytaglist = awful.widget.taglist {
+    screen  = s,
+    filter  = awful.widget.taglist.filter.noempty,
+    buttons = taglist_buttons
+  }
+
+  -- Create a tasklist widget
+  s.mytasklist = awful.widget.tasklist {
+    screen  = s,
+    layout  = {
+      layout = wibox.layout.flex.horizontal
+    },
+    style   = {
+      font = "Fira Code Bold 8",
+      align = "center",
+    },
+    filter  = awful.widget.tasklist.filter.currenttags,
+    buttons = tasklist_buttons
+  }
+
+  setup_wibox(s)
 end
 
 return setup_wibar
