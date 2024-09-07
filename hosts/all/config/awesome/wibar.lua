@@ -77,6 +77,39 @@ local tasklist_buttons = gears.table.join(
   end)
 )
 
+local function setup_right_widgets()
+    if awesome.hostname == "pale" then
+        return {
+          layout = wibox.layout.fixed.horizontal,
+          spacing = 4,
+          capslock,
+          mic,
+          myvolume,
+          cmus_widget{},
+          battery_widget(),
+          timeON,
+          timeUK,
+          timePL,
+          timeJP,
+          timeTW,
+          mysystray
+        }
+    else
+        return {
+          layout = wibox.layout.fixed.horizontal,
+          spacing = 4,
+          capslock,
+          mic,
+          myvolume,
+          cmus_widget{},
+          battery_widget(),
+          timePL,
+          timeTW,
+          mysystray
+        }
+    end
+end
+
 local function setup_wibox(s)
   -- Create the wibox
   s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -91,21 +124,7 @@ local function setup_wibox(s)
       s.mypromptbox,
     },
     s.mytasklist, -- Middle widget
-    {             -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
-      spacing = 4,
-      capslock,
-      mic,
-      myvolume,
-      cmus_widget{},
-      battery_widget(),
-      timeON,
-      timeUK,
-      timePL,
-      timeJP,
-      timeTW,
-      mysystray,
-    },
+    setup_right_widgets() -- Right widgets
   }
 end
 
