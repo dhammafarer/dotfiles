@@ -52,6 +52,7 @@
     xorg.xset
     freeplane
     home-assistant-cli
+    yubikey-manager
     # ibus-with-plugins
     # ibus
     # ibus-engines.libpinyin
