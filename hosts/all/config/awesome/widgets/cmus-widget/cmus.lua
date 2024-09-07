@@ -39,7 +39,7 @@ local function worker(user_args)
             id = "icon",
             widget = wibox.widget.imagebox,
             resize = false,
-            image = HOME .. "/.nix-profile/share/icons/Arc/status/symbolic/microphone-sensitivity-muted-symbolic.svg"
+            image = HOME .. "/.local/share/icons/Arc/status/symbolic/microphone-sensitivity-muted-symbolic.svg"
         },
         {
             id = "text",

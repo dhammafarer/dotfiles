@@ -130,4 +130,4 @@ root.keys(globalkeys)
 require("rules")
 require("signals")
 
-awesome.spawn(gears.filesystem.get_configuration_dir() .. "autostart.sh")
+awesome.spawn(gears.filesystem.get_configuration_dir() .. awesome.hostname .. ".autostart.sh")

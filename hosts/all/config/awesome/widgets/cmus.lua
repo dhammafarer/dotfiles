@@ -31,7 +31,7 @@ local function worker(user_args)
             id = "icon",
             widget = wibox.widget.imagebox,
             resize = false,
-            image = HOME .. "/.nix-profile/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg",
+            image = HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg",
         },
         valign = 'center',
         layout = wibox.container.place,
@@ -92,13 +92,13 @@ local function worker(user_args)
 
             if cmus_info["status"] ==  "playing" then
                 icon_widget.icon:set_image(
-                HOME .. "/.nix-profile/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg")
+                HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-start-symbolic.svg")
             elseif cmus_info["status"] ==  "paused" then
                 icon_widget.icon:set_image(
-                HOME .. "/.nix-profile/share/icons/Arc/actions/symbolic/media-playback-pause-symbolic.svg")
+                HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-pause-symbolic.svg")
             else
                 icon_widget.icon:set_image(
-                HOME .. "/.nix-profile/share/icons/Arc/actions/symbolic/media-playback-stop-symbolic.svg")
+                HOME .. "/.local/share/icons/Arc/actions/symbolic/media-playback-stop-symbolic.svg")
             end
 
             if title then
