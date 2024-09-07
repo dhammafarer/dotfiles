@@ -20,6 +20,7 @@
     ../../../all/home-manager/common/programs/tmux.nix
     ../../../all/home-manager/common/programs/dmenu.nix
     ../../../all/home-manager/common/programs/xorg.nix
+    ../../../all/home-manager/common/programs/gpg.nix
     ./programs/kitty.nix
     ./programs/neovim.nix
     ./programs/packages.nix
