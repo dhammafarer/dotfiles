@@ -21,6 +21,7 @@
     ../../../all/home-manager/common/programs/dmenu.nix
     ../../../all/home-manager/common/programs/xorg.nix
     ../../../all/home-manager/common/programs/gpg.nix
+    ../../../all/home-manager/common/programs/picom.nix
     ./programs/kitty.nix
     ./programs/neovim.nix
     ./programs/packages.nix
