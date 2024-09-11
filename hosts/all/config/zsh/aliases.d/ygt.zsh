@@ -9,7 +9,8 @@ spa-console () { spa && tmux new -s "spa-console" "make console" }
 spa-dev () { spa && tmux new -s "spa-dev" "make dev" }
 spa-guard () { spa && tmux new -s "spa-guard" "make guard" }
 spa-debug () { spa && tmux new -s "spa-debug" "task debug-web" }
-spa-git () { spa-shell --command "tmux new -s 'spa-gitui' 'gitui'" }
+# spa-git () { spa-shell --command "tmux new -s 'spa-gitui' 'gitui'" }
+spa-git () { spa && tmux new -s 'spa-gitui' 'gitui' }
 spa-test () { spa && tmux new -s "spa-test" "make test" }
 spa-test-bash () { spa && tmux new -s "spa-test-bash" "make test-bash" }
 spa-build () { spa && tmux new -s "spa-build" "make build" }

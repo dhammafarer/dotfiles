@@ -5,11 +5,13 @@ if git grep --cached -qE -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter
     exit 1
 fi
 
-# Run ESLint on staged .js files
+# Run Rubocop on staged .rb files
 rb_files=$(git diff --cached --name-only --diff-filter=ACM | grep ".rb$")
 
+cmd="docker-compose exec test rubocop"
+
 if [[ $rb_files ]]; then
-    if ! rubocop $rb_files; then
+    if ! $cmd $rb_files; then
         echo "Rubocop failed on staged file. Please fix the errors and try again."
         exit 1
     fi
