@@ -82,7 +82,6 @@ local set_base_branch = function(git_base, action)
     end
 
     gs.change_base(git_base, true)
-    gs.toggle_deleted(true)
 
     toggle_git_status(action, false, false, "right", git_base)
 end
@@ -90,8 +89,8 @@ end
 local toggle = {
     {"<leader>h", "<cmd>Gitsigns toggle_deleted<cr>", desc = "Deleted" },
     { "t", group = "toggle" },
-    { "th", "<cmd>Gitsigns toggle_deleted<cr>", desc = "Deleted" },
-    { "td", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this" },
+    { "th", "<cmd>Gitsigns toggle_deleted<cr><cmd>Gitsigns toggle_word_diff<cr>", desc = "Deleted" },
+    { "tn", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this" },
     { "tb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Blame" },
     { "tf", "<cmd>Neotree float git_status<cr>", desc = "Float git status" },
     { "tq", hunks_to_loclist, desc = "Hunks to Loclist" },
