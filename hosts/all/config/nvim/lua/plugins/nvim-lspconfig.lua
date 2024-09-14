@@ -75,11 +75,11 @@ lspconfig["solargraph"].setup {
     capabilities = capabilities,
     flags = lsp_flags,
 }
-lspconfig["tailwindcss"].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-}
+-- lspconfig["tailwindcss"].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     flags = lsp_flags,
+-- }
 lspconfig["ts_ls"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
