@@ -4,12 +4,22 @@ pale_builtin=eDP-1
 pale_external=DP-2
 pale_tablet=DP-5
 
+kasumi_builtin=eDP-1
+kasumi_external=DP-5
+
 declare -a options_pale=(
 "builtin"
 "external"
 "dual"
 "sidecar"
 "triple"
+"presentation"
+)
+
+declare -a options_kasumi=(
+"builtin"
+"external"
+"dual"
 "presentation"
 )
 
@@ -214,6 +224,38 @@ then
       xrandr --output $pale_builtin --auto --primary --pos 0x720
       xrandr --output $pale_external --off
       xrandr --output $pale_tablet --auto --rotate right --pos 1920x0
+      restart_wm
+    ;;
+    *)
+      exit 1
+    ;;
+  esac
+elif [[ $(hostname -s) == "kasumi" ]];
+then
+  choice=$(echo "$(printf '%s\n' "${options_kasumi[@]}")" | $launcher -p 'xrandr profile: ')
+  case "$choice" in
+    builtin)
+      xrandr --output $kasumi_tablet --off
+      xrandr --output $kasumi_builtin --auto --primary
+      xrandr --output $kasumi_external --off
+      restart_wm
+    ;;
+    external)
+      xrandr --output $kasumi_tablet --off
+      xrandr --output $kasumi_external --auto --primary
+      xrandr --output $kasumi_builtin --off
+      restart_wm
+    ;;
+    dual)
+      xrandr --output $kasumi_tablet --off
+      xrandr --output $kasumi_external --auto --primary
+      xrandr --output $kasumi_builtin --auto --below $kasumi_external
+      restart_wm
+    ;;
+    presentation)
+      xrandr --output $kasumi_tablet --off
+      xrandr --output $kasumi_builtin --auto --primary
+      xrandr --output $kasumi_external --auto --above $kasumi_builtin
       restart_wm
     ;;
     *)
