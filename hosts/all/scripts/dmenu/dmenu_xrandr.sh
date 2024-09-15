@@ -5,7 +5,7 @@ pale_external=DP-2
 pale_tablet=DP-5
 
 kasumi_builtin=eDP-1
-kasumi_external=DP-5
+kasumi_external=DP-3
 
 declare -a options_pale=(
 "builtin"
