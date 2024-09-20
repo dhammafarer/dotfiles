@@ -1,16 +1,16 @@
 [Default Applications]
-x-scheme-handler/http=google-chrome.desktop
-x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/http=com.google.Chrome.desktop
+x-scheme-handler/https=com.google.Chrome.desktop
 x-scheme-handler/ftp=firefox.desktop
 x-scheme-handler/chrome=firefox.desktop
-text/html=google-chrome.desktop
+text/html=com.google.Chrome.desktop
 application/x-extension-htm=firefox.desktop
 application/x-extension-html=firefox.desktop
 application/x-extension-shtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
-x-scheme-handler/about=google-chrome.desktop
-x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/about=com.google.Chrome.desktop
+x-scheme-handler/unknown=com.google.Chrome.desktop
 application/pdf=org.kde.okular.desktop
 application/x-freeplane=freeplane.desktop
