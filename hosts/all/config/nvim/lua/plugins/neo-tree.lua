@@ -1,5 +1,15 @@
 require("neo-tree").setup({
+    window = {
+        mappings = {
+            ["l"] = "none"
+        },
+    },
     filesystem = {
+        window = {
+            mappings = {
+                ["l"] = "none"
+            },
+        },
         follow_current_file = {
             enabled = true,
             leave_dirs_open = false,
@@ -25,6 +35,7 @@ require("neo-tree").setup({
             mappings = {
                 ["bd"] = "buffer_delete",
                 ["<bs>"] = "navigate_up",
+                ["l"] = "none",
                 ["."] = "set_root",
                 ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
                 ["oc"] = { "order_by_created", nowait = false },
@@ -43,6 +54,7 @@ require("neo-tree").setup({
                 size = { width = "80%" }
             },
             mappings = {
+                ["l"] = "none",
                 ["A"]  = "git_add_all",
                 ["gu"] = "git_unstage_file",
                 ["ga"] = "git_add_file",

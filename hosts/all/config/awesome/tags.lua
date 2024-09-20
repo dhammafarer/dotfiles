@@ -62,7 +62,7 @@ return {
                 name = "八",
                 key = "f",
                 layout = LAYOUT_TILE,
-                master_width_factor = 0.5,
+                master_width_factor = 0.7,
             },
             {
                 name = "九",

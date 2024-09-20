@@ -188,7 +188,7 @@ local floaterm = {
 local hop = {
     { "s", "<cmd>HopChar1<cr>", desc = "Hop Char 1", mode = "n" },
     { "W", "<cmd>HopWord<cr>", desc = "Hop Word", mode = "n" },
-    { "l", "<cmd>HopLineStart<cr>", desc = "Hop Line Start", mode = { "n", "v" } },
+    { "l", "<cmd>HopLineStart<cr>", desc = "Hop Line Start", mode = { "n", "v" } }
 }
 
 local builtin = {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 pale_builtin=eDP-1
-pale_external=DP-2
+pale_external=DP-3
 pale_tablet=DP-5
 
 kasumi_builtin=eDP-1

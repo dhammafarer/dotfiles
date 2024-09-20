@@ -25,8 +25,8 @@ alias v="nvim_fg"
 alias xo="xdg-open"
 
 alias pgpa="pass git remote | xargs -L1 pass git push --all"
-alias pgpom="pass git push -u origin master"
-alias pgpul="pass git pull origin master"
+alias pgpom="cd ~/.password-store && git pull && git push"
+alias pgpul="cd ~/.password-store && git pull"
 alias pi="pass_insert"
 
 pass_insert () {
