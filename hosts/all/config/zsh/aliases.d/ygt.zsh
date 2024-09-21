@@ -17,7 +17,7 @@ spa-build () { spa && tmux new -s "spa-build" "make build" }
 spa-psql () { spa && tmux new -s "spa-psql" "make psql" }
 
 alias spaconsole="spa-console"
-alias sspashell="spa-shell --command zsh"
+alias spashell="spa-shell --command zsh"
 alias spadebug="spa-debug"
 alias spadev="spa-dev"
 alias spagit="spa-git"
