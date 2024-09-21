@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [COLEMAK] = LAYOUT_split_3x6_3(
 //,--------------------------------------------------------.                      ,--------------------------------------------------------.
-   KC_NO,   KC_Q,     KC_W,     HM_F,     HM_P,     KC_B,                            KC_J,     HM_L,     HM_U,     KC_Y,    KC_F20, KC_NO,
+   KC_NO,   KC_Q,     KC_W,     HM_F,     HM_P,     KC_B,                            KC_J,     HM_L,     HM_U,     KC_Y,    TG(HSH), KC_NO,
 //|------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+------|
    KC_NO,   HM_A,     HM_R,     HM_S,     HM_T,     KC_G,                            KC_M,     HM_N,     HM_E,     HM_I,    HM_O,    KC_NO,
 //|------+---------+---------+---------+---------+---------|                      |---------+---------+---------+---------+---------+------|
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [HSH] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     KC_NO,  KC_QUOT, KC_RABK, KC_CIRC, KC_PLUS, KC_RCBR,                      S(KC_H), KC_4,    KC_AT,   S(KC_Q), XXXXXXX, KC_NO,
+     KC_NO,  KC_QUOT, KC_RABK, KC_CIRC, KC_PLUS, KC_RCBR,                      S(KC_H), KC_4,    KC_AT,   S(KC_Q), TG(HSH), KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_NO,  KC_GRV,  KC_PERC, KC_DQT,  KC_TILD, KC_COMM,                      KC_BSLS, KC_SCLN, KC_UNDS, KC_HASH, S(KC_J), KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
