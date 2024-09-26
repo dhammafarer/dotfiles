@@ -16,6 +16,15 @@ spa-test-bash () { spa && tmux new -s "spa-test-bash" "make test-bash" }
 spa-build () { spa && tmux new -s "spa-build" "make build" }
 spa-psql () { spa && tmux new -s "spa-psql" "make psql" }
 
+spa-routes () {
+  output=$(spa && make routes)
+  if [ "$#" -eq 0 ]; then
+      echo $output
+  else
+    echo $output | grep $1
+  fi
+}
+
 alias spaconsole="spa-console"
 alias spashell="spa-shell --command zsh"
 alias spadebug="spa-debug"
@@ -27,7 +36,7 @@ alias spatestbash="spa-test-bash"
 alias spa-db-migrate="spa && db-migrate"
 alias spa-db-rollback="spa && db-rollback"
 alias spa-db-redo="spa && make db-migrate-redo"
-alias spa-routes="spa && make routes"
+alias sparoutes="spa-routes"
 alias spabuild="spa-build"
 alias spapsql="spa-psql"
 

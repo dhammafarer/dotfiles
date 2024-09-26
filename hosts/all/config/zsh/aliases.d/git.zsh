@@ -53,6 +53,7 @@ alias gsc="git switch -c"
 alias gsd="git switch dev"
 alias gsm="git switch master && unset GIT_BASE && git pull"
 alias gsb='sgh && gs $GIT_BASE'
+alias gmb='sgh && git merge $GIT_BASE'
 alias gsr="git_set_remote"
 alias gst="git status"
 alias gsts="git status --short"
