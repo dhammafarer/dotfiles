@@ -10,8 +10,9 @@ return {
             {
                 name = "一",
                 key = "r",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_TILE,
                 master_width_factor = 0.5,
+                master_fill_policy = "expand",
                 master_count = 1,
                 gap = 0,
             },
@@ -20,18 +21,18 @@ return {
                 key = "s",
                 column_count = 1,
                 gap_single_client = true,
-                layout = LAYOUT_BOTTOM,
-                master_fill_policy = "expand",
-                master_width_factor = 0.75,
+                layout = LAYOUT_TILE,
+                master_fill_policy = "master_width_factor",
+                master_width_factor = 0.5,
             },
             {
                 name = "三",
                 key = "t",
                 column_count = 1,
                 gap_single_client = true,
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_CENTER,
                 master_fill_policy = "expand",
-                master_width_factor = 0.82,
+                master_width_factor = 0.5,
                 selected = true,
             },
             {
@@ -49,7 +50,7 @@ return {
             {
                 name = "六",
                 key = "d",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_TILE,
                 master_width_factor = 0.5,
             },
             {

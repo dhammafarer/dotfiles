@@ -82,14 +82,14 @@ local globalkeys = gears.table.join(
     -- Focus 2nd Client
     awful.key({ MODKEY }, "n",
         function()
-            focus_by_master_offset(0, nil)
+            focus_by_master_offset(1, nil)
         end,
         { description = "Focus 2nd Client", group = "client" }
     ),
 
     awful.key({ MODKEY, "Control" }, "n",
         function()
-            focus_by_master_offset(0, nil)
+            focus_by_master_offset(1, nil)
             toggle_layout()
         end,
         { description = "toggle reading mode off", group = "client" }
@@ -98,14 +98,15 @@ local globalkeys = gears.table.join(
     -- Focus Master
     awful.key({ MODKEY }, "e",
         function()
-            focus_by_master_offset(1, nil)
+            focus_by_master_offset(0, nil)
         end,
         { description = "focus master", group = "client" }),
 
     awful.key({ MODKEY, "Control" }, "e",
         function()
-            focus_by_master_offset(0, nil)
-            toggle_layout()
+            focus_by_master_offset(0, 0)
+            -- toggle_layout()
+            awful.layout.set(LAYOUT_CENTER)
         end,
         { description = "focus master", group = "client" }),
 
@@ -220,8 +221,8 @@ local globalkeys = gears.table.join(
     awful.key({ MODKEY }, "u", function()
             --awful.layout.set(LAYOUT_CENTER)
             --focus_by_master_offset(0, BACKDROP_OPACITY)
-            if awful.layout.getname() ~= LAYOUT_TILE_NAME then
-                awful.layout.set(LAYOUT_TILE)
+            if awful.layout.getname() ~= LAYOUT_CENTER_NAME then
+                awful.layout.set(LAYOUT_CENTER)
             else
                 awful.layout.set(LAYOUT_MAX)
             end

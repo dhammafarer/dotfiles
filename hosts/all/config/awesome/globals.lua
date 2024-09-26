@@ -48,8 +48,8 @@ Urgent = nil
 LAYOUT_CENTER = lain.layout.centerwork
 LAYOUT_CENTER_NAME = "centerwork"
 
-LAYOUT_TILE = awful.layout.suit.tile.right
-LAYOUT_TILE_NAME = "tile"
+LAYOUT_TILE = awful.layout.suit.tile.left
+LAYOUT_TILE_NAME = "tileleft"
 
 LAYOUT_BOTTOM = awful.layout.suit.tile.bottom
 LAYOUT_BOTTOM_NAME = "tilebottom"
