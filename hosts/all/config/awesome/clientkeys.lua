@@ -59,8 +59,8 @@ local clientkeys = gears.table.join(
 
             c.floating = true
 
-            c.width = 1280
-            c.height = 720
+            c.width = 1920
+            c.height = 1080
 
             awful.placement.centered(c, nil)
 
