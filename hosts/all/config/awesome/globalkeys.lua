@@ -106,7 +106,7 @@ local globalkeys = gears.table.join(
         function()
             focus_by_master_offset(0, 0)
             -- toggle_layout()
-            awful.layout.set(LAYOUT_CENTER)
+            -- awful.layout.set(LAYOUT_CENTER)
         end,
         { description = "focus master", group = "client" }),
 
