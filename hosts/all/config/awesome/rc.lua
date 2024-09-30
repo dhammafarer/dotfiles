@@ -69,7 +69,7 @@ awful.screen.connect_for_each_screen(function(s)
             default_layout = t.layout,
             selected = t.selected,
             screen = s.index,
-            master_width_factor = t.master_width_factor,
+            master_fill_policy = t.master_fill_policy,
             master_count = t.master_count,
             column_count = t.column_count,
             gap_single_client = t.gap_single_client,
