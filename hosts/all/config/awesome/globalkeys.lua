@@ -50,7 +50,17 @@ end
 local globalkeys = gears.table.join(
     -- toggle between screens
     awful.key({ ALTKEY }, "Tab",
-        function() awful.screen.focus_relative(1) end,
+        function()
+            awful.screen.focus_relative(1)
+
+            naughty.notify({
+                title = "Active screen",
+                position = "bottom_middle",
+                timeout = 1,
+                width = 120,
+                height = 32
+            })
+        end,
         { description = "focus primary screen", group = "screen" }),
 
     -- Focus screen 1
