@@ -5,7 +5,7 @@ local en = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 }
 
 return {
     names = { [1] = zh, [2] = en },
-    [2] = {
+    [1] = {
         [1] = {
             {
                 name = "一",
@@ -99,13 +99,14 @@ return {
             },
         }
     },
-    [1] = {
+    [2] = {
         [1] = {
             {
                 name = "一",
                 key = "r",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_TILE,
                 master_width_factor = 0.5,
+                master_fill_policy = "expand",
                 master_count = 1,
                 gap = 0,
             },
@@ -116,15 +117,14 @@ return {
                 gap_single_client = true,
                 layout = LAYOUT_BOTTOM,
                 master_fill_policy = "expand",
-                master_width_factor = 0.75,
-                selected = true,
+                master_width_factor = 0.5,
             },
             {
                 name = "三",
                 key = "t",
                 column_count = 1,
                 gap_single_client = true,
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_TILE,
                 master_fill_policy = "expand",
                 master_width_factor = 0.75,
                 selected = true,
@@ -148,6 +148,34 @@ return {
                 master_width_factor = 0.5,
             },
             {
+                name = "乙",
+                key = "g",
+                layout = LAYOUT_TILE,
+                master_width_factor = 0.5,
+            },
+        },
+        [2] = {
+            {
+                name = "甲",
+                key = "b",
+                layout = LAYOUT_TILE,
+                master_width_factor = 0.5,
+            },
+            {
+                name = "丙",
+                key = "v",
+                layout = LAYOUT_TILE,
+                master_width_factor = 0.5,
+            },
+            {
+                name = "〇",
+                key = "a",
+                layout = LAYOUT_BOTTOM,
+                master_width_factor = 0.5,
+                gap = 0,
+                selected = true
+            },
+            {
                 name = "七",
                 key = "w",
                 layout = LAYOUT_MAX,
@@ -164,35 +192,7 @@ return {
                 key = "p",
                 layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
-                gap = 0,
-            }
-        },
-        [2] = {
-            {
-                name = "甲",
-                key = "b",
-                layout = LAYOUT_TILE,
-                master_width_factor = 0.5,
-            },
-            {
-                name = "乙",
-                key = "g",
-                layout = LAYOUT_TILE,
-                master_width_factor = 0.5,
-            },
-            {
-                name = "丙",
-                key = "v",
-                layout = LAYOUT_TILE,
-                master_width_factor = 0.5,
-            },
-            {
-                name = "〇",
-                key = "a",
-                layout = LAYOUT_TILE,
-                master_width_factor = 0.66,
-                gap = 0,
-                selected = true
+                gap = 0
             }
         }
     }

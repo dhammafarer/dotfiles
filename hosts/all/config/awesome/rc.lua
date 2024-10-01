@@ -48,13 +48,12 @@ beautiful.init(THEME_PATH)
 
 local globalkeys = require("globalkeys")
 
-local screencount = screen:count()
-
 --
 -- set up fake screens
 --
 local geo = screen[1].geometry
-local side_width = 960
+-- local side_width = 960
+local side_width = 1720
 local main_width = geo.width - side_width
 
 -- resize main screen
@@ -62,6 +61,8 @@ screen[1]:fake_resize(geo.x + side_width, geo.y, main_width, geo.height)
 
 --secondary screen
 screen.fake_add(geo.x, geo.y, side_width, geo.height)
+
+local screencount = screen:count()
 
 awful.screen.connect_for_each_screen(function(s)
     local setup_wibar = require("wibar")
@@ -83,6 +84,7 @@ awful.screen.connect_for_each_screen(function(s)
             selected = t.selected,
             screen = s.index,
             master_fill_policy = t.master_fill_policy,
+            master_width_factor = t.master_width_factor,
             master_count = t.master_count,
             column_count = t.column_count,
             gap_single_client = t.gap_single_client,

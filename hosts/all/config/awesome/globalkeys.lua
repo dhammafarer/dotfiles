@@ -7,12 +7,32 @@ local mic = require('widgets.mic')
 
 require("globals")
 
+local function resize_fake_screen(delta)
+   if (screen.count() ~= 2) then
+      return
+   end
+   local geo1 = screen[1].geometry
+   local geo2 = screen[2].geometry
+   screen[1]:fake_resize(geo1.x - delta, geo1.y, geo1.width + delta, geo1.height)
+   screen[2]:fake_resize(geo2.x, geo2.y, geo2.width - delta, geo2.height)
+end
+
 local function set_clients_opacity(m, opacity)
     for _, x in ipairs(mouse.screen.selected_tag:clients()) do
         if x ~= m then
             x.opacity = opacity
         end
     end
+end
+
+local function notifyScreenFocus()
+    naughty.notify({
+        title = "Active screen",
+        position = "bottom_middle",
+        timeout = 1,
+        width = 120,
+        height = 32
+    })
 end
 
 local function undim_clients()
@@ -53,13 +73,7 @@ local globalkeys = gears.table.join(
         function()
             awful.screen.focus_relative(1)
 
-            naughty.notify({
-                title = "Active screen",
-                position = "bottom_middle",
-                timeout = 1,
-                width = 120,
-                height = 32
-            })
+            notifyScreenFocus()
         end,
         { description = "focus primary screen", group = "screen" }),
 
@@ -92,7 +106,7 @@ local globalkeys = gears.table.join(
     -- Focus 2nd Client
     awful.key({ MODKEY }, "n",
         function()
-            focus_by_master_offset(1, nil)
+            focus_by_master_offset(0, nil)
         end,
         { description = "Focus 2nd Client", group = "client" }
     ),
@@ -108,13 +122,13 @@ local globalkeys = gears.table.join(
     -- Focus Master
     awful.key({ MODKEY }, "e",
         function()
-            focus_by_master_offset(0, nil)
+            focus_by_master_offset(1, nil)
         end,
         { description = "focus master", group = "client" }),
 
     awful.key({ MODKEY, "Control" }, "e",
         function()
-            focus_by_master_offset(0, 0)
+            focus_by_master_offset(1, 0)
             -- toggle_layout()
             -- awful.layout.set(LAYOUT_CENTER)
         end,
@@ -171,7 +185,10 @@ local globalkeys = gears.table.join(
 
     awful.key({ MODKEY, "Control" }, "Tab",
         function()
-            awful.client.focus.byidx(-1)
+            -- awful.client.focus.byidx(-1)
+            awful.screen.focus_relative(1)
+
+            notifyScreenFocus()
         end,
         { description = "focus previous by index", group = "client" }),
 
@@ -241,14 +258,26 @@ local globalkeys = gears.table.join(
         { description = "toggle reading mode on", group = "client" }
     ),
 
-    awful.key({ MODKEY }, "o",
+    -- awful.key({ MODKEY }, "o",
+    --     function()
+    --         if awful.layout.getname() ~= LAYOUT_TILE_NAME then
+    --             awful.layout.set(LAYOUT_TILE)
+    --         else
+    --             awful.layout.set(LAYOUT_CENTER)
+    --         end
+    --     end, { description = "Toggle centerwork/tile", group = "client" }
+    -- ),
+
+    awful.key({ MODKEY, "Control", "Shift" }, "n",
         function()
-            if awful.layout.getname() ~= LAYOUT_TILE_NAME then
-                awful.layout.set(LAYOUT_TILE)
-            else
-                awful.layout.set(LAYOUT_CENTER)
-            end
-        end, { description = "Toggle centerwork/tile", group = "client" }
+            resize_fake_screen(380)
+        end, { description = "Resize main fake screen up", group = "global" }
+    ),
+
+    awful.key({ MODKEY, "Control", "Shift" }, "o",
+        function()
+            resize_fake_screen(-380)
+        end, { description = "Resize main fake screen down", group = "global" }
     ),
 
     awful.key({ MODKEY, "Control" }, ",",
@@ -314,13 +343,13 @@ local globalkeys = gears.table.join(
             awful.tag.incmwfact(-0.05)
 
             -- Automatically switch from centered to tiled layout when the master window factor crosses a threshold
-            local fct = mouse.screen.selected_tag.master_width_factor
-            if awful.layout.getname() == LAYOUT_CENTER_NAME then
-                if fct < 0.50 then
-                    awful.layout.set(LAYOUT_TILE)
-                    awful.tag.incmwfact(0.25)
-                end
-            end
+            -- local fct = mouse.screen.selected_tag.master_width_factor
+            -- if awful.layout.getname() == LAYOUT_CENTER_NAME then
+            --     if fct < 0.50 then
+            --         awful.layout.set(LAYOUT_TILE)
+            --         awful.tag.incmwfact(0.25)
+            --     end
+            -- end
         end,
         { description = "decrease master width factor", group = "layout" }
     )
