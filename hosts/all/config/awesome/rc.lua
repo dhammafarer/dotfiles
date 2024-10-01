@@ -52,8 +52,7 @@ local globalkeys = require("globalkeys")
 -- set up fake screens
 --
 local geo = screen[1].geometry
--- local side_width = 960
-local side_width = 1720
+local side_width = math.ceil(geo.width/2)
 local main_width = geo.width - side_width
 
 -- resize main screen
