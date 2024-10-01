@@ -1,6 +1,7 @@
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
+local naughty = require("naughty")
 
 require("globals")
 
@@ -131,6 +132,23 @@ local function setup_wibox(s)
     }
 end
 
+local function setup_wibox_secondary(s)
+    -- Create the wibox
+    s.mywibox = awful.wibar({ position = "top", screen = s })
+
+    -- Add widgets to the wibox
+    s.mywibox:setup {
+        layout = wibox.layout.align.horizontal,
+        -- expand = "none",
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            s.mytaglist,
+            s.mypromptbox,
+        },
+        s.mytasklist         -- Middle widget
+    }
+end
+
 local function setup_wibar(s)
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
@@ -153,7 +171,11 @@ local function setup_wibar(s)
         buttons = tasklist_buttons
     }
 
-    setup_wibox(s)
+    if s.index == 1 then
+        setup_wibox(s)
+    else
+        setup_wibox_secondary(s)
+    end
 end
 
 return setup_wibar
