@@ -5,7 +5,7 @@ local en = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 }
 
 return {
     names = { [1] = zh, [2] = en },
-    [1] = {
+    [2] = {
         [1] = {
             {
                 name = "一",
@@ -99,7 +99,7 @@ return {
             },
         }
     },
-    [2] = {
+    [1] = {
         [1] = {
             {
                 name = "一",
@@ -165,15 +165,7 @@ return {
                 layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
                 gap = 0,
-            },
-            {
-                name = "〇",
-                key = "a",
-                layout = LAYOUT_TILE,
-                master_width_factor = 0.66,
-                gap = 0,
-                selected = true
-            },
+            }
         },
         [2] = {
             {
@@ -194,6 +186,14 @@ return {
                 layout = LAYOUT_TILE,
                 master_width_factor = 0.5,
             },
+            {
+                name = "〇",
+                key = "a",
+                layout = LAYOUT_TILE,
+                master_width_factor = 0.66,
+                gap = 0,
+                selected = true
+            }
         }
     }
 }

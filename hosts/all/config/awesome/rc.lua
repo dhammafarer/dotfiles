@@ -50,6 +50,19 @@ local globalkeys = require("globalkeys")
 
 local screencount = screen:count()
 
+--
+-- set up fake screens
+--
+local geo = screen[1].geometry
+local side_width = 960
+local main_width = geo.width - side_width
+
+-- resize main screen
+screen[1]:fake_resize(geo.x + side_width, geo.y, main_width, geo.height)
+
+--secondary screen
+screen.fake_add(geo.x, geo.y, side_width, geo.height)
+
 awful.screen.connect_for_each_screen(function(s)
     local setup_wibar = require("wibar")
     setup_wibar(s)
