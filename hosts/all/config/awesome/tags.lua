@@ -133,24 +133,27 @@ return {
                 name = "四",
                 key = "x",
                 layout = LAYOUT_TILE,
+                master_fill_policy = "expand",
                 master_width_factor = 0.5,
             },
             {
                 name = "五",
                 key = "c",
                 layout = LAYOUT_TILE,
+                master_fill_policy = "expand",
                 master_width_factor = 0.5,
             },
             {
                 name = "六",
                 key = "d",
                 layout = LAYOUT_BOTTOM,
+                master_fill_policy = "expand",
                 master_width_factor = 0.5,
             },
             {
                 name = "乙",
                 key = "g",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_BOTTOM,
                 master_width_factor = 0.5,
             },
         },
@@ -158,13 +161,13 @@ return {
             {
                 name = "甲",
                 key = "b",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_BOTTOM,
                 master_width_factor = 0.5,
             },
             {
                 name = "丙",
                 key = "v",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_BOTTOM,
                 master_width_factor = 0.5,
             },
             {
@@ -184,7 +187,7 @@ return {
             {
                 name = "八",
                 key = "f",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_BOTTOM,
                 master_width_factor = 0.5,
             },
             {
