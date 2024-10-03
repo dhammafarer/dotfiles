@@ -69,7 +69,7 @@ end
 
 local globalkeys = gears.table.join(
     -- toggle between screens
-    awful.key({ ALTKEY }, "Tab",
+    awful.key({ MODKEY }, "Tab",
         function()
             awful.screen.focus_relative(1)
 
@@ -164,7 +164,7 @@ local globalkeys = gears.table.join(
         end,
         { description = "Horizontal split", group = "client" }),
 
-    awful.key({ MODKEY }, "Tab",
+    awful.key({ ALTKEY }, "Tab",
         function()
             local screen = awful.screen.focused()
 
@@ -183,12 +183,9 @@ local globalkeys = gears.table.join(
             end
         end, { description = "focus next by index", group = "client" }),
 
-    awful.key({ MODKEY, "Control" }, "Tab",
+    awful.key({ ALTKEY, "Control" }, "Tab",
         function()
-            -- awful.client.focus.byidx(-1)
-            awful.screen.focus_relative(1)
-
-            notifyScreenFocus()
+            awful.client.focus.byidx(-1)
         end,
         { description = "focus previous by index", group = "client" }),
 
