@@ -48,18 +48,21 @@ beautiful.init(THEME_PATH)
 
 local globalkeys = require("globalkeys")
 
---
--- set up fake screens
---
-local geo = screen[1].geometry
-local side_width = math.ceil(geo.width/2)
-local main_width = geo.width - side_width
+local function setup_fake_screens(s)
+    local geo = s[1].geometry
+    if geo.width > 3000 then
+        local side_width = math.ceil(geo.width / 2)
+        local main_width = geo.width - side_width
 
--- resize main screen
-screen[1]:fake_resize(geo.x + side_width, geo.y, main_width, geo.height)
+        -- resize main screen
+        s[1]:fake_resize(geo.x + side_width, geo.y, main_width, geo.height)
 
---secondary screen
-screen.fake_add(geo.x, geo.y, side_width, geo.height)
+        --secondary screen
+        s.fake_add(geo.x, geo.y, side_width, geo.height)
+    end
+end
+
+setup_fake_screens(screen)
 
 local screencount = screen:count()
 
