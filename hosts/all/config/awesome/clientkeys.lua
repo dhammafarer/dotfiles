@@ -2,8 +2,6 @@ local gears = require("gears")
 local awful = require("awful")
 local naughty = require("naughty")
 
-local tags = require("tags")
-
 require("globals")
 
 local function set_align(position, c)
