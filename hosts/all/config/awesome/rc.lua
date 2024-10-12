@@ -76,10 +76,9 @@ awful.screen.connect_for_each_screen(function(s)
     s.mypromptbox = awful.widget.prompt()
 
     local tags = require("tags")[screencount][s.index]
-    local names = require("tags")["names"][s.index]
 
     for i, t in ipairs(tags) do
-        awful.tag.add(names[i], {
+        awful.tag.add(t.name, {
             index = i,
             layout = t.layout,
             default_layout = t.layout,

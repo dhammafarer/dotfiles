@@ -36,7 +36,8 @@ screen.connect_signal("arrange",
             -- but iterate over clients instead of tiled_clients as tiled_clients doesn't include maximized windows
             for _, c in pairs(s.clients) do
                 if (noborder or only_one) and not c.floating or c.maximized then
-                    c.border_width = 0
+                    --c.border_width = 0
+                    c.border_width = beautiful.border_width
                 else
                     c.border_width = beautiful.border_width
                 end

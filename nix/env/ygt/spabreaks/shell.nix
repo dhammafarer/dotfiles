@@ -1,9 +1,9 @@
-with (import <nixpkgs> { });
+{ pkgs? import <nixpkgs> {} }:
 
 let
-  ruby = ruby_3_3;
-  solargraph = rubyPackages_3_3.solargraph;
-  env = bundlerEnv {
+  ruby = pkgs.ruby_3_3;
+  solargraph = pkgs.rubyPackages_3_3.solargraph;
+  rubyEnv = pkgs.bundlerEnv {
     name = "spabreaks-bundler-env";
     inherit ruby;
     gemfile = ~/code/ygt/spabreaks/Gemfile;
@@ -11,10 +11,10 @@ let
     gemset = ~/code/ygt/spabreaks/gemset.nix;
   };
 in
-stdenv.mkDerivation {
-  name = "spabreaks";
-  buildInputs = [
-    env
+pkgs.stdenv.mkDerivation {
+  name = "spabreaks-env";
+  buildInputs = with pkgs; [
+    rubyEnv
     ruby
     solargraph
     elmPackages.elm

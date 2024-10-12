@@ -17,6 +17,29 @@ local function resize_fake_screen(delta)
    screen[2]:fake_resize(geo2.x, geo2.y, geo2.width - delta, geo2.height)
 end
 
+local function fullscreen_fake_screen()
+     if (screen.count() ~= 2) then
+        return
+     end
+     local focused = awful.screen.focused()
+     local full_width = screen[1].geometry.width + screen[2].geometry.width
+     local height = screen[1].geometry.height
+
+     for s in screen do
+         if s == focused then
+             s:fake_resize(0, 0, full_width, height)
+         else
+             s:fake_resize(0, 0, 0, height)
+         end
+     end
+end
+
+local function exit_fake_fullscreen()
+    if (screen.count() ~= 2) then
+       return
+    end
+end
+
 local function set_clients_opacity(m, opacity)
     for _, x in ipairs(mouse.screen.selected_tag:clients()) do
         if x ~= m then
@@ -68,15 +91,6 @@ local function focus_by_master_offset(x, opacity)
 end
 
 local globalkeys = gears.table.join(
-    -- toggle between screens
-    awful.key({ MODKEY }, "Tab",
-        function()
-            awful.screen.focus_relative(1)
-
-            notifyScreenFocus()
-        end,
-        { description = "focus primary screen", group = "screen" }),
-
     -- Focus screen 1
     awful.key({ MODKEY }, "Return",
         -- function() awful.screen.focus_relative(1) end,
@@ -106,7 +120,8 @@ local globalkeys = gears.table.join(
     -- Focus 2nd Client
     awful.key({ MODKEY }, "n",
         function()
-            focus_by_master_offset(0, nil)
+            -- focus_by_master_offset(0, nil)
+            awful.screen.focus(2)
         end,
         { description = "Focus 2nd Client", group = "client" }
     ),
@@ -122,7 +137,8 @@ local globalkeys = gears.table.join(
     -- Focus Master
     awful.key({ MODKEY }, "e",
         function()
-            focus_by_master_offset(1, nil)
+            -- focus_by_master_offset(1, nil)
+            awful.screen.focus_relative(1)
         end,
         { description = "focus master", group = "client" }),
 
@@ -137,7 +153,8 @@ local globalkeys = gears.table.join(
     -- Focus 3rd Client
     awful.key({ MODKEY }, "i",
         function()
-            focus_by_master_offset(-1)
+            -- focus_by_master_offset(-1)
+            awful.screen.focus(1)
         end,
         { description = "Focus 3rd client", group = "client" }),
 
@@ -164,7 +181,7 @@ local globalkeys = gears.table.join(
         end,
         { description = "Horizontal split", group = "client" }),
 
-    awful.key({ ALTKEY }, "Tab",
+    awful.key({ MODKEY }, "Tab",
         function()
             local screen = awful.screen.focused()
 
@@ -183,11 +200,24 @@ local globalkeys = gears.table.join(
             end
         end, { description = "focus next by index", group = "client" }),
 
-    awful.key({ ALTKEY, "Control" }, "Tab",
+    awful.key({ MODKEY, "Control" }, "Tab",
         function()
-            awful.client.focus.byidx(-1)
-        end,
-        { description = "focus previous by index", group = "client" }),
+            local screen = awful.screen.focused()
+
+            if #screen.tiled_clients < 2 then
+                local c = awful.client.restore()
+                -- Focus restored client
+                if c then
+                    c:raise()
+                end
+            end
+            awful.client.focus.byidx(1)
+            for _, x in ipairs(mouse.screen.selected_tag:clients()) do
+                if not x.floating then
+                    x.opacity = 1
+                end
+            end
+        end, { description = "focus next by index", group = "client" }),
 
     -- navigation with arrows
     awful.key({ MODKEY }, "Down",
@@ -268,6 +298,12 @@ local globalkeys = gears.table.join(
     awful.key({ MODKEY, "Control", "Shift" }, "n",
         function()
             resize_fake_screen(380)
+        end, { description = "Resize main fake screen up", group = "global" }
+    ),
+
+    awful.key({ MODKEY, "Control", "Shift" }, "i",
+        function()
+            fullscreen_fake_screen()
         end, { description = "Resize main fake screen up", group = "global" }
     ),
 

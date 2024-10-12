@@ -60,7 +60,7 @@ lspconfig["lua_ls"].setup {
     capabilities = capabilities,
     flags = lsp_flags,
 }
-lspconfig["pyright"].setup {
+lspconfig["nixd"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,

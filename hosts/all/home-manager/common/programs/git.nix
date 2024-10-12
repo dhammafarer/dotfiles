@@ -16,6 +16,7 @@
             ".gutctags"
             "tags"
             "tags.lock"
+            "tags.temp"
             "build"
             "gemset.nix"
             "log/test.log.0"

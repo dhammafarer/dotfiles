@@ -15,7 +15,8 @@ theme.master_width_factor = 0.66
 
 local colors = {}
 
-colors.bg = "#1d1f21"
+--colors.bg = "#1d1f21"
+colors.bg = "#0F1319"
 colors.blue = "#5f819d"
 colors.border = "#282a2e"
 --colors.grey = "#373b41"
