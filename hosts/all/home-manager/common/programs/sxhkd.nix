@@ -43,7 +43,7 @@
       # "XF86Launch6" = "~/dotfiles/arch/bin/hass state toggle light.salon";
       # "XF86Launch7" = "~/dotfiles/arch/bin/hass state toggle light.kitchen";
       "XF86Launch8" = "~/.dmenu/hass";
-      # "XF86Launch9" = "~/dotfiles/arch/bin/hass state toggle light.workbench";
+      "XF86Launch9" = "~/.dmenu/audio-sinks";
     };
   };
 }

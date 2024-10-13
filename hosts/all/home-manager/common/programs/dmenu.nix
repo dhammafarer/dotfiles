@@ -1,6 +1,5 @@
-{ config, pkgs, ... }:
-
 {
+  home.file.".dmenu/audio-sinks".source = ../../../scripts/dmenu/dmenu_audio-sinks.sh;
   home.file.".dmenu/hass".source = ../../../scripts/dmenu/dmenu_hass.sh;
   home.file.".dmenu/mindmaps".source = ../../../scripts/dmenu/dmenu_mindmaps.sh;
   home.file.".dmenu/process".source = ../../../scripts/dmenu/dmenu_process.sh;
