@@ -40,7 +40,7 @@ local open_on_line = function()
 
     if str then
         local pattern = ":(%d+)"
-        local path = str:match("(%.?[%a%/%_]+%.[%a%.]+)")
+        local path = str:match("(%.?[%a%/%_]+%.[%a%._-]+)")
         local ln = str:match(pattern)
         local cmd
         if ln then
@@ -109,21 +109,22 @@ local git = {
 }
 
 local file = {
-    {"<leader>c", "<cmd>let @+=expand('%')<cr>", desc = "copy current filepath to clipboard" },
-    {"<leader>q", "<cmd>quit<cr>", desc = "quit" },
-    {"<leader>t", "<cmd>Neotree toggle position=left<cr>", desc = "tree toggle" },
-    {"<leader>n", function() toggle_git_status("focus", true, false, "right", nil) end, desc = "Tree: Git status" },
-    {"<leader>m", function() toggle_git_status("focus", true, false, "right", "master") end, desc = "Change base: master" },
-    {"<leader>w", "<cmd>write<cr>", desc = "write" },
-    {"<leader>x", "<cmd>quit<cr>", desc = "quit" },
-    {"<space>e", open_on_line, desc = "Open file on line" },
-    {"<space>h", "<cmd>hide<cr>", desc = "Hide" },
-    {"<space>n", "<cmd>only<cr>", desc = "Only" },
-    {"<space>o", toggle_quickfix, desc = "Toggle quickfix" },
-    {"<space>q", "<cmd>quit<cr>", desc = "Quit" },
-    {"<space>w", "<cmd>write<cr>", desc = "Write" },
-    {"<space>x", "<cmd>quit<cr>", desc = "Quit" },
-    {"<space>y", "<cmd>%y+<cr>", desc = "Copy contents to clipboard" }
+    { "<leader>c", "<cmd>let @+=expand('%')<cr>", desc = "copy current filepath to clipboard" },
+    { "<leader>q", "<cmd>quit<cr>", desc = "quit" },
+    { "<leader>t", "<cmd>Neotree toggle position=left<cr>", desc = "tree toggle" },
+    { "<leader>n", function() toggle_git_status("focus", true, false, "right", nil) end, desc = "Tree: Git status" },
+    { "<leader>m", function() toggle_git_status("focus", true, false, "right", "master") end, desc = "Change base: master" },
+    { "<leader>w", "<cmd>write<cr>", desc = "write" },
+    { "<leader>x", "<cmd>quit<cr>", desc = "quit" },
+    { "<space>e", open_on_line, desc = "Open file on line" },
+    { "<space>o", toggle_quickfix, desc = "Toggle quickfix" },
+    { "<space>h", "<cmd>hide<cr>", desc = "Hide" },
+    { "<space>n", "<cmd>only<cr>", desc = "Only" },
+    { "<space>q", "<cmd>quit<cr>", desc = "Quit" },
+    { "<space>w", "<cmd>write<cr>", desc = "Write" },
+    { "<space>x", "<cmd>quit<cr>", desc = "Quit" },
+    { "<space>y", "<cmd>%y+<cr>", desc = "Copy contents to clipboard" },
+    { "<space>u", "<cmd>%s/fit/it<cr>", desc = "Unfocus test in Ruby" },
 }
 
 local lsp = {
@@ -186,7 +187,7 @@ local floaterm = {
 }
 
 local hop = {
-    { "s", "<cmd>HopChar1<cr>", desc = "Hop Char 1", mode = "n" },
+    { "s", "<cmd>HopChar1<cr>", desc = "Hop Char 1", mode = { "n", "v" } },
     { "W", "<cmd>HopWord<cr>", desc = "Hop Word", mode = "n" },
     { "l", "<cmd>HopLineStart<cr>", desc = "Hop Line Start", mode = { "n", "v" } }
 }
