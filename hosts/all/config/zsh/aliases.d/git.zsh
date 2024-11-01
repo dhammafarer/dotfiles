@@ -22,6 +22,18 @@ set_pr_base_from_gh() {
 alias spr="set_pr_base"
 alias sgh="set_pr_base_from_gh"
 
+git_switch_create_variant() {
+    git switch -c $(git branch --show-current)$@
+}
+
+git_merge_variant() {
+    git merge $(git branch --show-current)$@
+}
+
+git_branch_delete_variant() {
+    git branch -d $(git branch --show-current)$@
+}
+
 alias gac="git add . && git commit"
 alias gacm="git add . && git commit -m"
 alias gar="git_add_remote"
@@ -50,10 +62,13 @@ alias gs="git_switch"
 alias gsl="git switch - && sgh"
 alias gsar="git_submodule_add_role"
 alias gsc="git switch -c"
+alias gscv="git_switch_create_variant"
+alias gbdv="git_branch_delete_variant"
 alias gsd="git switch dev"
 alias gsm="git switch master && unset GIT_BASE && git pull"
 alias gsb='sgh && gs $GIT_BASE'
 alias gmb='sgh && git merge $GIT_BASE'
+alias gmv='git_merge_variant'
 alias gsr="git_set_remote"
 alias gst="git status"
 alias gsts="git status --short"

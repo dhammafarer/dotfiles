@@ -122,6 +122,7 @@ local globalkeys = gears.table.join(
         function()
             -- focus_by_master_offset(0, nil)
             awful.screen.focus(2)
+            if client.focus then client.focus:raise() end
         end,
         { description = "Focus 2nd Client", group = "client" }
     ),
@@ -139,6 +140,7 @@ local globalkeys = gears.table.join(
         function()
             -- focus_by_master_offset(1, nil)
             awful.screen.focus_relative(1)
+            if client.focus then client.focus:raise() end
         end,
         { description = "focus master", group = "client" }),
 
@@ -155,6 +157,7 @@ local globalkeys = gears.table.join(
         function()
             -- focus_by_master_offset(-1)
             awful.screen.focus(1)
+            if client.focus then client.focus:raise() end
         end,
         { description = "Focus 3rd client", group = "client" }),
 

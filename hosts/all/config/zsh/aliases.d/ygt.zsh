@@ -55,10 +55,10 @@ alias btrconsole="btr-console"
 
 ##### vrs
 alias vrs="cd $dir/sb-voucher-redemptions"
-vrs-console () { vrs && tmux new -s "vrs-console" "distrobox-host-exec make console" }
-vrs-dev () { vrs && tmux new -s "vrs-dev" "distrobox-host-exec make dev" }
+vrs-console () { vrs && tmux new -s "vrs-console" "make console" }
+vrs-dev () { vrs && tmux new -s "vrs-dev" "make dev" }
 vrs-git () { vrs && tmux new -s "vrs-gitui" "gitui" }
-vrs-test-bash () { vrs && tmux new -s "vrs-test-bash" "distrobox-host-exec make test-bash" }
+vrs-test-bash () { vrs && tmux new -s "vrs-test-bash" "make test-bash" }
 alias vrsdev="vrs-dev"
 alias vrsgit="vrs-git"
 alias vrstestbash="vrs-test-bash"

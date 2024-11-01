@@ -10,18 +10,44 @@ vim.keymap.set({ 'n', 'v' }, '<Up>', 'gk')
 
 vim.api.nvim_set_keymap('v', '<C-C>', '"+y', { noremap = true, silent = true })
 
+local find_spec = function()
+    require'telescope.builtin'.find_files({search_dirs = { "spec/" }, search_file = vim.fn.expand("%:t:r") })
+end
+
+local find_template_in_views = function()
+    local filename = vim.fn.expand("%:t:r:r"):gsub("^_", "")
+    local regex = "(render|partial:)[\\s(]?[\'\"][^\\s]*" .. filename .. "[\'\"]\\B"
+    require'telescope.builtin'.grep_string({search_dirs = { "app" }, search = regex, use_regex=true })
+end
+
 local telescope = {
     { "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-    { "<A-s>", "<cmd>Telescope grep_string word_match=-w<cr>",desc =  "String Grep" },
+    { "<A-w>", "<cmd>Telescope grep_string word_match=-w<cr>",desc =  "String Grep" },
     { "<C-e>", "<cmd>Telescope oldfiles cwd_only=true<cr>", desc = "Recent Files" },
     { "<C-b>", "<cmd>Telescope buffers ignore_current_buffer=true sort_mru=true<cr>", desc = "Buffers" },
     { "<C-f>", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+    { "<A-g>", "<cmd>Telescope tags only_sort_tags=false fname_width=60 show_line=false<cr>", desc = "Tags" },
     { "<C-t>", "<cmd>Telescope tags only_sort_tags=false fname_width=60 show_line=false<cr>", desc = "Tags" },
+    { "<C-t>", function() require'telescope.builtin'.tags({ fname_width=60, show_line=false, only_sort_tags=false, default_text = vim.fn.expand("<cword>") }) end, desc = "Find tag" },
     { "<C-s>", "<cmd>Telescope current_buffer_tags show_line=true<cr>", desc = "Tags" },
     { "<C-q>", "<cmd>Telescope quickfix show_line=false<cr>", desc = "Quickfix" },
     { "<C-h>", "<cmd>Telescope quickfixhistory<cr>", desc = "Quickfix" },
     { "<C-u>", "<cmd>Telescope lsp_references include_declaration=true fname_width=60 show_line=false trim_text=false<cr>", desc = "Ref" },
-    { "<leader>y", "<cmd>Telescope yaml_schema<cr>", desc = "Yaml Schema" }
+    { "<leader>y", "<cmd>Telescope yaml_schema<cr>", desc = "Yaml Schema" },
+    { "<leader>s", group = "Search" },
+    { "<leader>sc", "<cmd>Telescope find_files search_dirs=app/controllers<cr>", desc = "Controllers" },
+    { "<leader>se", "<cmd>Telescope find_files search_dirs=webpack/src/components/elm<cr>", desc = "Elm" },
+    { "<leader>sp", "<cmd>Telescope find_files search_dirs=app/presenters<cr>", desc = "Presenters" },
+    { "<leader>ss", "<cmd>Telescope find_files search_dirs=spec/<cr>", desc = "Specs" },
+    { "<leader>st", "<cmd>Telescope find_files search_dirs=webpack/src/controllers<cr>", desc = "Stimulus" },
+    { "<leader>sy", "<cmd>Telescope find_files search_dirs=webpack/src/styles<cr>", desc = "Styles" },
+    { "<leader>sv", "<cmd>Telescope find_files search_dirs=app/views<cr>", desc = "Views" },
+    { "<A-v>", function() require'telescope.builtin'.find_files({search_dirs = { "app/views" }, search_file = vim.fn.expand("<cword>") }) end, desc = "Views" },
+    -- { "<A-s>", find_spec, desc = "Find Spec" },
+    { "<A-s>", "<cmd>A<cr>", desc = "Find Spec" },
+    { "<A-g>", find_template_in_views, desc = "Find template in views" },
+    { "<A-t>", find_template_in_views, desc = "Find template in views" },
+    { "<leader>gy", "<cmd>Telescope grep_string search_dirs=webpack/src/styles<cr>", desc = "Grep Styles" }
 }
 
 local toggle_quickfix = function()
@@ -74,16 +100,16 @@ end
 local set_base_branch = function(git_base, action)
     if git_base == nil then
         git_base = vim.g.git_base
-    elseif git_base == vim.g.git_base then
-        git_base = "HEAD"
-        vim.g.git_base = git_base
+    -- elseif git_base == vim.g.git_base then
+    --     git_base = "HEAD"
+    --     vim.g.git_base = git_base
     else
         vim.g.git_base = git_base
     end
 
     gs.change_base(git_base, true)
 
-    toggle_git_status(action, false, false, "right", git_base)
+    toggle_git_status(action, false, true, "float", git_base)
 end
 
 local toggle = {
@@ -94,12 +120,12 @@ local toggle = {
     { "tb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Blame" },
     { "tf", "<cmd>Neotree float git_status<cr>", desc = "Float git status" },
     { "tq", hunks_to_loclist, desc = "Hunks to Loclist" },
-    { "tm", function() set_base_branch("master", "show") end, desc = "Change base: master" },
+    { "tm", function() set_base_branch("master", "focus") end, desc = "Change base: master" },
     { "t0", function() set_base_branch("HEAD", "close") end, desc = "Change base: HEAD~1" },
-    { "t1", function() set_base_branch("HEAD~1", "show") end, desc = "Change base: HEAD~1" },
-    { "t2", function() set_base_branch("HEAD~2", "show") end, desc = "Change base: HEAD~2" },
-    { "tc", function() set_base_branch(vim.fn.getreg("+"), "show") end, desc = "Change base: Clipboard" },
-    { "te", function() set_base_branch(os.getenv("GIT_BASE"), "show") end, desc = "Change base: From Environment" }
+    { "t1", function() set_base_branch("HEAD~1", "focus") end, desc = "Change base: HEAD~1" },
+    { "t2", function() set_base_branch("HEAD~2", "focus") end, desc = "Change base: HEAD~2" },
+    { "tc", function() set_base_branch(vim.fn.getreg("+"), "focus") end, desc = "Change base: Clipboard" },
+    { "te", function() set_base_branch(os.getenv("GIT_BASE"), "focus") end, desc = "Change base: From Environment" }
 }
 
 local git = {
@@ -247,6 +273,7 @@ vim.keymap.set({ 'n', 'v' }, '<Up>', 'gk')
 --vim.keymap.set('n', '<leader>ga', "<cmd>Telescope grep_string word_match=-w search_dirs=input('Dir: ')<cr>")
 vim.keymap.set('n', '<leader>ga', ":Telescope grep_string search_dirs=")
 
+
 wk.add(capslock)
 wk.add(utils)
 wk.add(file)
@@ -254,7 +281,7 @@ wk.add(telescope)
 wk.add(lsp)
 wk.add(diagnostics)
 wk.add(tabs)
-wk.add(floaterm)
+--wk.add(floaterm)
 wk.add(hop)
 wk.add(builtin)
 wk.add(git)

@@ -18,15 +18,13 @@ local function dim_clients_except(m)
 end
 
 local clientkeys = gears.table.join(
--- Next Layout
     awful.key({ MODKEY, "Control" }, "f",
         function(c)
             c.fullscreen = not c.fullscreen; c:raise()
         end,
-        { description = "toggle fullscreen", group = "client" }
+        { description = "Toggle fullscreen", group = "client" }
     ),
 
-    -- Close Client
     awful.key({ MODKEY }, "q", function(c)
             if Urgent == c then
                 Urgent = nil
@@ -34,7 +32,7 @@ local clientkeys = gears.table.join(
             end
             c:kill()
         end,
-        { description = "close", group = "client" }),
+        { description = "Close client", group = "client" }),
 
     -- Toggle floating
     awful.key({ MODKEY, "Control" }, "z", function(c)
@@ -64,7 +62,7 @@ local clientkeys = gears.table.join(
 
             c:raise()
         end,
-        { description = "toggle floating", group = "client" }
+        { description = "toggle floating FHD", group = "client" }
     ),
 
     awful.key({ MODKEY }, "/",

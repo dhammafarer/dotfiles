@@ -14,10 +14,12 @@ remote_cmd() {
 
 lights_all="light.desk light.workbench light.salon light.kitchen light.kitchen_ceiling"
 lights_studio="light.desk light.workbench"
+lights_kitchen="light.kitchen light.kitchen_ceiling"
 plug_sonoff=switch.0x00124b0026b87179
 
 declare -a options=(
 "light.desk"
+"light.kitchen_off"
 "light.workbench"
 "light.salon"
 "light.kitchen"
@@ -74,6 +76,9 @@ case "$choice" in
 	;;
 	light.studio_off)
         $cmd state turn_off $lights_studio
+	;;
+	light.kitchen_off)
+        $cmd state turn_off $lights_kitchen
 	;;
 	light.*)
         $cmd state toggle $choice
