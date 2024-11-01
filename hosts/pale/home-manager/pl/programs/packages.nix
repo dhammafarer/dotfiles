@@ -55,5 +55,9 @@
     yubikey-manager
     nixd
     nixpkgs-fmt
+    cargo
+    rust-analyzer
+    rustc
+    rustfmt
   ];
 }
