@@ -59,5 +59,6 @@
     rust-analyzer
     rustc
     rustfmt
+    ollama
   ];
 }
