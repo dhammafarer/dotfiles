@@ -1,6 +1,7 @@
 local wk = require("which-key")
 local gs = require('gitsigns')
 local kiwi = require('kiwi')
+local telescope_changed_files = require('config.telescope_changed_files')
 
 
 vim.g.mapleader = ","
@@ -35,12 +36,15 @@ local telescope = {
     { "<leader>y", "<cmd>Telescope yaml_schema<cr>", desc = "Yaml Schema" },
     { "<leader>s", group = "Search" },
     { "<leader>sc", "<cmd>Telescope find_files search_dirs=app/controllers<cr>", desc = "Controllers" },
+    { "<leader>sC", "<cmd>Telescope find_files search_dirs=app/contracts<cr>", desc = "Contracts" },
     { "<leader>se", "<cmd>Telescope find_files search_dirs=webpack/src/components/elm<cr>", desc = "Elm" },
     { "<leader>sp", "<cmd>Telescope find_files search_dirs=app/presenters<cr>", desc = "Presenters" },
+    { "<leader>sr", "<cmd>Telescope find_files search_dirs=app/services<cr>", desc = "Services" },
     { "<leader>ss", "<cmd>Telescope find_files search_dirs=spec/<cr>", desc = "Specs" },
+    { "<leader>sS", "<cmd>Telescope find_files search_dirs=app/services<cr>", desc = "Services" },
     { "<leader>st", "<cmd>Telescope find_files search_dirs=webpack/src/controllers<cr>", desc = "Stimulus" },
-    { "<leader>sy", "<cmd>Telescope find_files search_dirs=webpack/src/styles<cr>", desc = "Styles" },
     { "<leader>sv", "<cmd>Telescope find_files search_dirs=app/views<cr>", desc = "Views" },
+    { "<leader>sy", "<cmd>Telescope find_files search_dirs=webpack/src/styles<cr>", desc = "Styles" },
     { "<A-v>", function() require'telescope.builtin'.find_files({search_dirs = { "app/views" }, search_file = vim.fn.expand("<cword>") }) end, desc = "Views" },
     -- { "<A-s>", find_spec, desc = "Find Spec" },
     { "<A-s>", "<cmd>A<cr>", desc = "Find Spec" },
@@ -117,7 +121,8 @@ local toggle = {
     { "th", "<cmd>Gitsigns toggle_deleted<cr><cmd>Gitsigns toggle_word_diff<cr>", desc = "Deleted" },
     { "tn", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this" },
     { "tb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Blame" },
-    { "tf", "<cmd>Neotree float git_status<cr>", desc = "Float git status" },
+    -- { "tf", "<cmd>Neotree float git_status<cr>", desc = "Float git status" },
+    { "tf", telescope_changed_files.changed_files, desc = "Float git status" },
     { "tq", hunks_to_loclist, desc = "Hunks to Loclist" },
     { "tm", function() set_base_branch("master", "focus") end, desc = "Change base: master" },
     { "t0", function() set_base_branch("HEAD", "close") end, desc = "Change base: HEAD~1" },

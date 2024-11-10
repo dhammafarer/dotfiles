@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.tmux = {
@@ -7,5 +7,6 @@
     keyMode = "vi";
     mouse = true;
     shortcut = "b";
+    plugins = [ pkgs.tmuxPlugins.sensible ];
   };
 }

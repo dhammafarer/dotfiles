@@ -18,8 +18,8 @@ lights_kitchen="light.kitchen light.kitchen_ceiling"
 plug_sonoff=switch.0x00124b0026b87179
 
 declare -a options=(
-"light.desk"
 "light.kitchen_off"
+"light.desk"
 "light.workbench"
 "light.salon"
 "light.kitchen"

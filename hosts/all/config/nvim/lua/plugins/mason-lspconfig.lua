@@ -10,7 +10,6 @@ require("mason-lspconfig").setup {
         "gopls",
         "lua_ls",
         "pyright",
-        "rust_analyzer",
         "tailwindcss",
         "volar",
         "yamlls",

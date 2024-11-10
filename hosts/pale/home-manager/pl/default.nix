@@ -28,6 +28,5 @@
     ./programs/packages.nix
     ./programs/packages-ygt.nix
     ./programs/starship.nix
-    ./services/ollama.nix
   ];
 }

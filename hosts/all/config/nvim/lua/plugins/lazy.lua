@@ -153,7 +153,9 @@ require("lazy").setup({
       "onsails/lspkind.nvim",
     },
     {
-      "simrat39/rust-tools.nvim",
+      'mrcjkb/rustaceanvim',
+      version = '^5',
+      lazy = false,
     },
     {
       "mfussenegger/nvim-dap",

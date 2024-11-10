@@ -64,12 +64,22 @@ lspconfig["nixd"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
+    settings = {
+       nixd = {
+          nixpkgs = {
+             expr = "import <nixpkgs> { }",
+          },
+          formatting = {
+             command = { "nixpkgs-fmt" },
+          },
+       },
+    }
 }
-lspconfig["rust_analyzer"].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-}
+-- lspconfig["rust_analyzer"].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     flags = lsp_flags,
+-- }
 lspconfig["solargraph"].setup {
     on_attach = on_attach,
     capabilities = capabilities,

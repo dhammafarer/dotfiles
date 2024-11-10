@@ -41,9 +41,11 @@
       # "XF86Tools" = "~/dotfiles/arch/bin/hass_state toggle light.kitchen_ceiling";
       # "XF86Launch5" = "~/dotfiles/arch/bin/hass state toggle light.desk";
       # "XF86Launch6" = "~/dotfiles/arch/bin/hass state toggle light.salon";
-      # "XF86Launch7" = "~/dotfiles/arch/bin/hass state toggle light.kitchen";
+      "XF86Launch7; g" = "/bin/bash -c 'sleep 0.1 && ssh-add -L | xclip -selection clipboard; xdotool key Control_L+Shift+v'";
+      "XF86Launch7; b" = "/bin/bash -c 'sleep 0.1 && xdotool type \"[ci skip] \"'";
       "XF86Launch8" = "~/.dmenu/hass";
       "XF86Launch9" = "~/.dmenu/audio-sinks";
     };
   };
 }
+# /bin/bash -c "sleep 0.1 && echo site:reddit.com | xclip -selection clipboard; xdotool key Control_L+Shift+v"
