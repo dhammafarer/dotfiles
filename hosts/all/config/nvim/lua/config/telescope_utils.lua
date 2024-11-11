@@ -87,7 +87,7 @@ end
 
 M.git_commits = function(opts)
 	local base_branch = vim.g.git_base or "master"
-	local command = "git log --pretty=format:'%h %as %<(16)%an > %s' HEAD ^" .. base_branch
+	local command = "git log --pretty=format:'%h %as %<(16)%an %s' HEAD ^" .. base_branch
 
 	local handle = io.popen(command)
     if handle == nil then return end
@@ -117,15 +117,7 @@ M.git_commits = function(opts)
 		prompt_title = "PR Commits",
 		finder = finders.new_table {
 			results = files,
-            entry_maker = gen_from_git_commits(opts),
-            -- entry_maker = function(line)
-            --   print(line)
-            --   return make_entry.set_default_entry_mt({
-            --     value = string.match(line, "[^%s]+"),
-            --     ordinal = line,
-            --     display = line,
-            --   }, {})
-            -- end,
+            entry_maker = gen_from_git_commits(opts)
 		},
         previewer = {
           previewers.git_commit_diff_to_parent.new(opts),
