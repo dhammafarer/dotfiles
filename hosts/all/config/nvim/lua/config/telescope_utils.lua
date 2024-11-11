@@ -10,6 +10,13 @@ local gs = require('gitsigns')
 
 M = {}
 
+local delta = previewers.new_termopen_previewer {
+    get_command = function(entry)
+	    local base_branch = vim.g.git_base or "master"
+        return {'git', 'diff', '--unified=0', base_branch .. '..HEAD', entry.value }
+    end
+}
+
 M.changed_files = function(opts)
 	local base_branch = vim.g.git_base or "master"
 	local command = "git diff --name-only $(git merge-base HEAD " .. base_branch .. " )"
@@ -31,8 +38,10 @@ M.changed_files = function(opts)
 	pickers.new(opts, {
 		prompt_title = "changed files",
 		finder = finders.new_table {
-			results = files
+			results = files,
+            entry_maker = make_entry.gen_from_file(opts)
 		},
+        previewer = delta,
 		sorter = conf.generic_sorter(opts),
 	}):find()
 end
@@ -52,8 +61,8 @@ local gen_from_git_commits = function (opts)
   local make_display = function(entry)
     return displayer {
       { entry.value, "TelescopeResultsIdentifier" },
-      entry.date,
-      entry.msg,
+      { entry.date, "TelescopePreviewDate" },
+      entry.msg
     }
   end
 
@@ -62,7 +71,7 @@ local gen_from_git_commits = function (opts)
       return nil
     end
 
-    local sha, date, msg = string.match(entry, "([^ ]+) ([^ ]+) (.+)")
+    local sha, date, msg = string.match(entry, "([^ ]+) ([^ ]+) (.*)")
 
     return make_entry.set_default_entry_mt({
       value = sha,
@@ -78,8 +87,7 @@ end
 
 M.git_commits = function(opts)
 	local base_branch = vim.g.git_base or "master"
-	--local command = "git log --pretty=format:'%h %as %<(16)%an %s' HEAD ^" .. base_branch
-	local command = "git log --pretty=format:'%h %as %<(16)%an %s' HEAD ^" .. base_branch
+	local command = "git log --pretty=format:'%h %as %<(16)%an > %s' HEAD ^" .. base_branch
 
 	local handle = io.popen(command)
     if handle == nil then return end
