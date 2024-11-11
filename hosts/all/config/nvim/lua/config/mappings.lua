@@ -1,8 +1,7 @@
 local wk = require("which-key")
 local gs = require('gitsigns')
 local kiwi = require('kiwi')
-local telescope_changed_files = require('config.telescope_changed_files')
-
+local telescope_utils = require('config.telescope_utils')
 
 vim.g.mapleader = ","
 
@@ -31,7 +30,7 @@ local telescope = {
     { "<C-t>", function() require'telescope.builtin'.tags({ fname_width=60, show_line=false, only_sort_tags=true, default_text = vim.fn.expand("<cword>") }) end, desc = "Find tag" },
     { "<C-s>", "<cmd>Telescope current_buffer_tags show_line=true<cr>", desc = "Tags" },
     { "<C-q>", "<cmd>Telescope quickfix show_line=false<cr>", desc = "Quickfix" },
-    { "<C-h>", "<cmd>Telescope quickfixhistory<cr>", desc = "Quickfix" },
+    -- { "<C-h>", "<cmd>Telescope quickfixhistory<cr>", desc = "Quickfix" },
     { "<C-u>", "<cmd>Telescope lsp_references include_declaration=true fname_width=60 show_line=false trim_text=false<cr>", desc = "Ref" },
     { "<leader>y", "<cmd>Telescope yaml_schema<cr>", desc = "Yaml Schema" },
     { "<leader>s", group = "Search" },
@@ -48,7 +47,7 @@ local telescope = {
     { "<A-v>", function() require'telescope.builtin'.find_files({search_dirs = { "app/views" }, search_file = vim.fn.expand("<cword>") }) end, desc = "Views" },
     -- { "<A-s>", find_spec, desc = "Find Spec" },
     { "<A-s>", "<cmd>A<cr>", desc = "Find Spec" },
-    { "<A-g>", find_template_in_views, desc = "Find template in views" },
+    { "<A-g>", telescope_utils.git_commits, desc = "Find template in views" },
     { "<A-t>", find_template_in_views, desc = "Find template in views" },
     { "<leader>gy", "<cmd>Telescope grep_string search_dirs=webpack/src/styles<cr>", desc = "Grep Styles" }
 }
@@ -122,7 +121,7 @@ local toggle = {
     { "tn", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this" },
     { "tb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Blame" },
     -- { "tf", "<cmd>Neotree float git_status<cr>", desc = "Float git status" },
-    { "tf", telescope_changed_files.changed_files, desc = "Float git status" },
+    { "tf", telescope_utils.changed_files, desc = "Float git status" },
     { "tq", hunks_to_loclist, desc = "Hunks to Loclist" },
     { "tm", function() set_base_branch("master", "focus") end, desc = "Change base: master" },
     { "t0", function() set_base_branch("HEAD", "close") end, desc = "Change base: HEAD~1" },
@@ -159,7 +158,7 @@ local file = {
 
 local lsp = {
     { "<C-k>", vim.lsp.buf.signature_help, desc = "LSP Signature help" },
-    { "<C-space>", vim.lsp.buf.hover, desc = "LSP Hover" },
+    { "<C-h>", vim.lsp.buf.hover, desc = "LSP Hover" },
     { "<C-d>", vim.lsp.buf.definition, desc = "[LSP] Go to Definition" },
     { "<C-f>", function() vim.lsp.buf.format { async = true } end, desc = "LSP Format", mode = "i" },
     { "<space>a", vim.lsp.buf.code_action, desc = "LSP Code Action" },
