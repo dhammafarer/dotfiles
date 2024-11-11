@@ -13,7 +13,7 @@ M = {}
 local delta = previewers.new_termopen_previewer {
     get_command = function(entry)
 	    local base_branch = vim.g.git_base or "master"
-        return {'git', 'diff', '--unified=0', base_branch .. '..HEAD', entry.value }
+        return {'git', '--no-pager', 'diff', '--unified=0', base_branch .. '..HEAD', entry.value }
     end
 }
 
