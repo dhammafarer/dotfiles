@@ -4,7 +4,7 @@ dir=~/code/ygt
 
 ##### spa
 spa () { cd $dir/spabreaks }
-spa-shell () { spa && nix-shell ~/dotfiles/nix/env/ygt/spabreaks/shell.nix $@ }
+spa-shell () { nix-shell ~/dotfiles/nix/env/ygt/spabreaks/shell.nix $@ }
 spa-console () { spa && tmux new -s "spa-console" "make console" }
 spa-dev () { spa && tmux new -s "spa-dev" "make dev" }
 spa-guard () { spa && tmux new -s "spa-guard" "make guard" }
@@ -25,6 +25,7 @@ spa-routes () {
   fi
 }
 
+alias spabreaks="sesh connect spabreaks"
 alias spaconsole="spa-console"
 alias spashell="spa-shell --command zsh"
 alias spadebug="spa-debug"

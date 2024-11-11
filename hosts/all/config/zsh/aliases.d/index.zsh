@@ -25,6 +25,8 @@ alias update="home-manager switch --flake ~/dotfiles/hosts/$(hostname -s)/home-m
 alias v="nvim_fg"
 alias xo="xdg-open"
 
+alias dotfiles="sesh connect dotfiles"
+
 alias pgpa="pass git remote | xargs -L1 pass git push --all"
 alias pgpom="cd ~/.password-store && git pull && git push"
 alias pgpul="cd ~/.password-store && git pull"

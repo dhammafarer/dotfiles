@@ -6,7 +6,10 @@
     extraConfig = builtins.readFile ../../../config/tmux/tmux.conf;
     keyMode = "vi";
     mouse = true;
-    shortcut = "b";
-    plugins = [ pkgs.tmuxPlugins.sensible ];
+    prefix = "M-e";
+    plugins = [
+      pkgs.tmuxPlugins.sensible
+      pkgs.tmuxPlugins.yank
+    ];
   };
 }

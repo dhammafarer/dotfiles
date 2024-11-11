@@ -131,29 +131,29 @@ local clientkeys = gears.table.join(
         { description = "toggle opacity", group = "client" }
     ),
 
-    -- place window in lower left corner
-    awful.key({ MODKEY, "Control", "Shift" }, "Left", function(c)
-            set_align("bottom_left", c)
-        end,
-        { description = "set placement to bottom_left", group = "client" }
-    ),
+    -- -- place window in lower left corner
+    -- awful.key({ MODKEY, "Control", "Shift" }, "Left", function(c)
+    --         set_align("bottom_left", c)
+    --     end,
+    --     { description = "set placement to bottom_left", group = "client" }
+    -- ),
 
-    -- place window in lower right corner
-    awful.key({ MODKEY, "Control", "Shift" }, "Right", function(c)
-            set_align("bottom_right", c)
-        end,
-        { description = "set placement to bottom_right", group = "client" }
-    ),
+    -- -- place window in lower right corner
+    -- awful.key({ MODKEY, "Control", "Shift" }, "Right", function(c)
+    --         set_align("bottom_right", c)
+    --     end,
+    --     { description = "set placement to bottom_right", group = "client" }
+    -- ),
 
-    awful.key({ MODKEY, "Control", "Shift" }, "Up", function(c)
-            set_align("centered", c)
+    -- awful.key({ MODKEY, "Control", "Shift" }, "Up", function(c)
+    --         set_align("centered", c)
 
-            c.floating = true
-            c.ontop = false
-            c.sticky = false
-        end,
-        { description = "toggle floating", group = "client" }
-    ),
+    --         c.floating = true
+    --         c.ontop = false
+    --         c.sticky = false
+    --     end,
+    --     { description = "toggle floating", group = "client" }
+    -- ),
 
     awful.key({ MODKEY }, "j",
         function(c)
@@ -209,7 +209,7 @@ local clientkeys = gears.table.join(
         { description = "toggle minimize backdrop", group = "client" }),
 
     -- fullscreen toggle
-    awful.key({ MODKEY }, "space",
+    awful.key({ MODKEY }, "Tab",
         function(c)
             c.floating = false
             if awful.layout.getname() == LAYOUT_MAX_NAME then

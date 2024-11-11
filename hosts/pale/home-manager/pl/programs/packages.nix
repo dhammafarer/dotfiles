@@ -60,5 +60,7 @@
     rustc
     rustfmt
     oterm
+    zoxide
+    sesh
   ];
 }

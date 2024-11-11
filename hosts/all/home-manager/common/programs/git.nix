@@ -20,6 +20,7 @@
             "build"
             "gemset.nix"
             "log/test.log.0"
+            "tmux-client-*"
         ];
         # hooks = {
         #   pre-commit = ../../../config/git/hooks/pre-commit;

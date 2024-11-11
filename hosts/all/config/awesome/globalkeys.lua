@@ -92,10 +92,10 @@ end
 
 local globalkeys = gears.table.join(
     -- Focus screen 1
-    awful.key({ MODKEY }, "Return",
-        -- function() awful.screen.focus_relative(1) end,
-        function() awful.screen.focus(1) end,
-        { description = "focus primary screen", group = "screen" }),
+    -- awful.key({ MODKEY }, "Return",
+    --     -- function() awful.screen.focus_relative(1) end,
+    --     function() awful.screen.focus(1) end,
+    --     { description = "focus primary screen", group = "screen" }),
 
     -- Focus screen 2
     awful.key({ MODKEY, "Control" }, "Return",
@@ -136,13 +136,13 @@ local globalkeys = gears.table.join(
     ),
 
     -- Focus Master
-    awful.key({ MODKEY }, "e",
-        function()
-            -- focus_by_master_offset(1, nil)
-            awful.screen.focus_relative(1)
-            if client.focus then client.focus:raise() end
-        end,
-        { description = "focus master", group = "client" }),
+    -- awful.key({ MODKEY }, "e",
+    --     function()
+    --         -- focus_by_master_offset(1, nil)
+    --         awful.screen.focus_relative(1)
+    --         if client.focus then client.focus:raise() end
+    --     end,
+    --     { description = "focus master", group = "client" }),
 
     awful.key({ MODKEY, "Control" }, "e",
         function()
@@ -168,7 +168,7 @@ local globalkeys = gears.table.join(
         end,
         { description = "Focus 3rd client", group = "client" }),
 
-    awful.key({ MODKEY }, "y",
+    awful.key({ MODKEY, "Control" }, "y",
         function()
             if awful.layout.getname() ~= LAYOUT_BOTTOM_NAME then
                 awful.layout.set(LAYOUT_BOTTOM)
@@ -184,7 +184,7 @@ local globalkeys = gears.table.join(
         end,
         { description = "Horizontal split", group = "client" }),
 
-    awful.key({ MODKEY }, "Tab",
+    awful.key({ MODKEY }, "space",
         function()
             local screen = awful.screen.focused()
 
@@ -223,70 +223,70 @@ local globalkeys = gears.table.join(
         end, { description = "focus next by index", group = "client" }),
 
     -- navigation with arrows
-    awful.key({ MODKEY }, "Down",
-        function()
-            awful.client.focus.bydirection("down")
-            if client.focus then client.focus:raise() end
-        end,
-        { description = "focus down", group = "client" }),
+    -- awful.key({ MODKEY }, "Down",
+    --     function()
+    --         awful.client.focus.bydirection("down")
+    --         if client.focus then client.focus:raise() end
+    --     end,
+    --     { description = "focus down", group = "client" }),
 
-    awful.key({ MODKEY, "Shift" }, "Down",
-        function()
-            awful.client.swap.bydirection("down")
-        end),
+    -- awful.key({ MODKEY, "Shift" }, "Down",
+    --     function()
+    --         awful.client.swap.bydirection("down")
+    --     end),
 
-    awful.key({ MODKEY }, "Down",
-        function()
-            awful.client.focus.bydirection("down")
-            if client.focus then client.focus:raise() end
-        end),
+    -- awful.key({ MODKEY }, "Down",
+    --     function()
+    --         awful.client.focus.bydirection("down")
+    --         if client.focus then client.focus:raise() end
+    --     end),
 
-    awful.key({ MODKEY }, "Up",
-        function()
-            awful.client.focus.bydirection("up")
-            if client.focus then client.focus:raise() end
-        end),
+    -- awful.key({ MODKEY }, "Up",
+    --     function()
+    --         awful.client.focus.bydirection("up")
+    --         if client.focus then client.focus:raise() end
+    --     end),
 
-    awful.key({ MODKEY, "Shift" }, "Up",
-        function()
-            awful.client.swap.bydirection("up")
-        end),
+    -- awful.key({ MODKEY, "Shift" }, "Up",
+    --     function()
+    --         awful.client.swap.bydirection("up")
+    --     end),
 
-    awful.key({ MODKEY }, "Left",
-        function()
-            awful.client.focus.bydirection("left")
-            if client.focus then client.focus:raise() end
-        end),
+    -- awful.key({ MODKEY }, "Left",
+    --     function()
+    --         awful.client.focus.bydirection("left")
+    --         if client.focus then client.focus:raise() end
+    --     end),
 
-    awful.key({ MODKEY, "Shift" }, "Left",
-        function()
-            awful.client.swap.bydirection("left")
-        end),
+    -- awful.key({ MODKEY, "Shift" }, "Left",
+    --     function()
+    --         awful.client.swap.bydirection("left")
+    --     end),
 
-    awful.key({ MODKEY }, "Right",
-        function()
-            awful.client.focus.bydirection("right")
-            if client.focus then client.focus:raise() end
-        end
-    ),
+    -- awful.key({ MODKEY }, "Right",
+    --     function()
+    --         awful.client.focus.bydirection("right")
+    --         if client.focus then client.focus:raise() end
+    --     end
+    -- ),
 
-    awful.key({ MODKEY, "Shift" }, "Right",
-        function()
-            awful.client.swap.bydirection("right")
-        end),
+    -- awful.key({ MODKEY, "Shift" }, "Right",
+    --     function()
+    --         awful.client.swap.bydirection("right")
+    --     end),
 
-    awful.key({ MODKEY }, "u", function()
-            --awful.layout.set(LAYOUT_CENTER)
-            --focus_by_master_offset(0, BACKDROP_OPACITY)
-            if awful.layout.getname() ~= LAYOUT_CENTER_NAME then
-                awful.layout.set(LAYOUT_CENTER)
-            else
-                awful.layout.set(LAYOUT_MAX)
-            end
+    -- awful.key({ MODKEY }, "u", function()
+    --         --awful.layout.set(LAYOUT_CENTER)
+    --         --focus_by_master_offset(0, BACKDROP_OPACITY)
+    --         if awful.layout.getname() ~= LAYOUT_CENTER_NAME then
+    --             awful.layout.set(LAYOUT_CENTER)
+    --         else
+    --             awful.layout.set(LAYOUT_MAX)
+    --         end
 
-        end,
-        { description = "toggle reading mode on", group = "client" }
-    ),
+    --     end,
+    --     { description = "toggle reading mode on", group = "client" }
+    -- ),
 
     -- awful.key({ MODKEY }, "o",
     --     function()
@@ -298,7 +298,7 @@ local globalkeys = gears.table.join(
     --     end, { description = "Toggle centerwork/tile", group = "client" }
     -- ),
 
-    awful.key({ MODKEY, "Control", "Shift" }, "n",
+    awful.key({ MODKEY, "Shift" }, "n",
         function()
             resize_fake_screen(380)
         end, { description = "Resize main fake screen up", group = "global" }
@@ -310,7 +310,7 @@ local globalkeys = gears.table.join(
         end, { description = "Resize main fake screen up", group = "global" }
     ),
 
-    awful.key({ MODKEY, "Control", "Shift" }, "o",
+    awful.key({ MODKEY, "Shift" }, "o",
         function()
             resize_fake_screen(-380)
         end, { description = "Resize main fake screen down", group = "global" }
@@ -340,9 +340,9 @@ local globalkeys = gears.table.join(
     ),
 
     -- Spawn programs
-    awful.key({ MODKEY, "Control" }, "BackSpace",
-        function() awful.spawn(TERMINAL) end,
-        { description = "open a terminal", group = "launcher" }),
+    -- awful.key({ MODKEY, "Control" }, "BackSpace",
+    --     function() awful.spawn(TERMINAL) end,
+    --     { description = "open a terminal", group = "launcher" }),
 
     awful.key({ ALTKEY }, "XF86AudioRaiseVolume",
         function() awful.spawn("cplay", { tag = "med" }) end,
@@ -358,7 +358,7 @@ local globalkeys = gears.table.join(
     ),
 
     -- Master size
-    awful.key({ MODKEY, "Shift" }, "n",
+    awful.key({ MODKEY, "Control", "Shift" }, "o",
         function()
             awful.tag.incmwfact(0.05)
 
@@ -374,7 +374,7 @@ local globalkeys = gears.table.join(
         { description = "increase master width factor", group = "layout" }
     ),
 
-    awful.key({ MODKEY, "Shift" }, "o",
+    awful.key({ MODKEY, "Control", "Shift" }, "n",
         function()
             awful.tag.incmwfact(-0.05)
 

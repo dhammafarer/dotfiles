@@ -23,7 +23,7 @@ cmp.setup {
         ['<C-y>'] = cmp.config.disable,
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
         ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-h>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true, },
         ['<C-n>'] = cmp.mapping(function(fallback)
             if luasnip.choice_active() then
