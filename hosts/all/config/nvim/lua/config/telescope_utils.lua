@@ -52,9 +52,9 @@ local gen_from_git_commits = function (opts)
   local displayer = entry_display.create {
     separator = " ",
     items = {
-      { width = 8 },
       { width = 10 },
-      { width = 22 },
+      { width = 10 },
+      { width = 21 },
       { remaining = true },
     },
   }
@@ -73,9 +73,16 @@ local gen_from_git_commits = function (opts)
       return nil
     end
 
-    local sha, date, rest = string.match(entry, "([^ ]+) ([^ ]+) (.*)")
-    local author = string.sub(rest, 1, 22)
-    local msg = string.gsub(string.sub(rest, 23), "^%s+", "")
+    local sha, date_, time, _, rest = string.match(entry, "([^ ]+) ([^ ]+) ([^ ]+) ([^ ]+) (.*)")
+    local author = string.sub(rest, 1, 21)
+    local msg = string.gsub(string.sub(rest, 22), "^%s+", "")
+
+    local date
+    if date_ == os.date("%Y-%m-%d") then
+        date = time
+    else
+        date = date_
+    end
 
     return make_entry.set_default_entry_mt({
       value = sha,
@@ -92,7 +99,7 @@ end
 
 M.git_commits = function(opts)
 	local base_branch = vim.g.git_base or "master"
-	local command = "git log --pretty=format:'%h %as %<(22)%an %s' HEAD ^" .. base_branch
+	local command = "git log --pretty=format:'%h %ai %<(20)%an %s' HEAD ^" .. base_branch
 
 	local handle = io.popen(command)
     if handle == nil then return end
@@ -106,7 +113,7 @@ M.git_commits = function(opts)
 	end
 
 	opts = {
-      attach_mappings = function(prompt_bufnr, map)
+      attach_mappings = function(prompt_bufnr, _)
         actions.select_default:replace(function()
           actions.close(prompt_bufnr)
           local selection = action_state.get_selected_entry()
