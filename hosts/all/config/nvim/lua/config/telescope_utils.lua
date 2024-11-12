@@ -54,15 +54,17 @@ local gen_from_git_commits = function (opts)
     items = {
       { width = 8 },
       { width = 10 },
+      { width = 22 },
       { remaining = true },
     },
   }
 
   local make_display = function(entry)
     return displayer {
-      { entry.value, "TelescopeResultsIdentifier" },
+      { entry.value, "TelescopeResultsComment" },
       { entry.date, "TelescopePreviewDate" },
-      entry.msg
+      { entry.author, "TelescopePreviewUser" },
+      { entry.msg, "TelescopePreviewMessage" }
     }
   end
 
@@ -71,12 +73,15 @@ local gen_from_git_commits = function (opts)
       return nil
     end
 
-    local sha, date, msg = string.match(entry, "([^ ]+) ([^ ]+) (.*)")
+    local sha, date, rest = string.match(entry, "([^ ]+) ([^ ]+) (.*)")
+    local author = string.sub(rest, 1, 22)
+    local msg = string.gsub(string.sub(rest, 23), "^%s+", "")
 
     return make_entry.set_default_entry_mt({
       value = sha,
-      ordinal = sha .. " " .. date .. " " .. msg,
+      ordinal = sha .. " " .. date .. " " .. author .. " " .. msg,
       date = date,
+      author = author,
       msg = msg,
       display = make_display,
       current_file = opts.current_file,
@@ -87,7 +92,7 @@ end
 
 M.git_commits = function(opts)
 	local base_branch = vim.g.git_base or "master"
-	local command = "git log --pretty=format:'%h %as %<(16)%an %s' HEAD ^" .. base_branch
+	local command = "git log --pretty=format:'%h %as %<(22)%an %s' HEAD ^" .. base_branch
 
 	local handle = io.popen(command)
     if handle == nil then return end
