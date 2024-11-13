@@ -184,7 +184,7 @@ local globalkeys = gears.table.join(
         end,
         { description = "Horizontal split", group = "client" }),
 
-    awful.key({ MODKEY }, "space",
+    awful.key({ MODKEY }, "Tab",
         function()
             local screen = awful.screen.focused()
 
