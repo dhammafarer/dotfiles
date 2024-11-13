@@ -121,5 +121,5 @@ searchEngines.forEach((x) => {
 
 // youtube full screen
 mapkey(`F`, `Toglle fullscreen`, function () {
-  document.querySelector(".fullscreen-icon").click();
+  (document.querySelector(".fullscreen-icon") || document.querySelector(".ytp-fullscreen-button") ).click();
 });
