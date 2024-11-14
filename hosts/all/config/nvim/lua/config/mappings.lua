@@ -38,7 +38,7 @@ local file_gh_url_to_clipboard = function()
 	local repo_out = handle:read("*a")
 	handle:close()
 
-    local repo = string.match(repo_out, "git@github.com:([^ ]+)")
+    local repo = string.gsub(string.match(repo_out, "github%.com.([^ ]+)"), ".git", "")
 
     local url = "https://github.com/" .. repo .. "/blob/" .. hash .. "/" .. file_name .. "#L" .. ln
 
