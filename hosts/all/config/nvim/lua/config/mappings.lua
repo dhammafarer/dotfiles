@@ -45,6 +45,34 @@ local file_gh_url_to_clipboard = function()
     vim.fn.setreg("+", url)
 end
 
+local diff_gh_url_to_clipboard = function()
+    local function run_command(command)
+        local handle = io.popen(command)
+        -- TODO handle the error case better 
+        if handle == nil then return "" end
+
+        local result = handle:read("*a")
+        handle:close()
+        return result
+    end
+
+    local file_name = vim.fn.expand("%")
+    local line_number = vim.api.nvim_win_get_cursor(0)[1]
+	local hash = run_command("git log -n 1 --pretty=format:'%H'")
+
+	local repo_out = run_command("git remote -v")
+    local repo = string.gsub(string.match(repo_out, "github%.com.([^ ]+)"), ".git", "")
+
+	local file_hash_out = run_command("echo -n " .. file_name .. " | sha256sum")
+    local file_hash = string.match(file_hash_out, "%w+")
+
+    local url = "https://github.com/" .. repo .. "/commit/" .. hash .. "/#diff-" .. file_hash .. "R" .. line_number
+
+    print(url)
+
+    vim.fn.setreg("+", url)
+end
+
 local telescope = {
     { "<A-f>", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
     { "<A-w>", "<cmd>Telescope grep_string word_match=-w<cr>",desc =  "String Grep" },
@@ -71,7 +99,8 @@ local telescope = {
     { "<leader>sy", "<cmd>Telescope find_files search_dirs=webpack/src/styles<cr>", desc = "Styles" },
     { "<A-v>", function() require'telescope.builtin'.find_files({search_dirs = { "app/views" }, search_file = vim.fn.expand("<cword>") }) end, desc = "Views" },
     -- { "<A-s>", find_spec, desc = "Find Spec" },
-    { "<A-b>", file_gh_url_to_clipboard, desc = "Copy gh url" },
+    -- { "<A-b>", file_gh_url_to_clipboard, desc = "Copy gh url" },
+    { "<A-b>", diff_gh_url_to_clipboard, desc = "Copy gh url" },
     { "<A-s>", "<cmd>A<cr>", desc = "Find Spec" },
     { "<A-g>", telescope_utils.git_commits, desc = "Find template in views" },
     { "<A-t>", find_template_in_views, desc = "Find template in views" },
