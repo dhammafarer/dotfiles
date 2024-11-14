@@ -2,6 +2,7 @@ local wk = require("which-key")
 local gs = require('gitsigns')
 local kiwi = require('kiwi')
 local telescope_utils = require('config.telescope_utils')
+local gh_utils = require('config.gh_utils')
 
 vim.g.mapleader = ","
 
@@ -18,59 +19,6 @@ local find_template_in_views = function()
     local filename = vim.fn.expand("%:t:r:r"):gsub("^_", "")
     local regex = "(render|partial:)[\\s(]?[\'\"][^\\s]*" .. filename .. "[\'\"]\\B"
     require'telescope.builtin'.grep_string({search_dirs = { "app" }, search = regex, use_regex=true })
-end
-
-local file_gh_url_to_clipboard = function()
-    local file_name = vim.fn.expand("%")
-    local ln = vim.api.nvim_win_get_cursor(0)[1]
-	local hash_command = "git log -n 1 --pretty=format:'%H'"
-	local repo_command = "git remote -v"
-
-	local handle = io.popen(hash_command)
-    if handle == nil then return end
-
-	local hash = handle:read("*a")
-	handle:close()
-
-	handle = io.popen(repo_command)
-    if handle == nil then return end
-
-	local repo_out = handle:read("*a")
-	handle:close()
-
-    local repo = string.gsub(string.match(repo_out, "github%.com.([^ ]+)"), ".git", "")
-
-    local url = "https://github.com/" .. repo .. "/blob/" .. hash .. "/" .. file_name .. "#L" .. ln
-
-    vim.fn.setreg("+", url)
-end
-
-local diff_gh_url_to_clipboard = function()
-    local function run_command(command)
-        local handle = io.popen(command)
-        -- TODO handle the error case better 
-        if handle == nil then return "" end
-
-        local result = handle:read("*a")
-        handle:close()
-        return result
-    end
-
-    local file_name = vim.fn.expand("%")
-    local line_number = vim.api.nvim_win_get_cursor(0)[1]
-	local hash = run_command("git log -n 1 --pretty=format:'%H'")
-
-	local repo_out = run_command("git remote -v")
-    local repo = string.gsub(string.match(repo_out, "github%.com.([^ ]+)"), ".git", "")
-
-	local file_hash_out = run_command("echo -n " .. file_name .. " | sha256sum")
-    local file_hash = string.match(file_hash_out, "%w+")
-
-    local url = "https://github.com/" .. repo .. "/commit/" .. hash .. "/#diff-" .. file_hash .. "R" .. line_number
-
-    print(url)
-
-    vim.fn.setreg("+", url)
 end
 
 local telescope = {
@@ -99,8 +47,8 @@ local telescope = {
     { "<leader>sy", "<cmd>Telescope find_files search_dirs=webpack/src/styles<cr>", desc = "Styles" },
     { "<A-v>", function() require'telescope.builtin'.find_files({search_dirs = { "app/views" }, search_file = vim.fn.expand("<cword>") }) end, desc = "Views" },
     -- { "<A-s>", find_spec, desc = "Find Spec" },
-    -- { "<A-b>", file_gh_url_to_clipboard, desc = "Copy gh url" },
-    { "<A-b>", diff_gh_url_to_clipboard, desc = "Copy gh url" },
+    { "<A-c>", gh_utils.copy_file_url, desc = "Copy gh file url" },
+    { "<A-d>", gh_utils.copy_diff_url, desc = "Copy gh diff url" },
     { "<A-s>", "<cmd>A<cr>", desc = "Find Spec" },
     { "<A-g>", telescope_utils.git_commits, desc = "Find template in views" },
     { "<A-t>", find_template_in_views, desc = "Find template in views" },
@@ -256,10 +204,10 @@ local tabs = {
     { "<A-.>", "<cmd>BufferNext<cr>", desc = "Next Buffer" },
     { "<A-<>", "<cmd>BufferMovePrevious<cr>", desc = "Move Previous Buffer" },
     { "<A->>", "<cmd>BufferMoveNext<cr>", desc = "Move Next Buffer" },
-    { "<A-c>", "<cmd>BufferClose<cr>", desc = "Close Buffer" },
-    { "<A-p>", "<cmd>BufferPin<cr>", desc = "Pin Buffer" },
+    { "<A-x>", "<cmd>BufferClose<cr>", desc = "Close Buffer" },
+    -- { "<A-p>", "<cmd>BufferPin<cr>", desc = "Pin Buffer" },
     { "<A-q>", "<cmd>BufferCloseAllButCurrent<cr>", desc = "Close Buffer All But Current" },
-    { "<A-x>", "<cmd>BufferCloseAllButPinned<cr>", desc = "Close Buffer All But Pinned" },
+    -- { "<A-x>", "<cmd>BufferCloseAllButPinned<cr>", desc = "Close Buffer All But Pinned" },
     { "<A-h>", "<cmd>BufferFirst<cr>", desc = "Go to First" },
     { "<A-/>", "<cmd>BufferPrevious<cr>", desc = "Go to Previous" },
 }
@@ -329,6 +277,7 @@ local capslock = {
 vim.keymap.set({ 'n', 'v' }, '<Up>', 'gk')
 --vim.keymap.set('n', '<leader>ga', "<cmd>Telescope grep_string word_match=-w search_dirs=input('Dir: ')<cr>")
 vim.keymap.set('n', '<leader>ga', ":Telescope grep_string search_dirs=")
+vim.keymap.set('n', '<leader>of', gh_utils.copy_diff_url)
 
 
 wk.add(capslock)
