@@ -159,8 +159,8 @@ local file = {
 }
 
 local lsp = {
-    { "<C-k>", vim.lsp.buf.signature_help, desc = "LSP Signature help" },
-    { "<C-h>", vim.lsp.buf.hover, desc = "LSP Hover" },
+    { "<C-h>", vim.lsp.buf.signature_help, desc = "LSP Signature help" },
+    { "<C-space>", vim.lsp.buf.hover, desc = "LSP Hover" },
     { "<C-d>", vim.lsp.buf.definition, desc = "[LSP] Go to Definition" },
     { "<C-f>", function() vim.lsp.buf.format { async = true } end, desc = "LSP Format", mode = "i" },
     { "<space>a", vim.lsp.buf.code_action, desc = "LSP Code Action" },
@@ -204,10 +204,8 @@ local tabs = {
     { "<A-.>", "<cmd>BufferNext<cr>", desc = "Next Buffer" },
     { "<A-<>", "<cmd>BufferMovePrevious<cr>", desc = "Move Previous Buffer" },
     { "<A->>", "<cmd>BufferMoveNext<cr>", desc = "Move Next Buffer" },
-    { "<A-x>", "<cmd>BufferClose<cr>", desc = "Close Buffer" },
-    -- { "<A-p>", "<cmd>BufferPin<cr>", desc = "Pin Buffer" },
-    { "<A-q>", "<cmd>BufferCloseAllButCurrent<cr>", desc = "Close Buffer All But Current" },
-    -- { "<A-x>", "<cmd>BufferCloseAllButPinned<cr>", desc = "Close Buffer All But Pinned" },
+    { "<A-x>", "<cmd>BufferCloseAllButCurrent<cr>", desc = "Close Buffer All But Current" },
+    { "<A-q>", "<cmd>BufferClose<cr>", desc = "Close Buffer" },
     { "<A-h>", "<cmd>BufferFirst<cr>", desc = "Go to First" },
     { "<A-/>", "<cmd>BufferPrevious<cr>", desc = "Go to Previous" },
 }

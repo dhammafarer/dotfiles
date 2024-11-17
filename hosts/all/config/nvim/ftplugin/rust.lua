@@ -12,7 +12,7 @@ vim.keymap.set(
 
 vim.keymap.set(
   "n",
-  "<C-h>",  -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
+  "<C-space>",  -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
   function()
     vim.cmd.RustLsp({'hover', 'actions'})
   end,
