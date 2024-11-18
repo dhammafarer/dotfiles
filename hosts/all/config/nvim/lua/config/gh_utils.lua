@@ -19,6 +19,11 @@ local function get_hash()
     return run_command("git log -n 1 --pretty=format:'%H'")
 end
 
+local function get_hash_from_blame(file_name, line_number)
+    local output = run_command("git blame -L " .. line_number .. ",+1 -l " .. file_name)
+    return string.match(output, "[^ ]+")
+end
+
 local function get_file_hash(file_name)
 	local file_hash_out = run_command("echo -n " .. file_name .. " | sha256sum")
     return string.match(file_hash_out, "%w+")
@@ -41,7 +46,7 @@ end
 M.copy_diff_url = function()
     local file_name = vim.fn.expand("%")
     local line_number = vim.api.nvim_win_get_cursor(0)[1]
-	local hash = get_hash()
+	local hash = get_hash_from_blame(file_name, line_number)
     local repo = get_repo()
     local file_hash = get_file_hash(file_name)
 
