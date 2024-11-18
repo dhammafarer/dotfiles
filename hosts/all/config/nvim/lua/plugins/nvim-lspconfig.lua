@@ -20,6 +20,10 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local lspconfig = require('lspconfig')
 
+require'lspconfig'.cssls.setup {
+    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
 lspconfig["ansiblels"].setup {
     on_attach = on_attach,
     capabilities = capabilities,

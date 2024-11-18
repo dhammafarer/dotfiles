@@ -62,5 +62,6 @@
     oterm
     zoxide
     sesh
+    vscode-langservers-extracted
   ];
 }
