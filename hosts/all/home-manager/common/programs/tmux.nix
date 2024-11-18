@@ -6,7 +6,7 @@
     extraConfig = builtins.readFile ../../../config/tmux/tmux.conf;
     keyMode = "vi";
     mouse = true;
-    prefix = "M-y";
+    prefix = "M-[";
     plugins = [
       pkgs.tmuxPlugins.sensible
       pkgs.tmuxPlugins.yank

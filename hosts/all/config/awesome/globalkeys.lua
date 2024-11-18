@@ -144,13 +144,13 @@ local globalkeys = gears.table.join(
     --     end,
     --     { description = "focus master", group = "client" }),
 
-    awful.key({ MODKEY, "Control" }, "e",
-        function()
-            focus_by_master_offset(1, 0)
-            -- toggle_layout()
-            -- awful.layout.set(LAYOUT_CENTER)
-        end,
-        { description = "focus master", group = "client" }),
+    -- awful.key({ MODKEY, "Control" }, "e",
+    --     function()
+    --         focus_by_master_offset(1, 0)
+    --         -- toggle_layout()
+    --         -- awful.layout.set(LAYOUT_CENTER)
+    --     end,
+    --     { description = "focus master", group = "client" }),
 
     -- Focus 3rd Client
     awful.key({ MODKEY }, "i",
