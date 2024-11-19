@@ -14,6 +14,7 @@ M = {}
 local delta = previewers.new_termopen_previewer {
   get_command = function(entry)
     local base_branch = vim.g.git_base or "master"
+
     return { 'git', '--no-pager', 'diff', '--unified=0', base_branch .. '..HEAD', entry.value }
   end
 }
@@ -31,15 +32,13 @@ end
 M.changed_files = function(opts)
   local base_branch = vim.g.git_base or "master"
   local command = "git diff --name-only $(git merge-base HEAD " .. base_branch .. " )"
-  -- git diff --name-status HEAD ^master | grep -v '^D'
 
-  local handle = io.popen(command)
-  if handle == nil then return end
-
+  local handle = assert(io.popen(command))
   local result = handle:read("*a")
   handle:close()
 
   local files = {}
+
   for token in string.gmatch(result, "[^%s]+") do
     table.insert(files, token)
   end
@@ -112,9 +111,7 @@ M.git_commits = function(opts)
   local base_branch = vim.g.git_base or "master"
   local command = "git log --pretty=format:'%h %ai %<(20)%an %s' HEAD ^" .. base_branch
 
-  local handle = io.popen(command)
-  if handle == nil then return end
-
+  local handle = assert(io.popen(command))
   local result = handle:read("*a")
   handle:close()
 
