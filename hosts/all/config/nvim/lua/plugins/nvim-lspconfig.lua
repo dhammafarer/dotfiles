@@ -1,5 +1,3 @@
--- Ansible managed: templates/lua/plugins/nvim-lspconfig.lua.j2 modified on 2024-05-30 02:32:17 by pl on dev.pale.paradise-liberty.ts.net
-
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
@@ -20,32 +18,36 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local lspconfig = require('lspconfig')
 
-require'lspconfig'.cssls.setup {
-    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
-
 lspconfig["ansiblels"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
 }
+
 lspconfig["astro"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
 }
+
 lspconfig["clangd"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
 }
+
+lspconfig["cssls"].setup {
+    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
 lspconfig["elmls"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
 }
+
 lspconfig["eslint"].setup {
-    on_attach = function(client, bufnr)
+    on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             command = "EslintFixAll",
@@ -54,16 +56,19 @@ lspconfig["eslint"].setup {
     capabilities = capabilities,
     flags = lsp_flags,
 }
+
 lspconfig["gopls"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
 }
+
 lspconfig["lua_ls"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
 }
+
 lspconfig["nixd"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -84,16 +89,15 @@ lspconfig["nixd"].setup {
 --     capabilities = capabilities,
 --     flags = lsp_flags,
 -- }
+
 lspconfig["solargraph"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
 }
--- lspconfig["tailwindcss"].setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     flags = lsp_flags,
--- }
+
+lspconfig["stimulus_ls"].setup{}
+
 lspconfig["ts_ls"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
