@@ -7,7 +7,7 @@ local previewers = require "telescope.previewers"
 local make_entry = require "telescope.make_entry"
 local entry_display = require "telescope.pickers.entry_display"
 local gs = require('gitsigns')
-local telescope_builtin = require 'telescope.builtin'
+local builtin = require 'telescope.builtin'
 
 M = {}
 
@@ -20,7 +20,7 @@ local delta = previewers.new_termopen_previewer {
 }
 
 M.search_tags = function()
-  telescope_builtin.tags({
+  builtin.tags({
     fname_width = 60,
     show_line = false,
     only_sort_tags = true,
@@ -28,6 +28,14 @@ M.search_tags = function()
   })
 end
 
+M.lsp_references = function()
+  builtin.lsp_references({
+    include_declaration = true,
+    fname_width = 60,
+    show_line = false,
+    trim_text = false
+  })
+end
 
 M.changed_files = function(opts)
   local base_branch = vim.g.git_base or "master"
