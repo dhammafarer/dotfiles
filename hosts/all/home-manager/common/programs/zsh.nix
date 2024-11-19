@@ -32,6 +32,10 @@
     };
   };
 
+  home.sessionPath = [
+    "$HOME/.npm-global/bin"
+  ];
+
   home.file."${config.xdg.configHome}/zsh/aliases.d" = {
 	source = ../../../config/zsh/aliases.d;
 	recursive = true;
