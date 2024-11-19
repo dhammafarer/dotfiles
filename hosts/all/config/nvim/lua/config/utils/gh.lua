@@ -1,9 +1,7 @@
 M = {}
 
 local function run_command(command)
-    local handle = io.popen(command)
-    -- TODO handle the error case better 
-    if handle == nil then return "" end
+    local handle = assert(io.popen(command))
 
     local result = handle:read("*a")
     handle:close()
@@ -11,8 +9,13 @@ local function run_command(command)
 end
 
 local function get_repo()
-	local repo_out = run_command("git remote -v")
-    return string.gsub(string.match(repo_out, "github%.com.([^ ]+)"), ".git", "")
+	local repo_out = run_command("git remote -v 2>/dev/null")
+    assert(repo_out ~= "", "Not a git repository or no remote set.")
+
+    local repo = string.match(repo_out, "github%.com.([^ ]+)")
+    assert(repo, "Remote not hosted on GitHub")
+
+    return string.gsub(repo, ".git", "")
 end
 
 local function get_hash()
@@ -31,10 +34,11 @@ end
 
 
 M.copy_file_url = function()
+    local repo = get_repo()
+
     local file_name = vim.fn.expand("%")
     local line_number = vim.api.nvim_win_get_cursor(0)[1]
 	local hash = get_hash()
-    local repo = get_repo()
 
     local url = "https://github.com/" .. repo .. "/blob/" .. hash .. "/" .. file_name .. "#L" .. line_number
 
