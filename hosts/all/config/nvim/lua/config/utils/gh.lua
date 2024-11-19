@@ -1,5 +1,12 @@
 M = {}
 
+local function get_file_name()
+    local file_name = vim.fn.expand("%")
+    assert(file_name ~= "", "Not a valid file.")
+
+    return file_name
+end
+
 local function run_command(command)
     local handle = assert(io.popen(command))
 
@@ -35,8 +42,8 @@ end
 
 M.copy_file_url = function()
     local repo = get_repo()
+    local file_name = get_file_name()
 
-    local file_name = vim.fn.expand("%")
     local line_number = vim.api.nvim_win_get_cursor(0)[1]
 	local hash = get_hash()
 
@@ -48,10 +55,11 @@ M.copy_file_url = function()
 end
 
 M.copy_diff_url = function()
-    local file_name = vim.fn.expand("%")
+    local repo = get_repo()
+    local file_name = get_file_name()
+
     local line_number = vim.api.nvim_win_get_cursor(0)[1]
 	local hash = get_hash_from_blame(file_name, line_number)
-    local repo = get_repo()
     local file_hash = get_file_hash(file_name)
 
     local url = "https://github.com/" .. repo .. "/commit/" .. hash .. "/#diff-" .. file_hash .. "R" .. line_number
