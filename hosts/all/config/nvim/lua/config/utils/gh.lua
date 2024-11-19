@@ -9,9 +9,9 @@ end
 
 local function run_command(command)
     local handle = assert(io.popen(command))
-
     local result = handle:read("*a")
     handle:close()
+
     return result
 end
 
@@ -31,11 +31,13 @@ end
 
 local function get_hash_from_blame(file_name, line_number)
     local output = run_command("git blame -L " .. line_number .. ",+1 -l " .. file_name)
+
     return string.match(output, "[^ ]+")
 end
 
 local function get_file_hash(file_name)
 	local file_hash_out = run_command("echo -n " .. file_name .. " | sha256sum")
+
     return string.match(file_hash_out, "%w+")
 end
 
@@ -49,9 +51,9 @@ M.copy_file_url = function()
 
     local url = "https://github.com/" .. repo .. "/blob/" .. hash .. "/" .. file_name .. "#L" .. line_number
 
-    print(url)
-
     vim.fn.setreg("+", url)
+
+    vim.notify("Copied file URL to clipboard.")
 end
 
 M.copy_diff_url = function()
@@ -64,9 +66,9 @@ M.copy_diff_url = function()
 
     local url = "https://github.com/" .. repo .. "/commit/" .. hash .. "/#diff-" .. file_hash .. "R" .. line_number
 
-    print(url)
-
     vim.fn.setreg("+", url)
+
+    vim.notify("Copied diff URL to clipboard.")
 end
 
 return M
