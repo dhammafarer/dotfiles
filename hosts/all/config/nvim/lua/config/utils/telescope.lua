@@ -6,8 +6,9 @@ local action_state = require "telescope.actions.state"
 local previewers = require "telescope.previewers"
 local make_entry = require "telescope.make_entry"
 local entry_display = require "telescope.pickers.entry_display"
-local gs = require('gitsigns')
 local builtin = require 'telescope.builtin'
+
+local git_utils = require('config.utils.git')
 
 M = {}
 
@@ -116,7 +117,8 @@ end
 
 
 M.git_commits = function(opts)
-  local base_branch = vim.g.git_base or "master"
+  local base_branch = os.getenv("GIT_BASE") or "master"
+
   local command = "git log --pretty=format:'%h %ai %<(20)%an %s' HEAD ^" .. base_branch
 
   local handle = assert(io.popen(command))
@@ -134,8 +136,8 @@ M.git_commits = function(opts)
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
         local git_base = selection.value
-        vim.g.git_base = git_base
-        gs.change_base(git_base, true)
+
+        git_utils.set_base_branch(git_base)
       end)
       return true
     end
