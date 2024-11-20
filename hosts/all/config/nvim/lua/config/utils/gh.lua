@@ -15,7 +15,7 @@ local function run_command(command)
   return result
 end
 
--- get the name user and name of current repo
+-- get the name and name of current repo
 local function get_repo()
   local repo_out = run_command("git remote -v 2>/dev/null")
   assert(repo_out ~= "", "Not a git repository or no remote set.")
