@@ -42,12 +42,12 @@ vim.api.nvim_set_option("clipboard", "unnamed")
 
 -- python indent
 vim.g["python_indent"] = {
-    disable_parentheses_indenting = 'v:false',
-    closed_paren_align_last_line = 'v:false',
-    searchpair_timeout = '150',
-    continue = 'shiftwidth() * 1',
-    open_paren = 'shiftwidth() * 1',
-    nested_paren = 'shiftwidth()'
+  disable_parentheses_indenting = 'v:false',
+  closed_paren_align_last_line = 'v:false',
+  searchpair_timeout = '150',
+  continue = 'shiftwidth() * 1',
+  open_paren = 'shiftwidth() * 1',
+  nested_paren = 'shiftwidth()'
 }
 
 -- workaround needed to trigger folding on file opening
@@ -58,19 +58,19 @@ vim.g["python_indent"] = {
 
 --vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
 vim.api.nvim_create_autocmd({ "BufRead" }, {
-    pattern = { "*" },
-    command = "set foldlevel=99",
+  pattern = { "*" },
+  command = "set foldlevel=99",
 })
 
 vim.g["codeium_enabled"] = 'v:false'
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "php",
-    command = "setlocal autoindent"
+  pattern = "php",
+  command = "setlocal autoindent"
 })
 
 vim.diagnostic.config({
-    virtual_text = false
+  virtual_text = false
 })
 
 vim.filetype.add({
@@ -96,6 +96,6 @@ vim.filetype.add({
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = { "*/files/*.yml", "*/k8s/*.yml" },
-    command = "setlocal filetype=yaml",
+  pattern = { "*/files/*.yml", "*/k8s/*.yml" },
+  command = "setlocal filetype=yaml",
 })
