@@ -28,26 +28,10 @@ M.set_base_branch = function(branch) set_base_branch(branch) end
 
 M.toggle_git_tree = function() toggle_git_tree("show", true) end
 
-M.toggle_git_status = function(action, toggle, float, position, git_base)
-  if git_base == nil then
-    git_base = vim.g.git_base
-  end
-
-  require('neo-tree.command').execute({
-    action = action,
-    position = position,
-    toggle = toggle,
-    float = float,
-    source = "git_status",
-    git_base = git_base
-  })
-end
-
 M.prev_hunk = function() gs.nav_hunk("prev", { preview = false, wrap = true }) end
+
 M.next_hunk = function() gs.nav_hunk("next", { preview = false, wrap = true }) end
 
-M.hunks_to_loclist = function()
-  gs.setqflist("attached", { use_location_list = true, open = true })
-end
+M.hunks_to_loclist = function() gs.setqflist("attached", { use_location_list = true, open = true }) end
 
 return M

@@ -38,6 +38,7 @@ M.lsp_references = function()
   })
 end
 
+-- search in files that have changed since a particular commit (base branch)
 M.changed_files = function(opts)
   local base_branch = vim.g.git_base or "master"
   local command = "git diff --name-only $(git merge-base HEAD " .. base_branch .. " )"
@@ -115,7 +116,8 @@ local gen_from_git_commits = function(opts)
   end
 end
 
-
+-- list "PR commits", i.e. commits that are present on current branch
+-- but absent on the base branch
 M.git_commits = function(opts)
   local base_branch = os.getenv("GIT_BASE") or "master"
 

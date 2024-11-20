@@ -15,6 +15,7 @@ local function run_command(command)
   return result
 end
 
+-- get the name user and name of current repo
 local function get_repo()
   local repo_out = run_command("git remote -v 2>/dev/null")
   assert(repo_out ~= "", "Not a git repository or no remote set.")
@@ -41,7 +42,8 @@ local function get_file_hash(file_name)
   return string.match(file_hash_out, "%w+")
 end
 
-
+-- builds and copies to system clipboard a URL pointing to
+-- the currently open buffer and line number under cursor on github.com
 M.copy_file_url = function()
   local repo = get_repo()
   local file_name = get_file_name()
@@ -56,6 +58,8 @@ M.copy_file_url = function()
   vim.notify("Copied file URL to clipboard.")
 end
 
+-- builds and copies to system clipboard a URL pointing to
+-- the most recent commit that modified the line under cursor on github.com
 M.copy_diff_url = function()
   local repo = get_repo()
   local file_name = get_file_name()
