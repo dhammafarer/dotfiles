@@ -47,9 +47,21 @@ const searchEngines = [
     fn: null,
   },
   {
-    key: "h",
+    key: "m",
     name: "Hackage",
     url: "https://www.haskell.org/hoogle/?hoogle=",
+    fn: null,
+  },
+  {
+    key: "h",
+    name: "Home Manager",
+    url: "https://home-manager-options.extranix.com/?query=",
+    fn: null,
+  },
+  {
+    key: "n",
+    name: "Nix",
+    url: "https://search.nixos.org/packages?channel=unstable&query=",
     fn: null,
   },
   {
@@ -109,5 +121,5 @@ searchEngines.forEach((x) => {
 
 // youtube full screen
 mapkey(`F`, `Toglle fullscreen`, function () {
-  document.querySelector(".fullscreen-icon").click();
+  (document.querySelector(".fullscreen-icon") || document.querySelector(".ytp-fullscreen-button") ).click();
 });

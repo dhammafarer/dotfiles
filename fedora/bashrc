@@ -40,3 +40,5 @@ if [ -f '/home/pl/google-cloud-sdk/path.bash.inc' ]; then . '/home/pl/google-clo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/pl/google-cloud-sdk/completion.bash.inc' ]; then . '/home/pl/google-cloud-sdk/completion.bash.inc'; fi
+
+eval "$(starship init bash)"

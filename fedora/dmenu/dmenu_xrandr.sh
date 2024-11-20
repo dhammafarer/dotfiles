@@ -1,16 +1,16 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 pale_builtin=eDP-1
-pale_external=DP-3
+pale_external=DP-2
 pale_tablet=DP-5
 
 declare -a options_pale=(
-"presentation"
-"external"
 "builtin"
+"external"
 "dual"
 "sidecar"
 "triple"
+"presentation"
 )
 
 declare -a options_ctn=(
@@ -133,6 +133,50 @@ then
     ;;
   esac
 elif [[ $(hostname -s) == "pale" ]];
+then
+  choice=$(echo "$(printf '%s\n' "${options_pale[@]}")" | $launcher -p 'xrandr profile: ')
+  case "$choice" in
+    builtin)
+      xrandr --output $pale_tablet --off
+      xrandr --output $pale_builtin --auto --primary
+      xrandr --output $pale_external --off
+      restart_wm
+    ;;
+    external)
+      xrandr --output $pale_tablet --off
+      xrandr --output $pale_external --auto --primary
+      xrandr --output $pale_builtin --off
+      restart_wm
+    ;;
+    dual)
+      xrandr --output $pale_tablet --off
+      xrandr --output $pale_external --auto --primary
+      xrandr --output $pale_builtin --auto --below $pale_external
+      restart_wm
+    ;;
+    presentation)
+      xrandr --output $pale_tablet --off
+      xrandr --output $pale_builtin --auto --primary
+      xrandr --output $pale_external --auto --above $pale_builtin
+      restart_wm
+    ;;
+    triple)
+      xrandr --output $pale_builtin --auto --primary
+      xrandr --output $pale_external --auto --above $pale_builtin
+      xrandr --output $pale_tablet --auto --rotate right --right-of $pale_external
+      restart_wm
+    ;;
+    sidecar)
+      xrandr --output $pale_builtin --auto --primary --pos 0x720
+      xrandr --output $pale_external --off
+      xrandr --output $pale_tablet --auto --rotate right --pos 1920x0
+      restart_wm
+    ;;
+    *)
+      exit 1
+    ;;
+  esac
+elif [[ $(hostname -s) == "pale2" ]];
 then
   choice=$(echo "$(printf '%s\n' "${options_pale[@]}")" | $launcher -p 'xrandr profile: ')
   case "$choice" in

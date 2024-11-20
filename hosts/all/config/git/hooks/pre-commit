@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+if git grep --cached -qE -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter\.pp\(\w)"; then
+    echo 'Commit contains focused tests or puts statements.'
+    exit 1
+fi
+
+# Run Rubocop on staged .rb files
+rb_files=$(git diff --cached --name-only --diff-filter=ACM | grep ".rb$")
+
+cmd="docker-compose exec test rubocop"
+
+if [[ $rb_files ]]; then
+    if ! $cmd $rb_files; then
+        echo "Rubocop failed on staged file. Please fix the errors and try again."
+        exit 1
+    fi
+fi
+
+ts_files=$(git diff --cached --name-only --diff-filter=ACM | grep ".ts$")
+prettier_cmd="prettier -l"
+
+if [[ $ts_files ]]; then
+    if ! $prettier_cmd $ts_files; then
+        echo "Prettier failed on a staged file. Please fix the errors and try again."
+        exit 1
+    fi
+fi

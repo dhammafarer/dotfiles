@@ -8,6 +8,12 @@ tags.lock
 tags.temp
 .gutctags
 
+### rails
+test.log.0
+
+### nix
+gemset.nix
+
 ### haskell
 
 build

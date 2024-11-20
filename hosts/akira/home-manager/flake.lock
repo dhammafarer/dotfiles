@@ -1,0 +1,100 @@
+{
+  "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726989464,
+        "narHash": "sha256-Vl+WVTJwutXkimwGprnEtXc/s/s8sMuXzqXaspIGlwM=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "2f23fa308a7c067e52dfcc30a0758f47043ec176",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-24.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1726838390,
+        "narHash": "sha256-NmcVhGElxDbmEWzgXsyAjlRhUus/nEqPC5So7BOJLUM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "944b2aea7f0a2d7c79f72468106bc5510cbf5101",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plugin-capslock": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653140207,
+        "narHash": "sha256-Dyg0fFclhDC6ulr9+7oIivvWm3N21tJZmUsniralfbk=",
+        "owner": "barklan",
+        "repo": "capslock.nvim",
+        "rev": "35b560dd5585cd60e45a2367ad6ff9873f4c21a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "barklan",
+        "repo": "capslock.nvim",
+        "type": "github"
+      }
+    },
+    "plugin-kiwi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724251284,
+        "narHash": "sha256-VN/p+yHv84aJn2HS6/5rZd1yiTucOxw8qJI7WHwCzG8=",
+        "owner": "serenevoid",
+        "repo": "kiwi.nvim",
+        "rev": "4e5d8f4e3ca1ec5ab78668045b6cc7fcee8ff5ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "serenevoid",
+        "repo": "kiwi.nvim",
+        "type": "github"
+      }
+    },
+    "plugin-prettier": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686934076,
+        "narHash": "sha256-4xq+caprcQQotvBXnWWSsMwVB2hc5uyjrhT1dPBffXI=",
+        "owner": "MunifTanjim",
+        "repo": "prettier.nvim",
+        "rev": "d98e732cb73690b07c00c839c924be1d1d9ac5c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MunifTanjim",
+        "repo": "prettier.nvim",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "plugin-capslock": "plugin-capslock",
+        "plugin-kiwi": "plugin-kiwi",
+        "plugin-prettier": "plugin-prettier"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

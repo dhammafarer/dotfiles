@@ -7,7 +7,7 @@
 #                                                                          
 # guest terminals
 super + BackSpace
-    xfce4-terminal -e "distrobox enter dev"
+    kitty
 
 # Rofi list terminals
 #super + Return
@@ -29,8 +29,6 @@ super + 2
     #/usr/bin/firefox
 super + 3
     ~/.local/bin/rofi-pass --root ~/.password-store 2> /tmp/rofi-pass-pl.log
-super + 7
-    xfce4-terminal --working-directory="/home/pl/Nextcloud/Notes" -e "distrobox enter dev -e 'nvim index.md'"
 super + colon
     flatpak run org.goldendict.GoldenDict
 super + equal
@@ -51,11 +49,11 @@ super + control + Escape
 #super + space
 #    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Space
 
-XF86AudioPrev
-    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Left
-
-XF86AudioNext
-    xdotool key --window $(xdotool search --desktop 11 --onlyvisible --name firefox) KP_Right
+# XF86AudioPrev
+#     notify-send "Mic Mute"; amixer set Capture nocap
+# 
+# XF86AudioNext
+#     notify-send "Mic ON"; amixer set Capture cap
 
 #super + control + space
 #    cplay

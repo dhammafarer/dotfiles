@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+export HASS_SERVER=https://ha.paradise-liberty.ts.net
+export HASS_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlMTgzMWZjMzliOGE0ZmNmODRiM2Y0N2IxODYwMDMzOSIsImlhdCI6MTcyMjQxNTM1OSwiZXhwIjoyMDM3Nzc1MzU5fQ.J-UeVq1cm8e6--WfdsbelWFhuQeNAnOoL1n43JGhMCI
+
+export ENTITY=switch.0x00124b0026b87179
+
+if [ $1 == "on" ]; then
+    hass-cli state turn_on $ENTITY
+else
+    hass-cli state turn_off $ENTITY
+fi
