@@ -99,3 +99,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*/files/*.yml", "*/k8s/*.yml" },
   command = "setlocal filetype=yaml",
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local base_branch = os.getenv("GIT_BASE") or "master"
+    vim.g.git_base = base_branch
+  end,
+})
