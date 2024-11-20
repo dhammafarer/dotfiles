@@ -1,6 +1,8 @@
 local wk = require("which-key")
 local gs = require('gitsigns')
 local kiwi = require('kiwi')
+
+local helpers = require('config.utils.helpers')
 local telescope_utils = require('config.utils.telescope')
 local gh_utils = require('config.utils.gh')
 local rails_utils = require('config.utils.rails')
@@ -43,34 +45,6 @@ local telescope = {
   { "<A-t>",      rails_utils.find_template_render,                                       desc = "Find template in views" },
   { "<leader>gy", "<cmd>Telescope grep_string search_dirs=webpack/src/styles<cr>",        desc = "Grep Styles" }
 }
-
-local toggle_quickfix = function()
-  for _, win in pairs(vim.fn.getwininfo()) do
-    if win["quickfix"] == 1 then
-      vim.cmd "cclose"
-      return
-    else
-      vim.cmd "copen"
-    end
-  end
-end
-
-local open_on_line = function()
-  local str = vim.fn.getreg("+")
-
-  if str then
-    local pattern = ":(%d+)"
-    local path = str:match("(%.?[%a%/%_]+%.[%a%._-]+)")
-    local ln = str:match(pattern)
-    local cmd
-    if ln then
-      cmd = string.format("e +%s %s", ln, path)
-    else
-      cmd = 'e ' .. path
-    end
-    vim.cmd(cmd)
-  end
-end
 
 local hunks_to_loclist = function()
   gs.setqflist("attached", { use_location_list = true, open = true })
@@ -136,8 +110,8 @@ local file = {
   { "<leader>m", function() toggle_git_status("focus", true, false, "right", "master") end, desc = "Change base: master" },
   { "<leader>w", "<cmd>write<cr>",                                                          desc = "write" },
   { "<leader>x", "<cmd>quit<cr>",                                                           desc = "quit" },
-  { "<space>e",  open_on_line,                                                              desc = "Open file on line" },
-  { "<space>o",  toggle_quickfix,                                                           desc = "Toggle quickfix" },
+  { "<space>e",  helpers.open_on_line,                                                              desc = "Open file on line" },
+  { "<space>o",  helpers.toggle_quickfix,                                                           desc = "Toggle quickfix" },
   { "<space>h",  "<cmd>hide<cr>",                                                           desc = "Hide" },
   { "<space>n",  "<cmd>only<cr>",                                                           desc = "Only" },
   { "<space>q",  "<cmd>quit<cr>",                                                           desc = "Quit" },
