@@ -24,7 +24,6 @@
     ../../../all/home-manager/common/programs/picom.nix
     ../../../all/home-manager/common/programs/cmus.nix
     ./programs/kitty.nix
-    ./programs/neovim.nix
     ./programs/packages.nix
     ./programs/packages-ygt.nix
     ./programs/starship.nix
