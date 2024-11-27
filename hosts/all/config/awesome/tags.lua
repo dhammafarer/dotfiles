@@ -9,7 +9,7 @@ return {
             {
                 name = "一",
                 key = "r",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
                 master_fill_policy = "master_width_factor",
                 master_count = 1,
@@ -103,7 +103,7 @@ return {
             {
                 name = zh[1],
                 key = "r",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
                 master_fill_policy = "expand",
                 master_count = 1,
