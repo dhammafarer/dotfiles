@@ -74,6 +74,7 @@ alias gst="git status"
 alias gsts="git status --short"
 alias gsur="git submodule update --remote"
 alias nah="git reset --hard; git clean -dif;"
+alias gbn="git rev-parse --abbrev-ref HEAD"
 git_clone_repo() {
   git clone https://github.com/$1
 }

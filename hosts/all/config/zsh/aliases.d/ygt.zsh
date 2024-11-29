@@ -4,17 +4,16 @@ dir=~/code/ygt
 
 ##### spa
 spa () { cd $dir/spabreaks }
-spa-shell () { nix-shell ~/dotfiles/nix/env/ygt/spabreaks/shell.nix $@ }
-spa-console () { spa && tmux new -s "spa-console" "make console" }
-spa-dev () { spa && tmux new -s "spa-dev" "make dev" }
-spa-guard () { spa && tmux new -s "spa-guard" "make guard" }
-spa-debug () { spa && tmux new -s "spa-debug" "task debug-web" }
-# spa-git () { spa-shell --command "tmux new -s 'spa-gitui' 'gitui'" }
-spa-git () { spa && tmux new -s 'spa-gitui' 'gitui' }
-spa-test () { spa && tmux new -s "spa-test" "make test" }
-spa-test-bash () { spa && tmux new -s "spa-test-bash" "make test-bash" }
-spa-build () { spa && tmux new -s "spa-build" "make build" }
-spa-psql () { spa && tmux new -s "spa-psql" "make psql" }
+spashell () { nix-shell ~/dotfiles/nix/env/ygt/spabreaks/shell.nix --command zsh }
+spaconsole () { spa && tmux new -s "spabreaks-console" "make console" }
+spadev () { spa && tmux new -s "spabreaks-dev" "make dev" }
+spaguard () { spa && tmux new -s "spabreaks-guard" "make guard" }
+spadebug () { spa && tmux new -s "spabreaks-debug" "task debug-web" }
+spagit () { spa && tmux new -s 'spabreaks-gitui' 'gitui' }
+spatest () { spa && tmux new -s "spabreaks-test" "make test" }
+spatestbash () { spa && tmux new -s "spabreaks-test-bash" "make test-bash" }
+spabuild () { spa && tmux new -s "spabreaks-build" "make build" }
+spapsql () { spa && tmux new -s "spabreaks-psql" "make psql" }
 
 spa-routes () {
   output=$(spa && make routes)
@@ -26,20 +25,10 @@ spa-routes () {
 }
 
 alias spabreaks="sesh connect spabreaks"
-alias spaconsole="spa-console"
-alias spashell="spa-shell --command zsh"
-alias spadebug="spa-debug"
-alias spadev="spa-dev"
-alias spagit="spa-git"
-alias spaguard="spa-guard"
-alias spatest="spa-test"
-alias spatestbash="spa-test-bash"
 alias spa-db-migrate="spa && db-migrate"
 alias spa-db-rollback="spa && db-rollback"
 alias spa-db-redo="spa && make db-migrate-redo"
 alias sparoutes="spa-routes"
-alias spabuild="spa-build"
-alias spapsql="spa-psql"
 
 ##### wss
 wss () { cd $dir/sales }
@@ -56,14 +45,10 @@ alias btrconsole="btr-console"
 
 ##### vrs
 alias vrs="cd $dir/sb-voucher-redemptions"
-vrs-console () { vrs && tmux new -s "vrs-console" "make console" }
-vrs-dev () { vrs && tmux new -s "vrs-dev" "make dev" }
-vrs-git () { vrs && tmux new -s "vrs-gitui" "gitui" }
-vrs-test-bash () { vrs && tmux new -s "vrs-test-bash" "make test-bash" }
-alias vrsdev="vrs-dev"
-alias vrsgit="vrs-git"
-alias vrstestbash="vrs-test-bash"
-alias vrsconsole="vrs-console"
+vrsconsole () { vrs && tmux new -s "sb-voucher-redemptions|-console" "make console" }
+vrsdev () { vrs && tmux new -s "sb-voucher-redemptions|-dev" "make dev" }
+vrsgit () { vrs && tmux new -s "sb-voucher-redemptions|-git" "gitui" }
+vrstestbash () { vrs && tmux new -s "sb-voucher-redemptions|-test-bash" "make test-bash" }
 
 ##### mya
 mya () { cd $dir/my-account }
