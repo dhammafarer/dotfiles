@@ -9,7 +9,7 @@ keymap=miryoku
 target=build
 
 qmk_host_dir=$HOME/qmk_firmware
-keymap_host_path=/home/pl/dotfiles/arch/config/qmk/${keyboard}/${keymap}
+keymap_host_path=/home/pl/dotfiles/hosts/all/config/qmk/${keyboard}/${keymap}
 keymap_mount_path="/qmk_firmware/keyboards/${keyboard}/keymaps/${keymap}"
 
 cmd=$keyboard:$keymap:$target

@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 launcher='dmenu -i -nb #1d1f21 -nf #D3D7CF -sb #37ADD4 -sf #192330 -fn 11'
-#launcher="rofi -dmenu -i"
 
-cmd=~/dotfiles/arch/bin/hass
+cmd=~/dotfiles/hosts/all/bin/hass
 
 rm4c=f3e8f78e81ce8fbbbe613ed7d0382f11
 
