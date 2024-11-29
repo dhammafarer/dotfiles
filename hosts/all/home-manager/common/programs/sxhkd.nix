@@ -9,13 +9,14 @@
     enable = true;
     keybindings = {
       "super + BackSpace" = "kitty";
+      "super + Return" = "kitty -e tmux new-session -A -s '#main'";
       # "super + 0" = "google-chrome-stable";
       "super + 0" = "flatpak run com.google.Chrome";
       "super + 1" = "rofi -show calc -modi calc -no-show-match -no-sort";
       "super + 2" = "~/.nix-profile/bin/firefox";
       "super + 3" = "rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log";
       "super + Delete" = "~/.dmenu/quit";
-      "super + Return" = "sesh L";
+      "super + u" = "sesh L";
       "super + equal" = "virt-manager";
       "super + shift + Escape" = "playerctl -a pause; xscreensaver-command -l";
       "super + control + Escape" = "xscreensaver-command -a";
