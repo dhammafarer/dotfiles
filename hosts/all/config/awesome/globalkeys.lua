@@ -168,6 +168,7 @@ local globalkeys = gears.table.join(
         end,
         { description = "Focus 3rd client", group = "client" }),
 
+    --[[
     awful.key({ MODKEY, "Control" }, "y",
         function()
             if awful.layout.getname() ~= LAYOUT_BOTTOM_NAME then
@@ -183,6 +184,7 @@ local globalkeys = gears.table.join(
             end
         end,
         { description = "Horizontal split", group = "client" }),
+    ---]]
 
     awful.key({ MODKEY }, "Tab",
         function()
