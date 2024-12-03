@@ -34,6 +34,10 @@ git_branch_delete_variant() {
     git branch -d $(git branch --show-current)$@
 }
 
+git_get_master_branch_name() {
+    git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+}
+
 alias gac="git add . && git commit"
 alias gacm="git add . && git commit -m"
 alias gar="git_add_remote"
@@ -42,7 +46,6 @@ alias gcir="git_create_init_repo"
 alias gcl="git_clone_repo"
 alias gclp="git_clone_repo_palekiwi"
 alias gclr="git_clone_rpi"
-alias gcmd="git checkout master && git merge dev"
 alias gcr="git_create_repo"
 alias glog="git log"
 alias gpa="git remote | xargs -L1 git push --all"
@@ -65,7 +68,7 @@ alias gsc="git switch -c"
 alias gscv="git_switch_create_variant"
 alias gbdv="git_branch_delete_variant"
 alias gsd="git switch dev"
-alias gsm="git switch master && unset GIT_BASE && git pull"
+alias gsm="git_get_master_branch_name | xargs git switch && unset GIT_BASE && git pull"
 alias gsb='sgh && gs $GIT_BASE'
 alias gmb='sgh && git merge $GIT_BASE'
 alias gmv='git_merge_variant'
@@ -133,4 +136,3 @@ git_create_init_repo() {
   git init &&
   git_add_remote
 }
-
