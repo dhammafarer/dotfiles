@@ -20,7 +20,7 @@
       "super + equal" = "virt-manager";
       "super + shift + Escape" = "playerctl -a pause; xscreensaver-command -l";
       "super + control + Escape" = "xscreensaver-command -a";
-      "XF86AudioMute" = "~/dotfiles/arch/bin/cplay";
+      "XF86AudioMute" = "~/dotfiles/hosts/all/bin/cplay";
       "{XF86MonBrightnessUp,XF86MonBrightnessDown}" = "light -{A,U} 2";
       "{XF86AudioPlay,XF86AudioPause}" = "playerctl -i cmus play-pause";
       "{button7,button6}" = "pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%";
@@ -38,6 +38,7 @@
       "XF86HomePage; p" = "~/.dmenu/process";
       "XF86HomePage; x" = "~/.dmenu/xrandr";
       "XF86HomePage; n" = "~/.dmenu/run";
+      "XF86HomePage; t" = "~/.dmenu/tmux";
       "XF86Search" = "rofi -show window";
       #"XF86Explorer" = "rofi -show window";
       # "XF86Tools" = "~/dotfiles/arch/bin/hass_state toggle light.kitchen_ceiling";
