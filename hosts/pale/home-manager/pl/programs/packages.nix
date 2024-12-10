@@ -63,5 +63,6 @@
     zoxide
     sesh
     vscode-langservers-extracted
+    simplescreenrecorder
   ];
 }
