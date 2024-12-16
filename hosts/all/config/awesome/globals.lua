@@ -62,6 +62,9 @@ LAYOUT_MAX_NAME = "max"
 LAYOUT_FULL = awful.layout.suit.max.fullscreen
 LAYOUT_FULL_NAME = "fullscreen"
 
+DEFAULT_SPLIT = LAYOUT_BOTTOM
+DEFAULT_SPLIT_NAME = LAYOUT_BOTTOM_NAME
+
 awful.layout.layouts = {
   LAYOUT_CENTER,
   LAYOUT_MAX,

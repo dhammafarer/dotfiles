@@ -20,7 +20,7 @@ return {
                 key = "s",
                 column_count = 1,
                 gap_single_client = true,
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_fill_policy = "master_width_factor",
                 master_width_factor = 0.5,
             },
@@ -29,7 +29,7 @@ return {
                 key = "t",
                 column_count = 1,
                 gap_single_client = true,
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_fill_policy = "master_width_factor",
                 master_width_factor = 0.5,
                 selected = true,
@@ -37,19 +37,19 @@ return {
             {
                 name = "四",
                 key = "x",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
             {
                 name = "五",
                 key = "c",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
             {
                 name = "六",
                 key = "d",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
             {
@@ -61,7 +61,7 @@ return {
             {
                 name = "八",
                 key = "f",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.7,
             },
             {
@@ -74,26 +74,26 @@ return {
             {
                 name = "〇",
                 key = "a",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.66,
                 gap = 0,
             },
             {
                 name = "甲",
                 key = "b",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
-            {
-                name = "乙",
-                key = "g",
-                layout = LAYOUT_TILE,
-                master_width_factor = 0.5,
-            },
+            --- {
+            ---     name = "乙",
+            ---     key = "g",
+            ---     layout = LAYOUT_TILE,
+            ---     master_width_factor = 0.5,
+            --- },
             {
                 name = "丙",
                 key = "v",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
         }
@@ -114,7 +114,7 @@ return {
                 key = "s",
                 column_count = 1,
                 gap_single_client = true,
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_MAX,
                 master_fill_policy = "expand",
                 master_width_factor = 0.5,
                 gap = 0
@@ -124,7 +124,7 @@ return {
                 key = "t",
                 column_count = 1,
                 gap_single_client = true,
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_MAX,
                 master_fill_policy = "expand",
                 master_width_factor = 0.75,
                 selected = true,
@@ -133,28 +133,22 @@ return {
             {
                 name = zh[4],
                 key = "x",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_fill_policy = "expand",
                 master_width_factor = 0.5,
             },
             {
                 name = zh[5],
                 key = "c",
-                layout = LAYOUT_TILE,
+                layout = LAYOUT_MAX,
                 master_fill_policy = "expand",
                 master_width_factor = 0.5,
             },
             {
                 name = zh[6],
                 key = "d",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_MAX,
                 master_fill_policy = "expand",
-                master_width_factor = 0.5,
-            },
-            {
-                name = zh[12],
-                key = "g",
-                layout = LAYOUT_BOTTOM,
                 master_width_factor = 0.5,
             },
         },
@@ -162,19 +156,19 @@ return {
             {
                 name = zh[11],
                 key = "b",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
             {
                 name = zh[13],
                 key = "v",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
             {
                 name = zh[10],
                 key = "a",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
                 gap = 0,
                 selected = true
@@ -188,7 +182,7 @@ return {
             {
                 name = zh[8],
                 key = "f",
-                layout = LAYOUT_BOTTOM,
+                layout = LAYOUT_MAX,
                 master_width_factor = 0.5,
             },
             {

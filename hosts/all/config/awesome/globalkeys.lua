@@ -34,11 +34,11 @@ local function fullscreen_fake_screen()
      end
 end
 
-local function exit_fake_fullscreen()
-    if (screen.count() ~= 2) then
-       return
-    end
-end
+--- local function exit_fake_fullscreen()
+---     if (screen.count() ~= 2) then
+---        return
+---     end
+--- end
 
 local function set_clients_opacity(m, opacity)
     for _, x in ipairs(mouse.screen.selected_tag:clients()) do
@@ -48,15 +48,15 @@ local function set_clients_opacity(m, opacity)
     end
 end
 
-local function notifyScreenFocus()
-    naughty.notify({
-        title = "Active screen",
-        position = "bottom_middle",
-        timeout = 1,
-        width = 120,
-        height = 32
-    })
-end
+--- local function notifyScreenFocus()
+---     naughty.notify({
+---         title = "Active screen",
+---         position = "bottom_middle",
+---         timeout = 1,
+---         width = 120,
+---         height = 32
+---     })
+--- end
 
 local function undim_clients()
     for _, x in ipairs(mouse.screen.selected_tag:clients()) do
@@ -68,7 +68,7 @@ local function toggle_layout()
     if awful.layout.getname() == LAYOUT_TILE_NAME then
         awful.layout.set(LAYOUT_CENTER)
     else
-        awful.layout.set(LAYOUT_TILE)
+        awful.layout.set(LAYOUT_BOTTOM)
     end
 end
 

@@ -162,6 +162,7 @@ local clientkeys = gears.table.join(
         { description = "toggle ontop", group = "client" }
     ),
 
+    --[[
     awful.key({ MODKEY, "Control" }, "m",
         function(c)
             local name = mouse.screen.selected_tag.name;
@@ -181,6 +182,7 @@ local clientkeys = gears.table.join(
         end,
         { description = "toggle reading mode", group = "client" }
     ),
+    ---]]
 
     -- toggle backdrop on client
     awful.key({ MODKEY, "Control" }, "h",
@@ -209,12 +211,14 @@ local clientkeys = gears.table.join(
         { description = "toggle minimize backdrop", group = "client" }),
 
     -- fullscreen toggle
-    awful.key({ MODKEY }, "space",
+    awful.key({ MODKEY, "Control" }, "space",
         function(c)
             c.floating = false
             if awful.layout.getname() == LAYOUT_MAX_NAME then
                 local selected_tag = mouse.screen.selected_tag
-                awful.layout.set(selected_tag["default_layout"])
+                local default_layout = selected_tag["default_layout"]
+                local layout =  default_layout == LAYOUT_MAX and DEFAULT_SPLIT or default_layout
+                awful.layout.set(layout)
                 for _, x in ipairs(selected_tag:clients()) do
                     if not x.floating then
                         x.opacity = 1
