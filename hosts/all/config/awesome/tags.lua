@@ -110,14 +110,10 @@ return {
                 gap = 0,
             },
             {
-                name = zh[2],
-                key = "s",
-                column_count = 1,
-                gap_single_client = true,
+                name = zh[8],
+                key = "f",
                 layout = LAYOUT_MAX,
-                master_fill_policy = "expand",
                 master_width_factor = 0.5,
-                gap = 0
             },
             {
                 name = zh[3],
@@ -180,10 +176,14 @@ return {
                 master_width_factor = 0.5,
             },
             {
-                name = zh[8],
-                key = "f",
+                name = zh[2],
+                key = "s",
+                column_count = 1,
+                gap_single_client = true,
                 layout = LAYOUT_MAX,
+                master_fill_policy = "expand",
                 master_width_factor = 0.5,
+                gap = 0
             },
             {
                 name = zh[9],

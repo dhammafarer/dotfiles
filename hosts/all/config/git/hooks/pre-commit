@@ -1,6 +1,11 @@
 #!/usr/bin/env sh
 
-if git grep --cached -qE -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter\.pp\(\w)"; then
+if [[ $(basename $PWD) -ne "spabreaks" ]]; then
+    echo "Not a spabreaks project."
+    exit 1
+fi
+
+if git grep --cached -qE -e "f(it|describe|context) ['\"]" -e "Pry::ColorPrinter\.pp\(\w*)"; then
     echo 'Commit contains focused tests or puts statements.'
     exit 1
 fi
@@ -23,6 +28,16 @@ prettier_cmd="prettier -l"
 if [[ $ts_files ]]; then
     if ! $prettier_cmd $ts_files; then
         echo "Prettier failed on a staged file. Please fix the errors and try again."
+        exit 1
+    fi
+fi
+
+erb_files=$(git diff --cached --name-only --diff-filter=ACM | grep ".erb$")
+erb_cmd="docker exec spabreaks bundle exec erb_lint --lint-all"
+
+if [[ $erb_files ]]; then
+    if ! $erb_cmd; then
+        echo "Erb failed on a staged file. Please fix the errors and try again."
         exit 1
     fi
 fi

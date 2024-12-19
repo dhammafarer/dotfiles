@@ -12,7 +12,7 @@
     docker-compose
     eza
     fasd
-    fira-code-nerdfont
+    nerd-fonts.fira-code
     firefox
     fzf
     gh
@@ -55,14 +55,16 @@
     yubikey-manager
     nixd
     nixpkgs-fmt
-    cargo
-    rust-analyzer
-    rustc
-    rustfmt
+    # cargo
+    # rust-analyzer
+    # rustc
+    # rustfmt
+    rustup
     oterm
     zoxide
     sesh
     vscode-langservers-extracted
     simplescreenrecorder
+    zellij
   ];
 }

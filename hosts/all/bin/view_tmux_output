@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+file=`mktemp`.sh
+tmux capture-pane -J -pS -32768 > $file
+tmux new-window "nvim '+ normal G $' $file"

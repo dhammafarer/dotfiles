@@ -11,27 +11,49 @@ set_pr_base() {
 }
 
 set_pr_base_from_gh() {
-    branch=$(gh pr view --json baseRefName | jq -r .baseRefName)
+    output=$(gh pr view --json baseRefName,number)
+    branch=$(echo $output | jq -r .baseRefName)
+    number=$(echo $output | jq -r .number)
+
     if [ -e $branch ]; then
         unset GIT_BASE
+        unset PR_NUMBER
     else
         export GIT_BASE=$branch
+        export PR_NUMBER=$number
     fi
 }
 
 alias spr="set_pr_base"
 alias sgh="set_pr_base_from_gh"
 
+git_switch_create_ygt() {
+    if [ $# -lt 2 ]; then
+        echo "Need at least 2 arguments"
+        exit 1
+    elif ! [[ $1 =~ ^[0-9]+$ ]]; then
+        echo "First argument must be a number"
+        exit 1
+    fi
+
+    card_nr=$1
+    card_name=${@:2}
+
+    branch_name=$card_nr-$(echo $card_name | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+    git switch -c $branch_name
+}
+
 git_switch_create_variant() {
-    git switch -c $(git branch --show-current)$@
+    git switch -c $(git branch --show-current)--$@
 }
 
 git_merge_variant() {
-    git merge $(git branch --show-current)$@
+    git merge $(git branch --show-current)--$@
 }
 
 git_branch_delete_variant() {
-    git branch -d $(git branch --show-current)$@
+    git branch -d $(git branch --show-current)--$@
 }
 
 git_get_master_branch_name() {
@@ -65,10 +87,11 @@ alias gs="git_switch"
 alias gsl="git switch - && sgh"
 alias gsar="git_submodule_add_role"
 alias gsc="git switch -c"
+alias gscy="git_switch_create_ygt"
 alias gscv="git_switch_create_variant"
 alias gbdv="git_branch_delete_variant"
 alias gsd="git switch dev"
-alias gsm="git_get_master_branch_name | xargs git switch && unset GIT_BASE && git pull"
+alias gsm="git_get_master_branch_name | xargs git switch && unset GIT_BASE && unset PR_NUMBER && git pull"
 alias gsb='sgh && gs $GIT_BASE'
 alias gmb='sgh && git merge $GIT_BASE'
 alias gmv='git_merge_variant'

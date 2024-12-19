@@ -8,6 +8,7 @@
   services.sxhkd = {
     enable = true;
     keybindings = {
+      "super + space" = "~/.dmenu/tmux";
       "super + BackSpace" = "kitty";
       "super + Return" = "kitty -e tmux new-session -A -s '#main'";
       # "super + 0" = "google-chrome-stable";
@@ -16,7 +17,7 @@
       "super + 2" = "~/.nix-profile/bin/firefox";
       "super + 3" = "rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log";
       "super + Delete" = "~/.dmenu/quit";
-      "super + u" = "sesh L";
+      "super + l" = "sesh L";
       "super + equal" = "virt-manager";
       "super + shift + Escape" = "playerctl -a pause; xscreensaver-command -l";
       "super + control + Escape" = "xscreensaver-command -a";
