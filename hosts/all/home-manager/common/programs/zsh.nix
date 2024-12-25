@@ -11,6 +11,10 @@
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
     fi
+
+    if [[ "$TERM" != "screen-256color" ]]; then
+      tmux attach-session -t "$USER" ||tmux new-session -s "$USER"
+    fi
     '';
 
     sessionVariables = {
