@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+session=spabreaks
+
+tmux rename-window -t $session:1 edit
+
+tmux new-window -t $session -n gitui
+tmux new-window -t $session -n run
+
+tmux send-keys -t $session:1 'ygtshell' C-m
+tmux send-keys -t $session:2 'gitui' C-m
+
+tmux select-window -t $session:2

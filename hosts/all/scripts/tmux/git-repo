@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+session=$1
+
+tmux rename-window -t $session:1 edit
+
+tmux new-window -t $session -n gitui
+
+tmux send-keys -t $session:1 'nvim' C-m
+tmux send-keys -t $session:2 'gitui' C-m
+
+tmux select-window -t $session:2

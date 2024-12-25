@@ -1,0 +1,19 @@
+[[session]]
+name = "spabreaks"
+path = "~/code/ygt/spabreaks/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/spabreaks"
+
+[[session]]
+name = "spabreaks-dev"
+path = "~/code/ygt/spabreaks/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/spabreaks-dev"
+
+[[session]]
+name = "Notes"
+path = "~/Nextcloud/Notes"
+startup_command = "nvim index.md"
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo dotfiles"
