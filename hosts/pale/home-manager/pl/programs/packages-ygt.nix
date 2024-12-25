@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    bundix
     gcc
     gnumake
     go-task
