@@ -26,6 +26,7 @@
     ./programs/kitty.nix
     ./programs/packages.nix
     ./programs/packages-ygt.nix
+    ./programs/sesh.nix
     ./programs/starship.nix
   ];
 }
