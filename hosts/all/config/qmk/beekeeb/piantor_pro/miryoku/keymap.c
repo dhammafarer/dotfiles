@@ -29,7 +29,8 @@ enum layer_names {
 #define HM_L LT(APP,KC_L)
 #define HM_U LT(SYM,KC_U)
 #define HM_Z LT(LHN,KC_Z)
-#define HM_D LT(MED,KC_D)
+// #define HM_D LT(MED,KC_D)
+#define HM_D LALT_T(KC_D)
 #define HM_F LT(PCT,KC_F)
 #define HM_P LT(MED,KC_P)
 
@@ -39,7 +40,8 @@ enum layer_names {
 #define HM_I RSFT_T(KC_I)
 #define HM_O RALT_T(KC_O)
 
-#define HM_H LT(SYM,KC_H)
+// #define HM_H LT(SYM,KC_H)
+#define HM_H RALT_T(KC_H)
 #define HM_SLSH LT(RHN,KC_SLSH)
 
 // Thumbs layers:
