@@ -17,3 +17,7 @@ startup_command = "nvim index.md"
 name = "dotfiles"
 path = "~/dotfiles"
 startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo dotfiles"
+
+[[session]]
+name = "elia"
+startup_command = "~/.venv/elia/bin/elia"
