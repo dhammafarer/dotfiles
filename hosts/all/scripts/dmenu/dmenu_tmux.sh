@@ -2,7 +2,7 @@
 
 launcher="rofi -dmenu -i"
 
-options=$(sesh list --json | jq -r '.[] | .Name + "," + .Src' | column -s"," -t) 
+options=$(sesh list --json | jq -r '.[] | .Name + "," + .Src + "," + (.Attached | if . > 0 then "*" else " " end)' | column -s"," -t) 
 
 choice=$(echo "$(printf '%s\n' "${options[@]}")" | $launcher -p 'Tmux sessions')
 
@@ -10,4 +10,13 @@ choice=$(echo "$(printf '%s\n' "${options[@]}")" | $launcher -p 'Tmux sessions')
 
 session_name=$(echo "$choice" | cut -d' ' -f1)
 
-kitty -T $session_name -e sesh connect $session_name
+if [[ $choice =~ \*$ ]]; then
+    # session is already attached, focus it
+    wmctrl -Fa $session_name
+else
+    # session is not attached, open a terminal and attach
+    kitty -T $session_name -e sesh connect $session_name
+fi
+
+echo $attached
+

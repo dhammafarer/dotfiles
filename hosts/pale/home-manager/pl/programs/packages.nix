@@ -66,5 +66,6 @@
     vscode-langservers-extracted
     simplescreenrecorder
     zellij
+    wmctrl
   ];
 }
