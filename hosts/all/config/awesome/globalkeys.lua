@@ -122,21 +122,28 @@ local globalkeys = gears.table.join(
   -- Restore client from a different tag
   awful.key({ MODKEY, "Control" }, "u",
     function()
-      --- if awful.screen.focused().index ~= 1 then
-      ---     awful.screen.focus(1)
-      if Urgent then
-        Urgent:jump_to()
-        Urgent = nil
-        naughty.destroy_all_notifications()
-      else
-        ---awful.tag.history.restore()
-        local c = awful.client.focus.history.list[2]
-        client.focus = c
-        local t = client.focus and client.focus.first_tag or nil
-        if t then
-          t:view_only()
+      ---if Urgent then
+      ---  Urgent:jump_to()
+      ---  Urgent = nil
+      ---  naughty.destroy_all_notifications()
+      ---else
+      local list = awful.client.focus.history.list
+      local current_tag = client.focus.first_tag or nil
+
+      for i = 2, #list do
+        local c = list[i]
+        if c.first_tag ~= current_tag then
+          client.focus = c
+
+          local t = client.focus and client.focus.first_tag or nil
+          if t then
+            t:view_only()
+          end
+
+          c:raise()
+
+          return
         end
-        c:raise()
       end
     end,
     { description = "go back", group = "tag" }),
