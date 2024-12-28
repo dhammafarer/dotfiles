@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  home.file."${config.xdg.configHome}/awesome" = {
-	source = ../../../config/awesome;
-	recursive = true;
+  home.file."${config.xdg.configHome}/awesome-test" = {
+    source = builtins.fetchGit {
+      url = "https://github.com/palekiwi/awesome";
+      rev = "d554dd526b59d46ad79b482d4b58e4b27191757f";
+    };
   };
 
   home.file."${config.xdg.configHome}/awesome/lain" = {
