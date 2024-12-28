@@ -4,9 +4,29 @@ path = "~/code/ygt/spabreaks/"
 startup_command = "~/dotfiles/hosts/all/scripts/tmux/spabreaks"
 
 [[session]]
+name = "wss-api"
+path = "~/code/ygt/wss-api/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/wss-api"
+
+[[session]]
 name = "spabreaks-dev"
 path = "~/code/ygt/spabreaks/"
 startup_command = "~/dotfiles/hosts/all/scripts/tmux/spabreaks-dev"
+
+[[session]]
+name = "spabreaks-console"
+path = "~/code/ygt/spabreaks/"
+startup_command = "make console"
+
+[[session]]
+name = "spabreaks-guard"
+path = "~/code/ygt/spabreaks/"
+startup_command = "make guard"
+
+[[session]]
+name = "wss-api-dev"
+path = "~/code/ygt/wss-api/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/wss-api-dev"
 
 [[session]]
 name = "Notes"
@@ -21,3 +41,7 @@ startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo dotfiles"
 [[session]]
 name = "elia"
 startup_command = "~/.venv/elia/bin/elia"
+
+[[session]]
+name = "ollama"
+startup_command = "~/bin/ollama serve"

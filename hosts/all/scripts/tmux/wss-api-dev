@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+session=wss-api-dev
+
+tmux rename-window -t $session:1 dev
+
+tmux new-window -t $session -n debug
+
+tmux send-keys -t $session:1 'task dev' C-m
+tmux send-keys -t $session:2 'sleep 1; task debug-web' C-m
+
+tmux select-window -t $session:1
