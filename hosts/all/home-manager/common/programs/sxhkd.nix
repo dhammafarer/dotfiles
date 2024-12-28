@@ -9,8 +9,7 @@
     enable = true;
     keybindings = {
       "super + space" = "~/.dmenu/tmux";
-      "super + BackSpace" = "kitty";
-      "super + Return" = "kitty -e tmux new-session -A -s '#main'";
+      "super + BackSpace" = "kitty --title $USER";
       # "super + 0" = "google-chrome-stable";
       "super + 0" = "flatpak run com.google.Chrome";
       "super + 1" = "rofi -show calc -modi calc -no-show-match -no-sort";
