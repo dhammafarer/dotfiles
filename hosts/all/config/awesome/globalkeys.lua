@@ -129,10 +129,11 @@ local globalkeys = gears.table.join(
       ---else
       local list = awful.client.focus.history.list
       local current_tag = client.focus.first_tag or nil
+      local screen = awful.screen.focused()
 
       for i = 2, #list do
         local c = list[i]
-        if c.first_tag ~= current_tag then
+        if c.first_tag ~= current_tag and c.first_tag.screen == screen then
           client.focus = c
 
           local t = client.focus and client.focus.first_tag or nil
