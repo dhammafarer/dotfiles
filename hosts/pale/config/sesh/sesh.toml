@@ -45,3 +45,8 @@ startup_command = "~/.venv/elia/bin/elia"
 [[session]]
 name = "ollama"
 startup_command = "~/bin/ollama serve"
+
+[[session]]
+name = "awesome"
+path = "~/.config/awesome/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo awesome"

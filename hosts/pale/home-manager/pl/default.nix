@@ -10,7 +10,7 @@
   programs.home-manager.enable = true;
 
   imports = [
-  	../../../all/home-manager/common/programs/awesome.nix
+  	# ../../../all/home-manager/common/programs/awesome.nix
   	../../../all/home-manager/common/programs/gh.nix
   	../../../all/home-manager/common/programs/git.nix
   	../../../all/home-manager/common/programs/gtk.nix
