@@ -102,12 +102,29 @@ local globalkeys = gears.table.join(
         function() awful.screen.focus(2) end,
         { description = "focus secondary screen", group = "screen" }),
 
-    -- Restore last tag
+    -- Restore last client within current tag 
     awful.key({ MODKEY }, "u",
         function()
-            if awful.screen.focused().index ~= 1 then
-                awful.screen.focus(1)
-            elseif  Urgent then
+            local list = awful.client.focus.history.list
+            local current_tag = client.focus.first_tag or nil
+
+            for i = 2, #list do
+              local c = list[i]
+              if c.first_tag == current_tag then
+                client.focus = c
+                c:raise()
+                return
+              end
+            end
+        end,
+        { description = "last client", group = "tag" }),
+
+    -- Restore client from a different tag
+    awful.key({ MODKEY, "Control" }, "u",
+        function()
+            --- if awful.screen.focused().index ~= 1 then
+            ---     awful.screen.focus(1)
+            if  Urgent then
                 Urgent:jump_to()
                 Urgent = nil
                 naughty.destroy_all_notifications()
@@ -123,6 +140,7 @@ local globalkeys = gears.table.join(
             end
         end,
         { description = "go back", group = "tag" }),
+
 
     -- Focus 2nd Client
     awful.key({ MODKEY }, "n",
