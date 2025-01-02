@@ -1,17 +1,14 @@
+# --- YGT ---
+# --- Spabreaks
 [[session]]
 name = "spabreaks"
 path = "~/code/ygt/spabreaks/"
-startup_command = "~/dotfiles/hosts/all/scripts/tmux/spabreaks"
-
-[[session]]
-name = "wss-api"
-path = "~/code/ygt/wss-api/"
-startup_command = "~/dotfiles/hosts/all/scripts/tmux/wss-api"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/spabreaks"
 
 [[session]]
 name = "spabreaks-dev"
 path = "~/code/ygt/spabreaks/"
-startup_command = "~/dotfiles/hosts/all/scripts/tmux/spabreaks-dev"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/spabreaks-dev"
 
 [[session]]
 name = "spabreaks-console"
@@ -23,15 +20,34 @@ name = "spabreaks-guard"
 path = "~/code/ygt/spabreaks/"
 startup_command = "make guard"
 
+# --- wss-data
+[[session]]
+name = "wss-data"
+path = "~/code/ygt/wss-data/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/wss-data"
+
 [[session]]
 name = "wss-api-dev"
 path = "~/code/ygt/wss-api/"
-startup_command = "~/dotfiles/hosts/all/scripts/tmux/wss-api-dev"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/wss-api-dev"
+
+# --- VRS
+[[session]]
+name = "vrs"
+path = "~/code/ygt/sb-voucher-redemptions/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/vrs"
 
 [[session]]
-name = "Notes"
-path = "~/Nextcloud/Notes"
-startup_command = "nvim index.md"
+name = "vrs-dev"
+path = "~/code/ygt/sb-voucher-redemptions/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/vrs-dev"
+
+[[session]]
+name = "vrs-psql"
+path = "~/code/ygt/sb-voucher-redemptions/"
+startup_command = "make psql"
+
+# --- Config ---
 
 [[session]]
 name = "dotfiles"
@@ -39,14 +55,34 @@ path = "~/dotfiles"
 startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo dotfiles"
 
 [[session]]
+name = "awesome"
+path = "~/.config/awesome/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo awesome"
+
+# --- Repos ---
+
+[[session]]
+name = "live-test_nvim"
+path = "~/code/neovim/plugins/live-test.nvim/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo live-test_nvim"
+
+# --- Utils ---
+
+[[session]]
 name = "elia"
 startup_command = "~/.venv/elia/bin/elia"
+
+[[session]]
+name = "Notes"
+path = "~/Nextcloud/Notes"
+startup_command = "nvim index.md"
 
 [[session]]
 name = "ollama"
 startup_command = "~/bin/ollama serve"
 
+# --- ssh ----
+
 [[session]]
-name = "awesome"
-path = "~/.config/awesome/"
-startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo awesome"
+name = "haze"
+startup_command = "ssh haze"

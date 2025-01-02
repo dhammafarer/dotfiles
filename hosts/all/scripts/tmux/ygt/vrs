@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-session=spabreaks
+session=$(basename ${0%.*})
 
 tmux rename-window -t $session:1 edit
 
