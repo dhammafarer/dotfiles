@@ -73,5 +73,6 @@
     python3
     unzip
     pinentry-gtk2
+    pulseaudio
   ];
 }
