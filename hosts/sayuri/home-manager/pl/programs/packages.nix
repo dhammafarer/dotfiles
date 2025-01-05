@@ -75,5 +75,6 @@
     unzip
     pinentry-gtk2
     pulseaudio
+    alsa-utils
   ];
 }
