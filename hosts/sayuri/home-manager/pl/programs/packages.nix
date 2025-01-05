@@ -57,10 +57,6 @@
     yubikey-manager
     nixd
     nixpkgs-fmt
-    # cargo
-    # rust-analyzer
-    # rustc
-    # rustfmt
     rustup
     oterm
     zoxide
@@ -76,5 +72,6 @@
     pinentry-gtk2
     pulseaudio
     alsa-utils
+    docker-compose
   ];
 }
