@@ -10,8 +10,7 @@
     keybindings = {
       "super + space" = "~/.dmenu/tmux";
       "super + BackSpace" = "kitty --title $USER";
-      # "super + 0" = "google-chrome-stable";
-      "super + 0" = "flatpak run com.google.Chrome";
+      "super + 0" = "google-chrome-stable";
       "super + 1" = "rofi -show calc -modi calc -no-show-match -no-sort";
       "super + 2" = "~/.nix-profile/bin/firefox";
       "super + 3" = "rofi-pass --root ~/.password-store 2> /tmp/rofi-pass.log";
