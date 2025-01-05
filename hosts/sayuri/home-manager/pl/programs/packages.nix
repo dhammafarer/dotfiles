@@ -28,6 +28,7 @@
     jq
     kdePackages.breeze-gtk
     lua
+    lua-language-server
     maim
     neovim
     nodePackages.prettier
