@@ -27,9 +27,9 @@ path = "~/code/ygt/wss-data/"
 startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/wss-data"
 
 [[session]]
-name = "wss-api-dev"
-path = "~/code/ygt/wss-api/"
-startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/wss-api-dev"
+name = "wss-data-dev"
+path = "~/code/ygt/wss-data/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/ygt/wss-data-dev"
 
 # --- VRS
 [[session]]
@@ -58,6 +58,11 @@ startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo dotfiles"
 name = "awesome"
 path = "~/.config/awesome/"
 startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo awesome"
+
+[[session]]
+name = "nvim"
+path = "~/.config/nvim/"
+startup_command = "~/dotfiles/hosts/all/scripts/tmux/git-repo nvim"
 
 # --- Repos ---
 

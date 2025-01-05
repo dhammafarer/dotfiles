@@ -67,5 +67,6 @@
     simplescreenrecorder
     zellij
     wmctrl
+    tokei
   ];
 }
