@@ -30,6 +30,7 @@
     jq
     kdePackages.breeze-gtk
     kitty
+    libnotify
     lua
     lua-language-server
     maim
