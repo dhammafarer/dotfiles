@@ -50,6 +50,7 @@
     xdotool
     xorg.xev
     xorg.xset
+    xorg.xmodmap
     freeplane
     home-assistant-cli
     yubikey-manager
