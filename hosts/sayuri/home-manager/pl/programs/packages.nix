@@ -2,9 +2,10 @@
 
 {
   home.packages = with pkgs; [
+    acpi
+    alsa-utils
     ansible
     ansible-lint
-    acpi
     arc-icon-theme
     bat
     cmus
@@ -12,8 +13,8 @@
     docker-compose
     eza
     fasd
-    nerd-fonts.fira-code
     firefox
+    freeplane
     fzf
     gh
     gh-f
@@ -24,54 +25,52 @@
     go
     google-chrome
     gpick
+    home-assistant-cli
     jetbrains-mono
     jq
     kdePackages.breeze-gtk
+    kitty
     lua
     lua-language-server
     maim
     neovim
+    nerd-fonts.fira-code
+    nixd
+    nixpkgs-fmt
     nodePackages.prettier
     nodePackages.typescript-language-server
     nodejs_22
+    oterm
     pass
+    pinentry-gtk2
     playerctl
+    pulseaudio
+    python3
     ranger
     ripgrep
+    rustup
+    sesh
     signal-desktop
+    simplescreenrecorder
     starship
+    sxhkd
     tldr
     tmux
     tree
     typescript
     unclutter-xfixes
     universal-ctags
+    unzip
+    vscode-langservers-extracted
     which
+    wmctrl
     xclip
     xdotool
     xorg.xev
-    xorg.xset
     xorg.xmodmap
-    freeplane
-    home-assistant-cli
+    xorg.xset
     yubikey-manager
-    nixd
-    nixpkgs-fmt
-    rustup
-    oterm
-    zoxide
-    sesh
-    vscode-langservers-extracted
-    simplescreenrecorder
     zellij
-    wmctrl
-    kitty
-    sxhkd
-    python3
-    unzip
-    pinentry-gtk2
-    pulseaudio
-    alsa-utils
-    docker-compose
+    zoxide
   ];
 }
