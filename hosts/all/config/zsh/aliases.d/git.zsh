@@ -45,15 +45,19 @@ git_switch_create_ygt() {
 }
 
 git_switch_create_variant() {
-    git switch -c $(git branch --show-current)--$@
+    git switch -c $(git branch --show-current)$@
+}
+
+git_switch_variant() {
+    git switch $(git branch --show-current)$@
 }
 
 git_merge_variant() {
-    git merge $(git branch --show-current)--$@
+    git merge $(git branch --show-current)$@
 }
 
 git_branch_delete_variant() {
-    git branch -d $(git branch --show-current)--$@
+    git branch -d $(git branch --show-current)$@
 }
 
 git_get_master_branch_name() {
@@ -91,6 +95,7 @@ alias gscy="git_switch_create_ygt"
 alias gscv="git_switch_create_variant"
 alias gbdv="git_branch_delete_variant"
 alias gsd="git switch dev"
+alias gsv="git_switch_variant"
 alias gsm="git_get_master_branch_name | xargs git switch && unset GIT_BASE && unset PR_NUMBER && git pull"
 alias gsb='sgh && gs $GIT_BASE'
 alias gmb='sgh && git merge $GIT_BASE'
