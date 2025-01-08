@@ -7,7 +7,7 @@
         theme = ../../../config/rofi/dark_theme.rasi;
         plugins = [ pkgs.rofi-calc ];
         extraConfig = {
-          matching = "fuzzy";
+          matching = "normal"; # normal, regex, glob, fuzy, prefix
         };
     };
 
