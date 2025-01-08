@@ -23,9 +23,10 @@
     ../../../all/home-manager/common/programs/gpg.nix
     ../../../all/home-manager/common/programs/picom.nix
     ../../../all/home-manager/common/programs/cmus.nix
+    ./programs/direnv.nix
     ./programs/kitty.nix
-    ./programs/packages.nix
     ./programs/packages-ygt.nix
+    ./programs/packages.nix
     ./programs/sesh.nix
     ./programs/starship.nix
   ];
