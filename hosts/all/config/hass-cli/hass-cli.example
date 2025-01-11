@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+export HASS_SERVER=https://homeassistant.local:8123
+export HASS_TOKEN=<secret>
